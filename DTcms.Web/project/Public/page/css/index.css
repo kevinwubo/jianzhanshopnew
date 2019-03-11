@@ -1,0 +1,340 @@
+.head-p-logo, .head-p-search, .head-p-sides {
+    display: inline-block;
+    vertical-align: top;
+    height: auto;
+    box-sizing: border-box;
+ 	margin-top: 0.226rem;
+}
+.head-p-logo {margin-left: 0.266rem;margin-right: 0.266rem}
+.head-p-logo img {
+	display: inline-block;
+	width: 2.65rem; 
+}
+.head-p-search {
+	height: auto;
+	background-color: #fff;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	box-sizing: border-box;
+}
+.head-p-search input {
+    border: 2px red solid !important;
+	width: 68%;
+    height: 0.96rem;
+    border-radius: 0.15rem;
+    border: none;
+    outline: none;
+    background-color: white;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 0.385rem;
+    text-indent: 0.173rem;
+}
+.head-p-search label{
+	display: inline-block;
+	width: 1.12rem;
+	text-align: center;
+	line-height: 0.72rem;
+	font-size: 0.385rem;
+	color: white;
+}
+.head-p-sides {
+	position: absolute;
+	right: 0.33rem;
+	top: 0.426rem;
+	margin-top: 0;
+}
+.head-p-sides img{
+	display: inline-block;
+	width: 0.733rem;
+}
+.planbody-nav{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	font-size: 0;
+	padding-top: 0.72rem;
+	padding-bottom:0.57rem;
+}
+.planbody-nav a{
+	display: inline-block;
+	width: 25%;
+	height: auto;
+	vertical-align: top;
+}
+.planbody-nav dl{
+	text-align: center;
+	color: #333333;
+}
+.planbody-nav dl img{
+	display: inline-block;
+}
+.planbody-nav dt{
+	margin-bottom: 0.253rem;
+}
+.planbody-nav dd{
+	display: inline-block;
+	font-size: 0.373rem;
+	height: 0.493rem;
+	line-height: 0.493rem;
+	padding: 0 0.146rem;
+	border-radius: 0.06rem;
+}
+.planbody-active{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	font-size: 0;
+	border-bottom: 2px solid #b1b1b1;
+}
+.planbody-active-main{
+	display: inline-block;
+	vertical-align: top;
+	width: 50%;
+	height: auto;
+	box-sizing: border-box;
+	border-top: 2px solid #b1b1b1;
+	padding-top: 0.613rem;
+	padding-bottom: 0.613rem;
+}
+.planbody-active-main.bor_r{
+	border-right: 1px solid #b1b1b1;
+}
+.planbody-active-main.bor_l{
+	border-left: 1px solid #b1b1b1;
+}
+.planbody-active-main>div{
+	display: inline-block;
+	vertical-align: middle;
+}
+.active-main-text{
+	width: 2.826rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-align: center;
+}
+.active-main-text p:nth-child(1){
+	color: #272626;
+	font-size: 0.48rem;
+	line-height: 0.48rem;
+	margin-bottom: 0.24rem;
+}
+.active-main-text p:nth-child(2){
+	color: #b1b1b1;
+	font-size: 0.266rem;
+	line-height: 0.266rem;
+	margin-bottom: 0.24rem;
+}
+.active-main-text p:nth-child(3){
+	color: #b32b2b;
+	font-size: 0.266rem;
+	line-height: 0.266rem;
+}
+.active-main-img,.active-main-img img{
+	width: 1.76rem;
+	height: 1.76rem;
+	display: inline-block;
+}
+.active-main-img{
+	overflow: hidden;
+	border-radius: 50%;
+	border:2px solid #f2f2f2;
+}
+.planbody-promise{
+	overflow: hidden;
+	width: 100%;height: auto;
+	padding-bottom: 0.4rem;
+}
+.promise{
+	width: 9.346rem;
+	margin:0 auto;
+}
+.promise-ul{
+	overflow: hidden;
+	font-size:0;
+}
+.promise-ul li {
+	font-size: 0.373rem;
+	width: 2.13rem;
+	line-height: 0.61rem;
+	text-align: center;
+	color: white;
+	background-color: #cc3333;
+	margin-bottom: 0.26rem;
+}
+.promise-title{
+	text-align: center;
+	font-size: 0.5rem;
+	line-height: 0.5rem;
+	padding-top: 0.666rem;
+	padding-bottom: 0.466rem;
+	font-weight: bold;
+}
+.planbody-store {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	font-size: 0;
+	border:2px solid #909090;
+}
+.planbody-store>div{
+	display: inline-block;
+	vertical-align: top;
+
+}
+.store-left{
+	width: 2.14rem;
+	height: auto;
+	border-right: 2px solid #909090;
+	font-size: 28px;
+	text-align: center;
+
+}
+.store-left div{
+	display: inline-block;
+	width: 0.45rem;
+	font-size: 0.45rem;
+	line-height: 0.5rem;
+	padding-left: 0.32rem;
+	padding-right: 0.32rem;
+	padding-top: 0.73rem;
+	padding-bottom:0.73rem; 
+	background-color: #cc3333;
+	border-radius: 0.545rem;
+	color: white;
+	margin-top: 0.413rem;
+	margin-bottom: 0.413rem;
+}
+.store-title{
+	width: 100%;
+	height: auto;
+	text-align: left;
+
+}
+.store-title li{
+	width: 100%;
+	height: 1.29rem;
+	background-color: #ededed;
+	line-height: 1.29rem;
+	/*border-right: 3px solid white;*/
+	/*box-sizing: border-box;*/
+	border-bottom: 2px solid #909090;
+	color: #333333;
+	font-size:0.386rem;
+}
+.store-title li span{
+	display: inline-block;
+	height: 100%;
+	width: 0.07rem;
+	background-color: transparent;
+	vertical-align: top;
+	margin-right: 0.3rem;
+}
+.store-title li.initStyle{
+	background-color: white;
+	border-right: 3px solid white;
+}
+.store-title span.initStyle{
+	background-color: #cc3333;
+}
+.store-detail div{
+	display: none;
+	font-size:0.386rem;
+	width: 6.53rem;
+	line-height: 0.72rem;
+	color: #333333;
+	padding-left: 0.35rem;
+	padding-top:0.35rem; 
+}
+.store-detail mdiv{
+	font-size:0.386rem;
+	width: 6.53rem;
+	line-height: 0.72rem;
+	color: #333333;
+	/* padding-left: 0.35rem; */
+	/* padding-top:0.35rem;  */
+}
+.store-detail div img{
+	width: 100%;
+}
+.store-detail div span{
+	display: inline-block;
+	vertical-align: top;
+}
+.store-detail div.initStyle{
+	display: inline-block;
+
+}
+.star-controll {
+	padding-top: 0.38rem;
+}
+
+/*********************/
+.mark{
+	height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(99, 99, 99, 0.5);
+	z-index: 999;
+}
+.mark .plane{
+	width: 80%;
+    height: 5rem;
+    position: absolute;
+    background: white;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.mark .title{
+	height: 1.3rem;
+    background: #f5f5f9;
+    text-align: center;
+	font-size: 0.4rem;
+	font-size: 0.6rem;
+    line-height: 1.3rem;
+}
+.mark .body{
+	margin: 0.3rem 0.5rem;
+	height: 1.5rem;
+	font-size: 0.42rem;
+    line-height: 0.7rem;
+}
+
+.mark .foot{
+	position: relative;
+    height: 1rem;
+}
+.mark .can-bt{
+	width: 37%;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    border: #666 solid 1px;
+    padding: 0.2rem;
+    text-align: center;
+    position: absolute;
+    font-size: 0.45rem;
+    border-radius: 0.1rem;
+    left: 0.4rem;
+}
+.mark .call-bt{
+	width: 37%;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    border: 0px solid 1px;
+	padding: 0.2rem;
+	background: steelblue;
+	color: white;
+    text-align: center;
+    position: absolute;
+    font-size: 0.45rem;
+    border-radius: 0.1rem;
+    right: 0.4rem;
+}
+

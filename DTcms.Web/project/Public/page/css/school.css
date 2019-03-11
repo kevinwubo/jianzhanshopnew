@@ -1,0 +1,118 @@
+
+.about-tag-plane{
+    width: 100%;
+    position: relative;
+    background: #fff;
+    height: 3.2rem;
+    margin-bottom: 0.4rem
+}
+.about-tag-list{
+    margin: 0;
+    /* height: 2.4rem; */
+    overflow: hidden;
+    padding: 0.4rem;
+    clear: both;
+}
+.about-tag-item{
+    float: left;
+    border-radius: .1rem;
+    width: 33.3%;
+}
+.about-tag-item div{
+    margin: 0.2rem 0.15rem;
+    padding: 0.1rem 0;
+    border-radius: 0.1rem;
+    border: 0 solid #ff8f5c;
+    color: #8e8e8e;
+    background-color: #f0f0f0;
+    font-size: 0.32rem;
+    height: 0.6rem;
+    line-height: 0.55rem;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.about-tag-item .btn-on {
+    margin: 0.2rem 0.15rem;
+    padding: 0.1rem 0;
+    border-radius: 0.1rem;
+    border: 0 solid #ff8f5c;
+    color: #ffffff;
+    background-color: #b32b2b;
+    font-size: 0.32rem;
+    height: 0.6rem;
+    line-height: 0.55rem;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#item{
+    color: #333;
+   height: 3.67rem; 
+   background: #fff;
+   width: 100%;
+}
+.item-div
+{
+    height: 2.8rem;
+    width: 2.8rem;
+    margin: 0.435rem;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #f2f2f2;
+}
+#item .imghead{
+    height: 2.8rem;
+    width: 2.8rem;
+}
+#item .title{
+    line-height: 0.66rem;
+    font-size: 0.5rem;
+    margin-top:0.4rem;
+    width: 92%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#item .desc{
+    line-height: 0.5rem;
+    font-size: 0.32rem;
+    color: #999;
+    margin-top:0.1rem;
+    width: 92%;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+.detail-title-plane{
+    height: 2.13rem;
+    width: 100%;
+    background: #fff;
+}
+.detail-title-plane .title{
+line-height: 1.2rem;
+height: 1.2rem;
+font-size: 0.45rem;
+text-align: center;
+padding-top:0.12rem; 
+}
+.detail-title-plane .desc{
+    line-height: 0.4rem;
+    height: 0.4rem;
+    font-size: 0.28rem;
+    text-align: center;
+    color: #999
+}
+.content{
+    width: 90%;
+	line-height: 0.8rem;
+    font-size: 0.35rem;
+    padding: 5%;
+    background: white;
+}

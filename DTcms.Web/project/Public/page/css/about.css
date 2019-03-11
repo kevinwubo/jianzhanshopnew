@@ -1,0 +1,137 @@
+.weui-tab {
+    position: relative;
+    height: 100%;
+}
+.weui-navbar {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    position: fixed;
+    z-index: 500;
+    width: 10rem;
+    background-color: #f0f0f0;
+}
+.weui-navbar__item {
+    position: relative;
+    display: block;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    padding: 0.4rem 0;
+    text-align: center;
+    font-size: 0.4rem;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.navbar__item.weui-bar__item--on {
+    color: #666;
+    background-color: #f1f1f1;
+}
+.weui-navbar__item--on span{
+    border-bottom: 3px solid #b32b2b;
+    padding: 5px 0;
+}
+.weui-navbar + .weui-tab__bd {
+    padding-top: 1.32rem;
+}
+
+.weui-tab__bd {
+    box-sizing: border-box;
+    height: 100%;
+}
+.weui-tab__bd .weui-tab__bd-item.weui-tab__bd-item--active {
+    display: block;
+}
+
+.weui-tab__bd .weui-tab__bd-item {
+    display: none;
+    height: 100%;
+    overflow: auto;
+}
+.about-tag-plane{
+    width: 100%;
+    position: relative;
+    background: #fff;
+    height: 3.2rem;
+    margin-bottom: 0.4rem
+}
+.about-tag-list{
+    margin: 0;
+    height: 2.4rem;
+    padding: 0.4rem;
+    clear: both;
+}
+.about-tag-item{
+    float: left;
+    border-radius: .1rem;
+    width: 25%;
+}
+.about-tag-item div{
+    margin: 0.2rem 0.15rem;
+    padding: 0.1rem 0;
+    border-radius: 0.1rem;
+    border: 0 solid #ff8f5c;
+    color: #8e8e8e;
+    background-color: #f0f0f0;
+    font-size: 0.32rem;
+    height: 0.6rem;
+    line-height: 0.55rem;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.about-tag-item .btn-on {
+    margin: 0.2rem 0.15rem;
+    padding: 0.1rem 0;
+    border-radius: 0.1rem;
+    border: 0 solid #ff8f5c;
+    color: #ffffff;
+    background-color: #b32b2b;
+    font-size: 0.32rem;
+    height: 0.6rem;
+    line-height: 0.55rem;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.about-text-plane{
+    width: 100%;
+    position: relative;
+    background: #fff;
+}
+.about-text{
+    padding: .6rem .4rem;
+    font-size: 0.32rem;
+    line-height: 0.587rem;
+    color: #8e8e8e
+}
+.detail-title-plane{
+    height: 2.13rem;
+    width: 100%;
+    background: #fff;
+}
+.detail-title-plane .title{
+line-height: 1.2rem;
+height: 1.2rem;
+font-size: 0.45rem;
+text-align: center;
+padding-top:0.12rem; 
+}
+.detail-title-plane .desc{
+    line-height: 0.4rem;
+    height: 0.4rem;
+    font-size: 0.28rem;
+    text-align: center;
+    color: #999
+}
+.content{
+    width: 90%;
+    padding: 5%;
+    font-size: 0.14rem;
+    color: #333;
+    line-height: 0.6rem;
+    background: white;;
+}

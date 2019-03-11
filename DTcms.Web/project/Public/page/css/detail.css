@@ -1,0 +1,33 @@
+.infoplane{
+  position: relative;
+    width: 100%;
+}
+.info-title{
+    height: 1.2rem;
+    width: 100%;
+    line-height: 1.2rem;
+    font-size: 0.4rem;
+    background: #fff;
+}
+.info-title div{
+    margin-left:0.4rem;
+}
+.info-title .red-word{
+    color: #cc4444;
+    text-align: right;
+    margin-right: 0.4rem;
+}
+.auther-info{
+    height: 2rem;
+}
+.auther-info .text{
+    height: 0.4rem;
+    font-size: 0.32rem;
+    line-height: 0.4rem;
+    margin: 0.4rem 0 0 0.4rem;
+}
+.infoplane-foot-part{
+    background: #fff;
+    width: 9.2rem;
+    padding: 0.4rem;
+}

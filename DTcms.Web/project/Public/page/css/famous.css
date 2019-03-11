@@ -1,0 +1,100 @@
+#list{
+    background: #fff;
+}
+#item{
+   background: #fff;
+   width: 100%;
+   margin-bottom: 0.04rem;
+   color: #333;
+}
+.item-div
+{
+    height: 2.8rem;
+    width: 2.8rem;
+    margin: 0.435rem;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #f2f2f2;
+}
+#item .imghead{
+    height: 2.8rem;
+    width: 2.8rem;
+}
+#item .title{
+    line-height: 0.66rem;
+    font-size: 0.5rem;
+    margin-top:0.4rem;
+    width: 92%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#item .desc{
+    line-height: 0.5rem;
+    font-size: 0.32rem;
+    color: #999;
+    margin-top:0.1rem;
+    width: 92%;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+.detail-title-plane{
+    height: 2.13rem;
+    width: 100%;
+    background: #fff;
+}
+.detail-title-plane .title{
+line-height: 1.2rem;
+height: 1.2rem;
+font-size: 0.45rem;
+text-align: center;
+padding-top:0.12rem; 
+}
+.detail-title-plane .desc{
+    line-height: 0.4rem;
+    height: 0.4rem;
+    font-size: 0.28rem;
+    text-align: center;
+    color: #999
+}
+.content{
+    width: 100%;
+    padding: 0.5rem;
+    background: white;
+}
+.pro-plane{
+    text-align: center;
+    padding: 0.4rem;
+   
+}
+.pro-img{
+    border:#555 3px solid;
+}
+/* famous——detail */
+.part{
+    width: 100%;
+    margin-top: 0rem;
+    margin-bottom: 0.6rem;
+}
+.part .desc-title{
+    text-align: left;
+    font-size: 0.36rem;
+    margin: 0.2rem 0rem;
+}
+.part .desc-content{
+    color:grey;
+    font-size: 0.32rem;
+    line-height: 0.45rem;
+    text-align: left;
+    width: 100%;
+    margin: .3rem 0;
+}
+.hidden-btn{
+    width: 100%;
+    padding: 0rem 0 0.5rem 0;
+    text-align: center;
+    position: relative;
+}

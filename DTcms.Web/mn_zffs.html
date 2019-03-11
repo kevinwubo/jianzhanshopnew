@@ -1,0 +1,637 @@
+﻿
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+  <title>建盏商城 - 建盏天下网</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=750, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta content="telephone=no" name="format-detection">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <link rel="stylesheet" type="text/css" href="project/Public/base/css/reset.css?d=" />
+  <link rel="stylesheet" type="text/css" href="project/Public/base/css/bass.css" />
+  <link rel="stylesheet" type="text/css" href="project/Public/base/css/swiper-4.3.3.min.css" />
+  <link rel="stylesheet" type="text/css" href="project/Public/page/css/about.css" />
+  <link rel="stylesheet" type="text/css" href="project/Public/page/css/index.css" />
+  <link rel="stylesheet" type="text/css" href="project/Public/iconfont/iconfont.css" />
+  <script type="text/javascript" src="project/Public/base/js/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="project/Public/base/js/swiper-4.3.3.min.js"></script>
+  <script type="text/javascript" src="project/Public/base/js/ZRrem.js"></script>
+  
+  <!-- <script type="text/javascript" src="project/Public/page/js/about.js"></script> -->
+  <style type="text/css">
+    #swiper-container-banner {
+      width: 100%;
+      height: 5.2rem;
+    }
+
+    #swiper-container-banner a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+
+    #swiper-container-banner a img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+  <input type="hidden" id="hid_about" value="" />
+    <div id="header" class="header bgc_c3">
+      <!-- 通用头 -->
+      <div id="head-page" class="head-page head-page-home">
+        <div class="head-left">
+          <div class="head-backpage">
+            <a href="javascript:window.history.back()">
+                <span class="head-backpage-img"></span>
+                <span>返回上页</span>
+            </a>
+          </div>
+          <div class="head-gohome">
+            <a href="m_index.html">
+                <span class="gohome-bor"></span>
+                <span class="head-gohome-img"></span>
+                
+            </a>
+          </div>
+        </div>
+        <div class="head-title">
+          支付方式
+        </div>
+        <div class="head-p-sides head-p-sides-side"  onclick="moveLeft()">
+          <img src="project/Public/image/side.png">
+        </div>
+      </div>
+    </div>
+    <div class="planbody bgc_cc">
+
+      <!-- 关于我们-导航栏-->
+
+      <div class="weui-tab">
+        <div class="weui-navbar" style="z-index:10" >
+          <div class="weui-navbar__item" >
+            <a href="mn_gywm.html">
+                <span>关于我们 </span>
+            </a>
+          </div>
+          <div class="weui-navbar__item">
+            <a href="mn_fwbz.html">
+                <span>服务保障</span>
+            </a>
+          </div>
+          <div class="weui-navbar__item weui-navbar__item--on">
+            <a href="mn_zffs.html">
+                <span>支付方式</span>
+            </a>
+          </div>
+          <div class="weui-navbar__item">
+            <a href="mn_xmd.html">
+                <span>实体店</span>
+            </a>
+          </div>
+        </div>
+        <div class="weui-tab__bd">
+          <div id="tab3" class="weui-tab__bd-item weui-tab__bd-item--active">
+            <div class="content-padded">
+              <img src="project/Public/image/zffs.png" />
+            </div>
+             <!-- 通用底部元素 片段截取 -->
+             <div id="planbody-foot_box">
+              <div id="planbody-foot" class="planbody-foot">
+                <div class="bgc_b3">
+                  <div class="planbody-foot-describe">
+                    <div class='foot-describe'>
+                      <p>消费者维权热线：12315</p>
+                      <p>违法和不良信息举报电话：12377</p>
+                      <p>法律支持：北京中伦文德律师事务所</p>
+                      <p>闽ICP备17006498号-1</p>
+                      <p>建盏天下 <a href="http://www.jianzhanshop.com">www.jianzhanshop.com</a></p>
+                    </div>
+                    <div class="foot-RQcode">
+                      <img id="foot-RQcode" src="project/Public/image/qcode-1.jpg" alt="二维码" />
+                    </div>
+                    <div class="foot-pay">
+                      <p>支付方式</p>
+                      <p>微信支付</p>
+                      <p>支付宝支付</p>
+                      <p>银行卡支付</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="planbody-foot-corp">
+                  <p>福建省盏天下电子商务有限公司</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+<script src="js/m_o_code.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+<style type="text/css">
+
+.about-tag-plane-new {
+	width: 100%;
+    position: relative;
+    background: #fff;
+    height: 2.5rem;
+}
+.about-tag-list-new {
+    margin: 0;
+    height: 2.4rem;
+	padding: 0 0.2rem;
+    clear: both;
+}
+.about-tag-item-new {
+    float: left;
+    border-radius: .1rem;
+    width: 25%;
+}
+.about-tag-item-new mdiv {
+    margin: 0.15rem 0.15rem;
+    padding: 0.1rem 0;
+    border-radius: 0.1rem;
+    border: 0 solid #ff8f5c;
+    color: #f0f0f0;
+    background-color: #8e8e8e;
+    font-size: 0.34rem;
+    height: 0.6rem;
+    line-height: 0.55rem;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+		
+	</style>
+
+
+<div class="footer" id="div_footer" style="bottom: 0rem">
+			<div id='zaixian' onclick="copyTelephone()">
+				<img src="project/Public/image/online.png" />
+					<span style="position: relative;
+					top: -0.2rem;" id="Telephone">13163806316</span>
+					<mdiv style="position: relative;
+					top: -0.85rem;
+					font-size: 0.26rem;
+					text-align: center;
+					margin-left: 0.6rem;" >(长按复制添加微信)</mdiv>
+			</div>
+			<div id='zxrx' onclick="showLeXian()">
+				<img src="project/Public/image/tel.png">咨询热线
+			</div>
+			<div id='kuaishu' style="background: red">
+				<img src="project/Public/image/select.png">快速询价
+			</div>
+			<!-- 快速查询 -->
+			<mdiv id="ksplane" style="height: 6.8rem;background: #fff;display: none">
+				<mdiv class="zx-title"><span id="p_productname"></span>“点击询价”
+					<span style="float: right;margin-right:3%">(10分钟内回复)</span>
+				</mdiv>
+			  <mdiv class="head-p-search" style="width: 94%; margin-left: 3%;">
+              <input type="hidden" id="hid_productid" value="Mobile" />
+					<input type="text" placeholder="请输入你的手机号码" id="txt_keywords" class="col_33">
+					<!-- <label style="width: 20%; line-height: 1rem">确定</label> -->
+					<img style="width: 28%; line-height: 1rem;margin-left: 0.24rem"; id="div_submit" src="./project/Public/image/xunwen.png"> 
+				</mdiv>
+				<mdiv class="zx-title">快速直线:
+					<span style="color: red">4008-276-376</span>
+				</mdiv>
+				<mdiv class="about-tag-plane-new">
+					<ul id=about-tag-list-new class="about-tag-list-new">
+					  <li class="about-tag-item-new">
+						 <a href="mn_fwbz.html"> 
+						  <mdiv class="btn-on">名家直销</mdiv>
+					     </a> 
+					  </li>
+					  <li class="about-tag-item-new">
+						<a href="mn_fwbz.html">
+						  <mdiv>一手货源</mdiv>
+						</a>
+					  </li>
+					  <li class="about-tag-item-new">
+						<a href="mn_fwbz.html">
+						  <mdiv>铁胎建盏</mdiv>
+						</a>
+					  </li>
+					  <li class="about-tag-item-new">
+						<a href="mn_fwbz.html">
+						  <mdiv>破损补发</mdiv>
+						</a>
+					  </li>
+					  <li class="about-tag-item-new">
+						<a href="mn_fwbz.html">
+						  <mdiv>实物视频</mdiv>
+						</a>
+					  </li>
+					  <li class="about-tag-item-new">
+					   <a href="mn_fwbz.html">
+						  <mdiv>保真承若</mdiv>
+						</a>
+					  </li>
+					  <li class="about-tag-item-new">
+					   <a href="mn_fwbz.html">
+						  <mdiv>赝品赔付</mdiv>
+						</a>
+					  </li>
+					  <li class="about-tag-item-new">
+						<a href="mn_fwbz.html">
+						  <mdiv>15天退换</mdiv>
+						</a>
+					  </li>
+					</ul>
+				  </mdiv>
+			</mdiv>
+		</div>
+
+ <div id="lexian" class='mark' style="display: none">
+		<div class="plane">
+			<div class="title">确认提示</div>
+			<div class="body">
+				<div>当前号码：</div>
+				<div>4008-276-376</div>
+			</div>
+			<div class="foot">
+				<div onclick="cancle()" class="can-bt">取消</div>
+				<div class="call-bt"><a href="tel:4008276376">拨号</a></div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+
+
+    var tabindex = 0;
+    var iskuaishu = false;
+    var iszaixian = false;
+    var mySwiperstop1;
+    var mySwiperstop2;
+    var mySwiperstop3;
+
+    // 点击快速查询
+    $('#kuaishu').click(function () {
+        iskuaishu = true;
+        $("#menumark").css("display", "block");
+        $("#ksplane").css("display", "block");
+        $("#zxplane").css("display", "none");
+        $(".footer").animate({ bottom: '6.8rem' }, "slow", function () {
+            // $(this).css("display", "none");
+        });
+    })
+
+    function copyTelephone() {
+        var val = document.getElementById('Telephone');
+        window.getSelection().selectAllChildren(val);
+        document.execCommand("Copy");
+        alert("复制成功，可添加微信");
+    }
+
+    //点击隐藏在线咨询面板或拨号面板
+    $('#menumark').click(function () {
+
+        if (iskuaishu) {
+            $(".footer").animate({ bottom: '0rem' }, "slow", function () {
+                $("#menumark").css("display", "none");
+                $("#ksplane").css("display", "none");
+            });
+            iskuaishu = false;
+        }
+        if (iszaixian) {
+            $(".footer").animate({ bottom: '0rem' }, "slow", function () {
+                $("#menumark").css("display", "none");
+                $("#zxplane").css("display", "none");
+            });
+            iszaixian = false;
+        }
+    })
+
+
+    $('.store-title').children().each(function (index, node) {
+        $(this).click(function () {
+            $('.store-title').children().eq(tabindex).removeClass('initStyle');
+            $('.store-title').children().eq(tabindex).children().eq(0).removeClass('initStyle');
+            $('.store-detail').children().eq(tabindex).removeClass('initStyle');
+            tabindex = index;
+            $('.store-detail').children().eq(tabindex).addClass('initStyle');
+            $(this).addClass('initStyle');
+            $(this).children().eq(0).addClass('initStyle');
+        })
+    })
+
+    //列表按钮询价
+    function xunjia(name, productid) {
+        iskuaishu = true;
+        $("#txt_keywords").val("");
+        $("#txt_keywords1").val("");
+        $("#div_footer").show();
+        $("#menumark").css("display", "block");
+        $("#ksplane").css("display", "block");
+        $("#hid_productid").val(productid);
+        $("#p_productname").text(name);
+        $(".footer").animate({ bottom: '4.1rem' }, "slow", function () {
+            // $(this).css("display", "none");
+        });
+    }
+    // 拨号面板取消按钮事件
+    function cancle() {
+        $('#lexian').hide()
+    }
+    //弹出拨打电话面板
+    function showLeXian() {
+        $('#lexian').show()
+    }	
+</script>
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?e968a714e805c74070bded410d401f1b";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+			        <script type="text/javascript">
+
+            $.post("ajax/wxcode.aspx", function (result) {
+                jQuery("#Telephone").text(result);
+            });
+
+            var arrplaceholder = "请输入您的手机号码";
+            $("txt_keywords").blur(function () {
+                $(this).prop("placeholder", arrplaceholder)
+            });
+            // 验证手机号
+            function isPhoneNo(phone) {
+                var pattern = /^1[34578]\d{9}$/;
+                return pattern.test(phone);
+            }
+
+            // 获取长度为len的随机字符串
+            function getRandomString(len) {
+                len = len || 32;
+                var $chars = 'ABCDEFGHJKMNPQRSTWXYZ'; // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
+                var maxPos = $chars.length;
+                var pwd = '';
+                for (i = 0; i < len; i++) {
+                    pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+                }
+                return pwd;
+            }
+
+            $("#div_submit").bind("click", function (e) {
+                var inProductid = $("#hid_productid").val();
+                var productid = inProductid != "" ? inProductid : "Mobile";
+                var type = "Tel";
+                var txtvalue = $("#txt_keywords").val();
+                var inquiryType = "询价";
+                if (txtvalue == "") {
+                    alert('请输入您的手机号码');
+                    return false;
+                }
+                if (!isPhoneNo(txtvalue)) {
+                    alert('请输入正确的手机号码');
+                    return false;
+                }
+
+                $.post("ajax/proajax.aspx", { ProductID: productid, Type: type, TxtValue: txtvalue, InquiryType: inquiryType, SourceForm: "MB" }, function (result) {
+                    tprm = "ProductID=" + productid + "&phone=" + getRandomString(1) + TelJM(txtvalue) + getRandomString(1);
+                    __ozfac2(tprm, "#inquiryok");
+                    alert(result);
+                    $("#zxplane").hide();
+                    $("#ksplane").hide();
+                    $("#menumark").click();
+                    $("#menumark").hide();
+                    $("#txt_keywords").val("");
+                });
+            });
+                    </script><script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?20147c6539544fa3036d0d5c894132a8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+        <div id="menupart" style="display: none;left:200%;">
+            
+<style>
+    #menupart {
+	        height: 100%;
+	        width: 80%;
+	        position: absolute;
+	        top: 0;
+	        left: 0;
+	        z-index: 99;
+        }
+        #menupart .menu-body {
+			width: 100%
+		}
+		#swiper-container-star a #headimg {
+            width: 100%;
+            height: 3.7rem;
+        }
+</style>
+<div id='menuplane' class="menuplane" style="z-index:100">
+			<div id="header" class="header bgc_c3" style="width:100%;right: 0;left: auto;">
+				<!-- 通用头 -->
+				<div id="head-page" class="head-page head-page-home">
+					<div class="head-left" onclick="moveRight()">
+						<div class="head-gohome">
+							<span class="head-gohome-img"></span>
+							<span>首页</span>
+						</div>
+					</div>
+					<div class="head-title">
+						筛选
+					</div>
+				</div>
+			</div>
+			<div class="menu-body">
+				<div class="menu-cate-part">
+					<div class="menu-cate-title">名家大师</div>
+					<div class="cate-list">
+						<div class="item">
+							<div><a href="mn_shop.aspx?artisanType=业界大师">业界大师</a></div>
+						</div>
+						<div class="item">
+							<div><a href="mn_shop.aspx?artisanType=老牌传承人">老牌传承人</a></div>
+						</div>
+						<div class="item">
+							<div><a href="mn_shop.aspx?artisanType=名家工艺师">名家工艺师</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="menu-cate-part">
+					<div class="menu-cate-title">工艺釉色</div>
+					<div class="cate-list">
+						<div class="item">
+							<div><a href="mn_shop.aspx?type2=兔毫">兔毫</a></div>
+						</div>
+						<div class="item">
+							<div><a href="mn_shop.aspx?type2=油滴/鹧鸪斑">油滴/鹧鸪斑</a></div>
+						</div>
+						<div class="item">
+							<div><a href="mn_shop.aspx?type2=曜变">曜变</a></div>
+						</div>
+						<div class="item">
+							<div><a href="mn_shop.aspx?type2=乌金釉">乌金釉</a></div>
+						</div>
+						<div class="item">
+							<div><a href="mn_shop.aspx?type2=杂色釉/异毫">杂色釉/异毫</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="menu-cate-part">
+					<div class="menu-cate-title">经典器型</div>
+					<div class="cate-list">
+						<div class="item">
+							<div><a href="mn_shop.aspx?type3=束口盏">束口盏</a></div>
+						</div>
+						<div class="item">
+							<div><a href="mn_shop.aspx?type3=灯盏">灯盏</a></div>
+						</div>
+						<div class="item">
+							<div><a href="mn_shop.aspx?type3=敞口盏/斗笠">敞口盏/斗笠</a></div>
+						</div>
+						<div class="item">
+							<div><a href="mn_shop.aspx?type3=撇口盏">撇口盏</a></div>
+						</div>
+						<div class="item">
+							<div><a href="mn_shop.aspx?type3=敛口盏">敛口盏</a></div>
+						</div>
+                        <div class="item">
+							<div><a href="mn_shop.aspx?type3=钵型盏">钵型盏</a></div>
+						</div>
+            
+					</div>
+				</div>
+                <div class="menu-cate-part">
+					<div class="menu-cate-title">尺寸</div>
+					<div class="cate-list">
+						<div class="item">
+							<div><a href="mn_shop.aspx?type4=小（口径9cm以下）">小（口径9cm以下）</a></div>
+						</div>
+						<div class="item">
+							<div><a href="mn_shop.aspx?type4=中（口径9-12cm）">中（口径9-12cm）</a></div>
+						</div>
+						<div class="item">
+							<div><a href="mn_shop.aspx?type4=大（口径12cm以上）">大（口径12cm以上）</a></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+        <script>
+            // 隐藏分类面板
+            function moveRight() {
+                console.log("dhgsfhjsgdghj");
+                $("#menupart").animate({ left: '100%' }, "slow", function () {
+                    $(this).css("display", "none");
+                    $("#menumark").css("display", "none");
+                });
+            }
+            //弹出分类面板
+            function moveLeft() {
+                // console.log("dhgsfhjsgdghj");
+                $('#menupart').css("display", "block");
+                $("#menumark").css("display", "block");
+                $("#menupart").animate({ left: '20%' }, "slow"); //8.4
+            }
+        </script>
+        </div>
+  </div>
+  <!-- 筛选 -->
+<div id='menumark' style="display: none"></div>
+
+<script type="text/javascript">
+
+    Init();
+    function Init() {
+        var type = $("#hid_about").val();
+        if (type == "bz") {
+            $("#tab1").removeClass("weui-navbar__item--on");
+            $("#tab22").addClass("weui-navbar__item--on");
+        }
+    }
+
+    // 点击展开列表
+    $('.load-surplus').click(function () {
+        // console.log($(this).parent().parent().children().eq(1))
+        $(this).parent().parent().children().eq(1).height('auto');
+        $(this).html('<a href="mn_shop.aspx">查看更多产品</a>');
+    })
+    //点击隐藏在线咨询面板或拨号面板
+    $('#menumark').click(function () {
+        if (iskuaishu) {
+            $(".footer").animate({ bottom: '0rem' }, "slow", function () {
+                $("#menumark").css("display", "none");
+                $("#ksplane").css("display", "none");
+            });
+            iskuaishu = false;
+        }
+        if (iszaixian) {
+            $(".footer").animate({ bottom: '0rem' }, "slow", function () {
+                $("#menumark").css("display", "none");
+                $("#zxplane").css("display", "none");
+            });
+            iszaixian = false;
+        }
+        moveRight();
+    })
+</script>
+  <script>
+      // 点击展开列表
+      $('.load-surplus').click(function () {
+          // console.log($(this).parent().parent().children().eq(1))
+          $(this).parent().parent().children().eq(1).height('auto');
+          $(this).html('<a href="mn_shop.aspx">查看更多产品</a>');
+      })
+      var tabindex = 0, tagindex = 0;
+      $('.weui-navbar').children().each(function (index, node) {
+          $(this).click(function () {
+              $('.weui-navbar').children().eq(tabindex).removeClass('weui-navbar__item--on');
+              // $('.weui-navbar').children().eq(_self.data.tabindex).children().eq(0).removeClass('initStyle') ;
+              $('.weui-tab__bd').children().eq(tabindex).removeClass('weui-tab__bd-item--active');
+              tabindex = index;
+              $('.weui-tab__bd').children().eq(tabindex).addClass('weui-tab__bd-item--active');
+              $(this).addClass('weui-navbar__item--on');
+          })
+      })
+      $('#about-tag-list').children().each(function (index, node) {
+          $(this).click(function () {
+              $('#about-tag-list').children().eq(tagindex).children().removeClass('btn-on');
+              // $('.weui-navbar').children().eq(_self.data.tabindex).children().eq(0).removeClass('initStyle') ;
+              $('#fuwucontent').children().eq(tagindex).css('display', 'none')
+              tagindex = index;
+              $('#fuwucontent').children().eq(tagindex).css('display', 'block')
+              $(this).children().addClass('btn-on');
+          })
+      })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+body {font-family:"microsoft yahei",arial;font-size:12px; background:#fff;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,strong,p,textarea,blockquote{padding:0; margin:0;}
+th{font-size:12px;}
+tr{font-size:12px;}
+td{font-size:12px;}
+table{font-size:12px;}
+li{list-style-type:none;}
+table{ margin:0 auto;}
+img{vertical-align: top;border: 0;margin: 0px;	padding: 0px;text-align: left;}
+ul {list-style:none;}
+ol {list-style:none;}
+th {text-align:left;}
+caption {text-align:left;}
+h6 {font-size:12px; font-weight:normal;}
+h5 {font-size:12px; font-weight:normal;}
+h4 {font-size:12px; font-weight:normal;}
+h3 {font-size:12px; font-weight:normal;}
+h2 {font-size:12px; font-weight:normal;}
+h1 {font-size:12px; font-weight:normal;}
+a {text-decoration: none; color:#000000;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:none;}
+a:active {text-decoration:none; background-color:transparent;}
+.left{
+	float:left;
+}
+.right{float:right;}
+
+.hide{ display:none;}
+.block{ display:block;}
+.clear { clear: both; }
+.clearfix:after {display:block;clear:both;content:"\200B"; height:0; }
+.clearfix { *zoom:1; }
+
+.clearfix li a { font-family:Microsoft YaHei; }
+em,i{ font-style:normal;}
+/* all font */
+h3{ font-size:14px;}
+.font12{ font-size:12px;}
+.font13{ font-size:13px;}
+.font14{ font-size:14px;}
+.font16{ font-size:16px;}
+.font18{ font-size:18px;}
+.line20{line-height: 20px; color: #303030; font-size:13px;border-top:#e7e7e7 1px solid; border-bottom:#e7e7e7 1px solid;padding:3px 7px;}
+.indent{ text-indent:2em;}
+.middle{ margin-top:-2px;margin-top:0px\9; vertical-align:middle;}
+.strong{ font-weight:bold;}
+.align-left{ text-align:left;}
+.align-center{ text-align:center;}
+.align-right{ text-align:right;}
+.cursor{ cursor:pointer;}
+.relative{ position:relative;}
+.top-border{border-top: solid 2px #2e2e2e;}
+.Flex{display:-webkit-box;display:-webkit-flex;display: flex;justify-content: space-between}
+/*width*/
+.w200{width: 200px; background: #fff;}
+.w970{width: 970px; background: #fff;}
+.w670{width: 670px;}
+.w250{width: 250px;}
+
+/*color*/
+.red{color: #FF4040; font-weight:600; font-size:15px;}
+.gray{color: #999; font-size:14px; line-height:20px;}
+.RedBrown{color:#701521;}
+.witBg{background: #fff;}
+
+/*header*/
+.top{height: 30px; line-height: 30px;background: #2e2e2e;color: #fff;}
+.wrap{ width:1180px; margin:0px auto; position:relative; border:#FF0000 0px solid; }
+.top-right{display: inline-block;height: 30px;line-height: 30px;padding: 0 5px 0 5px;margin:0 10px;background: #701521;position: relative; }
+.top-right a{color:#fff; }
+.top-right em{width: 0;height: 0;line-height:30px; vertical-align: middle;
+	border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #e60012;
+    position: absolute;
+    right: 5px;top:13px;
+    }
+.searchWrap{ margin: 36px 0px 10px 110px;}     /*搜索栏的位置*/
+.Search{ background: #8B0000;}
+.Search>input[type="text"]{ width:280px;height:36px; border:#701521 1px solid; }
+.Search>input[type="button"]{ height:36px; color:#FFFFFF; border:0; padding:0 20px; background: none;font-size:14px; }
+.keyword a{ color:#999999; margin-right:10px; line-height:25px;}
+.keyword a:hover{ color:#8B0000;}
+.Bz dl{display:inline-block;width:120px;font-weight:400; text-align: center; margin-top: 30px;}
+.Bz dl dt,.Bz dl dd,{display: inline-block;}
+
+
+.ml5{ margin-left:5px;}.ml10{ margin-left:10px;}.ml20{ margin-left:20px;}.ml30{ margin-left:30px;}
+.mt5{ margin-top:5px;}.mt10{ margin-top:8px;}.mt20{ margin-top:20px;}.mt30{ margin-top:20px;}.mt40{margin-top:40px;}.mt200{ margin-top:12px;}.mt100{ margin-top:10px;}
+.pl5{ padding-left:5px;}.pl10{ padding-left:10px;}.pl20{ padding-left:20px;}.pl30{ padding-left:30px;}
+.pt5{ padding-top:5px;}.pt10{ padding-top:10px;}.pt20{ padding-top:20px}.pt30{ padding-top:30px;}
+.p5{ padding:5px;}.p10{ padding:10px;}.p20{ padding:20px}.p30{ padding:30px;}
+.mt60{margin-top: 10px;}.mt300{ margin-top:30px;}.mt70{margin-top:25px;}.mb70{margin-bottom:15px;}
+ 
+ /*主体导航*/
+.navBg{background: #f5f3f3;
+background: -webkit-linear-gradient(#f5f3f3,#fff,#f5f3f3); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#f5f3f3,#fff,#f5f3f3); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#f5f3f3,#fff,#f5f3f3); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#CCCCCC,#fff,#f5f3f3); /* 标准的语法 */
+  margin-top:2px;
+ }
+nav{position:relative; height:40px; z-index:99; width:1180px; margin:0 auto;}
+nav ul{position:absolute;height:40px; border:#f00 0px solid; width:100%;z-index:99}
+nav ul li{float: left; border:#FF0000 0px solid;width:134px;text-align: center ;}
+nav ul li:first-child{position: relative;  width:240px;z-index:99; background: #701521;height: 40px; line-height: 40px;font-size: 16px;color: #fff; }
+nav ul li>a{ padding:0 30px;line-height:40px; display:block; font-weight:700; font-size:1.4em;  color:#8B0000; text-align:center; letter-spacing:1px; } 
+nav ul li>a:hover{text-decoration: none;}
+.Cate:after{content: "";position:absolute; top:19px; right:15px;width: 0; height: 0; border-top:solid 7px red; border-left:solid 5px transparent;border-right:solid 5px transparent;}
+.allProductList{ background:#8B1A20; height:420px; color:#FFFFFF; z-index:9999999;text-align: left;}
+.allProductList>div{padding:10px 15px; line-height: 20px;}
+.allProductList>div:nth-child(2n+2){ background:#711522;}
+.allProductList>div>a{margin: 0; color:#FFFFFF;  padding-right:10px;font-size: 12px;display: inline-block; line-height: 20px; letter-spacing:1px;  }  /*首页全部产品分类下“兔毫”等*/
+.allProductList>div>a:hover{ color:#FFF68F;border-bottom:thin solid #FFF68F; padding-right:0px; margin-right:10px;}                                                         /*鼠标划过后的状态*/
+.allProductList h2{font-size: 14px;line-height: 25px; color:#FFA500}
+nav ul li>a:hover,nav ul li>a.Cur{ background:#8b1a20; color:#FFFFFF;}
+
+
+.index-bottom-banner{margin-left: -17px;}
+.index-bottom-banner li {float: left;width: 380px;margin-left:17px;}
+.index-bottom-banner li a{width: 100%;display: inline-block;}
+/*底部服务热线*/
+.HotLine{ background:#eeeeee;}
+.HotLine .wrap{justify-content:flex-start; background:url(../images/Tel.jpg) 0 center no-repeat; height:50px; line-height:50px; color:#999999;}
+.HotLine .wrap strong{ margin:0 20px 0 100px; font-size:2em; color:#8a1a1f;}
+.HotLine .wrap i{ font-style:normal;}
+
+/*底部导航*/
+.FootNav{float: left;}
+.FootNav dl{ margin-right:60px; display: inline-block;vertical-align: text-top;}
+.FootNav dl dt{ font-size:1.3em; font-weight:800; line-height:200%; color:#535353; font-family:"microsoft yahei";}
+.FootNav dl dd a{ margin:10px auto; display:block; color:#666666;}
+.FootNav>div{ float:right;}
+.qcode{float: right; margin-top:-26px;}
+
+.CopyRight{ color:#666666;}
+.Flink{ margin-bottom:50px;}
+
+
