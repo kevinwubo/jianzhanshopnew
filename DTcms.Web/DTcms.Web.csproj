@@ -94,6 +94,12 @@
     <Content Include="activity\static\css\pagination.css" />
     <Content Include="activity\static\css\swiper.min.css" />
     <Content Include="activity\static\images\315\315img1.jpg" />
+    <Content Include="activity\static\images\315\a1.jpg" />
+    <Content Include="activity\static\images\315\a2.jpg" />
+    <Content Include="activity\static\images\315\a3.jpg" />
+    <Content Include="activity\static\images\315\a4.jpg" />
+    <Content Include="activity\static\images\315\a5.jpg" />
+    <Content Include="activity\static\images\315\a6.jpg" />
     <Content Include="activity\static\images\315\back.png" />
     <Content Include="activity\static\images\315\banner1.jpg" />
     <Content Include="activity\static\images\315\ds_item.png" />
@@ -133,6 +139,8 @@
     <Content Include="activity\xiaojiangzhuanchang.aspx" />
     <Content Include="activity\TiXing_List.ascx" />
     <Content Include="activity\ChuJia_List.ascx" />
+    <Content Include="activity\zhizuntulu.aspx" />
+    <Content Include="activity\zhizunzhuanchang.aspx" />
     <Content Include="activity_bak\dashitulu.aspx" />
     <Content Include="activity_bak\dashizhuanchang.aspx" />
     <Content Include="activity_bak\index.aspx" />
@@ -610,6 +618,7 @@
     <Content Include="js\ZRrem.js" />
     <Content Include="Log\2018-08-11.Error.txt" />
     <Content Include="M0\Tt01\01A1.aspx" />
+    <Content Include="M0\Tt01\02A1.aspx" />
     <Content Include="MaskFile.aspx" />
     <Content Include="miaosha.aspx" />
     <Content Include="mn_about.aspx" />
@@ -1110,6 +1119,20 @@
     </Compile>
     <Compile Include="activity\ChuJia_List.ascx.designer.cs">
       <DependentUpon>ChuJia_List.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="activity\zhizuntulu.aspx.cs">
+      <DependentUpon>zhizuntulu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="activity\zhizuntulu.aspx.designer.cs">
+      <DependentUpon>zhizuntulu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="activity\zhizunzhuanchang.aspx.cs">
+      <DependentUpon>zhizunzhuanchang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="activity\zhizunzhuanchang.aspx.designer.cs">
+      <DependentUpon>zhizunzhuanchang.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\advert\advert_edit.aspx.cs">
       <DependentUpon>advert_edit.aspx</DependentUpon>
@@ -1866,6 +1889,13 @@
     </Compile>
     <Compile Include="M0\Tt01\01A1.aspx.designer.cs">
       <DependentUpon>01A1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="M0\Tt01\02A1.aspx.cs">
+      <DependentUpon>02A1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="M0\Tt01\02A1.aspx.designer.cs">
+      <DependentUpon>02A1.aspx</DependentUpon>
     </Compile>
     <Compile Include="MaskFile.aspx.cs">
       <DependentUpon>MaskFile.aspx</DependentUpon>

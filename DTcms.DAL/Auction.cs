@@ -163,12 +163,17 @@ namespace DTcms.DAL
         public DataSet GetList(string strWhere)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("SELECT a.id,ProductID,ProductName,Author,LowPrice,ReservePrice,a.Telephone,CustomerOffer,AuctionDetail,a.AddDate,isnull(b.real_name,'新') as SalesName,AuctionType,Source FROM dt_Auction a left join dt_Manager b on a.OperatorID=b.id ");
+            //strSql.Append("SELECT a.id,ProductID,ProductName,Author,LowPrice,ReservePrice,a.Telephone,CustomerOffer,AuctionDetail,a.AddDate,isnull(b.real_name,'新') as SalesName,AuctionType,Source FROM dt_Auction a left join dt_Manager b on a.OperatorID=b.id ");
+            strSql.Append("select a.id,a.ProductID,ProductName,Author,LowPrice,ReservePrice,a.Telephone,a.CustomerOffer,AuctionDetail,a.AddDate,");
+            strSql.Append(" isnull(b.real_name,'新') as SalesName,AuctionType,Source  from ");
+            strSql.Append("( select productid,Telephone,MAX(CustomerOffer) as CustomerOffer,MAX(id) as id from dt_Auction group by productid,Telephone) c");
+            strSql.Append(" left join dt_Auction a on a.id=c.id");
+            strSql.Append(" left join dt_Manager b on a.OperatorID=b.id");            
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" where 1=1  " + strWhere);
             }
-
+            strSql.Append(" order by a.ProductID,a.CustomerOffer");
             return DbHelperSQL.Query(strSql.ToString());
         }
 

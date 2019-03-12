@@ -241,12 +241,14 @@ namespace DTcms.Web.ajax
                         string WebChart = Request["WebChart"];//微信/QQ
                         string Name = Request["Name"];//您的称呼
                         string Content = Request["Content"];//留言内容
-                        string Tel = Request["Tel"];//手机号码                        
+                        string Tel = Request["Tel"];//手机号码        
+                        string city = Request["City"];
                         DataTable dtTel = bll.GetList(" and (telphone='" + Tel + "'  or telphone='" + DESEncrypt.ConvertBy123(Tel) + "')").Tables[0];
                         model.ProductID = ProductID;
                         model.WebChartID = WebChart;
                         model.CustomerName = Name;
                         model.InquiryContent = Content;
+                        model.City = city;
                         model.telphone = Tel;
                         model.CustomerName = Name;
                         model.SourceForm = "PC";
@@ -312,7 +314,15 @@ namespace DTcms.Web.ajax
                             BLL.Log.WriteTextLog("---武夷山---手机号 Sales_Manager：13163806316-询价-短信内容：" + SmsMess, DateTime.Now);
                         }                        
                     }
-                    Response.Write("成功！您的询价对我们很重要，建盏顾问将很快回复！");
+
+                    if (InquiryType.Equals("头条询价"))
+                    {
+                        Response.Write("申请成功，建盏天下专属客服将在24小时内为您提供建盏鉴别和定价免费咨询！");
+                    }
+                    else
+                    {
+                        Response.Write("成功！您的询价对我们很重要，建盏顾问将很快回复！");
+                    }
 
                     #endregion
                 }

@@ -343,6 +343,7 @@ namespace DTcms.Web
         protected void Button1_Click(object sender, EventArgs e)
         {
             MakePage(Url + "/M0/Tt01/01A1.aspx", "M0/Tt01/01A1.html");
+            MakePage(Url + "/M0/Tt01/02A1.aspx", "M0/Tt01/02A1.html");
         }
     }
 }

@@ -63,12 +63,14 @@
             <asp:ListItem Value="315XIAOJIANG">小匠专场</asp:ListItem>
             <asp:ListItem Value="315MINGJIA">名家专场</asp:ListItem>
             <asp:ListItem Value="315DASHI">大师专场</asp:ListItem>
+            <asp:ListItem Value="315ZHIZUN">至尊专场</asp:ListItem>
             <asp:ListItem Value="XJStartTime">小匠开始时间</asp:ListItem>
             <asp:ListItem Value="XJEndTime">小匠结束时间</asp:ListItem>
             <asp:ListItem Value="MJStartTime">名家开始时间</asp:ListItem>
             <asp:ListItem Value="MJEndTime">名家结束时间</asp:ListItem>
             <asp:ListItem Value="DSStartTime">大师开始时间</asp:ListItem>
             <asp:ListItem Value="DSEndTime">大师结束时间</asp:ListItem>
+            
 <%--            <asp:ListItem Value="1111Product">1111档</asp:ListItem>
             <asp:ListItem Value="2222Product">2222档</asp:ListItem>
             <asp:ListItem Value="5555Product">5555档</asp:ListItem>

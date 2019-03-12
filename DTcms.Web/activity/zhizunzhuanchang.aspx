@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="dashizhuanchang.aspx.cs" Inherits="DTcms.Web.activity.dashizhuanchang" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="zhizunzhuanchang.aspx.cs" Inherits="DTcms.Web.activity.zhizunzhuanchang" %>
 <%@ Import namespace="DTcms.Common" %>
 <%@ Import Namespace="System.Data" %> 
 <%@ Import Namespace="System.Collections.Generic" %>
@@ -303,7 +303,8 @@
 
                 <div class="flex-row mar-l-40 mar-r-40 mar-t-16">
                     <div class="flex-col px20 texta-l clamp1" style="padding-top:2px;">售价：<%=model.MarketPrice%>元</div>
-
+                                   <div style="width: 0.05rem"></div>
+                    <div class="flex-col px20 texta-l clamp1" style="padding-top:2px;">起拍价：<%=model.CostPrice%></div>
                 </div>
                 
                 <% if(IsShowTiXing)
@@ -341,7 +342,7 @@
                 <%}else
                 { %>
                 <div class="w100 texta-c mar-t-16"
-                     style="background: #ffc513;height: .5rem;color: white;line-height: .5rem" onclick="alertChuJia('<%=model.ProductID.ToString() %>','<%=model.ProductName %>','<%=model.Author %>','大师','<%=model.CustomerOffer %>','<%=model.HighTelePhone %>','<%=model.MarketPrice%>','0')">
+                     style="background: #ffc513;height: .5rem;color: white;line-height: .5rem" onclick="alertChuJia('<%=model.ProductID.ToString() %>','<%=model.ProductName %>','<%=model.Author %>','大师','<%=model.CustomerOffer %>','<%=model.HighTelePhone %>','<%=model.MarketPrice%>','<%=model.CostPrice%>')">
                     立即出价
                 </div>
                 <%} %>

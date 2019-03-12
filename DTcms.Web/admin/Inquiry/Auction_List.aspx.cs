@@ -52,13 +52,13 @@ namespace DTcms.Web.admin.Inquiry
 
             if (ddl_AuctionDetail.SelectedValue != "全部")
             {
-                strTemp.Append(" and AuctionDetail='" + ddl_AuctionDetail.SelectedValue + "'");
+                strTemp.Append(" and a.AuctionDetail='" + ddl_AuctionDetail.SelectedValue + "'");
             }
 
 
             if (ddl_AuctionType.SelectedValue != "全部")
             {
-                strTemp.Append(" and AuctionType='" + ddl_AuctionType.SelectedValue + "'");
+                strTemp.Append(" and a.AuctionType='" + ddl_AuctionType.SelectedValue + "'");
             }
 
             //唐僧看厦门的，叶煊看武夷山，沐易看建盏君，林高明看俱乐部

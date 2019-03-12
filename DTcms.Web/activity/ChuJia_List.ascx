@@ -12,6 +12,7 @@
         <input type="hidden" id="HID_SourceCJS" value="<%=Source %>" />
            <input type="hidden" id="Hid_Unit_cj"  />
            <input type="hidden" id="hid_salePrice"  />
+           <input type="hidden" id="hid_QPPrice"  />
            <input type="hidden" id="hid_EndTime_cj" />
         <div class="flex-row mar-l-40 mar-t-40" style="align-items: baseline">
             <div class="px28">提醒建盏:</div>
@@ -64,13 +65,14 @@
 </div>
 <script src="static/js/auctionScript.js"></script>
 <script type="text/javascript">
-    function alertChuJia(productid, productname, author, type, CustomerOffer, HighTelePhone,salePrice) {
+    function alertChuJia(productid, productname, author, type, CustomerOffer, HighTelePhone,salePrice,QPPrice) {
         $("#sp_productid_cj").text(productid);
         $("#sp_productname_cj").text(productname);
         $("#sp_author_cj").text(author);
         $("#hid_type_cj").val(type);
         $("#hid_salePrice").val(salePrice);
         $("#sp_customeroffer").text(CustomerOffer);
+        $("#hid_QPPrice").val(QPPrice);
         if (CustomerOffer > 0) {
             $("#div_tele").show();
         }
@@ -99,8 +101,17 @@
         else if (type == "大师") {
             unit = "100";
         }
+
+        var qpPrice = $("#hid_QPPrice").val();
+        if (parseFloat(qpPrice) > 0) {
+            if (parseFloat(qpPrice) > price) {
+                alert('出价必须大于起拍价。');
+                return false;
+            }
+        }
+
         var salePrice = $("#hid_salePrice").val();
-        if (parseFloat(price) <= parseFloat(salePrice)) {
+        if (parseFloat(price) <= parseFloat(salePrice) || parseFloat(qpPrice)) {
             ChuJia(productID, telephone, type, price, unit, source);
         }
         else {
@@ -109,6 +120,5 @@
             $("#txt_JJtelephone").val("");
         }
     });
-
     
 </script>
