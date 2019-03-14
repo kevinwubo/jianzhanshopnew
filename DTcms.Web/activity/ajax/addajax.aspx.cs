@@ -29,79 +29,89 @@ namespace DTcms.Web.activity.ajax
         private BLL.Product productBll = new BLL.Product();
         private BLL.proInquiry inquiryBll = new BLL.proInquiry();
         private BLL.Auction auctionBll = new BLL.Auction();
+        private BLL.CodeS bllCodes = new BLL.CodeS();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 try
                 {
-
                     ProductID = Request["ProductID"]; 
                     Telephone = Request["Telephone"];
                     AuctionType = Request["AuctionType"];
                     Action = Request["Action"];
                     CustomerOffer = Request["CustomerOffer"];
                     Source = Request["Source"];
-                    //根据产品ID获取产品明细
-                    Model.Product productModel = productBll.GetProductModel(" and ProductID='" + ProductID + "'");
-                    if (productModel != null)
+
+                    //黑名单
+                    string BlackMobile = bllCodes.GetModel(" and Code='BlackMobile'").CodeValues;
+                    if (BlackMobile.Contains(Telephone))
                     {
-                        Model.Auction model = new Model.Auction();
-                        model.ProductID = ProductID;
-                        model.ProductName = productModel.ProductName;
-                        model.Author = productModel.Author;
-                        model.LowPrice = !string.IsNullOrEmpty(productModel.LowPrice) ? Convert.ToDecimal(productModel.LowPrice) : 0;
-                        //model.ReservePrice = !string.IsNullOrEmpty(ReservePrice) ? Convert.ToDecimal(ReservePrice) : 0;
-                        model.Telephone = DESEncrypt.ConvertBy123(Telephone);
-                        model.CustomerOffer = !string.IsNullOrEmpty(CustomerOffer) ? Convert.ToDecimal(CustomerOffer) : 0;
-                        model.AuctionDetail = Action;
+                        Response.Write("成功！您的询价对我们很重要，建盏顾问将很快回复！");
+                    }
+                    else
+                    {
+                        //根据产品ID获取产品明细
+                        Model.Product productModel = productBll.GetProductModel(" and ProductID='" + ProductID + "'");
+                        if (productModel != null)
+                        {
+                            Model.Auction model = new Model.Auction();
+                            model.ProductID = ProductID;
+                            model.ProductName = productModel.ProductName;
+                            model.Author = productModel.Author;
+                            model.LowPrice = !string.IsNullOrEmpty(productModel.LowPrice) ? Convert.ToDecimal(productModel.LowPrice) : 0;
+                            //model.ReservePrice = !string.IsNullOrEmpty(ReservePrice) ? Convert.ToDecimal(ReservePrice) : 0;
+                            model.Telephone = DESEncrypt.ConvertBy123(Telephone);
+                            model.CustomerOffer = !string.IsNullOrEmpty(CustomerOffer) ? Convert.ToDecimal(CustomerOffer) : 0;
+                            model.AuctionDetail = Action;
 
-                        //销售关联and ProductID='" + ProductID + "'
-                        bool isJianZhanJun = false;
+                            //销售关联and ProductID='" + ProductID + "'
+                            bool isJianZhanJun = false;
 
-                        Model.proInquiry inquiryModel = new Model.proInquiry();
-                        Source = Source.Replace("?", "");
+                            Model.proInquiry inquiryModel = new Model.proInquiry();
+                            Source = Source.Replace("?", "");
 
-                        if (Source.Equals("julebu") || Source.Equals("jianzhanjun"))
-                        {
-                           isJianZhanJun = true;
-                           inquiryModel= inquiryBll.GetModelJZJ("  and( telphone='" + Telephone + "' or telphone='" + DESEncrypt.ConvertBy123(Telephone) + "')");
-                        }
-                        else
-                        {
-                            inquiryModel = inquiryBll.GetModel("  and( telphone='" + Telephone + "' or telphone='" + DESEncrypt.ConvertBy123(Telephone) + "')");
-                        }
-                        if (!string.IsNullOrEmpty(inquiryModel.OperatorID))
-                        {
-                            model.OperatorID = inquiryModel.OperatorID;
-                        }
-                        else
-                        {
-                            model.OperatorID = "0";
-                        }
-                        
-                        model.Source = Source;
-                        model.AuctionType = AuctionType;
-                        if (Action.Equals("拍卖提醒"))//拍卖提醒同一个订单只能操作一次
-                        {
-                            Model.Auction modelAuction = auctionBll.GetModelList(" and  ProductID='" + ProductID + "' and Telephone='" + DESEncrypt.ConvertBy123(Telephone) + "' and AuctionDetail='拍卖提醒'");
-                            if (modelAuction != null)
+                            if (Source.Equals("julebu") || Source.Equals("jianzhanjun"))
                             {
-                                if (string.IsNullOrEmpty(modelAuction.ProductID))
-                                {
-                                    auctionBll.Add(model,isJianZhanJun);
-                                }
+                                isJianZhanJun = true;
+                                inquiryModel = inquiryBll.GetModelJZJ("  and( telphone='" + Telephone + "' or telphone='" + DESEncrypt.ConvertBy123(Telephone) + "')");
                             }
                             else
                             {
+                                inquiryModel = inquiryBll.GetModel("  and( telphone='" + Telephone + "' or telphone='" + DESEncrypt.ConvertBy123(Telephone) + "')");
+                            }
+                            if (!string.IsNullOrEmpty(inquiryModel.OperatorID))
+                            {
+                                model.OperatorID = inquiryModel.OperatorID;
+                            }
+                            else
+                            {
+                                model.OperatorID = "0";
+                            }
+
+                            model.Source = Source;
+                            model.AuctionType = AuctionType;
+                            if (Action.Equals("拍卖提醒"))//拍卖提醒同一个订单只能操作一次
+                            {
+                                Model.Auction modelAuction = auctionBll.GetModelList(" and  ProductID='" + ProductID + "' and Telephone='" + DESEncrypt.ConvertBy123(Telephone) + "' and AuctionDetail='拍卖提醒'");
+                                if (modelAuction != null)
+                                {
+                                    if (string.IsNullOrEmpty(modelAuction.ProductID))
+                                    {
+                                        auctionBll.Add(model, isJianZhanJun);
+                                    }
+                                }
+                                else
+                                {
+                                    auctionBll.Add(model, isJianZhanJun);
+                                }
+                            }
+                            else//拍卖出价可以多次拍 
+                            {
                                 auctionBll.Add(model, isJianZhanJun);
                             }
+                            Response.Write(Action + "成功！建盏顾问将很快回复！");
                         }
-                        else//拍卖出价可以多次拍 
-                        {
-                            auctionBll.Add(model, isJianZhanJun);
-                        }
-                        Response.Write(Action + "成功！建盏顾问将很快回复！");
                     }
                 }
                 catch (Exception ex)

@@ -305,6 +305,7 @@
     </div>
     <div class="txt-info">
     <input id="hid_salePrice" type="hidden" value="<%=model.MarketPrice %>"/>
+    <input id="hid_CostPrice" type="hidden" value="<%=model.CostPrice %>"/>
         <h3><%=model.ProductName %></h3>
         <span>ID:<%=model.ProductID %><input id="txt_ProductID" value="<%=model.ProductID %>" type="hidden" /></span>
     </div>

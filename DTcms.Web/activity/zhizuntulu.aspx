@@ -7,10 +7,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta content="大师图录页" http-equiv="keywords">
-    <meta name="description" content="大师图录页">
+    <meta content="至尊图录页" http-equiv="keywords">
+    <meta name="description" content="至尊图录页">
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
-    <title>大师图录页</title>
+    <title>至尊图录页</title>
     <!--<link rel="stylesheet" href="css/register/base.css" type="text/css">-->
     <link rel="stylesheet" href="static/css/base_1_30.css" type="text/css">
     <link rel="stylesheet" href="static/css/pagination.css" type="text/css">
@@ -112,7 +112,7 @@
         <img class="mar-r-16" style="width: 0.1rem" src="static/images/315/back.png"/>
         <div class="px28 color_57"><a href="javascript:window.history.back()">返回</a></div>
     </div>
-    <div class="flex-col texta-c px36 color_57">大师图录页</div>
+    <div class="flex-col texta-c px36 color_57">至尊图录页</div>
     <div class="pad-r-40" style="width: 1rem;align-items: right">
         <a href="index.aspx?source=<%=Source %>"><img style="float: right;width:0.4rem;height: 0.3rem" src="static/images/315/menu.png"/></a>
         <!--<div class="px32 color_1e">按钮</div>-->
@@ -129,8 +129,8 @@
 <!--</div>-->
 <!--</div>-->
 
-<img class="w100" style="background:#c90319;padding-top:0.83rem;display: block" src="static/images/315/06.jpg"/>
-<div class="w100" style="background-color: #c90319;">
+<img class="w100" style="background:#c90319;padding-top:0.83rem;display: block" src="static/images/315/07.jpg"/>
+<div class="w100" style="background-color: #060503;">
     <div class="flex-row mar-l-20 mar-r-20 bg_color_f"
          style="overflow: hidden; align-items: center;border-radius: 0.1rem">
         <img class="mar-l-30" style="width: .3rem;height: .36rem" id="btnSearch"  src="static/images/xiaojiang/ic_search.png"/>
@@ -148,7 +148,7 @@
                 <a href="detail.aspx?source=<%=Source %>?&productid=<%=model.ProductID.ToString() %>&type=DS"><img class="w100 bg_color_f" src="<%=model.Images %>"/></a>
             </div>
             <div class="flex-row" style="flex-direction: column">
-                <a href="detail.aspx?source=<%=Source %>?&productid=<%=model.ProductID.ToString() %>&type=DS" class="w100 texta-c px36"
+                <a href="detail.aspx?source=<%=Source %>?&productid=<%=model.ProductID.ToString() %>&type=XJ" class="w100 texta-c px36"
                      style="background: #ffc513;height: .5rem;color: white;line-height: .5rem">点击查看
                 </a>
                 <div class="w100 texta-c mar-t-30 px24">编号：<%=model.ProductID.ToString() %></div>
@@ -170,7 +170,7 @@
 <div class="w100 flex-row" style="position: fixed;height: 0.7rem;bottom:-1px;border-top: 1px solid #fff;max-width: 750px">
 <input id="hid_source"  type="hidden" value="<%=Source %>" />
     <a class="flex-col b_itm" style="border-right: 1px solid #fff" href="index.aspx?source=<%=Source %>">去主会场</a>
-    <a class="flex-col b_itm" href="dashizhuanchang.aspx?source=<%=Source %>">去大师拍卖页</a>
+    <a class="flex-col b_itm" href="zhizunzhuanchang.aspx?source=<%=Source %>">去至尊拍卖页</a>
 </div>
 
 

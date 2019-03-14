@@ -201,9 +201,9 @@ namespace DTcms.BLL
                 if (isAddPrice)
                 {
                     BLL.Auction bll = new Auction();
-                    Model.Auction Amodel = bll.GetModelList(" and ProductID='" + model.ProductID + "' and AuctionDetail='拍卖出价'", true, "Order by CustomerOffer desc");
+                    Model.Auction Amodel = bll.GetModelList(" and ProductID='" + model.ProductID + "' and AuctionDetail='拍卖出价'", true, "Order by CustomerOffer desc,AddDate asc");
 
-                    Model.Auction AmodelJZJ = bll.GetModelListJZJ(" and ProductID='" + model.ProductID + "' and AuctionDetail='拍卖出价'", true, "Order by CustomerOffer desc");
+                    Model.Auction AmodelJZJ = bll.GetModelListJZJ(" and ProductID='" + model.ProductID + "' and AuctionDetail='拍卖出价'", true, "Order by CustomerOffer desc,AddDate asc");
 
                     if (Amodel.CustomerOffer > AmodelJZJ.CustomerOffer)
                     {

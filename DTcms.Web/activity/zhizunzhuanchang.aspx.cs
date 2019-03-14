@@ -24,8 +24,8 @@ namespace DTcms.Web.activity
             Source = Request["source"];
             ModelList = bll.GetProductListNEW(" and ProductID in(" + bllCodes.GetModel(" and Code='315ZHIZUN'").CodeValues + ") ", 100);//大师专场
             DateTime dtNow = DateTime.Now;
-            DateTime dtStart = DateTime.Parse(StartTime12);
-            DateTime dtEnd = DateTime.Parse(EndTime13);
+            DateTime dtStart = DateTime.Parse(StartTime10);
+            DateTime dtEnd = DateTime.Parse(EndTime11);
             string productID = Request["keyword"];
             ChuJia1.Source = Source;
             TiXing1.Source = Source;

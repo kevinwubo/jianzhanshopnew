@@ -9,10 +9,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta content="大师拍卖专场" http-equiv="keywords">
-    <meta name="description" content="大师拍卖专场">
+    <meta content="至尊拍卖专场" http-equiv="keywords">
+    <meta name="description" content="至尊拍卖专场">
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
-    <title>大师拍卖专场</title>
+    <title>至尊拍卖专场</title>
     <!--<link rel="stylesheet" href="css/register/base.css" type="text/css">-->
     <link rel="stylesheet" href="static/css/base_1_30.css" type="text/css">
     <link rel="stylesheet" href="static/css/pagination.css" type="text/css">
@@ -237,7 +237,7 @@
         <img class="mar-r-16" style="width: 0.1rem" src="static/images/315/back.png"/>
         <div class="px28 color_57"><a href="javascript:window.history.back()">返回</a></div>
     </div>
-    <div class="flex-col texta-c px36 color_57">大师拍卖专场</div>
+    <div class="flex-col texta-c px36 color_57">至尊拍卖专场</div>
     <div class="pad-r-40" style="width: 1rem;align-items: right">
         <a href="index.aspx?source=<%=Source %>"><img style="float: right;width:0.4rem;height: 0.3rem" src="static/images/315/menu.png"/></a>
         <!--<div class="px32 color_1e">按钮</div>-->
@@ -254,9 +254,9 @@
 <!--</div>-->
 <!--</div>-->
 
-<img class="w100" style="display: block" src="static/images/315/05.jpg"/>
+<img class="w100" style="display: block" src="static/images/315/07.jpg"/>
 
-<div class="w100" style="background-color: #c90319;">
+<div class="w100" style="background-color: #060503;">
     <div class="flex-row mar-l-20 mar-r-20 bg_color_f"
          style="overflow: hidden; align-items: center;border-radius: 0.1rem">
         <img class="mar-l-30" style="width: .3rem;height: .36rem" id="btnSearch" src="static/images/xiaojiang/ic_search.png"/>
@@ -297,14 +297,13 @@
                 <div class="px36 clamp1 texta-c  mar-l-40 mar-r-40" style="color: #000;margin:.2rem; padding-top:2px; "><%=model.ProductName %></div>
                 <div class="flex-row mar-l-40 mar-r-40">
                     <div class="flex-col px20 texta-l clamp1" style="padding-top:2px;">作者：<%=model.Author %></div>
-                    <div style="width: 0.05rem"></div>
-                    <div class="flex-col px20 texta-l clamp1" style="padding-top:2px;">尺寸：<%=model.Volume%></div>
+                    
+                    <div class="flex-col px20 texta-l clamp1" style="padding-top:2px;">售价:<%=model.MarketPrice%>元</div>
                 </div>
 
                 <div class="flex-row mar-l-40 mar-r-40 mar-t-16">
-                    <div class="flex-col px20 texta-l clamp1" style="padding-top:2px;">售价：<%=model.MarketPrice%>元</div>
-                                   <div style="width: 0.05rem"></div>
-                    <div class="flex-col px20 texta-l clamp1" style="padding-top:2px;">起拍价：<%=model.CostPrice%></div>
+                    <div class="flex-col px20 texta-l clamp1" style="padding-top:2px;">起拍价：<%=model.CostPrice%>元</div>
+
                 </div>
                 
                 <% if(IsShowTiXing)
@@ -367,25 +366,12 @@
     <div class="div-h-3"></div>
     <div class="div-h-8"></div>
 </div>
-<div class="w100" style="position: fixed;bottom:-1px;left: 0">
-    <div class="flex-row bg_color_f" style="padding: 0.3rem;justify-content: center;">
-        <div class="flex-col" style="justify-content: center">
 
-            <div id="btime" class="flex-row timelabel px32" style="align-items: center;justify-content: center">距结束
-                <span>00</span>天 <span>00</span>时 <span>00</span>分 <span>00</span>秒
-            </div>
-            <div class="div-h-2"></div>
-            <div style="background: #c90319;height: 1px;width: 70%;margin: auto"></div>
-            <div class="div-h-2"></div>
-            <div class="px32" style="text-align: center">拍品：100件（剩余99件）</div>
-        </div>
-    </div>
-</div>
 
 <input  id="hid_endTime" type="hidden" value="<%=EndTime13 %>"/>
 <div class="w100 flex-row" style="position: fixed;height: 0.7rem;bottom:-1px;border-top: 1px solid #fff;max-width: 750px">
     <a class="flex-col b_itm" style="border-right: 1px solid #fff" href="index.aspx?source=<%=Source %>">去主会场</a>
-    <a class="flex-col b_itm b_act" href="dashitulu.aspx?source=<%=Source %>">去图录页</a>
+    <a class="flex-col b_itm b_act" href="zhizuntulu.aspx?source=<%=Source %>">去图录页</a>
 </div>
 
 <!--商品--型号选择-->

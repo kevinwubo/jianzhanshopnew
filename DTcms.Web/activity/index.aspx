@@ -66,7 +66,7 @@
 
     <img class="titimg" src="static/images/315/title1.png">
     <div class="flex-row mar-l-20 mar-r-20 mar-b-20" style="flex-direction: column">
-        <a href="xiaojiangzhuanchang.aspx?source=<%=Source %>">
+        <a href="zhizunzhuanchang.aspx?source=<%=Source %>">
             <img class="w100" style="display: block" src="static/images/315/item1.png"/>
         </a>
         <div class="flex-row bg_color_f" style="padding: 0.3rem;justify-content: center;">
@@ -80,45 +80,19 @@
                 <input id="hid_xjstr" type="hidden" value="<%=XJStr %>"/>
             </div>
             <div style="width: 1.6rem">
-                <a href="xiaojiangzhuanchang.aspx?source=<%=Source %>">
+                <a href="zhizunzhuanchang.aspx?source=<%=Source %>">
                     <div style="background:#c90319;color: white;font-size: 0.3rem; width: 1.5rem; height: 0.48rem; border-radius: 0.1rem; line-height: 0.5rem; text-align: center">
                         点击查看
                     </div>
                 </a>
                 <div class="div-h-2"></div>
                 <div class="px20 w100" style="text-align: center;color: #404040;text-decoration-line: underline">
-                    <a href="xiaojiangtulu.aspx?source=<%=Source %>">查看拍卖作品</a>
+                    <a href="zhizuntulu.aspx?source=<%=Source %>">查看拍卖作品</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="flex-row mar-l-20 mar-r-20 mar-b-20" style="flex-direction: column">
-        <a href="mingjiatulu.aspx?source=<%=Source %>">
-            <img class="w100" style="display: block" src="static/images/315/mj_item.png"/>
-        </a>
-        <div class="flex-row bg_color_f" style="padding: 0.3rem;justify-content: center;">
-            <div class="flex-col" style="justify-content: center">
-                <div class="px32" style="text-align: center">03/11/11:00 ~ 03/12/10:59</div>
-                <div class="div-h-3"></div>
-                <div id="p2" class="flex-row timelabel px24" style="align-items: center;justify-content: center">
-                    距结束<span>00</span>天 <span>00</span>时 <span>00</span>分 <span>00</span>秒
-                </div>
-                 <input id="hid_start12" type="hidden" value="<%=MJTime %>"/>
-                <input id="hid_xjstr2" type="hidden" value="<%=MJStr %>"/>
-            </div>
-            <div style="width: 1.6rem">
-                <a href="mingjiazhuanchang.aspx?source=<%=Source %>">
-                    <div style="background:#c90319;color: white;font-size: 0.3rem;width: 1.5rem;height: 0.48rem;border-radius: 0.1rem;line-height: 0.5rem;text-align: center">
-                        点击查看
-                    </div>
-                </a>
-                <div class="div-h-2"></div>
-                <div class="px20 w100" style="text-align: center;color: #404040;text-decoration-line: underline">
-                    <a href="mingjiatulu.aspx?source=<%=Source %>">查看拍卖作品</a>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     <div class="flex-row mar-l-20 mar-r-20 mar-b-20" style="flex-direction: column">
         <a href="dashitulu.aspx?source=<%=Source %>">
             <img class="w100" style="display: block" src="static/images/315/ds_item.png"/>
@@ -153,8 +127,8 @@
 </div>  
 
 <div class="w100 flex-row" style="position: fixed;height: 0.7rem;bottom:-1px;border-top: 1px solid #fff;max-width: 750px">
-    <a class="flex-col b_itm" style="border-right: 1px solid #fff" href="xiaojiangzhuanchang.aspx?source=<%=Source %>">小匠拍卖页</a>
-    <a class="flex-col b_itm" style="border-right: 1px solid #fff" href="mingjiatulu.aspx?source=<%=Source %>">名家图录页</a>
+    <a class="flex-col b_itm" style="border-right: 1px solid #fff" href="zhizuntulu.aspx?source=<%=Source %>">至尊图录页</a>
+   
     <a class="flex-col b_itm" href="dashitulu.aspx?source=<%=Source %>">大师图录页</a>
 </div>
 <script src="static/js/jquery-2.1.4.js"></script>
