@@ -79,20 +79,29 @@
         var unit = $("#Hid_Unit").val();
         var type = $("#hid_type").val();
         var source = $("#HID_SourceS").val();
-        var costPrice = $("#hid_CostPrice").val();
-        var qpPrice = $("#hid_salePrice").val();
+        var qpPrice = $("#hid_CostPrice").val();
+        var salePrice = $("#hid_salePrice").val();
+        
         if (parseFloat(qpPrice) > 0) {
             if (parseFloat(qpPrice) > price) {
                 alert('出价必须大于起拍价。');
                 return false;
             }
-        }
-        var salePrice = $("#hid_salePrice").val();
-        if (parseFloat(price) <= parseFloat(salePrice) || parseFloat(qpPrice)) {
-            ChuJia(productID, telephone, type, price, unit, source);
+            if (parseFloat(price) <= parseFloat(salePrice)) {
+                ChuJia(productID, telephone, type, price, unit, source);
+            }
+            else {
+                alert('成功！建盏顾问将很快回复！');
+            }
         }
         else {
-            alert('成功！建盏顾问将很快回复！');
+
+            if (parseFloat(price) <= parseFloat(salePrice)) {
+                ChuJia(productID, telephone, type, price, unit, source);
+            }
+            else {
+                alert('成功！建盏顾问将很快回复！');
+            }
         }
 
     });

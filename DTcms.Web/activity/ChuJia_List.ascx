@@ -103,21 +103,32 @@
         }
 
         var qpPrice = $("#hid_QPPrice").val();
+        var salePrice = $("#hid_salePrice").val();
         if (parseFloat(qpPrice) > 0) {
             if (parseFloat(qpPrice) > price) {
                 alert('出价必须大于起拍价。');
                 return false;
             }
-        }
-
-        var salePrice = $("#hid_salePrice").val();
-        if (parseFloat(price) <= parseFloat(salePrice) || parseFloat(qpPrice)) {
-            ChuJia(productID, telephone, type, price, unit, source);
+            if (parseFloat(price) <= parseFloat(salePrice)) {//|| parseFloat(qpPrice)
+                ChuJia(productID, telephone, type, price, unit, source);
+            }
+            else {
+                alert('成功！建盏顾问将很快回复！');
+                window.location.reload()
+                $("#txt_JJtelephone").val("");
+            }
         }
         else {
-            alert('成功！建盏顾问将很快回复！');
-            window.location.reload()
-            $("#txt_JJtelephone").val("");
+
+            
+            if (parseFloat(price) <= parseFloat(salePrice)) {//|| parseFloat(qpPrice)
+                ChuJia(productID, telephone, type, price, unit, source);
+            }
+            else {
+                alert('成功！建盏顾问将很快回复！');
+                window.location.reload()
+                $("#txt_JJtelephone").val("");
+            }
         }
     });
     
