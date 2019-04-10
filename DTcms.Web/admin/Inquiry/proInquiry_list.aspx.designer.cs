@@ -40,6 +40,15 @@ namespace DTcms.Web.admin.Inquiry {
         protected global::System.Web.UI.WebControls.LinkButton btn_Into_History;
         
         /// <summary>
+        /// ddl_TraceState 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_TraceState;
+        
+        /// <summary>
         /// txtKeywords 控件。
         /// </summary>
         /// <remarks>

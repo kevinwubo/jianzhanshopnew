@@ -36,12 +36,20 @@
                   { %>
         <li><asp:LinkButton ID="btnDelete" runat="server" CssClass="del" OnClientClick="return ExePostBack('btnDelete','删除该分类将删除对应的目录及文件；<br />如果该分类下还存在频道则无法删除，是否继续？');" onclick="btnDelete_Click"><i></i><span>删除</span></asp:LinkButton></li>
         <li><a href="proInquiry_info.aspx">咨询量统计</a></li>
+        <li><a href="proInquiry_history_list.aspx">查看释放库</a></li>
         <%--<li><a href="Codes.aspx">产品队列维护</a></li>--%>
         <%} %>
         <li><asp:LinkButton ID="btn_Into_History" runat="server" CssClass="del" 
                 OnClientClick="return ExePostBack('btn_Into_History','移动该分类将移动对应的目录及文件；<br />确定将该数据移动到释放库吗，是否继续？');" 
                 onclick="btn_Into_History_Click" ><i></i><span>移动释放库</span></asp:LinkButton></li>
-        <li><a href="proInquiry_history_list.aspx">查看释放库</a></li>
+        
+        <asp:DropDownList ID="ddl_TraceState" runat="server">
+            <asp:ListItem Value="">全部</asp:ListItem>
+             <asp:ListItem Value="有意向">有意向</asp:ListItem>
+            <asp:ListItem Value="已成交">已成交</asp:ListItem>
+            <asp:ListItem Value="无意向">无意向</asp:ListItem>
+            <asp:ListItem Value="无意向">假号</asp:ListItem>
+        </asp:DropDownList>
 
       </ul>
     </div>
@@ -64,6 +72,7 @@
     <th align="left">作者</th>
     <th align="left">联系方式</th>
     <th align="left">关联销售</th>
+    <th align="left">跟踪状态</th>
     <th align="left">处理状态</th>
     <th align="left">留言时间</th>
     <th>操作</th>
@@ -72,14 +81,15 @@
 <ItemTemplate>
   <tr style='<%#Eval("ProcessingState").ToString()=="0"? "background-color:#ff5a00":"background-color:write" %>'>
     <td align="center"><asp:CheckBox ID="chkId" CssClass="checkall" runat="server" style="vertical-align:middle;" /><asp:HiddenField ID="hidId" Value='<%#Eval("PPID")%>' runat="server" /></td>
-    <td><a href="/product_detail.aspx?productid=<%#Eval("ProductID") %>" target="_blank"><%#Eval("ProductID")%></a></td>
-    <td><%#Eval("ProductName") %></td>
-    <td><%#Eval("Author") %>  &nbsp;&nbsp;<%#Eval("status")%></td>
-    <td>电话：<%#DESEncrypt.ConvertByABC( Eval("telphone").ToString())%>QQ：<%#Eval("WebChartID")%></td>
-    <td><%#Eval("real_name")%></td>
-    <td><%#Eval("ProcessingStateDesc")%></td>
-    <td><%#Eval("AddDate")%></td>
-    <td align="center"><a href="proInquiry_edit.aspx?action=<%#DTEnums.ActionEnum.Edit %>&channel_id=<%#Eval("PPID")%>&page=<%=page %>&keywords=<%=keywords %>">客户跟踪</a></td>
+    <td <%#Eval("fontColor")%>><a href="/product_detail.aspx?productid=<%#Eval("ProductID") %>" target="_blank"><%#Eval("ProductID")%></a></td>
+    <td <%#Eval("fontColor")%>><%#Eval("ProductName") %></td>
+    <td <%#Eval("fontColor")%>><%#Eval("Author") %>  &nbsp;&nbsp;<%#Eval("status")%></td>
+    <td <%#Eval("fontColor")%>>电话：<%#DESEncrypt.ConvertByABC( Eval("telphone").ToString())%>QQ：<%#Eval("WebChartID")%></td>
+    <td <%#Eval("fontColor")%>><%#Eval("real_name")%></td>
+    <td <%#Eval("fontColor")%>><%#Eval("TraceState")%></td>
+    <td <%#Eval("fontColor")%>><%#Eval("ProcessingStateDesc")%></td>
+    <td <%#Eval("fontColor")%>><%#Eval("AddDate")%></td>
+    <td <%#Eval("fontColor")%> align="center"><a href="proInquiry_edit.aspx?action=<%#DTEnums.ActionEnum.Edit %>&channel_id=<%#Eval("PPID")%>&page=<%=page %>&keywords=<%=keywords %>">客户跟踪</a></td>
   </tr>
 </ItemTemplate>
 <FooterTemplate>
@@ -93,7 +103,7 @@
 <div class="line20"></div>
 <div class="pagelist">
   <div class="l-btns">
-    <span><b>【有效数据：<%=DistinctCount %>】</b>—显示</span><asp:TextBox ID="txtPageNum" runat="server" CssClass="pagenum" onkeydown="return checkNumber(event);" ontextchanged="txtPageNum_TextChanged" AutoPostBack="True"></asp:TextBox><span>条/页</span>
+    <span><b>【咨询量总数（去重）：<%=DistinctCount %>】</b>—显示</span><asp:TextBox ID="txtPageNum" runat="server" CssClass="pagenum" onkeydown="return checkNumber(event);" ontextchanged="txtPageNum_TextChanged" AutoPostBack="True"></asp:TextBox><span>条/页</span>
   </div>
   
   <div id="PageContent" runat="server" class="default"></div>

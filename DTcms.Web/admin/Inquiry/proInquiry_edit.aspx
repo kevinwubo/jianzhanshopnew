@@ -187,10 +187,10 @@
     <dd>
       <div  class="rule-multi-radio">
         <asp:RadioButtonList ID="rad_TraceState" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
-        <asp:ListItem Value="有意向" Selected>有意向</asp:ListItem>
-        <asp:ListItem Value="意向很大">意向很大</asp:ListItem>
-        <asp:ListItem Value="意向大">意向大</asp:ListItem>
+        <asp:ListItem Value="有意向">有意向</asp:ListItem>
+        <asp:ListItem Value="已成交">已成交</asp:ListItem>
         <asp:ListItem Value="无意向">无意向</asp:ListItem>
+        <asp:ListItem Value="无意向">假号</asp:ListItem>
         </asp:RadioButtonList>      
       </div>
     </dd>

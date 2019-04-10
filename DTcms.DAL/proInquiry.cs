@@ -75,7 +75,8 @@ namespace DTcms.DAL
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT PPId,a.ProductID,telphone,WebChartID,InquiryContent,CommentContent,ProcessingState,ProcessingTime,Provence,City, ");
             strSql.Append(" TraceContent,TraceState,NextVisitTime,CustomerName,sex,OperatorID,b.Author,a.AddDate,b.ProductName ,status,c.real_name, ");
-            strSql.Append(" case ProcessingState when '1' then '已处理' else '未处理' end as ProcessingStateDesc ");
+            strSql.Append(" case ProcessingState when '1' then '已处理' else '未处理' end as ProcessingStateDesc, ");
+            strSql.Append(" case TraceState when '已成交' then 'style=color:red' when '无意向' then 'style=color:blue' when '假号' then 'style=color:lightgrey' else '' end as fontColor ");
             strSql.Append(" FROM dbo.dt_proInquiry a left join dt_Product b on a.ProductID=b.ProductID ");
             strSql.Append(" left join dt_manager c on a.OperatorID=c.id ");
 

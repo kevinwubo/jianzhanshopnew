@@ -144,7 +144,7 @@ namespace DTcms.Web.ajax
                                 #endregion
                                 if (mr != null)
                                 {
-                                    if (!WXCode.Equals(mr.telephone))//inquiryCount <= salesCount && 
+                                    if (inquiryCount <= salesCount && !WXCode.Equals(mr.telephone))//inquiryCount <= salesCount && 
                                     {
                                         lstSales.Add(item);
                                     }

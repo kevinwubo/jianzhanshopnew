@@ -16,30 +16,37 @@ namespace DTcms.Web.admin.Inquiry
         public int page;
         protected int pageSize;
         protected string keywords = string.Empty;
+        protected string TraceState = string.Empty;
         protected string prolistview = string.Empty;
         public Model.manager Manager_Model = null;
         public int DistinctCount = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             this.keywords = DTRequest.GetQueryString("keywords");
+            this.TraceState = DTRequest.GetQueryString("TraceState");
             Manager_Model = Session[DTKeys.SESSION_ADMIN_INFO] as Model.manager;
             this.pageSize = GetPageSize(20); //每页数量
             this.prolistview = Utils.GetCookie("article_list_view"); //显示方式
             if (!Page.IsPostBack)
             {
+                ddl_TraceState.SelectedValue = TraceState;
                  //ChkAdminLevel("site_channel_category", DTEnums.ActionEnum.View.ToString()); //检查权限
-                RptBind(CombSqlTxt(this.keywords), "ppID desc");
+                RptBind(CombSqlTxt(this.keywords, this.TraceState), "ppID desc");
             }
         }
 
         #region 组合SQL查询语句==========================
-        protected string CombSqlTxt(string _keywords)
+        protected string CombSqlTxt(string _keywords,string TraceState)
         {
             StringBuilder strTemp = new StringBuilder();
             _keywords = _keywords.Replace("'", "");
             if (!string.IsNullOrEmpty(_keywords))
             {
                 strTemp.Append(" and (telphone like '%" + keywords + "%' or telphone like '" + DESEncrypt.ConvertBy123(keywords) + "' or c.real_name='" + keywords + "')");
+            }
+            if (!string.IsNullOrEmpty(TraceState))
+            {
+                strTemp.Append(" and TraceState='" + TraceState + "'");
             }
             return strTemp.ToString();
         }
@@ -79,7 +86,7 @@ namespace DTcms.Web.admin.Inquiry
 
             //绑定页码
             txtPageNum.Text = this.pageSize.ToString();
-            string pageUrl = Utils.CombUrlTxt("proInquiry_list.aspx", "keywords={0}&page={1}", this.keywords, "__id__");
+            string pageUrl = Utils.CombUrlTxt("proInquiry_list.aspx", "keywords={0}&page={1}&TraceState={2}", this.keywords, "__id__", this.TraceState);
             PageContent.InnerHtml = Utils.OutPageList(this.pageSize, this.page, this.totalCount, pageUrl, 8);
         }
 
@@ -110,7 +117,7 @@ namespace DTcms.Web.admin.Inquiry
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Utils.CombUrlTxt("proInquiry_list.aspx", "keywords={0}", this.txtKeywords.Text.Trim()));
+            Response.Redirect(Utils.CombUrlTxt("proInquiry_list.aspx", "keywords={0}&TraceState={1}", this.txtKeywords.Text.Trim(),ddl_TraceState.SelectedValue));
         }
 
         #region JS提示============================================
