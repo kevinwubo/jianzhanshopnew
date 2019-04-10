@@ -190,7 +190,7 @@
         <asp:ListItem Value="有意向">有意向</asp:ListItem>
         <asp:ListItem Value="已成交">已成交</asp:ListItem>
         <asp:ListItem Value="无意向">无意向</asp:ListItem>
-        <asp:ListItem Value="无意向">假号</asp:ListItem>
+        <asp:ListItem Value="假号">假号</asp:ListItem>
         </asp:RadioButtonList>      
       </div>
     </dd>

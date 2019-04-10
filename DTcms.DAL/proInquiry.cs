@@ -76,7 +76,7 @@ namespace DTcms.DAL
             strSql.Append("SELECT PPId,a.ProductID,telphone,WebChartID,InquiryContent,CommentContent,ProcessingState,ProcessingTime,Provence,City, ");
             strSql.Append(" TraceContent,TraceState,NextVisitTime,CustomerName,sex,OperatorID,b.Author,a.AddDate,b.ProductName ,status,c.real_name, ");
             strSql.Append(" case ProcessingState when '1' then '已处理' else '未处理' end as ProcessingStateDesc, ");
-            strSql.Append(" case TraceState when '已成交' then 'style=color:red' when '无意向' then 'style=color:blue' when '假号' then 'style=color:lightgrey' else '' end as fontColor ");
+            strSql.Append(" case TraceState when '已成交' then 'style=color:red' when '有意向' then 'style=color:blue' when '假号' then 'style=color:lightgrey' else '' end as fontColor ");
             strSql.Append(" FROM dbo.dt_proInquiry a left join dt_Product b on a.ProductID=b.ProductID ");
             strSql.Append(" left join dt_manager c on a.OperatorID=c.id ");
 
@@ -291,6 +291,19 @@ namespace DTcms.DAL
                 return false;
         }
 
+
+        public bool UpdateTraceStateBytelphone(string telphone, string TraceState)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update dt_proInquiry  set TraceState='" + TraceState + "' ");
+            strSql.Append(" where (telphone ='" + DESEncrypt.ConvertBy123(telphone) + "' or telphone ='" + telphone + "') ");
+            int i = DbHelperSQL.ExecuteSql(strSql.ToString());
+            if (i > 0)
+                return true;
+            else
+                return false;
+        }
+
         /// <summary>
         /// 删除数据
         /// </summary>
@@ -426,6 +439,7 @@ namespace DTcms.DAL
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)
             {
+                UpdateTraceStateBytelphone(model.telphone, model.TraceState);
                 return true;
             }
             else

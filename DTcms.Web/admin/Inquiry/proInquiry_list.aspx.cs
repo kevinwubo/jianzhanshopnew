@@ -175,6 +175,11 @@ namespace DTcms.Web.admin.Inquiry
             JscriptMsg("移动到释放库" + sucCount + "条，失败" + errorCount + "条！", "proInquiry_list.aspx", "Success");
         }
 
+        protected void ddl_TraceState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Response.Redirect(Utils.CombUrlTxt("proInquiry_list.aspx", "keywords={0}&TraceState={1}", this.txtKeywords.Text.Trim(), ddl_TraceState.SelectedValue));
+        }
+
         
     }
 }

@@ -42,18 +42,22 @@
         <li><asp:LinkButton ID="btn_Into_History" runat="server" CssClass="del" 
                 OnClientClick="return ExePostBack('btn_Into_History','移动该分类将移动对应的目录及文件；<br />确定将该数据移动到释放库吗，是否继续？');" 
                 onclick="btn_Into_History_Click" ><i></i><span>移动释放库</span></asp:LinkButton></li>
-        
-        <asp:DropDownList ID="ddl_TraceState" runat="server">
+      </ul>
+      <div class="menu-list">
+    <div class="rule-single-select">
+         <asp:DropDownList ID="ddl_TraceState" runat="server" AutoPostBack="True" 
+             onselectedindexchanged="ddl_TraceState_SelectedIndexChanged">
             <asp:ListItem Value="">全部</asp:ListItem>
              <asp:ListItem Value="有意向">有意向</asp:ListItem>
             <asp:ListItem Value="已成交">已成交</asp:ListItem>
             <asp:ListItem Value="无意向">无意向</asp:ListItem>
-            <asp:ListItem Value="无意向">假号</asp:ListItem>
+            <asp:ListItem Value="假号">假号</asp:ListItem>
         </asp:DropDownList>
-
-      </ul>
+        </div>
+        </div>
     </div>
     <div class="r-list">
+    
       <asp:TextBox ID="txtKeywords" runat="server" CssClass="keyword" />
       <asp:LinkButton ID="lbtnSearch" runat="server" CssClass="btn-search" onclick="btnSearch_Click">查询</asp:LinkButton>
     </div>
