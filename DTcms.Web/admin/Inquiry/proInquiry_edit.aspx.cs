@@ -101,6 +101,12 @@ namespace DTcms.Web.admin.Inquiry
             if (action == DTEnums.ActionEnum.Edit.ToString()) //修改
             {
                 //ChkAdminLevel("channel_" + this.channel_name + "_list", DTEnums.ActionEnum.Edit.ToString()); //检查权限
+                if (string.IsNullOrEmpty(rad_TraceState.SelectedValue))
+                {
+                    JscriptMsg("请确认跟踪状态！", "", "Error");
+                    return;
+                }
+
                 if (!DoEdit(this.id))
                 {
                     JscriptMsg("保存过程中发生错误啦！", "", "Error");

@@ -141,6 +141,19 @@
             datatype="*0-100" sucmsg=" " />       
     </dd>
   </dl>
+      <dl>
+    <dt>跟踪状态</dt>
+    <dd>
+      <div  class="rule-multi-radio">
+        <asp:RadioButtonList ID="rad_TraceState" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
+        <asp:ListItem Value="有意向">有意向</asp:ListItem>
+        <asp:ListItem Value="已成交">已成交</asp:ListItem>
+        <asp:ListItem Value="无意向">无意向</asp:ListItem>
+        <asp:ListItem Value="假号">假号</asp:ListItem>
+        </asp:RadioButtonList>      
+      </div>
+    </dd>
+  </dl>
 </div>
 
 <!--工具栏-->

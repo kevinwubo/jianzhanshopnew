@@ -77,7 +77,7 @@ namespace DTcms.Web.admin.Inquiry
             if (Manager_Model.role_id == 4 || Manager_Model.role_id == 5 || Manager_Model.role_id == 6 || Manager_Model.role_id == 8)
             {
 
-                _strWhere = "  and a.OperatorID =" + Manager_Model.id;
+                _strWhere += "  and a.OperatorID =" + Manager_Model.id;
             }            
             DistinctCount = bll.GetDistinctTelphoneCount(_strWhere);
             _strWhere += " and datastatus=0";

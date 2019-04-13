@@ -31,8 +31,8 @@ namespace DTcms.DAL
 
             StringBuilder strSql = new StringBuilder();
             strSql.Append(" INSERT INTO dt_proInquiry(");
-            strSql.Append(" ProductID,telphone,WebChartID,Provence,City,InquiryContent,CustomerName,OperatorID,status,ProcessingState,SourceForm)");
-            strSql.Append(" VALUES(@ProductID,@telphone,@WebChartID,@Provence,@City,@InquiryContent,@CustomerName,@OperatorID,@status,@ProcessingState,@SourceForm)");
+            strSql.Append(" ProductID,telphone,WebChartID,Provence,City,InquiryContent,CustomerName,OperatorID,status,ProcessingState,SourceForm,TraceState)");
+            strSql.Append(" VALUES(@ProductID,@telphone,@WebChartID,@Provence,@City,@InquiryContent,@CustomerName,@OperatorID,@status,@ProcessingState,@SourceForm,@TraceState)");
             strSql.Append(";set @ReturnValue= @@IDENTITY");
             SqlParameter[] parameters = {
 					new SqlParameter("@ProductID", SqlDbType.NVarChar,20),
@@ -46,6 +46,7 @@ namespace DTcms.DAL
                     new SqlParameter("@status",SqlDbType.NVarChar,50),
                     new SqlParameter("@ProcessingState",SqlDbType.NVarChar,50),
                     new SqlParameter("@SourceForm",SqlDbType.NVarChar,50),
+                    new SqlParameter("@TraceState",SqlDbType.NVarChar,50),
                     new SqlParameter("@ReturnValue",SqlDbType.Int)};
             parameters[0].Value =model.ProductID!=null? model.ProductID:"未知";
             parameters[1].Value = DESEncrypt.ConvertBy123(model.telphone);
@@ -58,13 +59,14 @@ namespace DTcms.DAL
             parameters[8].Value = model.status;
             parameters[9].Value = model.ProcessingState;
             parameters[10].Value = model.SourceForm;
-            parameters[11].Direction = ParameterDirection.Output;
+            parameters[11].Value = model.TraceState;
+            parameters[12].Direction = ParameterDirection.Output;
             List<CommandInfo> sqllist = new List<CommandInfo>();
             CommandInfo cmd = new CommandInfo(strSql.ToString(), parameters);
             sqllist.Add(cmd);
 
             DbHelperSQL.ExecuteSqlTranWithIndentity(sqllist);
-            return (int)parameters[11].Value;
+            return (int)parameters[12].Value;
         }
 
         /// <summary>

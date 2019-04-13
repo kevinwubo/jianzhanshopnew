@@ -128,7 +128,12 @@
       <asp:TextBox ID="txt_telphone" runat="server" CssClass="input normal" datatype="*0-100"  MaxLength="30" sucmsg=" " />
     </dd>
   </dl>
- 
+   <dl>
+    <dt>电话号码2</dt>
+    <dd>
+      <asp:TextBox ID="txt_CommentContent" runat="server"  MaxLength="30" CssClass="input normal"  datatype="*0-100" sucmsg=" " />
+    </dd>
+  </dl>
   <dl >
     <dt>QQ/微信号码</dt>
     <dd>
@@ -143,13 +148,7 @@
             datatype="*0-100" sucmsg=" " />       
     </dd>
   </dl>
-  <dl>
-    <dt>评论内容</dt>
-    <dd>
-      <asp:TextBox ID="txt_CommentContent" runat="server"  MaxLength="100" CssClass="input normal" 
-            datatype="*0-100" sucmsg=" " TextMode="MultiLine" />
-    </dd>
-  </dl>
+
   <dl>
     <dt>处理状态</dt>
     <dd>
