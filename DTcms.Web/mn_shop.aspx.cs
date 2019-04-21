@@ -33,8 +33,8 @@ namespace DTcms.Web
         {
             if (!IsPostBack)
             {
-                
-                KEYWORD = Server.UrlDecode((Request["keyword"]));
+
+                KEYWORD = Server.UrlDecode((Request.QueryString["keyword"]));
                 artisanType = Request.QueryString["artisanType"];
                 artisanName = Request.QueryString["name"];
                 Type2 = Request.QueryString["Type2"];

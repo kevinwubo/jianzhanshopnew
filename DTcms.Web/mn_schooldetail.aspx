@@ -21,127 +21,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=750, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
-    <meta content="telephone=no" name="format-detection">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta http-equiv="Access-Control-Allow-Origin" content="*">
-    <link rel="stylesheet" type="text/css" href="project/Public/base/css/reset.css?d=" />
-    <link rel="stylesheet" type="text/css" href="project/Public/base/css/bass.css" />
-    <link rel="stylesheet" type="text/css" href="project/Public/page/css/index.css" />
-    <link rel="stylesheet" type="text/css" href="project/Public/base/css/swiper-4.3.3.min.css" />
-    <link rel="stylesheet" type="text/css" href="project/Public/page/css/school.css" />
-    <link rel="stylesheet" type="text/css" href="project/Public/iconfont/iconfont.css" />
-    <script type="text/javascript" src="project/Public/base/js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="project/Public/base/js/swiper-4.3.3.min.js"></script>
-    <script type="text/javascript" src="project/Public/base/js/ZRrem.js"></script>
-    <script type="text/javascript" src="project/Public/base/js/core.js"></script>
-    <script type="text/javascript" src="project/Public/page/js/about.js"></script>
-    <style type="text/css">
-        #swiper-container-banner {
-            width: 100%;
-            height: 6.5rem;
+        <link rel="stylesheet" href="../static/css/base_1_30.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        body {
+            background: #fff;
+            max-width: 750px;
+            margin: auto;
+            /*-webkit-overflow-scrolling: touch;*/
         }
-
-        #swiper-container-banner a {
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-        }
-
-        #swiper-container-banner a img {
-            width: 100%;
-            height: 100%;
-        }
-
     </style>
 </head>
-
 <body>
-    <div id="app">
-        <div id="header" class="header bgc_c3">
-            <!-- 通用头 -->
-            <div id="head-page" class="head-page head-page-home">
-                <div class="head-left">
-					<div class="head-backpage">
-						<a href="javascript:window.history.back()">
-							<span class="head-backpage-img"></span>
-							<span>返回上页</span>
-						</a>
-					</div>
-					<div class="head-gohome">
-						<a href="m_index.html">
-							<span class="gohome-bor"></span>
-							<span class="head-gohome-img"></span>
-							<span>首页</span>
-						</a>
-					</div>
-				</div>
-                <div class="head-title">
-                    建盏学院
-                </div>
-                <div class="head-p-sides head-p-sides-side" onclick="moveLeft()">
-                    <img src="project/Public/image/side.png">
-                </div>
+    <header>
+        <div class="flex-row college-hd">
+            <div class="back" href="javascript:window.history.back()">
+                <!-- <img src="../static/images/college/fanhui.png" alt=""> -->
+                返回
+            </div>
+            <div class="txt px36">建盏学院</div>
+            <div class="menu">
+                <img src="../static/images/college/menu.png" alt="">
             </div>
         </div>
-        <div class="planbody bgc_cc">
-        <% article modelShow = Model;
-           if (modelShow != null)
-           { %>
-            <!-- 头部标题-->
-            <div class="detail-title-plane">
-                <div class="title"><%=model.title %></div>
-                <div class="desc">
-                    <span>日期：<%=model.add_time %></span>
-                    <span style="margin-left: 0.2rem">板块：
-                        <span style="color: #b32b2b"><%=acate.GetTitle(model.category_id) %></span>
-                    </span>
+    </header>
+    <section class="college-wrap">
+            <% article modelShow = Model;
+               if (modelShow != null)
+               { %>
+
+        <div class="wrap-title">
+            <h1 class="px36"><%=modelShow.title%></h1>
+            <span class="px16">日期：<%=modelShow.add_time.ToShortDateString() %> 版块：<em><%=acate.GetTitle(model.category_id) %></em></span>
+        </div>
+        <div class="wrap-con">
+            <%=model.content %>
+        </div>
+        <%} %>
+    </section>
+    <footer style="border-top: 2px solid #F0F0F0;">
+        <div class="flex-row pad-l-30 pad-r-30 pad-t-20 pad-b-40" style="text-align: center;align-items: center;">
+            <div class="flex-col">
+                <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_home.png" alt="">
+                <div style="margin-top: .1rem;">首页</div>
+            </div>
+            <div class="flex-col">
+                <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_fl.png" alt="" />
+                <div style="margin-top: .1rem;">分类</div>
+            </div>
+            <div class="flex-col">
+                <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic-zx.png" alt="" />
+                <div style="margin-top: .1rem;">咨询</div>
+            </div>
+            <div style="width:2rem" class="mar-l-20">
+                <div class="flex-row">
+                    <img style="height: .5rem;width:.55rem" src="../static/images/jianzhan/ic_wx.png" alt="" />
+                    <div class="flex-col px16">(长按复制添加微信)</div>
                 </div>
+                <div style="margin-top: .1rem;">1231723876</div>
             </div>
-            <div style="height: 1px;background-color: #999;width: 90%;margin:0 5%"></div>
-            <!-- 富文本内容 -->
-            <div class="content">
-                <p><%=model.content %></p>
-            </div>
-            <!-- 通用底部元素 片段截取 -->
-            <uc2:mn_planbody_foot ID="mn_planbody_foot1" runat="server" />
-            <%} %>
-            <uc1:mn_footer ID="mn_footer1" runat="server" />
-                   <div id="menupart" style="display: none;left:200%;">
-            <uc3:mn_menuplane  ID="mn_menuplane1" runat="server"/></div>
         </div>
-        </div>
- 
-    
-    
-        <!-- 筛选 -->
-	<div id='menumark' style="display: none"></div>
-	
+    </footer>
+
+
+
+    <script src="../static/js/jquery-2.1.4.js"></script>
+    <script src="../static/js/jquery-weui.js"></script>
+    <script src="../static/js/jquery.pagination.js"></script>
+    <script src="../static/js/utils.js"></script>
+    <script src="../static/js/showdiv.js"></script>
+    <script>
+
+
+    </script>
 </body>
 
 </html>
-<script>
-    //点击隐藏在线咨询面板或拨号面板
-    $('#menumark').click(function () {
-
-        if (iskuaishu) {
-            $(".footer").animate({ bottom: '0rem' }, "slow", function () {
-                $("#menumark").css("display", "none");
-                $("#ksplane").css("display", "none");
-            });
-            iskuaishu = false;
-        }
-        if (iszaixian) {
-            $(".footer").animate({ bottom: '0rem' }, "slow", function () {
-                $("#menumark").css("display", "none");
-                $("#zxplane").css("display", "none");
-            });
-            iszaixian = false;
-        }
-        moveRight();
-    })
-
-    // $('#planbody-foot_box').load('./bass.html #planbody-foot');
-</script>

@@ -3,334 +3,378 @@
 <%@ Import Namespace="System.Data" %> 
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="DTcms.Model" %> 
-<%@ Register src="UserControl/menuplane.ascx" tagname="menuplane" tagprefix="uc3" %>
-<%@ Register src="UserControl/mn_footer.ascx" tagname="mn_footer" tagprefix="uc1" %>
-<%@ Register src="UserControl/mn_planbody_foot.ascx" tagname="mn_planbody_foot" tagprefix="uc2" %>
+<html>
+
 <head>
 <title>建盏商城 - 建盏天下网</title>
 <meta name="keywords" content="曜变盏,天目盏,兔毫盏,油滴盏,束口盏" />
 <meta name="description" content="建盏商城是福建省建窑建盏首席品牌商城，提供产地大师名家直供的一手精品货源：兔毫盏、油滴盏、曜变盏、鹧鸪斑、金油滴、敛口盏、束口盏，提供建盏价格、收藏、名家押窑和私人定制服务。" />
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=750, user-scalable=no">
-	<meta name="format-detection" content="telephone=no">
-	<meta content="telephone=no" name="format-detection">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<meta http-equiv="Access-Control-Allow-Origin" content="*">
-	<link rel="stylesheet" type="text/css" href="project/Public/base/css/reset.css?d=" />
-	<link rel="stylesheet" type="text/css" href="project/Public/base/css/bass.css" />
-	<link rel="stylesheet" type="text/css" href="project/Public/page/css/shop.css" />
-	<link rel="stylesheet" type="text/css" href="project/Public/page/css/page.css" />
-    <link rel="stylesheet" type="text/css" href="project/Public/page/css/index.css" />
-	<link rel="stylesheet" type="text/css" href="project/Public/iconfont/iconfont.css" />
-	<script type="text/javascript" src="project/Public/base/js/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="project/Public/base/js/ZRrem.js"></script>
-	<script type="text/javascript" src="project/public/base/js/core.js"></script>
-	<%-- <script type="text/javascript" src="project/Public/page/js/shop.js"></script> --%>
-	<%--<script type="text/javascript" src="project/Public/page/js/page.js"></script>--%>
-	<style type="text/css">
-	    div.default{ margin:0; padding:0; font-family:"Microsoft YaHei",Verdana; font-size:16px; }
-	div.default a,div.default span{ display:inline-block; margin:0 0 0 -1px; padding:4px 16px; line-height:20px; height:28px; border:1px solid #e1e1e1; background:#fff; color:#333; text-decoration:none; }
-	div.default span:first-child{ border-left:1px solid #e1e1e1; }
-	div.default a:hover{ color:#666; background:#eee; }
-	div.default span.current{ color:#fff; background:#488FCD; border-color:#488FCD; }
-	div.default span.disabled{ color:#999; background:#fff; }
-	    
-		#swiper-container-banner {
-			width: 100%;
-			height: 5.2rem;
-		}
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <title>建盏商城</title>
+    <link rel="stylesheet" href="../static/css/base_1_30.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/pagination.css" type="text/css">
+    <style>
+        body {
+            background: #fff;
+            max-width: 750px;
+            margin: auto;
+            /*-webkit-overflow-scrolling: touch;*/
+        }
 
-		#swiper-container-banner a {
-			display: inline-block;
-			width: 100%;
-			height: 100%;
-		}
+        .store-con .list1 {
+            height: auto;
+        }
 
-		#swiper-container-banner a img {
-			width: 100%;
-			height: 100%;
-		}
-	</style>
+        .store-con {
+            /* overflow: hidden; */
+        }
+
+        #mark0 .markitem {
+            color: #999;
+            font-size: .24rem;
+            text-align: center;
+            float: left;
+            width: 24.5%;
+            height: .8rem;
+            line-height: .8rem;
+            border-bottom: 1px solid #f6f6f6;
+            border-right: 1px solid #f6f6f6;
+        }
+
+       
+
+        #mark0 .markitem:nth-child(4n+4) {
+            border-right: 1px solid #fff;
+        }
+        #mark0 .markitem:nth-child() {
+            border-right: 1px solid #fff;
+        }
+        
+        
+        #mark1 .markitem {
+            color: #999;
+            font-size: .24rem;
+            text-align: center;
+            float: left;
+            width: 24.5%;
+            height: .8rem;
+            line-height: .8rem;
+            border-bottom: 1px solid #f6f6f6;
+            border-right: 1px solid #f6f6f6;
+        }
+
+       
+
+        #mark1 .markitem:nth-child(4n+4) {
+            border-right: 1px solid #fff;
+        }
+        #mark1 .markitem:nth-child() {
+            border-right: 1px solid #fff;
+        }
+        
+                #mark2 .markitem {
+            color: #999;
+            font-size: .24rem;
+            text-align: center;
+            float: left;
+            width: 24.5%;
+            height: .8rem;
+            line-height: .8rem;
+            border-bottom: 1px solid #f6f6f6;
+            border-right: 1px solid #f6f6f6;
+        }
+
+       
+
+        #mark2 .markitem:nth-child(4n+4) {
+            border-right: 1px solid #fff;
+        }
+        #mark2 .markitem:nth-child() {
+            border-right: 1px solid #fff;
+        }
+        
+        
+        #mark3 .markitem {
+            color: #999;
+            font-size: .24rem;
+            text-align: center;
+            float: left;
+            width: 24.5%;
+            height: .8rem;
+            line-height: .8rem;
+            border-bottom: 1px solid #f6f6f6;
+            border-right: 1px solid #f6f6f6;
+        }
+
+       
+
+        #mark3 .markitem:nth-child(4n+4) {
+            border-right: 1px solid #fff;
+        }
+        #mark3 .markitem:nth-child() {
+            border-right: 1px solid #fff;
+        }
+        .active {
+            color: #bd2727 !important
+        }
+        .nb{
+            border-bottom: 1px solid #fff !important;
+        }
+        .page{
+            list-style: none;
+            overflow: hidden;
+            background: #fff;
+            padding: 0.2rem;
+        }
+        .page>li{
+            border: 1px #999 solid !important;
+            float: left;
+            padding: 0.1rem 0.2rem;
+            cursor: pointer;
+        }
+        .page .pageItem{
+            border: solid thin #fff;
+            margin: 0.1rem;
+        }
+        .page .pageItemActive{
+            border: solid thin #fff;
+            margin: 0.1rem;
+            background-color: #fff;
+            color:red;
+        }
+        .page .pageItem:hover{
+            border: solid thin #fff;
+            background-color: #fff;
+            color:red;
+        }
+        .page .pageItemDisable{
+            border: solid thin #fff;
+            margin: 0.1rem;
+            background-color: #fff;
+        }
+    </style>
 </head>
+
 <body>
-<div id="app">
-		<div id="header" class="header bgc_c3">
-			<!-- 通用头 -->
-			<div id="head-page" class="head-page head-page-home">
-				<div class="head-left">
-					<div class="head-backpage">
-						<a href="javascript:window.history.back()">
-							<span class="head-backpage-img"></span>
-							<span>返回上页</span>
-						</a>
-					</div>
-					<div class="head-gohome">
-						<a href="m_index.html">
-							<span class="gohome-bor"></span>
-							<span class="head-gohome-img"></span>
-							<span>首页</span>
-						</a>
-					</div>
+    <header>
+        <div class="flex-row college-hd">
+            <div class="back" href="javascript:window.history.back()">
+                返回
+            </div>
+            <div class="txt px36">建盏商城</div>
+            <div class="menu">
+                <img src="../static/images/college/menu.png" alt="">
+            </div>
+        </div>
+    </header>
+    <section class="store-wrap">
+        <div class="store-tab">
+            <div class="tab-item active" id="div1"><span>业界大师</span></div>
+            <div class="tab-item" id="div2"><span>老牌传承人</span></div>
+            <div class="tab-item" id="div3"><span>名家工艺师</span></div>
+            <div class="tab-item" id="div4"><span>器形/釉色</span></div>
+        </div>
+        <div id="mark0" style="background: rgba(0,0,0,.5);width: 100%;position: absolute;z-index: 1;display: none">
+            <div style="padding: .2rem .32rem 0.1rem; background:white;overflow: hidden;">
+                
+                <% 
+                    List<Artisan> lstArt = bllArtisan.GetArtisanList(" and artisanType='业界大师' and IsCooperation=1 ", "   Sort");
+                    foreach (Artisan model in lstArt)
+                    {%>
+				<div class="markitem">
+					<a href="mn_shop.aspx?name=<%=model.artisanName %>">
+						<%=model.artisanName%>
+					</a>
 				</div>
-				<div class="head-title">
-					建盏商城
+                <%} %>
+            </div>
+        </div>
+        <div id="mark1"  style="background: rgba(0,0,0,.5);width: 100%;position: absolute;z-index: 1;display: none">
+            <div style="padding: .2rem .32rem 0.1rem; background:white;overflow: hidden;">
+                <% 
+                    List<Artisan> lstArtA = bllArtisan.GetArtisanList(" and artisanType='老牌传承人' and IsCooperation=1 ", "   Sort");
+                    foreach (Artisan model in lstArtA)
+                    {%>
+				<div class="markitem">
+					<a href="mn_shop.aspx?name=<%=model.artisanName %>">
+						<%=model.artisanName%>
+					</a>
 				</div>
-				<div class="head-p-sides head-p-sides-side" onclick="moveLeft()">
-					<img src="project/Public/image/side.png">
+                <%} %>
+            </div>
+        </div>
+        <div id="mark2" style="background: rgba(0,0,0,.5);width: 100%;position: absolute;z-index: 1;display: none">
+            <div style="padding: .2rem .32rem 0.1rem; background:white;overflow: hidden;">
+                <% 
+                    List<Artisan> lstArtB = bllArtisan.GetArtisanList(" and artisanType='名家工艺师' and IsCooperation=1 ", "   Sort");
+                    foreach (Artisan model in lstArtB)
+                    {%>
+				<div class="markitem">
+					<a href="mn_shop.aspx?name=<%=model.artisanName %>">
+						<%=model.artisanName%>
+					</a>
 				</div>
-			</div>
-		</div>
-
-		<div class="planbody bgc_cc">
-			<!-- 条件选择器 -->
-			<div class="weui-tab" style="position: absolute">
-				<div class="bgc_ff">
-					<div class="weui-navbar">
-						<div class="weui-navbar__item" href="#tab1">
-							<div class="div-on">业界大师
-								<img src="project/Public/image/down_arrow.png" />
-							</div>
-						</div>
-						<div class="weui-navbar__item" href="#tab2">
-							<div>老牌传承人
-								<img src="project/Public/image/down_arrow.png" />
-							</div>
-						</div>
-						<div class="weui-navbar__item" href="#tab3">
-							<div>名家工艺师
-								<img src="project/Public/image/down_arrow.png" />
-							</div>
-						</div>
-						<div class="weui-navbar__item" href="#tab4">
-							<div>器形/釉色
-								<img src="project/Public/image/down_arrow.png" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item-plane" id="div_item_plane" style="display: none">
-				<div class="tag-plane" style="display: none">
-					<div style="margin: 0rem 0.4rem; clear: both;overflow: hidden">
-						<% 
-                            List<Artisan> lstArt = bllArtisan.GetArtisanList(" and artisanType='业界大师' and IsCooperation=1 ", "   Sort");
-                            foreach (Artisan model in lstArt)
-                            {%>
-						<div class="about-tag-item-3">
-							<a href="mn_shop.aspx?name=<%=model.artisanName %>">
-								<div class="btn-on"><%=model.artisanName %></div>
+                <%} %>
+            </div>
+        </div>
+        <div id="mark3" style="background: rgba(0,0,0,.5);width: 100%;position: absolute;z-index: 1;display: none">
+            <div style="padding: .2rem .32rem 0.1rem; background:white;overflow: hidden;">
+                <div class="markitem">
+				<a href="mn_shop.aspx?type2=兔毫">
+								兔毫
 							</a>
 						</div>
-                        <%} %>
-					</div>
-					
-				</div>
-				<div class="tag-plane" style="display: none">
-					<div style="margin: 0rem 0.4rem; clear: both;overflow: hidden">
-						<% 
-                            List<Artisan> lstArtL = bllArtisan.GetArtisanList(" and artisanType='老牌传承人' and IsCooperation=1 ", "   Sort");
-                            foreach (Artisan model in lstArtL)
-                            {%>
-						<div class="about-tag-item-3">
-							<a href="mn_shop.aspx?name=<%=model.artisanName %>">
-								<div class="btn-on"><%=model.artisanName %></div>
-							</a>
-						</div>
-                        <%} %>
-						
-					</div>
-				</div>
-				<div class="tag-plane" style="display: none">
-					<div style="margin: 0rem 0.4rem; clear: both;overflow: hidden">
-						<% 
-                            List<Artisan> lstArtM = bllArtisan.GetArtisanList(" and artisanType='名家工艺师' and IsCooperation=1 ", "  Sort");
-                            foreach (Artisan model in lstArtM)
-                            {%>
-						<div class="about-tag-item-3">
-							<a href="mn_shop.aspx?name=<%=model.artisanName %>">
-								<div class="btn-on"><%=model.artisanName %></div>
-							</a>
-						</div>
-                        <%} %>
-					</div>
-				</div>
-                <div class="tag-plane" style="display: none;">
-					<div style="margin: 0rem 0.4rem; clear: both;overflow: hidden">
-						<div class="about-tag-item-3">
-							<a href="mn_shop.aspx?type2=兔毫">
-								<div class="btn-on">兔毫</div>
-							</a>
-						</div>
-						<div class="about-tag-item-3">
+						<div class="markitem">
 							<a href="mn_shop.aspx?type2=油滴/鹧鸪斑">
-								<div class="btn-on">油滴/鹧鸪斑</div>
+								油滴/鹧鸪斑
 							</a>
 						</div>
-						<div class="about-tag-item-3">
+						<div class="markitem">
 							<a href="mn_shop.aspx?type2=曜变">
-								<div class="btn-on">曜变</div>
+								曜变
 							</a>
 						</div>
-                        <div class="about-tag-item-3">
+                        <div class="markitem">
 							<a href="mn_shop.aspx?type2=乌金釉">
-								<div class="btn-on">乌金釉</div>
+								乌金釉
 							</a>
 						</div>
-                        <div class="about-tag-item-3">
+                        <div class="markitem">
 							<a href="mn_shop.aspx?type2=杂色釉/异毫">
-								<div class="btn-on">杂色釉/异毫</div>
+								杂色釉/异毫
 							</a>
 						</div>
-					</div>
-					<div style="height:1px; width: 90%; background: #999;margin: 2% 5%;"></div>
-					<div style="margin: 0rem 0.4rem; clear: both;overflow: hidden">
-					
-						<div class="about-tag-item-3">
+
+                        <div class="markitem">
 							<a href="mn_shop.aspx?type3=束口盏">
-								<div class="btn-on">束口盏</div>
+								束口盏
 							</a>
 						</div>
-						<div class="about-tag-item-3">
+						<div class="markitem">
 							<a href="mn_shop.aspx?type3=灯盏">
-								<div class="btn-on">灯盏</div>
+								灯盏
 							</a>
 						</div>
-						<div class="about-tag-item-3">
+						<div class="markitem">
 							<a href="mn_shop.aspx?type3=敞口盏/斗笠">
-								<div class="btn-on">敞口盏/斗笠</div>
+								敞口盏/斗笠
 							</a>
 						</div>
-						<div class="about-tag-item-3">
+						<div class="markitem">
 							<a href="mn_shop.aspx?type3=撇口盏">
-								<div class="btn-on">撇口盏</div>
+								撇口盏
 							</a>
 						</div>
-						<div class="about-tag-item-3">
+						<div class="markitem">
 							<a href="mn_shop.aspx?type3=敛口盏">
-								<div class="btn-on">敛口盏</div>
+								敛口盏
 							</a>
 						</div>
-						<div class="about-tag-item-3">
+						<div class="markitem">
 							<a href="mn_shop.aspx?type3=钵型盏">
-								<div class="btn-on">钵型盏</div>
+								钵型盏
 							</a>
 						</div>
-                       <div class="about-tag-item-3">
+                       <div class="markitem">
 							<a href="mn_shop.aspx?type3=创新器型">
-								<div class="btn-on">创新器型</div>
+								创新器型
 							</a>
-						</div>
-					</div>
-				</div>
+						</div>			
+            </div>
+        </div>
+    </section>
+    <div class="store-con">
+        <div class="part1" style="height:100%;overflow:auto">
+            <div class="list1">
+            <% List<Product> lstPro = ModelProList;
+               foreach (Product model in lstPro)
+               { 
+                   
+                   %>
+                <div class="item1">
+                    <div style="margin: 0 .1rem">
+                        <div class="t1 color_red_c9">ID:<%=model.ProductID %></div>
+                        <div class="pimg" style="background:url(<%=model.Images %>)"></div>
+                        <div class="t1 clamp1">【<%=model.Author %>】<%=model.ProductName %></div>
+                        <img onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')" class="bt-zx" src="../static/images/jianzhan/btn_ljzx.png">
+                    </div>
+                </div>
+                <%} %>
+            </div>
+        </div>
+        <!--分页-->
+      <div class="div-h-3"></div>
+        <div class="flex-row M-box m-style" style="justify-content: center">
+        <div id="PageContent" runat="server" ></div></div>
+        <div class="div-h-8"></div>
+    </div>
+    <div id="header1" class="flex-row pad-l-30 pad-r-30 pad-t-30 pad-b-40" style="text-align: center;align-items: center;">
+        <div class="flex-col">
+            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_home.png" alt="">
+            <div style="margin-top: .1rem;height: .3rem"><a href="mn_index.html">首页</a></div>
+        </div>
+        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
+        <div class="flex-col" onclick="moveLeft()">
+            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_fl.png" alt="" />
+            <div style="margin-top: .1rem;height: .3rem">分类</div>
+        </div>
+        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
+        <div class="flex-col">
+            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic-zx.png" alt="" />
+            <div style="margin-top: .1rem;height: .3rem">咨询</div>
+        </div>
+        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
+        <div style="width:2rem" class="mar-l-20">
+            <div class="flex-row" style="align-items: center;">
+                <img style="height: .5rem;width:.55rem" src="../static/images/jianzhan/ic_wx.png" alt="" />
+                <div class="flex-col px16">(长按复制添加微信)</div>
+            </div>
+            <div style="margin-top: .1rem;height: .3rem">1231723876</div>
+        </div>
+    </div>
 
-			</div>
-			<!-- 商品展示 -->
-			<!-- <div style="height: 0.266rem;" class="bgc_cc"></div> -->
-			<div id="planbody-shop-box" class="planbody-shop-box" style="padding-top: 1.4rem;">
-				<div class="bgc_ff">
-					<div style="font-size: 0.3rem;
-					color: #999;
-					height: 1.5rem;
-					line-height: 1.5rem;
-					margin: 0 0.4rem">传承大师-<%=artisanName%><%=Type4 %><%=Type2 %><%=Type3 %><%=Type7 %><%=artisanType %></div>
-					<div class="planbody-shop">
-						<div class="shop-describe flex_around">
-							<% List<Product> lstPro = ModelProList;
-                            foreach (Product model in lstPro)
-                            { %>
-                            <div class="show-view shop-view-state-b">
-                            
-								<p><%=model.ProductID %></p>
-								<p style="height:2.98rem;">
-                                    <a href="m_<%=model.ProductID %>.html">
-									<img class="list-item-img" src="<%=model.Images %>">
-                                    </a>
-								</p>
-								<p>[<%=model.Author %>]</p>
-								<p><%=model.ProductName %></p>								
-                                <p>器型：<%=model.Type3%></p>
-								<p  onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')">
-									<span></span>
-									<button class="shop-query">立即询价</button>
-								</p>
-							    
-							</div>
-                            <%} %>
-						</div>
-					</div>
-				</div>
-			</div>
-            <div style="background: #fff;width: 100%;">
-				<ul class="page" id="page" style="padding:0.3rem">
-                    <div id="PageContent" runat="server" style="margin: auto;width: 9rem;font-size: 0.3rem" class="default"></div>
-                </ul>
-			</div>
-			<!-- 通用底部元素 片段截取 -->
-			<uc2:mn_planbody_foot ID="mn_planbody_foot1" runat="server" />
-		</div>
 
-		<uc1:mn_footer ID="mn_footer1" runat="server" />
-        <div id="menupart" style="display: none;left:200%;">
-            <uc3:menuplane  ID="mn_menuplane1" runat="server"/>			
-		</div>
-	</div>
-        <!-- 筛选 -->
-	<div id='menumark' style="display: none"></div>	
+
+    <script src="../static/js/jquery-2.1.4.js"></script>
+    <script src="../static/js/jquery-weui.js"></script>
+    <script src="../static/js/jquery.pagination.js"></script>
+    <script src="../static/js/utils.js"></script>
+    <script src="../static/js/showdiv.js"></script>
+    <script>
+        
+        // $(".store-con").css("height", window.innerHeight - $('.store-con').offset().top-$('#foot').height());
+        $(".tab-item").click(function () {
+            var index = $(this).index();
+            globalType = index;
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".store-con .con-item").eq(index).addClass("active").siblings().removeClass("active");
+            $("#mark" + index).show();
+            utils.toggleBody(true)
+
+      
+
+            $("#mark" + index).css("height", $('body').height() - $('.college-hd').height() - $('.store-wrap').height());
+
+            $("#mark" + index).on("click", function () {
+                $(this).hide()
+                utils.toggleBody(false)
+            });
+
+            for (var i = 0; i < 4; i++) {
+                if (index == i) {
+
+                }
+                else {
+                    $("#mark" + i).hide();
+                }
+            }
+        });
+
+
+
+
+    </script>
 </body>
 
 </html>
-<script>
-    var tabindex = 0, lastindex = 0, isshow = false;
-    var ismenu;
-    function moveLeft() {
-        ismenu = true;
-        // console.log("dhgsfhjsgdghj");
-        $('#menupart').css("display", "block");
-        $("#menumark").css("display", "block");
-        $("#menupart").animate({ left: '20%' }, "slow"); //8.4
-    }
-
-
-    $("#div_item_plane").click(function () {
-        $('.item-plane').css('display', 'none');
-    })
-
-    //点击隐藏在线咨询面板或拨号面板
-    $('#menumark').click(function () {
-        $(".footer").animate({ bottom: '0rem' }, "slow", function () {
-            moveRight();
-            $("#menumark").css("display", "none");
-            $("#ksplane").css("display", "none");
-            $("#zxplane").css("display", "none");
-        });
-    })
-
-
-
-//   
-
-    $('.weui-navbar').children().each(function (index, node) {
-        $(this).click(function () {
-            $('.item-plane').css('display', 'block');
-
-            $('.weui-navbar').children().eq(tabindex).children('div').removeClass('div-on');
-            $('.item-plane').children().css('display', 'none');
-            lastindex = tabindex;
-            tabindex = index;
-
-            $('.item-plane').children().eq(tabindex).css('display', 'block');
-            $(this).children('div').addClass('div-on');
-
-            if (tabindex == lastindex) {
-                isshow = !isshow;
-                isshow ? $('.item-plane').css('display', 'block') : $('.item-plane').css('display', 'none')
-            } else {
-                $('.item-plane').css('display', 'block');
-            }
-        })
-    })
-</script>

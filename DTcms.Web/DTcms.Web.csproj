@@ -141,13 +141,6 @@
     <Content Include="activity\ChuJia_List.ascx" />
     <Content Include="activity\zhizuntulu.aspx" />
     <Content Include="activity\zhizunzhuanchang.aspx" />
-    <Content Include="activity_bak\dashitulu.aspx" />
-    <Content Include="activity_bak\dashizhuanchang.aspx" />
-    <Content Include="activity_bak\index.aspx" />
-    <Content Include="activity_bak\mingjiatulu.aspx" />
-    <Content Include="activity_bak\mingjiazhuanchang.aspx" />
-    <Content Include="activity_bak\xiaojiangtulu.aspx" />
-    <Content Include="activity_bak\xiaojiangzhuanchang.aspx" />
     <Content Include="admin\advert\advert_edit.aspx" />
     <Content Include="admin\advert\advert_list.aspx" />
     <Content Include="admin\Ajax\Ajax.aspx" />
@@ -682,7 +675,6 @@
     <Content Include="oldpage\m_product_list.aspx" />
     <Content Include="oldpage\m_school.aspx" />
     <Content Include="oldpage\m_school_detail.aspx" />
-    <Content Include="pages\sendSMS258.aspx" />
     <Content Include="project\Public\base\css\bass.css" />
     <Content Include="project\Public\base\css\reset.css" />
     <Content Include="project\Public\base\css\swiper-4.3.3.min.css" />
@@ -859,6 +851,95 @@
     <Content Include="scripts\swfupload\swfupload.handlers.js" />
     <Content Include="scripts\swfupload\swfupload.js" />
     <Content Include="scripts\swfupload\swfupload.swf" />
+    <Content Include="static\css\base_1_30.css" />
+    <Content Include="static\css\jquery-weui.css" />
+    <Content Include="static\css\pagination.css" />
+    <Content Include="static\css\style.css" />
+    <Content Include="static\css\swiper.min.css" />
+    <Content Include="static\images\315\315img1.jpg" />
+    <Content Include="static\images\315\back.png" />
+    <Content Include="static\images\315\banner1.jpg" />
+    <Content Include="static\images\315\ds_item.png" />
+    <Content Include="static\images\315\img1.png" />
+    <Content Include="static\images\315\img2.png" />
+    <Content Include="static\images\315\item1.png" />
+    <Content Include="static\images\315\item2.png" />
+    <Content Include="static\images\315\menu.png" />
+    <Content Include="static\images\315\mj_item.png" />
+    <Content Include="static\images\315\title1.png" />
+    <Content Include="static\images\315\title2.png" />
+    <Content Include="static\images\about\10161 拷贝%402x.png" />
+    <Content Include="static\images\about\10161 拷贝.png" />
+    <Content Include="static\images\about\bt000.png" />
+    <Content Include="static\images\about\btfff.png" />
+    <Content Include="static\images\about\CEO.png" />
+    <Content Include="static\images\about\showimg1.png" />
+    <Content Include="static\images\base\ic_back.png" />
+    <Content Include="static\images\base\ic_err.png" />
+    <Content Include="static\images\base\ic_fail.png" />
+    <Content Include="static\images\base\ic_loading.png" />
+    <Content Include="static\images\base\ic_search.png" />
+    <Content Include="static\images\base\ic_suc.png" />
+    <Content Include="static\images\base\next.png" />
+    <Content Include="static\images\college\famousimg1.png" />
+    <Content Include="static\images\college\fanhui.png" />
+    <Content Include="static\images\college\ftimg1.png" />
+    <Content Include="static\images\college\ftimg2.png" />
+    <Content Include="static\images\college\ftimg3.png" />
+    <Content Include="static\images\college\ftimg4.png" />
+    <Content Include="static\images\college\img1.png" />
+    <Content Include="static\images\college\img2.png" />
+    <Content Include="static\images\college\img3.png" />
+    <Content Include="static\images\college\img4.png" />
+    <Content Include="static\images\college\img5.png" />
+    <Content Include="static\images\college\img6.png" />
+    <Content Include="static\images\college\img7.png" />
+    <Content Include="static\images\college\img8.png" />
+    <Content Include="static\images\college\listimg1.png" />
+    <Content Include="static\images\college\menu.png" />
+    <Content Include="static\images\college\xiangxia.png" />
+    <Content Include="static\images\jianzhan\backhome.png" />
+    <Content Include="static\images\jianzhan\banner.png" />
+    <Content Include="static\images\jianzhan\banner1.png" />
+    <Content Include="static\images\jianzhan\banner2.png" />
+    <Content Include="static\images\jianzhan\btn_ljzx.png" />
+    <Content Include="static\images\jianzhan\btn_ljzx_y.png" />
+    <Content Include="static\images\jianzhan\ic-zx.png" />
+    <Content Include="static\images\jianzhan\ic_15.png" />
+    <Content Include="static\images\jianzhan\ic_code.png" />
+    <Content Include="static\images\jianzhan\ic_fl.png" />
+    <Content Include="static\images\jianzhan\ic_home.png" />
+    <Content Include="static\images\jianzhan\ic_lb.png" />
+    <Content Include="static\images\jianzhan\ic_next.png" />
+    <Content Include="static\images\jianzhan\ic_sc.png" />
+    <Content Include="static\images\jianzhan\ic_search.png" />
+    <Content Include="static\images\jianzhan\ic_wx.png" />
+    <Content Include="static\images\jianzhan\ic_xt.png" />
+    <Content Include="static\images\jianzhan\ic_zt.png" />
+    <Content Include="static\images\jianzhan\iic_xy.png" />
+    <Content Include="static\images\jianzhan\img1.png" />
+    <Content Include="static\images\jianzhan\img2.png" />
+    <Content Include="static\images\jianzhan\img3.png" />
+    <Content Include="static\images\jianzhan\img4.jpeg" />
+    <Content Include="static\images\jianzhan\logo.png" />
+    <Content Include="static\images\jianzhan\more.png" />
+    <Content Include="static\images\jianzhan\sc.png" />
+    <Content Include="static\images\jianzhan\to_top.png" />
+    <Content Include="static\images\jianzhan\wxadd.jpg" />
+    <Content Include="static\images\xiaojiang\ic_search.png" />
+    <Content Include="static\images\xiaojiang\img1.png" />
+    <Content Include="static\images\xiaojiang\logo.png" />
+    <Content Include="static\images\xiaojiang\lp.png" />
+    <Content Include="static\images\xiaojiang\tl_top.png" />
+    <Content Include="static\images\xiaojiang\top.png" />
+    <Content Include="static\js\jquery-2.1.4.js" />
+    <Content Include="static\js\jquery-weui.js" />
+    <Content Include="static\js\jquery-weui.min.js" />
+    <Content Include="static\js\jquery.pagination.js" />
+    <Content Include="static\js\showdiv.js" />
+    <Content Include="static\js\swiper.js" />
+    <Content Include="static\js\swiper.min.js" />
+    <Content Include="static\js\utils.js" />
     <Content Include="templates\green\about.png" />
     <Content Include="templates\green\about.xml" />
     <Content Include="templates\green\content.html" />
@@ -987,6 +1068,7 @@
     <Content Include="UserControl\HeaderSY.ascx" />
     <Content Include="UserControl\M_Mask.ascx" />
     <Content Include="UserControl\mn_footer_HD.ascx" />
+    <Content Include="UserControl\mn_footer_new.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1003,6 +1085,13 @@
     <Content Include="mn_fwbz.html" />
     <Content Include="mn_zffs.html" />
     <Content Include="mn_xmd.html" />
+    <Content Include="mn_shop_bak.aspx" />
+    <Content Include="mn_school_bak.aspx" />
+    <Content Include="mn_schooldetail_bak.aspx" />
+    <Content Include="product_detail_bak.aspx" />
+    <Content Include="mn_famous_bak.aspx" />
+    <Content Include="mn_famousdetail_bak.aspx" />
+    <Content Include="mn_house_bak.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="activity\ajax\addajax.aspx.cs">
@@ -2016,13 +2105,6 @@
     <Compile Include="oldpage\m_school.aspx.designer.cs">
       <DependentUpon>m_school.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\sendSMS258.aspx.cs">
-      <DependentUpon>sendSMS258.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\sendSMS258.aspx.designer.cs">
-      <DependentUpon>sendSMS258.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="oldpage\m_school_detail.aspx.cs">
       <DependentUpon>m_school_detail.aspx</DependentUpon>
@@ -2265,12 +2347,68 @@
     <Compile Include="UserControl\mn_footer_HD.ascx.designer.cs">
       <DependentUpon>mn_footer_HD.ascx</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\mn_footer_new.ascx.cs">
+      <DependentUpon>mn_footer_new.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\mn_footer_new.ascx.designer.cs">
+      <DependentUpon>mn_footer_new.ascx</DependentUpon>
+    </Compile>
     <Compile Include="webTest.aspx.cs">
       <DependentUpon>webTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="webTest.aspx.designer.cs">
       <DependentUpon>webTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mn_shop_bak.aspx.cs">
+      <DependentUpon>mn_shop_bak.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mn_shop_bak.aspx.designer.cs">
+      <DependentUpon>mn_shop_bak.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mn_school_bak.aspx.cs">
+      <DependentUpon>mn_school_bak.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mn_school_bak.aspx.designer.cs">
+      <DependentUpon>mn_school_bak.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mn_schooldetail_bak.aspx.cs">
+      <DependentUpon>mn_schooldetail_bak.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mn_schooldetail_bak.aspx.designer.cs">
+      <DependentUpon>mn_schooldetail_bak.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="product_detail_bak.aspx.cs">
+      <DependentUpon>product_detail_bak.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="product_detail_bak.aspx.designer.cs">
+      <DependentUpon>product_detail_bak.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mn_famous_bak.aspx.cs">
+      <DependentUpon>mn_famous_bak.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mn_famous_bak.aspx.designer.cs">
+      <DependentUpon>mn_famous_bak.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mn_famousdetail_bak.aspx.cs">
+      <DependentUpon>mn_famousdetail_bak.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mn_famousdetail_bak.aspx.designer.cs">
+      <DependentUpon>mn_famousdetail_bak.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mn_house_bak.aspx.cs">
+      <DependentUpon>mn_house_bak.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mn_house_bak.aspx.designer.cs">
+      <DependentUpon>mn_house_bak.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

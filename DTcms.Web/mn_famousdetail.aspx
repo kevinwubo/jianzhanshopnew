@@ -7,9 +7,12 @@
 <%@ Register src="UserControl/mn_footer.ascx" tagname="mn_footer" tagprefix="uc1" %>
 <%@ Register src="UserControl/mn_planbody_foot.ascx" tagname="mn_planbody_foot" tagprefix="uc2" %>
 <%@ Register src="UserControl/menuplane.ascx" tagname="menuplane" tagprefix="uc3" %>
+<!doctype html>
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
      <% List<Artisan> lstArtA = ModelArtisanList;
     foreach (Artisan model in lstArtA)
     {
@@ -20,201 +23,149 @@
 <meta name="Keywords" content="建盏名家,建盏老师,<%=model.artisanName %>,建盏品牌" />
 <meta name="Description" content="【<%=model.artisanName %>】<%=NoHTML(model.introduction) %>" />
 <%} %>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=750, user-scalable=no">
-    <meta name="format-detection" content="telephone=no">
-    <meta content="telephone=no" name="format-detection">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta http-equiv="Access-Control-Allow-Origin" content="*">
-    <link rel="stylesheet" type="text/css" href="project/Public/base/css/reset.css?d=" />
-    <link rel="stylesheet" type="text/css" href="project/Public/base/css/bass.css" />
-    <link rel="stylesheet" type="text/css" href="project/Public/page/css/index.css" />
-    <link rel="stylesheet" type="text/css" href="project/Public/base/css/swiper-4.3.3.min.css" />
-    <link rel="stylesheet" type="text/css" href="project/Public/page/css/famous.css" />
-    <link rel="stylesheet" type="text/css" href="project/Public/iconfont/iconfont.css" />
-    <script type="text/javascript" src="project/Public/base/js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="project/Public/base/js/swiper-4.3.3.min.js"></script>
-    <script type="text/javascript" src="project/Public/base/js/ZRrem.js"></script>
-    <script type="text/javascript" src="project/Public/base/js/core.js"></script>
-    <!-- <script type="text/javascript" src="project/Public/page/js/famous_detail.js"></script> -->
-    <style type="text/css">
-        #swiper-container-banner {
-            width: 100%;
-            height: 5.2rem;
-        }
-
-        #swiper-container-banner a {
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-        }
-
-        #swiper-container-banner a img {
-            width: 100%;
-            height: 100%;
+    <link rel="stylesheet" href="../static/css/base_1_30.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        body {
+            background: #fff;
+            max-width: 750px;
+            margin: auto;
+            /*-webkit-overflow-scrolling: touch;*/
         }
     </style>
 </head>
 
 <body>
-    <div id="app">
-        <div id="header" class="header bgc_c3">
-            <!-- 通用头 -->
-            <div id="head-page" class="head-page head-page-home">
-                <div class="head-left">
-                    <div class="head-backpage">
-                        <a href="javascript:window.history.back()">
-                            <span class="head-backpage-img"></span>
-                            <span>返回上页</span>
-                        </a>
-                    </div>
-                    <div class="head-gohome">
-                        <a href="m_index.html">
-                            <span class="gohome-bor"></span>
-                            <span class="head-gohome-img"></span>
-                            <span>首页</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="head-title">
-                    名家名堂
-                </div>
-                <div class="head-p-sides head-p-sides-side" onclick="moveLeft()">
-                    <img src="project/Public/image/side.png">
-                </div>
+    <header>
+        <div class="flex-row college-hd">
+            <div class="back">
+                返回
+            </div>
+            <div class="txt px36">名家名堂</div>
+            <div class="menu">
+                <img src="../static/images/college/menu.png" alt="">
             </div>
         </div>
-        <div class="planbody bgc_cc">
-        <% List<Artisan> lstArt = ModelArtisanList;
-                        foreach (Artisan model in lstArt)
-                        { %>
-            <!-- 关于我们-导航栏-->
-            <div id="list">
-                <div id="item">
-                    
-                    <div class="flex-row">
-                        <div class="item-div">
-                            <img class="imghead" src="<%=model.IDHead %>" />
-                        </div>
-                        <div class="flex-col" style="position: relative;">
-                            <div class="title"><%=model.artisanName %></div>
-                            <div class="desc"><%=model.artisanTitle %></div>
-                            <img class="xiala"  onclick="showcontent()" style="position: absolute;right: 0.4rem;bottom: 0.4rem; display: none" src="project/Public/image/famous-down.png" />
-                        </div>
-                    </div>
-                    <div class="pro-plane">
-                        <div class="part">
-                            <div class="desc-title">个人介绍</div>
-                            <div class="desc-content">
-                                <%=model.DetailedIntroduction%>
-                            </div>
-                        </div>
-                       
-                    </div>
-                    <div class="hidden-btn" onclick="hideconten()">
-                        <img src="project/Public/image/shouqi.png" />
-                    </div>
-                    
-                </div>
+    </header>
+    <section class="intro-wrap about-wrap">
+
+     <% List<Artisan> lstArt = ModelArtisanList;
+        foreach (Artisan model in lstArt)
+        { %>
+        <div class="intro-tit">
+            <div class="con-img">
+                <img src="<%=model.IDHead %>" alt="">
             </div>
-            <!-- 商品展示 -->
-            <!-- <div style="height: 0.266rem;" class="bgc_cc"></div> -->
-            <div id="planbody-shop-box" class="planbody-shop-box">
-                <div class="bgc_ff">
-                    <div class="planbody-shop">
-                        <div class="shop-title">
-                            <span class="bgc_ff">名家作品</span>
-                        </div>
-                        <div class="shop-describe flex_around">
-                         <%
+            <div class="con-txt">
+                <h1><%=model.artisanName %></h1>
+                <span>【<%=model.artisanTitle %>】</span>
+                <p>简介：<%=model.introduction%>
+                </p>
+            </div>
+        </div>
+        <div class="about-con">
+            <div class="fea-main">
+                <%=model.DetailedIntroduction%>
+            </div>
+        </div>
+        <%--<div class="close-all">收起全部</div>--%>
+        <div class="part1" style="border-top: none;">
+            <div class="flex-row" style="align-items: center;padding:.25rem 0">
+                <div class="flex-col"></div>
+                <div class="px32 color_57 mar-r-16">人气推荐</div>
+                <img style="height: 0.17rem;width: .17rem" src="../static/images/jianzhan/ic_next.png" alt="" />
+                <div class="flex-col"></div>
+            </div>
+            <div class="list">
+            <%
                         List<Product> lstPro = bllPro.GetProductList(" and Author= '" + model.artisanName + "'",0);
                         foreach (Product modelPro in lstPro)
                         {%>
-                        <div class="show-view shop-view-state-a">
-								<p><%=modelPro.ProductID%></p>
-								<p style="height:1.98rem;"><a href="m_<%=modelPro.ProductID %>.html" >
-									<img class="list-item-img" src="<%=modelPro.Images %>">
-                                    </a>
-								</p>
-								<p>[<%=modelPro.Author%>]</p>
-								<p><%=modelPro.ProductName%></p>
-								<p>器型：<%=modelPro.Type3%></p>
-								<p onclick="xunjia('<%=modelPro.ProductName %>')">
-									<span></span>
-									<button class="shop-query">立即询价</button>
-								</p>
-							</div>
+                <div class="item">
+                    <div style="margin: 0 .1rem">
+                        <div class="t1 color_red_c9">ID:<%=modelPro.ProductID %></div>
+                        <div class="pimg" style="background:url(<%=modelPro.Images %>)"></div>
+                    </div>
+                    <div class="t1 clamp1">【<%=modelPro.Author %>】<%=modelPro.ProductName %></div>
+                    <img class="bt-zx"  onclick="xunjia('<%=modelPro.ProductName %>','<%=modelPro.ProductID %>')" src="../static/images/jianzhan/btn_ljzx.png" />
+                </div>
+                <%} %>
+            </div>
+<%--            <div style="text-align: center; padding: .4rem" class="showmore">
+                <div class="color_red_c9 px28">展示更多</div>
+                <img style="width: 0.21rem;margin-top: 0.1rem" src="../static/images/jianzhan/more.png" alt="">
+            </div>--%>
+        </div>
 
-                    <%} %>
-      
-                        </div>
-                        <div class="shop-controll">
-                            <button class="load-surplus">显示所有产品
-                                <i class="iconfont icon-xiala1"></i>
-                            </button>
-                        </div>
+        <%} %>
+        <div style="background: #f7f7f7;padding: .5rem .6rem">
+            <div class="flex-row" style="text-align:center">
+                <img style="width:1.5rem;height:1.5rem;margin-left: .3rem"
+                    src="../static//images/jianzhan/ic_code.png" />
+                <div class="flex-col">
+                    <div class="flex-row" style="height:.35rem;align-items:center">
+                        <div class="mar-l-30 color_3 px20">关于我们</div>
+                        <div class="mar-l-30 color_3 px20">售后服务</div>
+                    </div>
+                    <div class="flex-row" style="height:.35rem;align-items:center">
+                        <div class="mar-l-30 color_3 px20">服务保障</div>
+                        <div class="mar-l-30 color_3 px20">在线支付</div>
+                    </div>
+                    <div class="flex-row" style="height:.43rem;align-items:center">
+                        <div class="color_red_c9 px30 mar-l-30">4008-2313-2321</div>
+                        <div class="color_red_c9 px16">(24小时在线)</div>
+                    </div>
+                    <div class="flex-row" style="height:.35rem;align-items:center">
+                        <div class="mar-l-30 color_3 px20" style="text-align:left">(识别二维码了解更多)</div>
                     </div>
                 </div>
             </div>
-            <%} %>
-            <div style="height: 0.266rem;" class="bgc_cc"></div>
-            <!-- 通用底部元素 片段截取 -->
-            <uc2:mn_planbody_foot ID="mn_planbody_foot1" runat="server" />
+            <div class="color_3 px16 clamp1 mar-t-16" style="text-align:center">闽ICP备17006498号-1 Copyright 2015 建盏天下网
+                版权所有</div>
+            <div class="color_3 px16 clamp1 mar-t-16" style="text-align:center"> 福建省盏天下电子商务有限公司</div>
         </div>
-        <form id="form1" runat="server">
-		    <uc1:mn_footer ID="mn_footer1" runat="server" />
-        </form>
-         <div id="menupart" style="display: none;left:200%;">
-            <uc3:menuplane ID="menuplane1" runat="server" />
-         </div>
-    </div>
-    <!-- 筛选 -->
-	    <div id='menumark' style="display: none"></div>
-	    
+    </section>
+    <footer style="border-top: 2px solid #F0F0F0;">
+        <div class="flex-row pad-l-30 pad-r-30 pad-t-20 pad-b-40" style="text-align: center;align-items: center;">
+            <div class="flex-col">
+                <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_home.png" alt="">
+                <div style="margin-top: .1rem;">首页</div>
+            </div>
+            <div class="flex-col">
+                <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_fl.png" alt="" />
+                <div style="margin-top: .1rem;">分类</div>
+            </div>
+            <div class="flex-col">
+                <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic-zx.png" alt="" />
+                <div style="margin-top: .1rem;">咨询</div>
+            </div>
+            <div style="width:2rem" class="mar-l-20">
+                <div class="flex-row">
+                    <img style="height: .5rem;width:.55rem" src="../static/images/jianzhan/ic_wx.png" alt="" />
+                    <div class="flex-col px16">(长按复制添加微信)</div>
+                </div>
+                <div style="margin-top: .1rem;">1231723876</div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="../static/js/jquery-2.1.4.js"></script>
+    <script src="../static/js/jquery-weui.js"></script>
+    <script src="../static/js/jquery.pagination.js"></script>
+    <script src="../static/js/utils.js"></script>
+    <script src="../static/js/showdiv.js"></script>
     <script>
-        //点击隐藏在线咨询面板或拨号面板
-        $('#menumark').click(function () {
-            
-            if (iskuaishu) {
-                $(".footer").animate({ bottom: '0rem' }, "slow", function () {
-                    $("#menumark").css("display", "none");
-                    $("#ksplane").css("display", "none");
-                });
-                iskuaishu = false;
+        $('.close-all').click(function () {
+            if ($('.about-con').is(':hidden')) {
+                $('.about-con').show();
+                $(this).html('收起全部');
+            } else {
+                $('.about-con').hide();
+                $(this).html('展开全部');
             }
-            if (iszaixian) {
-                $(".footer").animate({ bottom: '0rem' }, "slow", function () {
-                    $("#menumark").css("display", "none");
-                    $("#zxplane").css("display", "none");
-                });
-                iszaixian = false;
-            }
-            moveRight();
         })
-
-        // 点击展开列表
-        $('.load-surplus').click(function () {
-            // console.log($(this).parent().parent().children().eq(1))
-            $(this).parent().parent().children().eq(1).height('auto');
-            $(this).html('<a href="m_school.html">查看更多产品</a>');
-        })
-        function hideconten() {
-            $(".pro-plane").hide()
-            $(".hidden-btn").hide()
-            $(".xiala").show();
-        }
-        function showcontent() {
-            $(".xiala").hide();
-            $(".pro-plane").show()
-            $(".hidden-btn").show()
-        }
-
-        // $('#planbody-foot_box').load('./bass.html #planbody-foot')
-        </script>
+    </script>
 </body>
 
 </html>

@@ -11,59 +11,5 @@ namespace DTcms.Web.web {
     
     
     public partial class product_detail {
-        
-        /// <summary>
-        /// form1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// Header1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DTcms.Web.UserControl.Header Header1;
-        
-        /// <summary>
-        /// Mask1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DTcms.Web.UserControl.Mask Mask1;
-        
-        /// <summary>
-        /// LeaveMessage1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DTcms.Web.UserControl.LeaveMessage LeaveMessage1;
-        
-        /// <summary>
-        /// Zhuanti1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DTcms.Web.UserControl.Zhuanti Zhuanti1;
-        
-        /// <summary>
-        /// Footer1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DTcms.Web.UserControl.Footer Footer1;
     }
 }

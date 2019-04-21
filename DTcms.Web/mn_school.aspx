@@ -3,249 +3,267 @@
 <%@ Import Namespace="System.Data" %> 
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="DTcms.Model" %> 
-<%@ Register src="UserControl/mn_footer.ascx" tagname="mn_footer" tagprefix="uc1" %>
-<%@ Register src="UserControl/menuplane.ascx" tagname="mn_menuplane" tagprefix="uc3" %>
-<%@ Register src="UserControl/mn_planbody_foot.ascx" tagname="mn_planbody_foot" tagprefix="uc2" %>
 <html>
 
 <head>
+    <meta charset="utf-8">
     <title>建盏学院 - 建盏天下网</title>
         <meta name="keywords" content="建盏知识,选盏技巧,建盏新闻,建盏百科,建盏文化" />
         <meta name="description" content="建盏学院是建盏天下网传播千年的建盏文化和历史，共六大板块：建盏工艺，选盏技巧，百科知识，建盏新闻，拍卖行情，建盏历史，一站式指导盏友们如何鉴赏和入门的频道。" />
 		<meta name="title" content="建盏天下" />  
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=750, user-scalable=no">
-    <meta name="format-detection" content="telephone=no">
-    <meta content="telephone=no" name="format-detection">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta http-equiv="Access-Control-Allow-Origin" content="*">
-    <link rel="stylesheet" type="text/css" href="project/Public/base/css/reset.css?d=" />
-    <link rel="stylesheet" type="text/css" href="project/Public/base/css/bass.css" />
-    <link rel="stylesheet" type="text/css" href="project/Public/page/css/index.css" />
-    <link rel="stylesheet" type="text/css" href="project/Public/base/css/swiper-4.3.3.min.css" />
-    <link rel="stylesheet" type="text/css" href="project/Public/page/css/school.css" />
-    <link rel="stylesheet" type="text/css" href="project/Public/iconfont/iconfont.css" />
-    <script type="text/javascript" src="project/Public/base/js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="project/Public/base/js/swiper-4.3.3.min.js"></script>
-    <script type="text/javascript" src="project/Public/base/js/ZRrem.js"></script>
-<%--    <script type="text/javascript" src="project/Public/base/js/core.js"></script>
-    <script type="text/javascript" src="project/Public/page/js/about.js"></script>--%>
-    <style type="text/css">
-        #swiper-container-banner {
-            width: 100%;
-            height: 5.2rem;
-        }
-
-        #swiper-container-banner a {
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-        }
-
-        #swiper-container-banner a img {
-            width: 100%;
-            height: 100%;
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/base_1_30.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/pagination.css" type="text/css">
+    <style>
+        body {
+            background: #fff;
+            max-width: 750px;
+            margin: auto;
+            /*-webkit-overflow-scrolling: touch;*/
         }
     </style>
 </head>
 
 <body>
-    <div id="app">
-        <div id="header" class="header bgc_c3">
-            <!-- 通用头 -->
-            <div id="head-page" class="head-page head-page-home">
-                <div class="head-left">
-					<div class="head-backpage">
-						<a href="javascript:window.history.back()">
-							<span class="head-backpage-img"></span>
-							<span>返回上页</span>
-						</a>
-					</div>
-					<div class="head-gohome">
-						<a href="m_index.html">
-							<span class="gohome-bor"></span>
-							<span class="head-gohome-img"></span>
-							<span>首页</span>
-						</a>
-					</div>
-				</div>
-                <div class="head-title">
-                    建盏学院
-                </div>
-                <div class="head-p-sides head-p-sides-side" onclick="moveLeft()">
-                    <img src="project/Public/image/side.png">
-                </div>
+    <header>
+        <div class="flex-row college-hd">
+            <div class="back" href="javascript:window.history.back()">
+                返回
+            </div>
+            <div class="txt px36">建盏学院</div>
+            <div class="menu">
+                <img src="../static/images/college/menu.png" alt="">
             </div>
         </div>
-        <div class="planbody bgc_cc">
-            <!-- 关于我们-导航栏-->
-            <div class="about-tag-plane">
-                <ul id=about-tag-list class="about-tag-list">
-                    <li class="about-tag-item">
-                        <div id="div_xxzx">新闻资讯</div>
-                    </li>
-                    <li class="about-tag-item">
-                        <div id="div_pmhq">拍卖行情</div>
-                    </li>
-                    <li class="about-tag-item">
-                        <div id="div_jzgy">建盏工艺</div>
-                    </li>
-                    <li class="about-tag-item">
-                        <div id="div_bkzs">百科知识</div>
-                    </li>
-                    <li class="about-tag-item">
-                        <div id="div_jzjq">选盏技巧</div>
-                    </li>
-                    <li class="about-tag-item">
-                        <div id="div_whls">文化历史</div>
-                    </li>
-                </ul>
-            </div>
-            <div id="list">
-                <% List<articleView> lstXW = ModelArticle;
-                   foreach (articleView model in lstXW)
-                   { %>
-                <a href="mn_schooldetail.aspx?articleid=<%=model.id %>" id="item" class="flex-row">
-                    <div class="item-div"><img  class="imghead" src="<%=model.img_url %>"/></div>
-                    <div class="flex-col" style="position: relative;">
-                        <div class="title"><%=model.articleTitle %></div>
-                        <div class="desc"><%=model.zhaiyao %></div>
-                        <img  style="position: absolute;right: 0.4rem;bottom: 0.4rem;" src="project/Public/image/r-arr.png"/>
-                    </div> 
-                </a>
+    </header>
+    <section class="colList-wrap">
+        <div class="tab-box">
+            <div class="tab-menu" id="div_xxzx">新闻资讯</div>
+            <div class="tab-menu" id="div_pmhq">拍卖行情</div>
+            <div class="tab-menu" d="div_jzgy">建盏工艺</div>
+            <div class="tab-menu" id="div_bkzs">百科知识</div>
+            <div class="tab-menu" id="div_jzjq">选盏技巧</div>
+            <div class="tab-menu" id="div_whls">文化历史</div>
+        </div>
+        <div class="list-box">
+            
+             <% List<articleView> lstXW = ModelArticle;
+                foreach (articleView model in lstXW)
+                { %>
+                <div class="list-con">
+                <div class="con-img">
+                    <img src="<%=model.img_url %>" alt="">
+                </div>
+                <div class="con-txt">
+                    <h1><%=model.articleTitle %></h1>
+                    <span>【<%=model.AddDate.ToShortDateString() %>】</span>
+                    <p><%=model.zhaiyao %>
+                        <a href="mn_schooldetail.aspx?articleid=<%=model.id %>">查看更多></a>
+                    </p>
+                </div>
+                </div>
                 <%} %>
-            </div>
-            <!-- 门店 -->
-            <div id="planbody-promise" class="planbody-promise bgc_ff">
-
-            </div>
-            <!-- 通用底部元素 片段截取 -->
-            <uc2:mn_planbody_foot ID="mn_planbody_foot1" runat="server" />
+            
         </div>
-            <form id="form1" runat="server">
-		    <uc1:mn_footer ID="mn_footer1" runat="server" />
-        </form>
-    	<!-- 筛选 -->
-            <div id="menupart" style="display: none;left:200%;"><uc3:mn_menuplane  ID="mn_menuplane1" runat="server"/></div>
+        <!-- 分页 -->
+        <div class="div-h-3"></div>
+        <div class="flex-row M-box m-style" style="justify-content: center"></div>
+        <div class="div-h-8"></div>
+       
+        <div style="background: #f7f7f7;padding: .5rem .6rem">
+            <div class="flex-row" style="text-align:center">
+                <img style="width:1.5rem;height:1.5rem;margin-left: .3rem"
+                    src="../static//images/jianzhan/ic_code.png" />
+                <div class="flex-col">
+                    <div class="flex-row" style="height:.35rem;align-items:center">
+                        <div class="mar-l-30 color_3 px20">关于我们</div>
+                        <div class="mar-l-30 color_3 px20">售后服务</div>
+                    </div>
+                    <div class="flex-row" style="height:.35rem;align-items:center">
+                        <div class="mar-l-30 color_3 px20">服务保障</div>
+                        <div class="mar-l-30 color_3 px20">在线支付</div>
+                    </div>
+                    <div class="flex-row" style="height:.43rem;align-items:center">
+                        <div class="color_red_c9 px30 mar-l-30">4008-2313-2321</div>
+                        <div class="color_red_c9 px16">(24小时在线)</div>
+                    </div>
+                    <div class="flex-row" style="height:.35rem;align-items:center">
+                        <div class="mar-l-30 color_3 px20" style="text-align:left">(识别二维码了解更多)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="color_3 px16 clamp1 mar-t-16" style="text-align:center">闽ICP备17006498号-1 Copyright 2015 建盏天下网
+                版权所有</div>
+            <div class="color_3 px16 clamp1 mar-t-16" style="text-align:center"> 福建省盏天下电子商务有限公司</div>
+        </div>
+    </section>
+    <div id="header1" class="flex-row pad-l-30 pad-r-30 pad-t-30 pad-b-40" style="text-align: center;align-items: center;">
+        <div class="flex-col">
+            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_home.png" alt="">
+            <div style="margin-top: .1rem;height: .3rem">首页</div>
+        </div>
+        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
+        <div class="flex-col" onclick="moveLeft()">
+            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_fl.png" alt="" />
+            <div style="margin-top: .1rem;height: .3rem">分类</div>
+        </div>
+        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
+        <div class="flex-col">
+            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic-zx.png" alt="" />
+            <div style="margin-top: .1rem;height: .3rem">咨询</div>
+        </div>
+        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
+        <div style="width:2rem" class="mar-l-20">
+            <div class="flex-row" style="align-items: center;">
+                <img style="height: .5rem;width:.55rem" src="../static/images/jianzhan/ic_wx.png" alt="" />
+                <div class="flex-col px16">(长按复制添加微信)</div>
+            </div>
+            <div style="margin-top: .1rem;height: .3rem">1231723876</div>
+        </div>
     </div>
-    	<div id='menumark' style="display: none"></div>
-	
+
+ <!-- 立即质询 -->
+ <!-- 立即质询 -->
+ <div id="guanzhuweixin-s" class="flex-row " style="position: fixed;bottom: 0;height: 1.62rem;background: white;text-align: center;align-items: center;border-top: 1px solid #f6f6f6;width: 100%;z-index: 99;">
+     <div class="flex-col searchzx mar-l-30">
+
+         <div class="flex-row" style="align-items: center;height: .7rem">
+<!-- 
+             <img class="mar-l-30 mar-r-16" style="height: .3rem;width: .25rem" src="../static/images/jianzhan/ic_search.png"
+                 alt=""> -->
+             <input style="background: #f7f7f7" class="px24 pad-l-30" type="text" placeholder="大师或者编号" />
+         </div>
+     </div>
+     <div class="ssbtnzx px24 mar-r-30">立即咨询</div>
+ </div>
+ <div class="totop" style="display: block;">
+    <img style="height:.8rem;width:.8rem" src="../static/images/jianzhan/to_top.png">
+</div>
+<div class="backtohome" style="display: block;">
+    <img style="height:.8rem;width:.8rem" src="../static/images/jianzhan/backhome.png">
+</div>
+    <script src="../static/js/jquery-2.1.4.js"></script>
+    <script src="../static/js/jquery-weui.js"></script>
+    <script src="../static/js/jquery.pagination.js"></script>
+    <script src="../static/js/utils.js"></script>
+    <script src="../static/js/showdiv.js"></script>
+    <script>
+        // 返回顶部
+        var backButton = $('.totop');
+        var backToHome = $('.backtohome');
+        function backToTop() {
+            // $(window).animate({
+            // 	pageYOffset: 0
+            // }, 800);
+            window.scrollTo(0, 0)
+        }
+        backButton.on('click', backToTop);
+        backToHome.on('click', function () {
+            location.href = '/mn_index.html'
+        })
+
+        $(window).on('scroll', function () {/*当滚动条的垂直位置大于浏览器所能看到的页面的那部分的高度时，回到顶部按钮就显示 */
+            if ($(window).scrollTop() > $(window).height())
+                backButton.fadeIn();
+            else
+                backButton.fadeOut();
+        });
+        $(window).trigger('scroll');
+        $('.M-box').pagination({
+            mode: 'fixed'
+        });
+        isTouchDevice();
+
+        var title = getUrlParam("title");
+        if (title == "xxzx") {
+            $("#div_xxzx").addClass("active");
+        }
+        else if (title == "pmhq") {
+            $("#div_pmhq").addClass("active");
+        }
+        else if (title == "jzgy") {
+            $("#div_jzgy").addClass("active");
+        }
+        else if (title == "bkzs") {
+            $("#div_bkzs").addClass("active");
+        }
+        else if (title == "jzjq") {
+            $("#div_jzjq").addClass("active");
+        }
+        else if (title == "whls") {
+            $("#div_whls").addClass("active");
+        }
+        else {
+            $("#div_xxzx").addClass("active");
+        }
+
+
+        $(document).ready(function () {
+            $("#div_xxzx").click(function () {
+                window.location.href = "mn_school.aspx?title=xwzx";
+                $("#div_xxzx").addClass("active");
+                $("#div_pmhq").removeClass("active");
+                $("#div_jzgy").removeClass("active");
+                $("#div_bkzs").removeClass("active");
+                $("#div_jzjq").removeClass("active");
+                $("#div_jzjq").removeClass("active");
+            });
+            $("#div_pmhq").click(function () {
+                window.location.href = "mn_school.aspx?title=pmhq";
+                $("#div_xxzx").removeClass("active");
+                $("#div_pmhq").addClass("active");
+                $("#div_jzgy").removeClass("active");
+                $("#div_bkzs").removeClass("active");
+                $("#div_jzjq").removeClass("active");
+                $("#div_jzjq").removeClass("active");
+            });
+            $("#div_jzgy").click(function () {
+                window.location.href = "mn_school.aspx?title=jzgy";
+                $("#div_xxzx").removeClass("active");
+                $("#div_jzgy").addClass("active");
+                $("#div_jjgy").removeClass("active");
+                $("#div_bkzs").removeClass("active");
+                $("#div_jzjq").removeClass("active");
+                $("#div_jzjq").removeClass("active");
+            });
+            $("#div_bkzs").click(function () {
+                window.location.href = "mn_school.aspx?title=bkzs";
+                $("#div_xxzx").removeClass("active");
+                $("#div_bkzs").addClass("active");
+                $("#div_jzgy").removeClass("active");
+                $("#div_bkzs").removeClass("active");
+                $("#div_jzjq").removeClass("active");
+                $("#div_jzjq").removeClass("active");
+            });
+            $("#div_jzjq").click(function () {
+                window.location.href = "mn_school.aspx?title=jzjq";
+                $("#div_xxzx").removeClass("active");
+                $("#div_jzjq").addClass("active");
+                $("#div_jzgy").removeClass("active");
+                $("#div_bkzs").removeClass("active");
+                $("#div_jzjq").removeClass("active");
+                $("#div_jzjq").removeClass("active");
+            });
+            $("#div_whls").click(function () {
+                window.location.href = "mn_school.aspx?title=whls";
+                $("#div_xxzx").removeClass("active");
+                $("#div_whls").addClass("active");
+                $("#div_jzgy").removeClass("active");
+                $("#div_bkzs").removeClass("active");
+                $("#div_jzjq").removeClass("active");
+                $("#div_jzjq").removeClass("active");
+            });
+        });
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            //构造一个含有目标参数的正则表达式对象            
+            var r = window.location.search.substr(1).match(reg);
+            //匹配目标参数            
+            if (r != null) return unescape(r[2]);
+            return null; //返回参数值        
+        }
+    </script>
 </body>
 
 </html>
-<script>
-    //点击隐藏在线咨询面板或拨号面板
-    $('#menumark').click(function () {
-
-        if (iskuaishu) {
-            $(".footer").animate({ bottom: '0rem' }, "slow", function () {
-                $("#menumark").css("display", "none");
-                $("#ksplane").css("display", "none");
-            });
-            iskuaishu = false;
-        }
-        if (iszaixian) {
-            $(".footer").animate({ bottom: '0rem' }, "slow", function () {
-                $("#menumark").css("display", "none");
-                $("#zxplane").css("display", "none");
-            });
-            iszaixian = false;
-        }
-        moveRight();
-    })
-
-    // $('#planbody-foot_box').load('./bass.html #planbody-foot');
-    var title = getUrlParam("title");
-    if (title == "xxzx") {
-        $("#div_xxzx").addClass("btn-on");
-    }
-    else if (title == "pmhq") {
-        $("#div_pmhq").addClass("btn-on");
-    }
-    else if (title == "jzgy") {
-        $("#div_jzgy").addClass("btn-on");
-    }
-    else if (title == "bkzs") {
-        $("#div_bkzs").addClass("btn-on");
-    }
-    else if (title == "jzjq") {
-        $("#div_jzjq").addClass("btn-on");
-    }
-    else if (title == "whls") {
-        $("#div_whls").addClass("btn-on");
-    }
-    else {
-        $("#div_xxzx").addClass("btn-on");
-    }
-
-
-    $(document).ready(function () {
-        $("#div_xxzx").click(function () {
-            window.location.href = "mn_school.aspx?title=xwzx";
-            $("#div_xxzx").addClass("btn-on");
-            $("#div_pmhq").removeClass("btn-on");
-            $("#div_jzgy").removeClass("btn-on");
-            $("#div_bkzs").removeClass("btn-on");
-            $("#div_jzjq").removeClass("btn-on");
-            $("#div_jzjq").removeClass("btn-on");
-        });
-        $("#div_pmhq").click(function () {
-            window.location.href = "mn_school.aspx?title=pmhq";
-            $("#div_xxzx").removeClass("btn-on");
-            $("#div_pmhq").addClass("btn-on");
-            $("#div_jzgy").removeClass("btn-on");
-            $("#div_bkzs").removeClass("btn-on");
-            $("#div_jzjq").removeClass("btn-on");
-            $("#div_jzjq").removeClass("btn-on");
-        });
-        $("#div_jzgy").click(function () {
-            window.location.href = "mn_school.aspx?title=jzgy";
-            $("#div_xxzx").removeClass("btn-on");
-            $("#div_jzgy").addClass("btn-on");
-            $("#div_jjgy").removeClass("btn-on");
-            $("#div_bkzs").removeClass("btn-on");
-            $("#div_jzjq").removeClass("btn-on");
-            $("#div_jzjq").removeClass("btn-on");
-        });
-        $("#div_bkzs").click(function () {
-            window.location.href = "mn_school.aspx?title=bkzs";
-            $("#div_xxzx").removeClass("btn-on");
-            $("#div_bkzs").addClass("btn-on");
-            $("#div_jzgy").removeClass("btn-on");
-            $("#div_bkzs").removeClass("btn-on");
-            $("#div_jzjq").removeClass("btn-on");
-            $("#div_jzjq").removeClass("btn-on");
-        });
-        $("#div_jzjq").click(function () {
-            window.location.href = "mn_school.aspx?title=jzjq";
-            $("#div_xxzx").removeClass("btn-on");
-            $("#div_jzjq").addClass("btn-on");
-            $("#div_jzgy").removeClass("btn-on");
-            $("#div_bkzs").removeClass("btn-on");
-            $("#div_jzjq").removeClass("btn-on");
-            $("#div_jzjq").removeClass("btn-on");
-        });
-        $("#div_whls").click(function () {
-            window.location.href = "mn_school.aspx?title=whls";
-            $("#div_xxzx").removeClass("btn-on");
-            $("#div_whls").addClass("btn-on");
-            $("#div_jzgy").removeClass("btn-on");
-            $("#div_bkzs").removeClass("btn-on");
-            $("#div_jzjq").removeClass("btn-on");
-            $("#div_jzjq").removeClass("btn-on");
-        });
-    });
-    function getUrlParam(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        //构造一个含有目标参数的正则表达式对象            
-        var r = window.location.search.substr(1).match(reg);
-        //匹配目标参数            
-        if (r != null) return unescape(r[2]);
-        return null; //返回参数值        
-    }
-
-</script>

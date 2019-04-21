@@ -1115,18 +1115,18 @@ namespace DTcms.Common
             }
             StringBuilder pageStr = new StringBuilder();
             string pageId = "__id__";
-            string firstBtn = "<a href=\"" + ReplaceStr(linkUrl, pageId, (pageIndex - 1).ToString()) + "\">«上一页</a>";
-            string lastBtn = "<a href=\"" + ReplaceStr(linkUrl, pageId, (pageIndex + 1).ToString()) + "\">下一页»</a>";
+            string firstBtn = "<a href=\"" + ReplaceStr(linkUrl, pageId, (pageIndex - 1).ToString()) + "\"><</a>";
+            string lastBtn = "<a href=\"" + ReplaceStr(linkUrl, pageId, (pageIndex + 1).ToString()) + "\">></a>";
             string firstStr = "<a href=\"" + ReplaceStr(linkUrl, pageId, "1") + "\">1</a>";
             string lastStr = "<a href=\"" + ReplaceStr(linkUrl, pageId, pageCount.ToString()) + "\">" + pageCount.ToString() + "</a>";
 
             if (pageIndex <= 1)
             {
-                firstBtn = "<span class=\"disabled\">«上一页</span>";
+                firstBtn = "<span class=\"disabled\"><</span>";
             }
             if (pageIndex >= pageCount)
             {
-                lastBtn = "<span class=\"disabled\">下一页»</span>";
+                lastBtn = "<span class=\"disabled\">></span>";
             }
             if (pageIndex == 1)
             {
@@ -1142,7 +1142,7 @@ namespace DTcms.Common
             int lastNum = pageIndex + centSize - ((centSize / 2) + 1); //中间结束的页码
             if (lastNum >= pageCount)
                 lastNum = pageCount - 1;
-            pageStr.Append("<span>共" + totalCount + "记录</span>");
+            //pageStr.Append("<span>共" + totalCount + "记录</span>");
             pageStr.Append(firstBtn + firstStr);
             if (pageIndex >= centSize)
             {

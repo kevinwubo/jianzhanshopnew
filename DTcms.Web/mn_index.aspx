@@ -4,56 +4,169 @@
 <%@ Import Namespace="System.Data" %> 
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="DTcms.Model" %> 
-<%@ Register src="UserControl/mn_footer.ascx" tagname="mn_footer" tagprefix="uc1" %>
-<%@ Register src="UserControl/menuplane.ascx" tagname="mn_menuplane" tagprefix="uc2" %>
-<%@ Register src="UserControl/mn_planbody_foot.ascx" tagname="mn_planbody_foot" tagprefix="uc2" %>
-<!DOCTYPE html>
+<%@ Register src="UserControl/mn_footer_new.ascx" tagname="mn_footer_new" tagprefix="uc1" %>
+<!doctype html>
 <html>
 
 <head>
-	<title>建盏天下网(JianZhanShop.com) - 建窑建盏首席品牌商城</title>
+<title>建盏天下网(JianZhanShop.com) - 建窑建盏首席品牌商城</title>
     <meta name="keywords" content="建盏,建窑,天目盏,兔毫盏,油滴盏" />
     <meta name="description" content="建盏天下(JianZhanShop.com)是国内首家专注于建窑建盏的专业门户，提供产地艺人直供的精品兔毫盏、油滴盏、曜变盏、鹧鸪斑、金油滴、敛口盏、束口盏。建盏天下传播千年的建盏文化和历史，大师名家，老盏等权威信息，提供建盏品鉴、收藏和定制服务。" />
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=750, user-scalable=no">
-	<meta name="format-detection" content="telephone=no">
-	<meta content="telephone=no" name="format-detection">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<meta http-equiv="Access-Control-Allow-Origin" content="*">
-	<link rel="stylesheet" type="text/css" href="project/Public/base/css/reset.css?d=" />
-	<link rel="stylesheet" type="text/css" href="project/Public/base/css/bass.css" />
-	<link rel="stylesheet" type="text/css" href="project/Public/base/css/swiper-4.3.3.min.css" />
-	<link rel="stylesheet" type="text/css" href="project/Public/page/css/index.css" />
-	<link rel="stylesheet" type="text/css" href="project/Public/iconfont/iconfont.css" />
-	<script type="text/javascript" src="project/Public/base/js/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="project/Public/base/js/swiper-4.3.3.min.js"></script>
-	<script type="text/javascript" src="project/Public/base/js/ZRrem.js"></script>
-	<!-- <script type="text/javascript" src="project/Public/base/js/core.js"></script> -->
-	<!-- <script type="text/javascript" src="project/Public/page/js/index.js"></script> -->
-	<style type="text/css">
-		#swiper-container-banner {
-			width: 100%;
-			height: 5.2rem;
-		}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <!--<link rel="stylesheet" href="/css/register/base.css" type="text/css">-->
+    <link rel="stylesheet" href="/static/css/jquery-weui.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/base_1_30.css" type="text/css">
+    <!--<link rel="stylesheet" href="/static/css/pagination.css" type="text/css">-->
 
-		#swiper-container-banner a {
-			display: inline-block;
-			width: 100%;
-			height: 100%;
-		}
+    <style>
+        body {
+            background: #fff;
+            max-width: 750px;
+            margin: auto;
+            /*-webkit-overflow-scrolling: touch;*/
+        }
 
-		#swiper-container-banner a img {
-			width: 100%;
-			height: 100%;
-		}
+        .color_red_c9 {
+            color: #c90319;
+        }
 
+        .ssbtn {
+            width: 1rem;
+            background: #c90319;
+            color: white;
+            height: .56rem;
+            line-height: .56rem;
+            text-align: center;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .search {
+            background: #f7f7f7;
+            height: 0.56rem;
+            border-radius: 3px;
+        }
+
+        .ssbtnzx {
+            width: 2rem;
+            background: #c90319;
+            color: white;
+            height: .7rem;
+            line-height: .7rem;
+            text-align: center;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .searchzx {
+            background: #f7f7f7;
+            height: 0.7rem;
+            border-radius: 3px;
+        }
+
+        .banner {
+            overflow: hidden;
+            border-radius: 5px;
+            margin: .256rem;
+        }
+
+        .banner img {
+            width: 100%;
+        }
+
+        .part1 {
+            background: white;
+            padding: 0.256rem;
+            border-top: .1rem solid #f7f7f7;
+        }
+
+        .list {
+            overflow: hidden;
+            height: 7rem;
+            position: relative;
+        }
+
+        .list .item {
+            text-align: center;
+            width: 33.3%;
+            float: left;
+            height: 3.3rem;
+            margin-top: .2rem
+        }
+
+        .list .item .t1 {
+            margin-top: .2rem;
+            font-size: .18rem;
+        }
+
+        .list .item .pimg {
+            height: 1.4rem;
+            margin-top: .1rem;
+            width: 100%;
+            background-size: 128% !important;
+            background-position: center !important;
+        }
+
+        .bt-zx {
+            margin-top: .2rem;
+            width: 1.34rem;
+            height: .5rem;
+        }
+        /* 大师推荐 */
+        .list1 {
+            overflow: hidden;
+            height: 14.1rem;
+            position: relative;
+        }
+
+        .list1 .item1 {
+            text-align: center;
+            width: 50%;
+            float: left;
+            height: 4.5rem;
+            margin-top: .2rem
+        }
+
+        .list1 .item1 .t1 {
+            margin-top: .2rem;
+            font-size: .18rem;
+        }
+
+        .list1 .item1 .pimg {
+            height: 2.5rem;
+            /* margin-top: .1rem; */
+            width: 100%;
+            background-size: 128% !important;
+            background-position: center !important;
+        }
+        .swiper_container_suz2 {
+            width: 100%;
+            /* padding-left:3%; */
+            height: 4.2rem;
+            overflow: hidden;
+            position: relative;
+            background: white;
+        }
+
+        .swiper_container_suz2 .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            line-height: 1.3rem;
+            height: 4.2rem;
+            margin-top: 0rem;
+            position: relative;
+            /*-webkit-transform:scale(0.8);*/
+        }
+        .swiper_container_suz2 .swiper-slide img {
+            width: 100%;
+            height:auto;
+            display: block;
+        }
+        /* 名家 */
+    
 		#swiper-container-star {
 			width: 100%;
-			height: 4.77rem;
+			height: 3.6rem;
 		}
 
 		#swiper-container-star a {
@@ -64,12 +177,16 @@
 
 		#swiper-container-star a img {
 			width: 100%;
-			height: 3.7rem;
+			height: 2.6rem;
+		}
+		#swiper-container-star a #headimg {
+			width: 100%;
+			height: 2.6rem;
 		}
 
 		.star-describe {
 			width: 100%;
-			height: 1.07rem;
+			height: 1rem;
 			background-color: white;
 			text-align: center;
 			overflow: hidden;
@@ -89,848 +206,890 @@
 			color: #333333;
 		}
 
-		#swiper-container-stop {
-			width: 100%;
-			padding: 0.4rem 0;
-			height: 4.5rem;
-		}
-
-		#swiper-container-stop a {
-			display: inline-block;
-			width: 100%;
-			height: 100%;
-		}
-
-		#swiper-container-stop a img {
-			width: 100%;
-			height: 100%;
-		}
-		.planbody-active-main-4 {
-			position: relative;
-			display: inline-block;
-			vertical-align: top;
-			width: 45%;
-			height: 6rem;
-			box-sizing: border-box;
-			border-right: 2px solid #b1b1b1;
-			padding-top: 0.613rem;
-			padding-bottom: 0.613rem;
-			float: left;
-			border-top: 2px solid #b1b1b1;
-		}
-
-		.planbody-active-main-4 .active-main-img {
-			position: absolute;
-			left: 0.8rem;
-			top: 0.8rem;
-			width: 2.76rem;
-			height: 2.76rem;
-		}
-
-		.active-main-img,
-		.active-main-img img {
-			width: 2.76rem;
-			height: 2.76rem;
-			display: inline-block;
-		}
-
-		.planbody-active-main-4 .active-main-text {
-			width: 100%;
-			margin-top: 3.6rem;
-		}
-
-		.planbody-active-main-6 {
-			position: relative;
-			display: inline-block;
-			vertical-align: top;
-			width: 55%;
-			height: 2rem;
-			box-sizing: border-box;
-			border-top: 2px solid #b1b1b1;
-			padding-top: 0.15rem;
-			padding-bottom: 0.15rem;
-			display: flex;
-		}
-
-		.planbody-active-main-6 .active-main-img {
-			width: 1.6rem;
-			height: 1.6rem;
-			margin-left: 0.4rem
-		}
-
-		.planbody-active-main-6 .active-main-img img{
-			width: 1.6rem;
-			height: 1.6rem;
-			/* display: inline-block; */
-		}
-
-		.planbody-active-main-6 .active-main-text {
-			top: 0.15rem;
-			position: relative;
-		}
-		#menupart {
-	        height: 100%;
-	        width: 80%;
-	        position: absolute;
-	        top: 0;
-	        left: 0;
-	        z-index: 99;
-        }
-        #menupart .menu-body {
-			width: 100%
-		}
-		#swiper-container-star a #headimg {
-            width: 100%;
-            height: 3.7rem;
-        }
-        .head-p-logo, .head-p-search-index, .head-p-sides {
-            display: inline-block;
-            vertical-align: top;
+		.store{
+            margin-top: .35rem;
             height: auto;
+            border: 1px solid #ccc;
+            background: #f7f7f7;
+            border-radius: 15px;
+        }
+        #menupart {
+			height: 100%;
+			width: 80%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 99;
+		}
+
+        #menumark{
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left:0;
+            background: rgba(99, 99, 99, 0.5);
+            z-index: 98;
+        }
+        #menupart .menu-body{
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: #fff;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            padding-top: 1.2rem;
+            padding-bottom: 1.06rem;
             box-sizing: border-box;
- 	        margin-top: 0.226rem;
+            padding-left: .2rem;
+            padding-right: .2rem;
         }
-        .head-p-search-index {
-	        height: auto;
-	        background-color: #b32b2b;
-	        padding-top: 2px;
-	        padding-bottom: 2px;
-	        padding-left: 2px;
-	        box-sizing: border-box;
+        .menu-cate-part{
+            width: 100%;
+            position: relative;
+            text-align: center;
         }
-        .head-p-search-index input{
-	        width: 4.16rem;
-	        height: 0.72rem;
-	        border: none;
-	        outline: none;
-	        background-color: white;
-	        display: inline-block;
-	        vertical-align: top;
-	        font-size: 0.385rem;
-	        text-indent: 0.173rem;
+        .menu-cate-title{
+            height: .7rem;
+            position: relative;
+            line-height: .7rem;
+            font-size: 0.24rem;
+            background: white;
+            margin: auto;
+            width: 1.5rem;
+            z-index: 1;
         }
-        .head-p-search-index label{
-	        display: inline-block;
-	        width: 1.12rem;
-	        text-align: center;
-	        line-height: 0.72rem;
-	        font-size: 0.385rem;
-	        color: white;
+        .cate-list{
+            background: #fff;
+            overflow: hidden;
         }
-        .head-p-sides {
-	        position: absolute;
-	        right: 0.33rem;
-	        top: 0.426rem;
-	        margin-top: 0;
+        .cate-list .item{
+            float: left;
+            width: 33.3%;
         }
-        .head-p-sides img{
-	        display: inline-block;
-	        width: 0.733rem;
+        .cate-list .item div{
+            height: 0.6rem;
+            line-height: 0.6rem;
+            text-align: center;
+            font-size: 0.22rem;
+            color: #666;
+            margin: .15rem;
+            background: #f6f6f6;
+            border: 1px solid #e6e6e6;
         }
-	</style>
+        .back-tag {
+            border-top: 1px solid #c90319;
+            border-left: 1px solid #c90319;
+            height: 0.15rem;
+            width: 0.15rem;
+            float: right;
+            margin: .15rem .15rem;
+            transform: rotate(315deg);
+            -o-transform: rotate(315deg);
+            -webkit-transform: rotate(315deg);
+            -moz-transform: rotate(315deg);
+        }   
+        .line{
+            width: 100%;
+            height: 1px;
+            background: #f0f0f0;
+            position: absolute;
+            top: 16px;
+        }
+        .w_50{
+            width: 50% !important;
+        }
+        .tk-mark {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            top: 0;
+            left: 0;
+            z-index: 9999;
+        }
+
+        /*说明*/
+        .tk-mark .kuang {
+            position: absolute;
+            height: 5.6rem;
+            background: white;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /*购买弹款*/
+        .tk-mark .gmkuang {
+            padding: 0.34rem 0 0;
+            position: absolute;
+            /*height: 6rem;*/
+            background: white;
+            bottom: 0;
+            width: 100%;
+        }
+        .px22{
+            font-size: .22rem
+        }
+        .totop {
+            position: fixed;
+            height: auto;
+            z-index: 99999;
+            top: 8.5rem;
+            right: 0.4rem;
+        }
+        .swiper-container {
+            width: 100%;
+            height: 8.5rem;
+        } 
+        /*包裹自定义分页器的div的位置等CSS样式*/
+        .swiper-pagination-custom {
+bottom: .3rem
+        }
+        /*自定义分页器的样式，这个你自己想要什么样子自己写*/
+        .swiper-custom {
+            width: .1rem;
+            height: .1rem;
+            display: inline-block;
+            background: #666;
+            opacity: .3;
+            margin: 0 5px;
+            border-radius: 50%;
+            margin: 0 .3rem
+        }
+        /*自定义分页器激活时的样式表现*/
+        .swiper-custom-active {
+            opacity: 1;
+            width: 1.2rem;
+            background-color: #F78E00;
+        }
+    </style>
 </head>
 
 <body>
-	<div id="app">
-		<div class="header bgc_ff">
-			<!-- 通用头 -->
-			<div class="head-page head-page-home">
-				<div class="head-p-logo">
-					<img src="project/Public/image/logo.png" />
-				</div>
-				<div class="head-p-search-index">
-					<input type="text" id="keyword" placeholder="作者编号或名称" class="col_33">
-					<label id="btnSearch">搜索</label>
-				</div>
-				<div class="head-p-sides" onclick="moveLeft()">
-					<img src="project/Public/image/about.png">
-				</div>
-			</div>
-		</div>
-		<!-- 返回顶部按钮 -->
-		<div class="totop">
-			<img src="project/Public/image/toTop.png" />
-		</div>
-		<div class="planbody bgc_cc">
-			<!-- banner -->
-			<div>
-				<div id="swiper-container-banner" class="swiper-container">
-					<div id="swiper-wrapper-banner" class="swiper-wrapper">
-						<div class="swiper-slide">
-							<a href="/mn_shop.aspx?name=陈大鹏">
-								<img src="m_images/lun2.jpg">
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="/mn_shop.aspx?name=孙建兴">
-								<img src="m_images/lun3.jpg">
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="/mn_shop.aspx?name=李达">
-								<img src="m_images/lun4.jpg">
-							</a>
-						</div>
-			<%--			<div class="swiper-slide">
-							<a href="/mn_shop.aspx?name=李达">
-								<img src="m_images/lun4.jpg">
-							</a>
-						</div>--%>
-					</div>
-					<!-- 分页器 -->
-					<div class="swiper-pagination"></div>
-				</div>
-			</div>
-			<!-- nav -->
-			<div class="planbody-nav bgc_ff">
 
-				<a href="m_artisan_list.html" class="col_33">
-					<dl>
-						<dt>
-							<img src="project/Public/image/home_star.png">
-						</dt>
-						<dd>名家名堂</dd>
-					</dl>
-				</a>
-                <a href="m_product_list.html" class="col_33">
-					<dl>
-						<dt>
-							<img src="project/Public/image/home_shop.png">
-						</dt>
-						<dd><b style="color:Red">商城</b></dd>
-					</dl>
-				</a>
-				<a href="m_school.html" class="col_33">
-					<dl>
-						<dt>
-							<img src="project/Public/image/home_school.png">
-						</dt>
-						<dd>建盏学院</dd>
-					</dl>
-				</a>
-				<a href="m_collection.html" class="col_33">
-					<dl>
-						<dt>
-							<img src="project/Public/image/home_house.png">
-						</dt>
-						<dd>收藏馆</dd>
-					</dl>
-				</a>
-			</div>
-			<!-- active -->
-			<div style="height: 0.266rem;" class="bgc_cc"></div>
-            <div class="planbody-active bgc_ff">
-				<a href="/zt_yaobian.html" class="planbody-active-main-4 bor_r">
-					<div class="active-main-text">
-						<p>精彩专题</p >
-						<p>专题活动全知道</p >
-						<p>限时好礼</p >
-					</div>
-					<div class="active-main-img">
-						<img src="m_images/01.png" alt='active'>
-					</div>
-				</a>
-				<a href="/mn_shop.aspx?typeModel=new" class="planbody-active-main-6 bor_l">
-					<div class="active-main-text">
-						<p>每周新品</p >
-						<p>新品好货快速了解</p >
-						<p>每周一更</p >
-					</div>
-					<div class="active-main-img">
-						<img src="m_images/02.png" alt='active'>
-					</div>
-				</a>
-				<a href="/mn_shop.aspx?type2=油滴/鹧鸪斑" class="planbody-active-main-6 bor_r">
-					<div class="active-main-img">
-						<img src="m_images/03.png" alt='active'>
-					</div>
-					<div class="active-main-text" style=" margin-left: 0.4rem;">
-						<p>精美釉色</p >
-						<p>油滴釉色快速导航</p >
-						<p>即时更新</p >
-					</div>
-				</a>
-				<a href="/mn_shop.aspx?type3=束口盏" class="planbody-active-main-6 bor_l">
-					<div class="active-main-text">
-						<p>完美器形</p >
-						<p>束口器型快速导航</p >
-						<p>即时更新</p >
-					</div>
-					<div class="active-main-img">
-						<img src="m_images/04.png" alt='active'>
-					</div>
-				</a>
-			</div>
-			<!-- 商品展示 -->
-			<div style="height: 0.266rem;" class="bgc_cc"></div>
-			<div id="planbody-shop-box" class="planbody-shop-box">
-				<div class="bgc_ff">
-					<div class="planbody-shop">
-						<div class="shop-title">
-							<span class="bgc_ff">新品推荐</span>
-						</div>
-						<div class="shop-describe flex_around">							
-	<% 
-                            List<Product> lstPro = ModelListNEW;
-                            if (lstPro != null && lstPro.Count > 0)
-                            {
-                                foreach (Product model in lstPro)
-                                {
-                             %>
-                             <div class="show-view shop-view-state-a">
-							
-								<p><%=model.ProductID %></p>
-								<p style="height:1.98rem;"><a href="m_<%=model.ProductID %>.html">
-									<img class="list-item-img" src="<%=model.Images %>">
-                                    </a>
-								</p>
-								<p>[<%=model.Author %>]</p>
-								<p><%=model.ProductName %></p>
-								<p>器型：<%=model.Type3%></p>
-								<p onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')">
-									<span></span>
-									<button class="shop-query">立即询价</button>
-								</p>
-							</div>
-							<%}
-                            } %>
-						</div>
-						<div class="shop-controll">
-							<button class="load-surplus">再显示3款新品
-								<i class="iconfont icon-xiala1"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-				<div class="bgc_cc">
-					<div class="planbody-shop">
-						<div class="shop-title">
-							<span class="bgc_cc">热门推荐</span>
-						</div>
-						<div class="shop-describe flex_around">
-							<% List<Product> lstProHot = ModelListHOT;
-                           if (lstProHot != null && lstProHot.Count > 0)
-                           {
-                               foreach (Product model in lstProHot)
-                               { %>
-                               <div class="show-view shop-view-state-a">
-							
-								<p><%=model.ProductID%></p>
-								<p style="height:1.98rem;">
-                                    <a href="m_<%=model.ProductID %>.html">
-									    <img class="list-item-img" src="<%=model.Images %>">
-                                    </a>
-								</p>
-								<p>[<%=model.Author%>]</p>
-								<p><%=model.ProductName%></p>
-								<p>器型：<%=model.Type3%></p>
-								<p onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')">
-									<span></span>
-									<button class="shop-query">立即询价</button>
-								</p>
-							</div>	
-                            <%}
-                           }%>
-						</div>
-						<div class="shop-controll">
-							<button class="load-surplus">再显示3款新品
-								<i class="iconfont icon-xiala1"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-				<div class="bgc_cc">
-					<div class="planbody-shop">
-						<div class="shop-title">
-							<span class="bgc_cc">大师作品</span>
-						</div>
-						<div class="shop-describe flex_around">							
-							 <% 
-                            List<ProductListView> lstDSZPPro = ModelListDSZP;
-                            if (lstDSZPPro != null && lstDSZPPro.Count > 0)
-                            {
-                                foreach (ProductListView model in lstDSZPPro)
-                                {
-                             %>
-							<div class="show-view shop-view-state-a">
-								<p><%=model.ProductID %></p>
-								<p style="height:1.98rem;"><a href="m_<%=model.ProductID %>.html" >
-									<img class="list-item-img" src="<%=model.Images %>">
-                                    </a>
-								</p>
-								<p>[<%=model.Author %>]</p>
-								<p><%=model.ProductName %></p>
-								<p>器型：<%=model.Type3%></p>
-								<p onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')">
-									<span></span>
-									<button class="shop-query">立即询价</button>
-								</p>
-							</div>
-							<%}
-                            } %>	
-						</div>
-						<div class="shop-controll">
-							<button class="load-surplus">再显示3款新品
-								<i class="iconfont icon-xiala1"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-                <div class="bgc_ff">
-					<div class="planbody-shop">
-						<div class="shop-title">
-							<span class="bgc_ff">名家作品</span>
-						</div>
-						<div class="shop-describe flex_around">							
-							<% 
-                            List<ProductListView> lstMJZPPro = ModelListMJZP;
-                            if (lstMJZPPro != null && lstMJZPPro.Count > 0)
-                            {
-                                foreach (ProductListView model in lstMJZPPro)
-                                {
-                             %>
-                             <div class="show-view shop-view-state-a">
-							
-								<p><%=model.ProductID %></p>
-								<p style="height:1.98rem;"><a href="m_<%=model.ProductID %>.html">
-									<img class="list-item-img" src="<%=model.Images %>">
-                                    </a>
-								</p>
-								<p>[<%=model.Author %>]</p>
-								<p><%=model.ProductName %></p>
-								<p>器型：<%=model.Type3%></p>
-								<p onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')">
-									<span></span>
-									<button class="shop-query">立即询价</button>
-								</p>
-							</div>
-							<%}
-                            } %>
-						</div>
-						<div class="shop-controll">
-								<button class="load-surplus">再显示3款新品
-									<i class="iconfont icon-xiala1"></i>
-								</button>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-			<!-- star -->
-			<div style="height: 0.266rem;" class="bgc_ff"></div>
-			<div class="bgc_cc">
-				<div class="shop-title" style="width: 6.66rem;margin: 0 auto;margin-bottom: 0.866rem">
-					<span style="padding: 0;" class="bgc_cc">
-						<i></i>名家名堂
-						<i></i>
-					</span>
-				</div>
-				<div id="swiper-container-star" class="swiper-container">
-					<div id="swiper-wrapper-star" class="swiper-wrapper">
-						
-				<%
-                        List<Artisan> lstArt = ModelArticleList;
-                        if (lstArt != null && lstArt.Count > 0)
-                        {
-                            foreach (Artisan model in lstArt)
-                            { %>
-                    	<div class="swiper-slide">
-							<a href="m_art<%=model.artisanID %>.html">
-								<%--<img src="<%=model.IDHead %>">--%>
-                                <div id="headimg" style="background: url(<%=model.IDHead %>) no-repeat center;background-size: auto 100%;"></div>
-								<div class="star-describe">
-									<p><%=model.artisanName %> </p>
-									<p><%=model.artisanTitle %></p>
-								</div>
-							</a>
-						</div>		
-                        <%}
-                        }%>	
-					</div>
-				</div>
-				<div class="shop-controll star-controll">
-					<button><a href="m_artisan_list.html">查看更多大师
-						<i class="iconfont icon-youjiantou" style="font-size: 0.26rem"></i>
-                        </a>
-					</button>
-				</div>
-			</div>
-			<!-- 保障 -->
-			<div class="planbody-promise bgc_ff">
-				<div class="promise">
-					<div class="promise-title">八大保障</div>
-					<ul class="promise-ul flex_around">
-						<li><a href="mn_fwbz.html" style="color:White">艺人直销</a></li>
-						<li><a href="mn_fwbz.html" style="color:White">一手货源</a></li>
-						<li><a href="mn_fwbz.html" style="color:White">原矿铁胎</a></li>
-						<li><a href="mn_fwbz.html" style="color:White">实物视频</a></li>
-						<li><a href="mn_fwbz.html" style="color:White">实体门店</a></li>
-						<li><a href="mn_fwbz.html" style="color:White">1对1客服</a></li>
-						<li><a href="mn_fwbz.html" style="color:White">赝品赔付</a></li>
-						<li><a href="mn_fwbz.html" style="color:White">15天退换</a></li>
-					</ul>
-				</div>
-			</div>
-			<div style="height: 0.266rem;" class="bgc_cc"></div>
-			<!-- 门店 -->
-			<div id="planbody-promise" class="planbody-promise bgc_ff">
-				<div class="promise" id="promise">
-					<div class="promise-title">连锁门店</div>
-					<div class="planbody-store">
-						<div class="store-left">
-							<ul class="store-title">
-								<li class="initStyle ">
-									<span class="initStyle"></span>厦门店</li>
-								<li>
-									<span></span>武夷山店</li>
-								<li>
-									<span></span>建阳店</li>
-							</ul>
-							<div><a style="color:White" href="tel:4008276376">立即预约上门</a></div>
-						</div>
-						<div class="store-detail">
-							<div class="initStyle">
-								<p>
-									<span style="padding-left: 0.3rem;">客服：</span>
-									<span style="width: 4.6rem;">4008-276-376</span>
-								</p>
-								<p>
-									<span style="padding-left: 0.3rem;">地址：</span>
-									<span style="width: 4.6rem;">厦门市思明区台东路66号宝业营运中心705室</span>
-								</p>
-								<p>
-									<span style="padding-left: 0.3rem;">时间：</span>
-									<span style="width: 4.6rem;">
-										周一至周日 (9.30-21.30)
-										<br> (其他时间请提前联系我们)
-									</span>
-								</p>
-								<p id="swiper-container-stop" class="swiper-container">
-									<mdiv id="swiper-wrapper-stop" class="swiper-wrapper">
-										
-                                        <mdiv class="swiper-slide">
-											<a href="javascript:;">
-												<img src="m_images/lunN1.png">
-											</a>
-										</mdiv>
-										<mdiv class="swiper-slide">
-											<a href="javascript:;">
-												<img src="m_images/lunN2.png">
-											</a>
-										</mdiv>
-										<mdiv class="swiper-slide">
-											<a href="javascript:;">
-												<img src="m_images/lunN3.png">
-											</a>
-										</mdiv>
-										<mdiv class="swiper-slide">
-											<a href="javascript:;">
-												<img src="m_images/lunN4.png">
-											</a>
-										</mdiv>
-									</mdiv>
-									<mdiv class="swiper-pagination"></mdiv>
-								</p>
-							</div>
-							<div>
-								<p>
-									<span style="padding-left: 0.3rem;">客服：</span>
-									<span style="width: 4.6rem;">4008-276-376</span>
-								</p>
-								<p>
-									<span style="padding-left: 0.3rem;">地址：</span>
-									<span style="width: 4.6rem;">武夷山市金盘亭路水岸花苑第四幢B座</span>
-								</p>
-								<p>
-									<span style="padding-left: 0.3rem;">时间：</span>
-									<span style="width: 4.6rem;">
-										周一至周日 (9.30-21.30)
-										<br> (其他时间请提前联系我们)
-									</span>
-								</p>
-								<p id="swiper-container-stop" class="swiper-container swiper2">
-									<mdiv id="swiper-wrapper-stop" class="swiper-wrapper">
-										
-                                        <mdiv class="swiper-slide">
-											<a href="javascript:;">
-												<img src="m_images/lunN5.png">
-											</a>
-										</mdiv>
-										<mdiv class="swiper-slide">
-											<a href="javascript:;">
-												<img src="m_images/lunN6.png">
-											</a>
-										</mdiv>
-										<mdiv class="swiper-slide">
-											<a href="javascript:;">
-												<img src="m_images/lunN7.png">
-											</a>
-										</mdiv>
-										<mdiv class="swiper-slide">
-											<a href="javascript:;">
-												<img src="m_images/lunN8.png">
-											</a>
-										</mdiv>
-									</mdiv>
-									<mdiv class="swiper-pagination"></mdiv>
-								</p>
-							</div>
-							<div>
-								<p>
-									<span style="padding-left: 0.3rem;">客服：</span>
-									<span style="width: 4.6rem;">4008-276-376</span>
-								</p>
-								<p>
-									<span style="padding-left: 0.3rem;">地址：</span>
-									<span style="width: 4.6rem;">南平市建阳区武夷智谷软件园建盏CLUB</span>
-								</p>
-								<p>
-									<span style="padding-left: 0.3rem;">时间：</span>
-									<span style="width: 4.6rem;">
-										周一至周日 (9.30-21.30)
-										<br> (其他时间请提前联系我们)
-									</span>
-								</p>
-								<p id="swiper-container-stop" class="swiper-container swiper3">
-									<mdiv id="swiper-wrapper-stop" class="swiper-wrapper">
-										
-                                        <mdiv class="swiper-slide">
-											<a href="javascript:;">
-												<img src="m_images/lunN9.png">
-											</a>
-										</mdiv>
-										<mdiv class="swiper-slide">
-											<a href="javascript:;">
-												<img src="m_images/lunN10.png">
-											</a>
-										</mdiv>
-										<mdiv class="swiper-slide">
-											<a href="javascript:;">
-												<img src="m_images/lunN11.png">
-											</a>
-										</mdiv>
-										<mdiv class="swiper-slide">
-											<a href="javascript:;">
-												<img src="m_images/lunN12.png">
-											</a>
-										</mdiv>
-									</mdiv>
-									<mdiv class="swiper-pagination"></mdiv>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 通用底部元素 片段截取 -->
-			<uc2:mn_planbody_foot ID="mn_planbody_foot1" runat="server" />
-		</div>
-		<form id="form1" runat="server">
-		<uc1:mn_footer ID="mn_footer1" runat="server" />    
-        </form>
+    <form id="form1" runat="server">
 
-		
-		<!-- 筛选 -->
-		
-		<div id="menupart" style="display: none;left:200%;">
-        <uc2:mn_menuplane ID="mn_menuplane1" runat="server" />
-			
-		</div>
-	</div>
+    <div class="flex-row bg_color_f navheight" style="align-items: center;max-width: 750px;">
+        <div class="flex-row pad-l-30" style="align-items: center">
+            <img class="mar-r-16" style="width: .5rem" src="/static/images/jianzhan/logo.png" />
+        </div>
+        <div class="flex-col search">
+
+            <div class="flex-row" style="align-items: center;height: .56rem">
+
+                <img class="mar-l-30 mar-r-16" style="height: .3rem;width: .25rem" src="/static/images/jianzhan/ic_search.png"
+                    alt="">
+                <input style="background: #f7f7f7" class="px24" id="keyword" type="text" placeholder="大师或者编号" />
+            </div>
+        </div>
+        <div class="ssbtn px24 mar-r-30" id="btnSearch">搜索</div>
+    </div>
+    <!-- <div style="height:1rem"></div> -->
+    <div class="banner">
+        <img src="/static/images/jianzhan/banner.png" alt="" />
+    </div>
+
+    <div class="flex-row pad-l-30 pad-r-30 pad-t-20 pad-b-40" style="text-align: center;align-items: center;">
+        <a href="/jianzhan/storePage.html" class="flex-col">
+            <img style="height: .8rem;width:.5rem" src="/static/images/jianzhan/sc.png" alt="">
+        </a>
+        <a href="/jianzhan/famousPage.html" class="flex-col">
+            <img style="height: .8rem;width:.5rem" src="/static/images/jianzhan/ic_xt.png" alt="">
+        </a>
+        <a href="/jianzhan/collegeList.html" class="flex-col">
+            <img style="height: .8rem;width:.5rem" src="/static/images/jianzhan/iic_xy.png" alt="" />
+        </a>
+        <a href="/jianzhan/collegeList.html" class="flex-col">
+            <img style="height: .8rem;width:.5rem" src="/static/images/jianzhan/ic_zt.png" alt="" />
+        </a>
+        <a href="/jianzhan/shouchangPage.html" class="flex-col">
+            <img style="height: .8rem;width:.5rem" src="/static/images/jianzhan/ic_sc.png" alt="" />
+        </a>
+    </div>
+
+    <div class="flex-row mar-l-30 mar-r-30 pad-t-16 pad-b-16" style="border-top: 1px solid #f7f7f7">
+        <img style="height: .18rem;width: .18rem" class="mar-r-16" src="/static/images/jianzhan/ic_lb.png" alt="" />
+        <div class="px20 color_57 mar-r-16">公告</div>
+        <div class="flex-col clamp1 px20 color_9" style="line-height: .32rem;
+        height: .28rem;"> 很多人都不知道建盏的束口线有什么用，你知道吗？</div>
+        <div class="px16 color_9 mar-l-30">更多></div>
+    </div>
+
+    <div class="part1">
+        <div class="flex-row" style="align-items: center;padding:.25rem 0">
+            <div class="flex-col"></div>
+            <div class="px32 color_57 mar-r-16">每日严选</div>
+            <img style="height: 0.17rem;width: .17rem" src="/static/images/jianzhan/ic_next.png" alt="" />
+            <div class="flex-col"></div>
+        </div>
+        <div class="list">
+            <% 
+            List<ProductListView> listDS = ModelListDSZP;
+            if (listDS != null && listDS.Count > 0)
+            {
+                foreach (ProductListView model in listDS)
+                {
+             %>
+                <div class="item">
+                    <div style="margin: 0 .1rem">
+                        <div class="t1 color_red_c9">ID:<%=model.ProductID%></div>
+                        <div class="pimg" style="background:url(<%=model.Images %>)"></div>
+                        <div class="t1 clamp1">【<%=model.Author%>】<%=model.ProductName%></div>
+                        <img class="bt-zx" onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')" src="/static/images/jianzhan/btn_ljzx_y.png" />
+                    </div>
+                </div>
+            <%}
+            } %>
+        </div>
+    </div>
+<%--    <div style="text-align: center; padding: .4rem" class="showmore">
+        <div class="color_red_c9 px28">展示更多</div>
+        <img style="width: 0.21rem;margin-top: 0.1rem" src="/static/images/jianzhan/more.png" alt="">
+    </div>--%>
+    <div class="part1">
+        <div class="flex-row" style="align-items: center;padding:.25rem 0">
+            <div class="flex-col"></div>
+            <div class="px32 color_57 mar-r-16">新品首发</div>
+            <img style="height: 0.17rem;width: .17rem" src="/static/images/jianzhan/ic_next.png" alt="" />
+            <div class="flex-col"></div>
+        </div>
+        <div class="list">
+        <% 
+            List<Product> listNew = ModelListNEW;
+            if (listNew != null && listNew.Count > 0)
+            {
+                foreach (Product model in listNew)
+                {
+             %>
+                <div class="item">
+                    <div style="margin: 0 .1rem">
+                        <div class="t1 color_red_c9">ID:<%=model.ProductID%></div>
+                        <div class="pimg" style="background:url(<%=model.Images %>)"></div>
+                        <div class="t1 clamp1">【<%=model.Author%>】<%=model.ProductName%></div>
+                        <img class="bt-zx" onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')" src="/static/images/jianzhan/btn_ljzx_y.png" />
+                    </div>
+                </div>
+            <%}
+            } %>
+        </div>
+<%--        <div style="text-align: center; padding: .4rem" class="showmore">
+            <div class="color_red_c9 px28">展示更多</div>
+            <img style="width: 0.21rem;margin-top: 0.1rem" src="/static/images/jianzhan/more.png" alt="">
+        </div>--%>
+    </div>
+
+    <div class="part1">
+        <div class="flex-row" style="align-items: center;padding:.25rem 0">
+            <div class="flex-col"></div>
+            <div class="px32 color_57 mar-r-16">热门推荐</div>
+            <img style="height: 0.17rem;width: .17rem" src="/static/images/jianzhan/ic_next.png" alt="" />
+            <div class="flex-col"></div>
+        </div>
+        <div class="list">
+        <% 
+            List<Product> listHot = ModelListHOT;
+            if (listHot != null && listHot.Count > 0)
+            {
+                foreach (Product model in listHot)
+                {
+             %>
+                <div class="item">
+                    <div style="margin: 0 .1rem">
+                        <div class="t1 color_red_c9">ID:<%=model.ProductID%></div>
+                        <div class="pimg" style="background:url(<%=model.Images %>)"></div>
+                        <div class="t1 clamp1">【<%=model.Author%>】<%=model.ProductName%></div>
+                        <img class="bt-zx" onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')" src="/static/images/jianzhan/btn_ljzx_y.png" />
+                    </div>
+                </div>
+            <%}
+            } %>
+        </div>
+<%--        <div style="text-align: center; padding: .4rem" class="showmore">
+            <div class="color_red_c9 px28">展示更多</div>
+            <img style="width: 0.21rem;margin-top: 0.1rem" src="/static/images/jianzhan/more.png" alt="">
+        </div>--%>
+    </div>
+
+
+    <div class="part1">
+        <div class="flex-row" style="align-items: center;padding:.25rem 0">
+            <div class="flex-col"></div>
+            <div class="px32 color_57 mar-r-16">专题精选</div>
+            <img style="height: 0.17rem;width: .17rem" src="/static/images/jianzhan/ic_next.png" alt="" />
+            <div class="flex-col"></div>
+        </div>
+        <div style="height: .3rem"></div>
+        <div class="swiper_container_suz2" id="pb2">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="/static/images/jianzhan/banner1.png">
+                    <div>
+                        <div style="height: 0.25rem"></div>
+                        <div class="px30 clamp1" style="color: #373737;text-align: left;"> 【诚信315】捡漏微拍 独家巨献</div>
+                        <div style="height: 0.2rem"></div>
+                        <div class="px16 clamp1" style="text-align: left;color: #373737;">世界首位宋代曜变建盏复原者</div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/static/images/jianzhan/banner2.png">
+                    <div>
+                        <div style="height: 0.25rem"></div>
+                        <div class="px30 clamp1" style="color: #373737;text-align: left;"> 【诚信315】捡漏微拍 独家巨献</div>
+                        <div style="height: 0.2rem"></div>
+                        <div class="px16 clamp1" style="text-align: left;color: #373737;">世界首位宋代曜变建盏复原者</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="part1">
+        <div class="flex-row" style="align-items: center;padding:.25rem 0">
+            <div class="flex-col"></div>
+            <div class="px32 color_57 mar-r-16">大师推荐</div>
+            <img style="height: 0.17rem;width: .17rem" src="/static/images/jianzhan/ic_next.png" alt="" />
+            <div class="flex-col"></div>
+        </div>
+        <div class="list1">
+            <% List<ProductListView> listDszp = ModelListDSZP;
+               if (listDszp != null && listDszp.Count > 0)
+               {
+                   foreach (ProductListView model in listDszp)
+                   {%>
+            <div class="item1">
+                <div style="margin: 0 .1rem">
+                    <div class="t1 color_red_c9">ID:<%=model.ProductID%></div>
+                    <div class="pimg" style="background:url(<%=model.Images %>)"></div>
+                    <div class="t1 clamp1">【<%=model.Author%>】<%=model.ProductName%></div>
+                    <img class="bt-zx"   onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')" src="/static/images/jianzhan/btn_ljzx.png" />
+                </div>
+            </div>
+            <%}
+               } %>
+        </div>
+        <div style="text-align: center; padding: .4rem" class="showmore">
+            <div class="color_red_c9 px28">展示更多</div>
+            <img style="width: 0.21rem;margin-top: 0.1rem" src="/static/images/jianzhan/more.png" alt="">
+        </div>
+    </div>
+    <div class="part1" style="padding:.256rem 0;background: #f7f7f7">
+        <div class="flex-row" style="align-items: center;padding:.25rem 0;">
+            <div class="flex-col"></div>
+            <div class="px32 color_57 mar-r-16">名家推荐</div>
+            <img style="height: 0.17rem;width: .17rem" src="/static/images/jianzhan/ic_next.png" alt="" />
+            <div class="flex-col"></div>
+        </div>
+        <div style="height: .3rem"></div>
+        <div id="swiper-container-star" class="swiper-container">
+            <div id="swiper-wrapper-star" class="swiper-wrapper">
+            <% List<Artisan> listArisan = ModelArticleList;
+               if (listArisan != null && listArisan.Count > 0)
+               {
+                   foreach (Artisan model in listArisan)
+                   {%>
+                <div class="swiper-slide">
+                    <a href="m_art<%=model.artisanID %>.html">
+                        <div id="headimg" style="background: url(<%=model.IDHead %>) no-repeat center;background-size: auto 100%;"></div>
+                        <div class="star-describe">
+                            <p class="px32"><%=model.artisanName%></p>
+                            <p class="px20"><%=model.artisanTitle%></p>
+                        </div>
+                    </a>
+                </div>
+                <%}
+               } %>
+            </div>
+        </div>
+<%--        <div style="text-align: center; padding: .4rem" class="showmore">
+            <div class="color_red_c9 px28">查看更多大师</div>
+            <img style="width: 0.21rem;margin-top: 0.1rem" src="/static/images/jianzhan/more.png" alt="">
+        </div>--%>
+    </div>
+    <div class="part1" style="padding:.3rem .65rem .5rem ">
+        <div class="flex-row" style="align-items: center;padding:.25rem 0">
+            <div class="flex-col"></div>
+            <div class="px32 color_57 mar-r-16">八大保值</div>
+            <img style="height: 0.17rem;width: .17rem" src="/static/images/jianzhan/ic_next.png" alt="" />
+            <div class="flex-col"></div>
+        </div>
+        <div class="flex-row" style="text-align: center; padding-top: .4rem">
+            <div class="flex-col">
+                <div style="margin: 0 .1rem">
+                    <img class="ic_60" src="/static/images/jianzhan/ic_15.png" />
+                    <div class="px24 clamp1 pad-t-20"><a href="mn_fwbz.html">艺人直销</a></div>
+                </div>
+            </div>
+            <div class="flex-col">
+                <div style="margin: 0 .1rem">
+                    <img class="ic_60" src="/static/images/jianzhan/ic_15.png" />
+                    <div class="px24 clamp1 pad-t-20"><a href="mn_fwbz.html">一手货源</a></div>
+                </div>
+            </div>
+            <div class="flex-col">
+                <div style="margin: 0 .1rem">
+                    <img class="ic_60" src="/static/images/jianzhan/ic_15.png" />
+                    <div class="px24 clamp1 pad-t-20"><a href="mn_fwbz.html">原矿铁胎</a></div>
+                </div>
+            </div>
+            <div class="flex-col">
+                <div style="margin: 0 .1rem">
+                    <img class="ic_60" src="/static/images/jianzhan/ic_15.png" />
+                    <div class="px24 clamp1 pad-t-20"><a href="mn_fwbz.html">实物视频</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row pad-b-40 " style="text-align: center;padding-top: .4rem">
+            <div class="flex-col">
+                <div style="margin: 0 .1rem">
+                    <img class="ic_60" src="/static/images/jianzhan/ic_15.png" />
+                    <div class="px24 clamp1 pad-t-20"><a href="mn_fwbz.html">实体门店</a></div>
+                </div>
+            </div>
+            <div class="flex-col">
+                <div style="margin: 0 .1rem">
+                    <img class="ic_60" src="/static/images/jianzhan/ic_15.png" />
+                    <div class="px24 clamp1 pad-t-20"><a href="mn_fwbz.html">1对1客服</a></div>
+                </div>
+            </div>
+            <div class="flex-col">
+                <div style="margin: 0 .1rem">
+                    <img class="ic_60" src="/static/images/jianzhan/ic_15.png" />
+                    <div class="px24 clamp1 pad-t-20"><a href="mn_fwbz.html">赝品赔付</a></div>
+                </div>
+            </div>
+            <div class="flex-col">
+                <div style="margin: 0 .1rem">
+                    <img class="ic_60" src="/static/images/jianzhan/ic_15.png" />
+                    <div class="px24 clamp1 pad-t-20"><a href="mn_fwbz.html">15天退换</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="part1">
+        <div class="flex-row" style="align-items: center;padding:.25rem 0">
+            <div class="flex-col"></div>
+            <div class="px32 color_57 mar-r-16">连锁门店</div>
+            <img style="height: 0.17rem;width: .17rem" src="/static/images/jianzhan/ic_next.png" alt="" />
+            <div class="flex-col"></div>
+        </div>
+        <div id="storeswiper" class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="store">
+                        <div style="height:auto;padding: .4rem .3rem 0">
+                            <div class="px24 color_57">客服：4008-276-376</div>
+                            <div class="px24 color_57 mar-t-20" style="line-height:.4rem">地址：厦门市思明区台东路66号宝业营运中心705室
+                            </div>
+                            <div class="px24 color_57 mar-t-20">时间：周一至周日（9.30-18.3 </div>
+                            <div class="px24 color_57 mar-t-20">（其他时间请提前联系我们）</div>
+                        </div>
+                        <img style="padding: 4%;width: 92%;" class="" src="/static//images/jianzhan/banner1.png" />
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="store">
+                        <div style="height:auto;padding: .4rem .3rem 0">
+                            <div class="px24 color_57">客服：4008-276-376</div>
+                            <div class="px24 color_57 mar-t-20" style="line-height:.4rem">地址：武夷山市金盘亭路水岸花苑第四幢B座
+                            </div>
+                            <div class="px24 color_57 mar-t-20">时间：周一至周日（9.30-18.3 </div>
+                            <div class="px24 color_57 mar-t-20">（其他时间请提前联系我们）</div>
+                        </div>
+                        <img style="padding: 4%;width: 92%;" class="" src="/static//images/jianzhan/banner1.png" />
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="store">
+                        <div style="height:auto;padding: .4rem .3rem 0">
+                            <div class="px24 color_57">客服：4008-276-376</div>
+                            <div class="px24 color_57 mar-t-20" style="line-height:.4rem">地址：南平市建阳区武夷智谷软件园建盏CLUB
+                            </div>
+                            <div class="px24 color_57 mar-t-20">时间：周一至周日（9.30-18.3 </div>
+                            <div class="px24 color_57 mar-t-20">（其他时间请提前联系我们）</div>
+                        </div>
+                        <img style="padding: 4%;width: 92%;" class="" src="/static//images/jianzhan/banner1.png" />
+                    </div>
+                </div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+
+        </div>
+
+        <!-- <div class="flex-row mar-t-40">
+            <div class="flex-col"></div>
+            <div class="px32" style="border-radius: 5px;background: #c90319;color:white;padding:.16rem .33rem">厦门店</div>
+            <div class="flex-col"></div>
+        </div> -->
+    </div>
+    <!-- 添加 -->
+    <div style="background: #f7f7f7;padding: .5rem .6rem;margin-bottom: .2rem">
+        <div class="flex-row" style="text-align:center">
+            <img style="width:1.5rem;height:1.5rem;margin-left: .3rem" src="/static//images/jianzhan/ic_code.png" />
+            <div class="flex-col">
+                <div class="flex-row" style="height:.35rem;align-items:center">
+                    <div class="mar-l-30 color_3 px20">关于我们</div>
+                    <div class="mar-l-30 color_3 px20">售后服务</div>
+                </div>
+                <div class="flex-row" style="height:.35rem;align-items:center">
+                    <div class="mar-l-30 color_3 px20">服务保障</div>
+                    <div class="mar-l-30 color_3 px20">在线支付</div>
+                </div>
+                <div class="flex-row" style="height:.43rem;align-items:center">
+                    <div class="color_red_c9 px30 mar-l-30">4008-2313-2321</div>
+                    <div class="color_red_c9 px16">(24小时在线)</div>
+                </div>
+                <div class="flex-row" style="height:.35rem;align-items:center">
+                    <div class="mar-l-30 color_3 px20" style="text-align:left">(识别二维码了解更多)</div>
+                </div>
+            </div>
+        </div>
+        <div class="color_3 px16 clamp1 mar-t-16" style="text-align:center">闽ICP备17006498号-1 Copyright 2015 建盏天下网 版权所有</div>
+        <div class="color_3 px16 clamp1 mar-t-16" style="text-align:center"> 福建省盏天下电子商务有限公司</div>
+    </div>
+    <!-- 底部导航栏 -->
+    <div id="header1" class="flex-row pad-l-30 pad-r-30 pad-t-30 pad-b-40" style="text-align: center;align-items: center;">
+        <div class="flex-col">
+            <img style="height: .5rem;width:.5rem" src="/static/images/jianzhan/ic_home.png" alt="">
+            <div style="margin-top: .1rem;height: .3rem">首页</div>
+        </div>
+        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
+        <div class="flex-col" onclick="moveLeft()">
+            <img style="height: .5rem;width:.5rem" src="/static/images/jianzhan/ic_fl.png" alt="" />
+            <div style="margin-top: .1rem;height: .3rem">分类</div>
+        </div>
+        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
+        <div class="flex-col">
+            <img style="height: .5rem;width:.5rem" src="/static/images/jianzhan/ic-zx.png" alt="" />
+            <div style="margin-top: .1rem;height: .3rem">咨询</div>
+        </div>
+        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
+        <div style="width:2rem" class="mar-l-20">
+            <div class="flex-row" style="align-items: center;justify-content: center;">
+               <img style="height: .5rem;"src="/static/images/jianzhan/wxadd.jpg" alt="" />
+                  <!--<div class="flex-col px16">(长按复制添加微信)</div> -->                
+            </div>
+            <div style="margin-top: .1rem;height: .3rem">1231723876</div>
+        </div>
+    </div>
+    <!-- 立即质询 -->
+    <div id="guanzhuweixin-s" class="flex-row " style="position: fixed;
+    bottom: 0;
+    height: 1.62rem;
+    background: white;
+    text-align: center;
+    align-items: center;
+    border-top: 1px solid #f6f6f6;
+    width: 100%;z-index: 99;">
+        <div class="flex-col searchzx mar-l-30">
+
+            <div class="flex-row" style="align-items: center;height: .7rem">
+                <!-- 
+                <img class="mar-l-30 mar-r-16" style="height: .3rem;width: .25rem" src="/static/images/jianzhan/ic_search.png"
+                    alt=""> -->
+                <input style="background: #f7f7f7" class="px24 pad-l-30" type="text" placeholder="大师或者编号" />
+            </div>
+        </div>
+        <div class="ssbtnzx px24 mar-r-30">立即咨询</div>
+    </div>
+
+    <!-- 分类 -->
     <div id='menumark' style="display: none"></div>
-</body>
+    <div id="menupart" style="display: none;left:200%;">
+        <div id='menuplane' class="menuplane">
+            <div id="guanzhuweixin-s-cate" class="flex-row pad-l-20 bg_color_f navheight" style="align-items: center;max-width: 750px">
+                <div class="back-tag" style="align-items: center" onclick="moveRight()">
 
-</html>
-<script>
-      $("#btnSearch").bind("click", function (e) {
+                </div>
+                <div class="flex-col search">
+
+                    <div class="flex-row" style="align-items: center;height: .56rem">
+
+                        <img class="mar-l-30 mar-r-16" style="height: .3rem;width: .25rem" src="/static/images/jianzhan/ic_search.png"
+                            alt="">
+                        <input style="background: #f7f7f7" class="px24" type="text" placeholder="大师或者编号" />
+                    </div>
+                </div>
+                <div class="ssbtn px24 mar-r-30">搜索</div>
+            </div>
+            <div class="menu-body">
+                <div class="menu-cate-part">
+                    <div class="menu-cate-title">名家大师</div>
+                    <div class='line'></div>
+                    <div class="cate-list">
+                        <div class="item">
+                            <div>大师</div>
+                        </div>
+                        <div class="item">
+                            <div>传承人</div>
+                        </div>
+                        <div class="item">
+                            <div>工艺师</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-cate-part">
+                    <div class="menu-cate-title">工艺釉色</div>
+                    <div class='line'></div>
+                    <div class="cate-list">
+                        <div class="item">
+                            <div>油滴</div>
+                        </div>
+                        <div class="item">
+                            <div>兔毫</div>
+                        </div>
+                        <div class="item">
+                            <div>鹧鸪斑</div>
+                        </div>
+                        <div class="item">
+                            <div>耀变</div>
+                        </div>
+                        <div class="item">
+                            <div>金乌釉</div>
+                        </div>
+                        <div class="item">
+                            <div>柿红</div>
+                        </div>
+                        <div class="item">
+                            <div>茶叶抹</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-cate-part">
+                    <div class="menu-cate-title">经典器型</div>
+                    <div class='line'></div>
+                    <div class="cate-list">
+                        <div class="item">
+                            <div>大师</div>
+                        </div>
+                        <div class="item">
+                            <div>大师</div>
+                        </div>
+                        <div class="item">
+                            <div>大师</div>
+                        </div>
+                        <div class="item">
+                            <div>大师</div>
+                        </div>
+                        <div class="item">
+                            <div>大师</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-cate-part">
+                    <div class="menu-cate-title">建盏尺寸</div>
+                    <div class='line'></div>
+                    <div class="cate-list">
+                        <div class="item w_50">
+                            <div>大师</div>
+                        </div>
+                        <div class="item w_50">
+                            <div>大师</div>
+                        </div>
+                        <div class="item w_50">
+                            <div>大师</div>
+                        </div>
+                        <div class="item w_50">
+                            <div>大师</div>
+                        </div>
+                        <div class="item w_50">
+                            <div>大师</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <uc1:mn_footer_new ID="mn_footer_new1" runat="server" />
+    <%--询价--%>
+    <div class="totop" style="display: block;">
+        <img style="height:.8rem;width:.8rem" src="/static/images/jianzhan/to_top.png">
+    </div>
+    <script src="/static/js/jquery-2.1.4.js"></script>
+    <script src="/static/js/jquery-weui.js"></script>
+    <script src="/static/js/jquery.pagination.js"></script>
+    <script src="/static/js/utils.js"></script>
+    <script src="/static/js/showdiv.js"></script>
+    <script src="/static/js/swiper.js"></script>
+    <script>
+
+          $("#btnSearch").bind("click", function (e) {
             var keyword = $("#keyword").val();
             window.location.href = "mn_shop.aspx?keyword=" + keyword;
         });
-    
-// 点击在线客服
-	$('#zaixian').click(function () {
-		$(".footer").animate({ bottom: '0rem' }, "slow", function () {
-				$("#menumark").css("display", "none");
-				$("#ksplane").css("display", "none");
-			});
-			iskuaishu = false;
-	})
+        $('.M-box').pagination({
+            mode: 'fixed'
+        });
+        function hideTiXing() {
+            $('#tixing').hide()
+            utils.toggleBody(0)
+        }
+
+        function showTiXing() {
+            utils.toggleBody(1)
+            $('#tixing').show()
+        }
+
+           // <!-- 名家 -->
+        // 名家名堂 滚动面板的配置
+        var mySwiper = new Swiper('#swiper-container-star', {
+            loop: true,
+            autoplay: 3000,
+            effect: 'coverflow',
+            speed: 500,
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: '3',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 50,
+                modifier: 1,
+                slideShadows: true,
+            }
+        })
+        // 店铺
+        var storeswiper = new Swiper('#storeswiper', {
+            loop: true,
+            // 如果需要分页器
+            autoplay: 5000,
+            initialSlide:1,
+            pagination: '.swiper-pagination',//分页容器的css选择器
+            paginationType: 'custom',
+            paginationCustomRender: function (swiper, current, total) {
+                var _html = '';
+                for (var i = 1; i <= total; i++) {
+                    if (current == i) {
+                        _html += '<li class="px32 swiper-custom-active" style=" display: inline-block;border-radius: 5px;background: #c90319;color:white;padding:.16rem .33rem;width:1rem">厦门店</li>';
+                    } else {
+                        _html += '<li class="swiper-custom"></li>';
+                    }
+
+//                    if (current==1) {
+//                        _html += '<li class="px32 swiper-custom-active" style=" display: inline-block;border-radius: 5px;background: #c90319;color:white;padding:.16rem .33rem;width:1rem">厦门店</li>';
+//                    }else if (current==2) {
+//                        _html += '<li class="px32 swiper-custom-active" style=" display: inline-block;border-radius: 5px;background: #c90319;color:white;padding:.16rem .33rem;width:1rem">武夷山店</li>';
+//                    }
+//                    else if (current==3) {
+//                        _html += '<li class="px32 swiper-custom-active" style=" display: inline-block;border-radius: 5px;background: #c90319;color:white;padding:.16rem .33rem;width:1rem">建阳店</li>';
+//                    }
+//                     else {
+//                        _html += '<li class="swiper-custom"></li>';
+//                    }
+                }
+                return _html;//返回所有的页码html
+            }
+        })
+        // 精选
+        var swiper = new Swiper('.swiper_container_suz2', {
+            slidesPerView: 1.5,
+            spaceBetween: 10,
+            // centeredSlides: true,
+            paginationType: 'fraction',
+            // autoplay: 5000,
+        });
+        // $("#content").css("height", window.innerHeight - 0.83 * 58);
+        $('#showMark1').on('click', function () {
+            if ($('#mark1').css('display') == 'none') {
+                utils.toggleBody(1)  //在跳出弹窗的时候
+                $('#mark1').show()
+            }
+        })
+        $('#close').on('click', function () {
+            $('#mark1').hide()
+            utils.toggleBody(0)
+        })
+
+        $('.bt-zx').on('click', function () {
+            utils.toggleBody(1)
+            $('#tixing').show()
+        })
+
+        $('.showmore').on('click', function () {
+            $(this).parent().find('.list').css('height', 'unset')
+            $(this).hide()
+        })
+
+     
+        //点击隐藏在线咨询面板或拨号面板
+        $('#menumark').click(function () {
+            // if (iskuaishu) {
+            //     $(".footer").animate({ bottom: '0rem' }, "slow", function () {
+            //         $("#menumark").css("display", "none");
+            //         $("#ksplane").css("display", "none");
+            //     });
+            //     iskuaishu = false;
+            // }
+            // if (iszaixian) {
+            //     $(".footer").animate({ bottom: '0rem' }, "slow", function () {
+            //         $("#menumark").css("display", "none");
+            //         $("#zxplane").css("display", "none");
+            //     });
+            //     iszaixian = false;
+            // }
+            // if (ismenu) {//8.4
+            moveRight();
+            // }
+        })
+        // 隐藏分类面板
+        function moveRight() {
+            ismenu = false;
+            // console.log("dhgsfhjsgdghj");
+            $("#menupart").animate({ left: '100%' }, "slow", function () {
+                $(this).css("display", "none");
+                $("#menumark").css("display", "none");
+                utils.toggleBody(false)
+            });
+        }
+        //弹出分类面板
+        function moveLeft() {
+            ismenu = true;
+            // console.log("dhgsfhjsgdghj");
+            $('#menupart').css("display", "block");
+            $("#menumark").css("display", "block");
+            $("#menupart").animate({ left: '20%' }, "slow");//8.4
+            utils.toggleBody(true)
+        }
+        // 返回顶部
+        var backButton = $('.totop');
+        function backToTop() {
+            // $(window).animate({
+            // 	pageYOffset: 0
+            // }, 800);
+            window.scrollTo(0, 0)
+        }
+        backButton.on('click', backToTop);
+
+        $(window).on('scroll', function () {/*当滚动条的垂直位置大于浏览器所能看到的页面的那部分的高度时，回到顶部按钮就显示 */
+            if ($(window).scrollTop() > $(window).height())
+                backButton.fadeIn();
+            else
+                backButton.fadeOut();
+        });
+        $(window).trigger('scroll');
 
 
-    $("#menumark").click(function(){
-        $("#menupart").animate({ left: '100%' }, "slow", function () {
-			$(this).css("display", "none");
-			$("#menumark").css("display", "none");
-		});
-    })
-    var ismenu;
-	//点击隐藏在线咨询面板或拨号面板
-	$('#menumark').click(function () {
-		if (iskuaishu) {
-			$(".footer").animate({ bottom: '0rem' }, "slow", function () {
-				$("#menumark").css("display", "none");
-				$("#ksplane").css("display", "none");
-			});
-			iskuaishu = false;
-		}
-		if (iszaixian) {
-			$(".footer").animate({ bottom: '0rem' }, "slow", function () {
-				$("#menumark").css("display", "none");
-				$("#zxplane").css("display", "none");
-			});
-			iszaixian = false;
-		}
-		if (ismenu) {//8.4
-			moveRight();
-		}
-	})
+        // function stopDrop() {
+        //     var lastY;//最后一次y坐标点
+        //     $(document.body).on('touchstart', function (event) {
+        //         lastY = event.originalEvent.changedTouches[0].clientY;//点击屏幕时记录最后一次Y度坐标。
+        //     });
+        //     $(document.body).on('touchmove', function (event) {
+        //         var y = event.originalEvent.changedTouches[0].clientY;
+        //         var st = $(this).scrollTop(); //滚动条高度  
+        //         if (y >= lastY && st <= 10) {//如果滚动条高度小于0，可以理解为到顶了，且是下拉情况下，阻止touchmove事件。
+        //             lastY = y;
+        //             event.preventDefault();
+        //         }
+        //         lastY = y;
+        //         console.log(lastY);
+        //     });
+        // }
+        // stopDrop();
+        isTouchDevice();
+    </script>
+    </form>
+</body>
 
-    function moveLeft() {
-		ismenu = true;
-		// console.log("dhgsfhjsgdghj");
-		$('#menupart').css("display", "block");
-		$("#menumark").css("display", "block");
-		$("#menupart").animate({ left: '20%' }, "slow");//8.4
-	}
-
-	// 点击展开列表
-	$('.load-surplus').click(function () {
-		// console.log($(this).parent().parent().children().eq(1))
-		$(this).parent().parent().children().eq(1).height('auto');
-		$(this).html('<a href="m_product_list.html">查看更多产品</a>');
-	})
-
-	var tabindex = 0;
-	var iskuaishu = false;
-	var iszaixian = false;
-	//顶部banner设置
-	var mySwiper = new Swiper('#swiper-container-banner', {
-		direction: 'horizontal',
-		loop: true,
-		autoplay: {
-			disableOnInteraction: false,
-			delay: 5000,
-
-		},
-		// 如果需要分页器
-		pagination: {
-			el: '.swiper-pagination',
-		}
-	})
-	var mySwiper1 = new Swiper('#swiper-container-stop', {
-		direction: 'horizontal',
-		loop: true,
-		autoplay: {
-			disableOnInteraction: false,
-			delay: 5000,
-		},
-		pagination: {
-			el: '.swiper-pagination',
-		}
-		// observer: true,//修改swiper自己或子元素时，自动初始化swiper
-		// observeParents: true//修改swiper的父元素时，自动初始化swiper
-		// 如果需要分页器
-
-	})
-	var mySwiper2 = new Swiper('.swiper2', {
-		direction: 'horizontal',
-		loop: true,
-		autoplay: {
-			disableOnInteraction: false,
-			delay: 5000,
-
-		},
-		pagination: {
-			el: '.swiper-pagination',
-		}
-		// observer: true,//修改swiper自己或子元素时，自动初始化swiper
-		// observeParents: true//修改swiper的父元素时，自动初始化swiper
-		// 如果需要分页器
-
-	})
-	var mySwiper3 = new Swiper('.swiper3', {
-		direction: 'horizontal',
-		loop: true,
-		autoplay: {
-			disableOnInteraction: false,
-			delay: 5000,
-		},
-		pagination: {
-			el: '.swiper-pagination',
-		}
-		// observer: true,//修改swiper自己或子元素时，自动初始化swiper
-		// observeParents: true//修改swiper的父元素时，自动初始化swiper
-		// 如果需要分页器
-
-	})
-
-	// 名家名堂 滚动面板的配置
-	var mySwiper = new Swiper('#swiper-container-star', {
-		loop: true,
-		autoplay: {
-			disableOnInteraction: false,
-			delay: 5000,
-
-		},
-		effect: 'coverflow',
-		grabCursor: true,
-		centeredSlides: true,
-		slidesPerView: '3',
-		coverflowEffect: {
-			rotate: 50,
-			stretch: 0,
-			depth: 100,
-			modifier: 1,
-			slideShadows: true,
-		}
-	})
-	//门店切换
-	$('.store-title').children().each(function (index, node) {
-		$(this).click(function () {
-			$('.store-title').children().eq(tabindex).removeClass('initStyle');
-			$('.store-title').children().eq(tabindex).children().eq(0).removeClass('initStyle');
-			$('.store-detail').children().eq(tabindex).removeClass('initStyle');
-			tabindex = index;
-			$('.store-detail').children().eq(tabindex).addClass('initStyle');
-			$(this).addClass('initStyle');
-			$(this).children().eq(0).addClass('initStyle');
-			// mySwiper1.update(true);
-			index == 0 ? mySwiper1.update(true) : index == 1 ? mySwiper2.update(true) : mySwiper3.update(true)
-
-		})
-	})
-	// 隐藏分类面板
-	function moveRight() {
-		console.log("dhgsfhjsgdghj");
-		$("#menupart").animate({ left: '100%' }, "slow", function () {
-			$(this).css("display", "none");
-			$("#menumark").css("display", "none");
-		});
-	}
-
-
-	// 拨号面板取消按钮事件
-	function cancle() {
-		$('#lexian').hide()
-	}
-	//弹出拨打电话面板
-	function showLeXian() {
-		$('#lexian').show()
-	}
-	// 返回顶部
-	var backButton = $('.totop');
-	function backToTop() {
-		$('.planbody').animate({
-			scrollTop: 0
-		}, 800);
-	}
-	backButton.on('click', backToTop);
-
-	$(".planbody").on('scroll', function () {/*当滚动条的垂直位置大于浏览器所能看到的页面的那部分的高度时，回到顶部按钮就显示 */
-		if ($(".planbody").scrollTop() > $(".planbody").height())
-			backButton.fadeIn();
-		else
-			backButton.fadeOut();
-	});
-	$(".planbody").trigger('scroll');
-</script>
+</html>
