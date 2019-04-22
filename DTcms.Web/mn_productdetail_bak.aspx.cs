@@ -8,28 +8,16 @@ using System.Text.RegularExpressions;
 
 namespace DTcms.Web
 {
-    public partial class mn_famousdetail_bak : System.Web.UI.Page
+    public partial class mn_productdetail_bak : System.Web.UI.Page
     {
-        private BLL.Artisan bllArt = new BLL.Artisan();
-        private string ArtisanID = string.Empty;
-        private string ArtisanName = string.Empty;
-        public List<Model.Artisan> ModelArtisanList = null;
-        public BLL.Product bllPro = new BLL.Product();
+        private string ProductID = string.Empty;
+        private BLL.Product bll = new BLL.Product();
+        public List<Model.Product> productModelList = null;
+        public BLL.QRCode bllQR = new BLL.QRCode();//二维码
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                ArtisanID = Request.QueryString["artisanid"];
-                ArtisanName = Server.UrlDecode(Request.QueryString["artisanname"]);
-                if (!string.IsNullOrEmpty(ArtisanName))
-                {
-                    ModelArtisanList = bllArt.GetArtisanList(" and artisanName='" + ArtisanName + "'", 1);
-                }
-                else
-                {
-                    ModelArtisanList = bllArt.GetArtisanList(" and ArtisanID='" + ArtisanID + "'", 1);
-                }
-            }
+            ProductID = Request.QueryString["productid"];
+            productModelList = bll.GetProductList(" and ProductID='" + ProductID + "'", 1);
         }
 
         public static string NoHTML(string Htmlstring)

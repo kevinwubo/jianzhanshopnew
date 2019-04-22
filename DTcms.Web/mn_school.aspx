@@ -3,6 +3,7 @@
 <%@ Import Namespace="System.Data" %> 
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="DTcms.Model" %> 
+<%@ Register src="UserControl/mn_planbody_foot.ascx" tagname="mn_planbody_foot" tagprefix="uc1" %>
 <html>
 
 <head>
@@ -26,6 +27,7 @@
 </head>
 
 <body>
+    <form id="form1" runat="server">
     <header>
         <div class="flex-row college-hd">
             <div class="back" href="javascript:window.history.back()">
@@ -58,7 +60,7 @@
                 <div class="con-txt">
                     <h1><%=model.articleTitle %></h1>
                     <span>【<%=model.AddDate.ToShortDateString() %>】</span>
-                    <p><%=model.zhaiyao %>
+                    <p><%= model.zhaiyao.Length>40?model.zhaiyao.Substring(0,39):model.zhaiyao %> ......
                         <a href="mn_schooldetail.aspx?articleid=<%=model.id %>">查看更多></a>
                     </p>
                 </div>
@@ -98,30 +100,7 @@
             <div class="color_3 px16 clamp1 mar-t-16" style="text-align:center"> 福建省盏天下电子商务有限公司</div>
         </div>
     </section>
-    <div id="header1" class="flex-row pad-l-30 pad-r-30 pad-t-30 pad-b-40" style="text-align: center;align-items: center;">
-        <div class="flex-col">
-            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_home.png" alt="">
-            <div style="margin-top: .1rem;height: .3rem">首页</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div class="flex-col" onclick="moveLeft()">
-            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_fl.png" alt="" />
-            <div style="margin-top: .1rem;height: .3rem">分类</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div class="flex-col">
-            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic-zx.png" alt="" />
-            <div style="margin-top: .1rem;height: .3rem">咨询</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div style="width:2rem" class="mar-l-20">
-            <div class="flex-row" style="align-items: center;">
-                <img style="height: .5rem;width:.55rem" src="../static/images/jianzhan/ic_wx.png" alt="" />
-                <div class="flex-col px16">(长按复制添加微信)</div>
-            </div>
-            <div style="margin-top: .1rem;height: .3rem">1231723876</div>
-        </div>
-    </div>
+<uc1:mn_planbody_foot ID="mn_planbody_foot1" runat="server" />
 
  <!-- 立即质询 -->
  <!-- 立即质询 -->
@@ -137,6 +116,7 @@
      </div>
      <div class="ssbtnzx px24 mar-r-30">立即咨询</div>
  </div>
+    
  <div class="totop" style="display: block;">
     <img style="height:.8rem;width:.8rem" src="../static/images/jianzhan/to_top.png">
 </div>
@@ -264,6 +244,7 @@
             return null; //返回参数值        
         }
     </script>
+    </form>
 </body>
 
 </html>

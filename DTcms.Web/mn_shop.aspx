@@ -3,6 +3,8 @@
 <%@ Import Namespace="System.Data" %> 
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="DTcms.Model" %> 
+<%@ Register src="UserControl/mn_planbody_foot.ascx" tagname="mn_planbody_foot" tagprefix="uc1" %>
+<%@ Register src="UserControl/mn_footer_new.ascx" tagname="mn_footer_new" tagprefix="uc2" %>
 <html>
 
 <head>
@@ -14,6 +16,7 @@
     <link rel="stylesheet" href="../static/css/base_1_30.css" type="text/css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/pagination.css" type="text/css">
+     <script type="text/javascript" src="project/Public/base/js/jquery-1.11.3.min.js"></script>
     <style>
         body {
             background: #fff;
@@ -157,9 +160,10 @@
 </head>
 
 <body>
+    <form id="form1" runat="server">
     <header>
         <div class="flex-row college-hd">
-            <div class="back" href="javascript:window.history.back()">
+            <div class="back" href="m_index.html">
                 返回
             </div>
             <div class="txt px36">建盏商城</div>
@@ -283,6 +287,8 @@
 						</div>			
             </div>
         </div>
+        
+
     </section>
     <div class="store-con">
         <div class="part1" style="height:100%;overflow:auto">
@@ -295,8 +301,8 @@
                 <div class="item1">
                     <div style="margin: 0 .1rem">
                         <div class="t1 color_red_c9">ID:<%=model.ProductID %></div>
-                        <div class="pimg" style="background:url(<%=model.Images %>)"></div>
-                        <div class="t1 clamp1">【<%=model.Author %>】<%=model.ProductName %></div>
+                        <a href="m_<%=model.ProductID %>.html"><div class="pimg" style="background:url(<%=model.Images %>)"></div></a>
+                        <div class="t1 clamp1">【<%=model.Author %>】<%=model.ProductName %></div>                        
                         <img onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')" class="bt-zx" src="../static/images/jianzhan/btn_ljzx.png">
                     </div>
                 </div>
@@ -309,31 +315,8 @@
         <div id="PageContent" runat="server" ></div></div>
         <div class="div-h-8"></div>
     </div>
-    <div id="header1" class="flex-row pad-l-30 pad-r-30 pad-t-30 pad-b-40" style="text-align: center;align-items: center;">
-        <div class="flex-col">
-            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_home.png" alt="">
-            <div style="margin-top: .1rem;height: .3rem"><a href="mn_index.html">首页</a></div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div class="flex-col" onclick="moveLeft()">
-            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_fl.png" alt="" />
-            <div style="margin-top: .1rem;height: .3rem">分类</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div class="flex-col">
-            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic-zx.png" alt="" />
-            <div style="margin-top: .1rem;height: .3rem">咨询</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div style="width:2rem" class="mar-l-20">
-            <div class="flex-row" style="align-items: center;">
-                <img style="height: .5rem;width:.55rem" src="../static/images/jianzhan/ic_wx.png" alt="" />
-                <div class="flex-col px16">(长按复制添加微信)</div>
-            </div>
-            <div style="margin-top: .1rem;height: .3rem">1231723876</div>
-        </div>
-    </div>
-
+      <uc2:mn_footer_new ID="mn_footer_new1" runat="server" />
+  <uc1:mn_planbody_foot ID="mn_planbody_foot1" runat="server" />
 
 
     <script src="../static/js/jquery-2.1.4.js"></script>
@@ -375,6 +358,8 @@
 
 
     </script>
+    
+    </form>
 </body>
 
 </html>

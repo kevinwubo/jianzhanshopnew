@@ -13,6 +13,15 @@ namespace DTcms.Web {
     public partial class mn_house {
         
         /// <summary>
+        /// form1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
         /// PageContent 控件。
         /// </summary>
         /// <remarks>
@@ -20,5 +29,23 @@ namespace DTcms.Web {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl PageContent;
+        
+        /// <summary>
+        /// mn_planbody_foot1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DTcms.Web.UserControl.mn_planbody_foot mn_planbody_foot1;
+        
+        /// <summary>
+        /// mn_footer_new1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DTcms.Web.UserControl.mn_footer mn_footer_new1;
     }
 }

@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="mn_footer_new.ascx.cs" Inherits="DTcms.Web.UserControl.mn_footer_new" %>
 <script src="/js/m_o_code.js" type="text/javascript" charset="utf-8"></script>
 <script src="/js/public.js" type="text/javascript" charset="utf-8"></script>
+
 <style type="text/css">
 
 .about-tag-plane-new {

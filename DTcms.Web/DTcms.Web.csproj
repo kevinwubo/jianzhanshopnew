@@ -1086,12 +1086,7 @@
     <Content Include="mn_zffs.html" />
     <Content Include="mn_xmd.html" />
     <Content Include="mn_shop_bak.aspx" />
-    <Content Include="mn_school_bak.aspx" />
-    <Content Include="mn_schooldetail_bak.aspx" />
-    <Content Include="product_detail_bak.aspx" />
-    <Content Include="mn_famous_bak.aspx" />
-    <Content Include="mn_famousdetail_bak.aspx" />
-    <Content Include="mn_house_bak.aspx" />
+    <Content Include="mn_productdetail_bak.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="activity\ajax\addajax.aspx.cs">
@@ -2368,47 +2363,12 @@
     <Compile Include="mn_shop_bak.aspx.designer.cs">
       <DependentUpon>mn_shop_bak.aspx</DependentUpon>
     </Compile>
-    <Compile Include="mn_school_bak.aspx.cs">
-      <DependentUpon>mn_school_bak.aspx</DependentUpon>
+    <Compile Include="mn_productdetail_bak.aspx.cs">
+      <DependentUpon>mn_productdetail_bak.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="mn_school_bak.aspx.designer.cs">
-      <DependentUpon>mn_school_bak.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="mn_schooldetail_bak.aspx.cs">
-      <DependentUpon>mn_schooldetail_bak.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="mn_schooldetail_bak.aspx.designer.cs">
-      <DependentUpon>mn_schooldetail_bak.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="product_detail_bak.aspx.cs">
-      <DependentUpon>product_detail_bak.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="product_detail_bak.aspx.designer.cs">
-      <DependentUpon>product_detail_bak.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="mn_famous_bak.aspx.cs">
-      <DependentUpon>mn_famous_bak.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="mn_famous_bak.aspx.designer.cs">
-      <DependentUpon>mn_famous_bak.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="mn_famousdetail_bak.aspx.cs">
-      <DependentUpon>mn_famousdetail_bak.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="mn_famousdetail_bak.aspx.designer.cs">
-      <DependentUpon>mn_famousdetail_bak.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="mn_house_bak.aspx.cs">
-      <DependentUpon>mn_house_bak.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="mn_house_bak.aspx.designer.cs">
-      <DependentUpon>mn_house_bak.aspx</DependentUpon>
+    <Compile Include="mn_productdetail_bak.aspx.designer.cs">
+      <DependentUpon>mn_productdetail_bak.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

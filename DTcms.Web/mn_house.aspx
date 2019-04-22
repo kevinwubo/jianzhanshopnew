@@ -6,6 +6,7 @@
 <%@ Register src="UserControl/mn_footer.ascx" tagname="mn_footer" tagprefix="uc1" %>
 <%@ Register src="UserControl/mn_planbody_foot.ascx" tagname="mn_planbody_foot" tagprefix="uc2" %>
 <%@ Register src="UserControl/menuplane.ascx" tagname="menuplane" tagprefix="uc3" %>
+<%@ Register src="UserControl/mn_footer_new.ascx" tagname="mn_footer_new" tagprefix="uc4" %>
 <!doctype html>
 <html>
 
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="../static/css/style.css" type="text/css">
     <%--<link rel="stylesheet" href="../static/css/pagination.css" type="text/css">--%>
     <link rel="stylesheet" href="../static/css/pagination.css" type="text/css">
-
+    <script type="text/javascript" src="project/Public/base/js/jquery-1.11.3.min.js"></script>
     <style>
         body {
             background: #fff;
@@ -343,6 +344,7 @@
 </head>
 
 <body>
+    <form id="form1" runat="server">
     <header>
         <div class="flex-row college-hd">
             <div class="back" href="javascript:window.history.back()">
@@ -376,7 +378,7 @@
                     <div class="pimg" style="background:url(<%=model.Images %>)"></div>
                 </div>
                 <div class="t1 clamp1">【<%=model.Author %>】<%=model.ProductName %></div>
-                <img class="bt-zx"  onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>') src="../static/images/jianzhan/btn_ljzx.png" />
+                <img class="bt-zx"  onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')" src="../static/images/jianzhan/btn_ljzx.png" />
             </div>
             <%} %>
         </div>
@@ -438,142 +440,16 @@
         <div class="color_3 px16 clamp1 mar-t-16" style="text-align:center">闽ICP备17006498号-1 Copyright 2015 建盏天下网 版权所有</div>
         <div class="color_3 px16 clamp1 mar-t-16" style="text-align:center"> 福建省盏天下电子商务有限公司</div>
     </div>
-    <div id="header1" class="flex-row pad-l-30 pad-r-30 pad-t-30 pad-b-40" style="text-align: center;align-items: center;">
-        <div class="flex-col">
-            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_home.png" alt="">
-            <div style="margin-top: .1rem;height: .3rem">首页</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div class="flex-col" onclick="moveLeft()">
-            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_fl.png" alt="" />
-            <div style="margin-top: .1rem;height: .3rem">分类</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div class="flex-col">
-            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic-zx.png" alt="" />
-            <div style="margin-top: .1rem;height: .3rem">咨询</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div style="width:2rem" class="mar-l-20">
-            <div class="flex-row" style="align-items: center;">
-                <img style="height: .5rem;width:.55rem" src="../static/images/jianzhan/ic_wx.png" alt="" />
-                <div class="flex-col px16">(长按复制添加微信)</div>
-            </div>
-            <div style="margin-top: .1rem;height: .3rem">1231723876</div>
-        </div>
-    </div>
-    <div id='menumark' style="display: none"></div>
-    <div id="menupart" style="display: none;left:200%;">
-        <div id='menuplane' class="menuplane">
-            <div id="guanzhuweixin-s-cate" class="flex-row pad-l-20 bg_color_f navheight" style="align-items: center;max-width: 750px">
-                <div class="back-tag" style="align-items: center" onclick="moveRight()">
+    <uc2:mn_planbody_foot ID="mn_planbody_foot1" runat="server" />
+        <uc4:mn_footer_new ID="mn_footer_new1" runat="server" />
 
-                </div>
-                <div class="flex-col search">
-
-                    <div class="flex-row" style="align-items: center;height: .56rem">
-
-                        <img class="mar-l-30 mar-r-16" style="height: .3rem;width: .25rem" src="../static/images/jianzhan/ic_search.png"
-                            alt="">
-                        <input style="background: #f7f7f7" class="px24" type="text" placeholder="大师或者编号" />
-                    </div>
-                </div>
-                <div class="ssbtn px24 mar-r-30">搜索</div>
-            </div>
-            <div class="menu-body">
-                <div class="menu-cate-part">
-                    <div class="menu-cate-title">名家大师</div>
-                    <div class='line'></div>
-                    <div class="cate-list">
-                        <div class="item">
-                            <div>大师</div>
-                        </div>
-                        <div class="item">
-                            <div>传承人</div>
-                        </div>
-                        <div class="item">
-                            <div>工艺师</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-cate-part">
-                    <div class="menu-cate-title">工艺釉色</div>
-                    <div class='line'></div>
-                    <div class="cate-list">
-                        <div class="item">
-                            <div>油滴</div>
-                        </div>
-                        <div class="item">
-                            <div>兔毫</div>
-                        </div>
-                        <div class="item">
-                            <div>鹧鸪斑</div>
-                        </div>
-                        <div class="item">
-                            <div>耀变</div>
-                        </div>
-                        <div class="item">
-                            <div>金乌釉</div>
-                        </div>
-                        <div class="item">
-                            <div>柿红</div>
-                        </div>
-                        <div class="item">
-                            <div>茶叶抹</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-cate-part">
-                    <div class="menu-cate-title">经典器型</div>
-                    <div class='line'></div>
-                    <div class="cate-list">
-                        <div class="item">
-                            <div>大师</div>
-                        </div>
-                        <div class="item">
-                            <div>大师</div>
-                        </div>
-                        <div class="item">
-                            <div>大师</div>
-                        </div>
-                        <div class="item">
-                            <div>大师</div>
-                        </div>
-                        <div class="item">
-                            <div>大师</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-cate-part">
-                    <div class="menu-cate-title">建盏尺寸</div>
-                    <div class='line'></div>
-                    <div class="cate-list">
-                        <div class="item w_50">
-                            <div>大师</div>
-                        </div>
-                        <div class="item w_50">
-                            <div>大师</div>
-                        </div>
-                        <div class="item w_50">
-                            <div>大师</div>
-                        </div>
-                        <div class="item w_50">
-                            <div>大师</div>
-                        </div>
-                        <div class="item w_50">
-                            <div>大师</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>    
+   
     <div class="totop" style="display: block;">
         <img style="height:.8rem;width:.8rem" src="../static/images/jianzhan/to_top.png">
     </div>
     <script src="../static/js/jquery-2.1.4.js"></script>
     <script src="../static/js/jquery-weui.js"></script>
-    <%--<script src="../static/js/jquery.pagination.js"></script>--%>
+    <script src="../static/js/jquery.pagination.js"></script>
     <script src="../static/js/utils.js"></script>
     <script src="../static/js/showdiv.js"></script>
     <script src="../static/js/swiper.js"></script>
@@ -632,30 +508,8 @@
                 slideShadows: true,
             }
         })
-        //点击隐藏在线咨询面板或拨号面板
-        $('#menumark').click(function () {
-            moveRight();
-            // }
-        })
-        // 隐藏分类面板
-        function moveRight() {
-            ismenu = false;
-            // console.log("dhgsfhjsgdghj");
-            $("#menupart").animate({ left: '100%' }, "slow", function () {
-                $(this).css("display", "none");
-                $("#menumark").css("display", "none");
-                utils.toggleBody(false)
-            });
-        }
-        //弹出分类面板
-        function moveLeft() {
-            ismenu = true;
-            // console.log("dhgsfhjsgdghj");
-            $('#menupart').css("display", "block");
-            $("#menumark").css("display", "block");
-            $("#menupart").animate({ left: '20%' }, "slow");//8.4
-            utils.toggleBody(true)
-        }
+
+       
         // 返回顶部
         var backButton = $('.totop');
         function backToTop() {
@@ -675,6 +529,8 @@
         $(window).trigger('scroll');
 
     </script>
+    
+    </form>
 </body>
 
 </html>

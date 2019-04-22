@@ -5,6 +5,7 @@
 <%@ Register src="UserControl/mn_footer.ascx" tagname="mn_footer" tagprefix="uc1" %>
 <%@ Register src="UserControl/mn_planbody_foot.ascx" tagname="mn_planbody_foot" tagprefix="uc2" %>
 <%@ Register src="UserControl/menuplane.ascx" tagname="menuplane" tagprefix="uc3" %>
+<%@ Register src="UserControl/mn_footer_new.ascx" tagname="mn_footer_new" tagprefix="uc4" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 
@@ -17,6 +18,7 @@
     <link rel="stylesheet" href="../static/css/base_1_30.css" type="text/css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/pagination.css" type="text/css">
+        <script type="text/javascript" src="project/Public/base/js/jquery-1.11.3.min.js"></script>
     <style>
         body {
             background: #fff;
@@ -40,6 +42,7 @@
 </head>
 
 <body>
+    <form id="form1" runat="server">
     <header>
         <div class="flex-row college-hd">
             <div class="back" href="javascript:window.history.back()">
@@ -155,31 +158,8 @@
             <div class="color_3 px16 clamp1 mar-t-16" style="text-align:center"> 福建省盏天下电子商务有限公司</div>
         </div>
     </section>
-    <div id="header1" class="flex-row pad-l-30 pad-r-30 pad-t-30 pad-b-40" style="text-align: center;align-items: center;">
-        <div class="flex-col">
-            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_home.png" alt="">
-            <div style="margin-top: .1rem;height: .3rem">首页</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div class="flex-col" onclick="moveLeft()">
-            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_fl.png" alt="" />
-            <div style="margin-top: .1rem;height: .3rem">分类</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div class="flex-col">
-            <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic-zx.png" alt="" />
-            <div style="margin-top: .1rem;height: .3rem">咨询</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div style="width:2rem" class="mar-l-20">
-            <div class="flex-row">
-                <img style="height: .5rem;width:.55rem" src="../static/images/jianzhan/ic_wx.png" alt="" />
-                <div class="flex-col px16">(长按复制添加微信)</div>
-            </div>
-            <div style="margin-top: .1rem;height: .3rem">1231723876</div>
-        </div>
-    </div>
-
+  <uc2:mn_planbody_foot ID="mn_planbody_foot1" runat="server" />
+  <uc4:mn_footer_new ID="mn_footer_new1" runat="server" />
 
     <script src="../static/js/jquery-2.1.4.js"></script>
     <script src="../static/js/jquery-weui.js"></script>
@@ -196,6 +176,10 @@
             }
         })
     </script>
+    
+    
+    
+    </form>
 </body>
 
 </html>

@@ -5,6 +5,7 @@
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="DTcms.Model" %> 
 <%@ Register src="UserControl/mn_footer_new.ascx" tagname="mn_footer_new" tagprefix="uc1" %>
+<%@ Register src="UserControl/mn_planbody_foot.ascx" tagname="mn_planbody_foot" tagprefix="uc2" %>
 <!doctype html>
 <html>
 
@@ -18,352 +19,8 @@
     <link rel="stylesheet" href="/static/css/jquery-weui.css" type="text/css">
     <link rel="stylesheet" href="/static/css/base_1_30.css" type="text/css">
     <!--<link rel="stylesheet" href="/static/css/pagination.css" type="text/css">-->
-
-    <style>
-        body {
-            background: #fff;
-            max-width: 750px;
-            margin: auto;
-            /*-webkit-overflow-scrolling: touch;*/
-        }
-
-        .color_red_c9 {
-            color: #c90319;
-        }
-
-        .ssbtn {
-            width: 1rem;
-            background: #c90319;
-            color: white;
-            height: .56rem;
-            line-height: .56rem;
-            text-align: center;
-            border-radius: 0 3px 3px 0;
-        }
-
-        .search {
-            background: #f7f7f7;
-            height: 0.56rem;
-            border-radius: 3px;
-        }
-
-        .ssbtnzx {
-            width: 2rem;
-            background: #c90319;
-            color: white;
-            height: .7rem;
-            line-height: .7rem;
-            text-align: center;
-            border-radius: 0 3px 3px 0;
-        }
-
-        .searchzx {
-            background: #f7f7f7;
-            height: 0.7rem;
-            border-radius: 3px;
-        }
-
-        .banner {
-            overflow: hidden;
-            border-radius: 5px;
-            margin: .256rem;
-        }
-
-        .banner img {
-            width: 100%;
-        }
-
-        .part1 {
-            background: white;
-            padding: 0.256rem;
-            border-top: .1rem solid #f7f7f7;
-        }
-
-        .list {
-            overflow: hidden;
-            height: 7rem;
-            position: relative;
-        }
-
-        .list .item {
-            text-align: center;
-            width: 33.3%;
-            float: left;
-            height: 3.3rem;
-            margin-top: .2rem
-        }
-
-        .list .item .t1 {
-            margin-top: .2rem;
-            font-size: .18rem;
-        }
-
-        .list .item .pimg {
-            height: 1.4rem;
-            margin-top: .1rem;
-            width: 100%;
-            background-size: 128% !important;
-            background-position: center !important;
-        }
-
-        .bt-zx {
-            margin-top: .2rem;
-            width: 1.34rem;
-            height: .5rem;
-        }
-        /* 大师推荐 */
-        .list1 {
-            overflow: hidden;
-            height: 14.1rem;
-            position: relative;
-        }
-
-        .list1 .item1 {
-            text-align: center;
-            width: 50%;
-            float: left;
-            height: 4.5rem;
-            margin-top: .2rem
-        }
-
-        .list1 .item1 .t1 {
-            margin-top: .2rem;
-            font-size: .18rem;
-        }
-
-        .list1 .item1 .pimg {
-            height: 2.5rem;
-            /* margin-top: .1rem; */
-            width: 100%;
-            background-size: 128% !important;
-            background-position: center !important;
-        }
-        .swiper_container_suz2 {
-            width: 100%;
-            /* padding-left:3%; */
-            height: 4.2rem;
-            overflow: hidden;
-            position: relative;
-            background: white;
-        }
-
-        .swiper_container_suz2 .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            line-height: 1.3rem;
-            height: 4.2rem;
-            margin-top: 0rem;
-            position: relative;
-            /*-webkit-transform:scale(0.8);*/
-        }
-        .swiper_container_suz2 .swiper-slide img {
-            width: 100%;
-            height:auto;
-            display: block;
-        }
-        /* 名家 */
+    <script type="text/javascript" src="project/Public/base/js/jquery-1.11.3.min.js"></script>
     
-		#swiper-container-star {
-			width: 100%;
-			height: 3.6rem;
-		}
-
-		#swiper-container-star a {
-			display: inline-block;
-			width: 100%;
-			height: 100%;
-		}
-
-		#swiper-container-star a img {
-			width: 100%;
-			height: 2.6rem;
-		}
-		#swiper-container-star a #headimg {
-			width: 100%;
-			height: 2.6rem;
-		}
-
-		.star-describe {
-			width: 100%;
-			height: 1rem;
-			background-color: white;
-			text-align: center;
-			overflow: hidden;
-		}
-
-		.star-describe p:nth-child(1) {
-			font-size: 0.37rem;
-			line-height: 0.37rem;
-			color: #cc3333;
-			padding-top: 0.106rem;
-			padding-bottom: 0.106rem;
-		}
-
-		.star-describe p:nth-child(2) {
-			font-size: 0.26rem;
-			line-height: 0.26rem;
-			color: #333333;
-		}
-
-		.store{
-            margin-top: .35rem;
-            height: auto;
-            border: 1px solid #ccc;
-            background: #f7f7f7;
-            border-radius: 15px;
-        }
-        #menupart {
-			height: 100%;
-			width: 80%;
-			position: fixed;
-			top: 0;
-			left: 0;
-			z-index: 99;
-		}
-
-        #menumark{
-            height: 100%;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left:0;
-            background: rgba(99, 99, 99, 0.5);
-            z-index: 98;
-        }
-        #menupart .menu-body{
-            position: absolute;
-            right: 0;
-            top: 0;
-            background: #fff;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            padding-top: 1.2rem;
-            padding-bottom: 1.06rem;
-            box-sizing: border-box;
-            padding-left: .2rem;
-            padding-right: .2rem;
-        }
-        .menu-cate-part{
-            width: 100%;
-            position: relative;
-            text-align: center;
-        }
-        .menu-cate-title{
-            height: .7rem;
-            position: relative;
-            line-height: .7rem;
-            font-size: 0.24rem;
-            background: white;
-            margin: auto;
-            width: 1.5rem;
-            z-index: 1;
-        }
-        .cate-list{
-            background: #fff;
-            overflow: hidden;
-        }
-        .cate-list .item{
-            float: left;
-            width: 33.3%;
-        }
-        .cate-list .item div{
-            height: 0.6rem;
-            line-height: 0.6rem;
-            text-align: center;
-            font-size: 0.22rem;
-            color: #666;
-            margin: .15rem;
-            background: #f6f6f6;
-            border: 1px solid #e6e6e6;
-        }
-        .back-tag {
-            border-top: 1px solid #c90319;
-            border-left: 1px solid #c90319;
-            height: 0.15rem;
-            width: 0.15rem;
-            float: right;
-            margin: .15rem .15rem;
-            transform: rotate(315deg);
-            -o-transform: rotate(315deg);
-            -webkit-transform: rotate(315deg);
-            -moz-transform: rotate(315deg);
-        }   
-        .line{
-            width: 100%;
-            height: 1px;
-            background: #f0f0f0;
-            position: absolute;
-            top: 16px;
-        }
-        .w_50{
-            width: 50% !important;
-        }
-        .tk-mark {
-            position: fixed;
-            height: 100%;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            top: 0;
-            left: 0;
-            z-index: 9999;
-        }
-
-        /*说明*/
-        .tk-mark .kuang {
-            position: absolute;
-            height: 5.6rem;
-            background: white;
-            bottom: 0;
-            width: 100%;
-        }
-
-        /*购买弹款*/
-        .tk-mark .gmkuang {
-            padding: 0.34rem 0 0;
-            position: absolute;
-            /*height: 6rem;*/
-            background: white;
-            bottom: 0;
-            width: 100%;
-        }
-        .px22{
-            font-size: .22rem
-        }
-        .totop {
-            position: fixed;
-            height: auto;
-            z-index: 99999;
-            top: 8.5rem;
-            right: 0.4rem;
-        }
-        .swiper-container {
-            width: 100%;
-            height: 8.5rem;
-        } 
-        /*包裹自定义分页器的div的位置等CSS样式*/
-        .swiper-pagination-custom {
-bottom: .3rem
-        }
-        /*自定义分页器的样式，这个你自己想要什么样子自己写*/
-        .swiper-custom {
-            width: .1rem;
-            height: .1rem;
-            display: inline-block;
-            background: #666;
-            opacity: .3;
-            margin: 0 5px;
-            border-radius: 50%;
-            margin: 0 .3rem
-        }
-        /*自定义分页器激活时的样式表现*/
-        .swiper-custom-active {
-            opacity: 1;
-            width: 1.2rem;
-            background-color: #F78E00;
-        }
-    </style>
 </head>
 
 <body>
@@ -391,19 +48,19 @@ bottom: .3rem
     </div>
 
     <div class="flex-row pad-l-30 pad-r-30 pad-t-20 pad-b-40" style="text-align: center;align-items: center;">
-        <a href="/jianzhan/storePage.html" class="flex-col">
+        <a href="m_product_list.html" class="flex-col">
             <img style="height: .8rem;width:.5rem" src="/static/images/jianzhan/sc.png" alt="">
         </a>
-        <a href="/jianzhan/famousPage.html" class="flex-col">
+        <a href="m_artisan_list.html" class="flex-col">
             <img style="height: .8rem;width:.5rem" src="/static/images/jianzhan/ic_xt.png" alt="">
         </a>
-        <a href="/jianzhan/collegeList.html" class="flex-col">
+        <a href="m_school.html" class="flex-col">
             <img style="height: .8rem;width:.5rem" src="/static/images/jianzhan/iic_xy.png" alt="" />
         </a>
-        <a href="/jianzhan/collegeList.html" class="flex-col">
+        <a href="###" class="flex-col">
             <img style="height: .8rem;width:.5rem" src="/static/images/jianzhan/ic_zt.png" alt="" />
         </a>
-        <a href="/jianzhan/shouchangPage.html" class="flex-col">
+        <a href="m_collection.html" class="flex-col">
             <img style="height: .8rem;width:.5rem" src="/static/images/jianzhan/ic_sc.png" alt="" />
         </a>
     </div>
@@ -434,7 +91,7 @@ bottom: .3rem
                 <div class="item">
                     <div style="margin: 0 .1rem">
                         <div class="t1 color_red_c9">ID:<%=model.ProductID%></div>
-                        <div class="pimg" style="background:url(<%=model.Images %>)"></div>
+                        <a href="m_<%=model.ProductID %>.html"><div class="pimg" style="background:url(<%=model.Images %>)"></div></a>
                         <div class="t1 clamp1">【<%=model.Author%>】<%=model.ProductName%></div>
                         <img class="bt-zx" onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')" src="/static/images/jianzhan/btn_ljzx_y.png" />
                     </div>
@@ -443,10 +100,10 @@ bottom: .3rem
             } %>
         </div>
     </div>
-<%--    <div style="text-align: center; padding: .4rem" class="showmore">
+    <div style="text-align: center; padding: .4rem" class="showmore">
         <div class="color_red_c9 px28">展示更多</div>
         <img style="width: 0.21rem;margin-top: 0.1rem" src="/static/images/jianzhan/more.png" alt="">
-    </div>--%>
+    </div>
     <div class="part1">
         <div class="flex-row" style="align-items: center;padding:.25rem 0">
             <div class="flex-col"></div>
@@ -465,7 +122,7 @@ bottom: .3rem
                 <div class="item">
                     <div style="margin: 0 .1rem">
                         <div class="t1 color_red_c9">ID:<%=model.ProductID%></div>
-                        <div class="pimg" style="background:url(<%=model.Images %>)"></div>
+                        <a href="m_<%=model.ProductID %>.html"><div class="pimg" style="background:url(<%=model.Images %>)"></div></a>
                         <div class="t1 clamp1">【<%=model.Author%>】<%=model.ProductName%></div>
                         <img class="bt-zx" onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')" src="/static/images/jianzhan/btn_ljzx_y.png" />
                     </div>
@@ -473,10 +130,10 @@ bottom: .3rem
             <%}
             } %>
         </div>
-<%--        <div style="text-align: center; padding: .4rem" class="showmore">
+        <div style="text-align: center; padding: .4rem" class="showmore">
             <div class="color_red_c9 px28">展示更多</div>
             <img style="width: 0.21rem;margin-top: 0.1rem" src="/static/images/jianzhan/more.png" alt="">
-        </div>--%>
+        </div>
     </div>
 
     <div class="part1">
@@ -497,7 +154,7 @@ bottom: .3rem
                 <div class="item">
                     <div style="margin: 0 .1rem">
                         <div class="t1 color_red_c9">ID:<%=model.ProductID%></div>
-                        <div class="pimg" style="background:url(<%=model.Images %>)"></div>
+                        <a href="m_<%=model.ProductID %>.html"><div class="pimg" style="background:url(<%=model.Images %>)"></div></a>
                         <div class="t1 clamp1">【<%=model.Author%>】<%=model.ProductName%></div>
                         <img class="bt-zx" onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')" src="/static/images/jianzhan/btn_ljzx_y.png" />
                     </div>
@@ -505,10 +162,10 @@ bottom: .3rem
             <%}
             } %>
         </div>
-<%--        <div style="text-align: center; padding: .4rem" class="showmore">
+        <div style="text-align: center; padding: .4rem" class="showmore">
             <div class="color_red_c9 px28">展示更多</div>
             <img style="width: 0.21rem;margin-top: 0.1rem" src="/static/images/jianzhan/more.png" alt="">
-        </div>--%>
+        </div>
     </div>
 
 
@@ -560,7 +217,7 @@ bottom: .3rem
             <div class="item1">
                 <div style="margin: 0 .1rem">
                     <div class="t1 color_red_c9">ID:<%=model.ProductID%></div>
-                    <div class="pimg" style="background:url(<%=model.Images %>)"></div>
+                    <a href="m_<%=model.ProductID %>.html"><div class="pimg" style="background:url(<%=model.Images %>)"></div></a>
                     <div class="t1 clamp1">【<%=model.Author%>】<%=model.ProductName%></div>
                     <img class="bt-zx"   onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')" src="/static/images/jianzhan/btn_ljzx.png" />
                 </div>
@@ -601,10 +258,10 @@ bottom: .3rem
                } %>
             </div>
         </div>
-<%--        <div style="text-align: center; padding: .4rem" class="showmore">
+        <div style="text-align: center; padding: .4rem" class="showmore">
             <div class="color_red_c9 px28">查看更多大师</div>
             <img style="width: 0.21rem;margin-top: 0.1rem" src="/static/images/jianzhan/more.png" alt="">
-        </div>--%>
+        </div>
     </div>
     <div class="part1" style="padding:.3rem .65rem .5rem ">
         <div class="flex-row" style="align-items: center;padding:.25rem 0">
@@ -749,30 +406,7 @@ bottom: .3rem
         <div class="color_3 px16 clamp1 mar-t-16" style="text-align:center"> 福建省盏天下电子商务有限公司</div>
     </div>
     <!-- 底部导航栏 -->
-    <div id="header1" class="flex-row pad-l-30 pad-r-30 pad-t-30 pad-b-40" style="text-align: center;align-items: center;">
-        <div class="flex-col">
-            <img style="height: .5rem;width:.5rem" src="/static/images/jianzhan/ic_home.png" alt="">
-            <div style="margin-top: .1rem;height: .3rem">首页</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div class="flex-col" onclick="moveLeft()">
-            <img style="height: .5rem;width:.5rem" src="/static/images/jianzhan/ic_fl.png" alt="" />
-            <div style="margin-top: .1rem;height: .3rem">分类</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div class="flex-col">
-            <img style="height: .5rem;width:.5rem" src="/static/images/jianzhan/ic-zx.png" alt="" />
-            <div style="margin-top: .1rem;height: .3rem">咨询</div>
-        </div>
-        <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
-        <div style="width:2rem" class="mar-l-20">
-            <div class="flex-row" style="align-items: center;justify-content: center;">
-               <img style="height: .5rem;"src="/static/images/jianzhan/wxadd.jpg" alt="" />
-                  <!--<div class="flex-col px16">(长按复制添加微信)</div> -->                
-            </div>
-            <div style="margin-top: .1rem;height: .3rem">1231723876</div>
-        </div>
-    </div>
+    <uc2:mn_planbody_foot ID="mn_planbody_foot1" runat="server" />
     <!-- 立即质询 -->
     <div id="guanzhuweixin-s" class="flex-row " style="position: fixed;
     bottom: 0;
@@ -921,15 +555,7 @@ bottom: .3rem
         $('.M-box').pagination({
             mode: 'fixed'
         });
-        function hideTiXing() {
-            $('#tixing').hide()
-            utils.toggleBody(0)
-        }
-
-        function showTiXing() {
-            utils.toggleBody(1)
-            $('#tixing').show()
-        }
+        
 
            // <!-- 名家 -->
         // 名家名堂 滚动面板的配置
@@ -1014,23 +640,7 @@ bottom: .3rem
      
         //点击隐藏在线咨询面板或拨号面板
         $('#menumark').click(function () {
-            // if (iskuaishu) {
-            //     $(".footer").animate({ bottom: '0rem' }, "slow", function () {
-            //         $("#menumark").css("display", "none");
-            //         $("#ksplane").css("display", "none");
-            //     });
-            //     iskuaishu = false;
-            // }
-            // if (iszaixian) {
-            //     $(".footer").animate({ bottom: '0rem' }, "slow", function () {
-            //         $("#menumark").css("display", "none");
-            //         $("#zxplane").css("display", "none");
-            //     });
-            //     iszaixian = false;
-            // }
-            // if (ismenu) {//8.4
             moveRight();
-            // }
         })
         // 隐藏分类面板
         function moveRight() {
@@ -1054,9 +664,6 @@ bottom: .3rem
         // 返回顶部
         var backButton = $('.totop');
         function backToTop() {
-            // $(window).animate({
-            // 	pageYOffset: 0
-            // }, 800);
             window.scrollTo(0, 0)
         }
         backButton.on('click', backToTop);
@@ -1069,26 +676,9 @@ bottom: .3rem
         });
         $(window).trigger('scroll');
 
-
-        // function stopDrop() {
-        //     var lastY;//最后一次y坐标点
-        //     $(document.body).on('touchstart', function (event) {
-        //         lastY = event.originalEvent.changedTouches[0].clientY;//点击屏幕时记录最后一次Y度坐标。
-        //     });
-        //     $(document.body).on('touchmove', function (event) {
-        //         var y = event.originalEvent.changedTouches[0].clientY;
-        //         var st = $(this).scrollTop(); //滚动条高度  
-        //         if (y >= lastY && st <= 10) {//如果滚动条高度小于0，可以理解为到顶了，且是下拉情况下，阻止touchmove事件。
-        //             lastY = y;
-        //             event.preventDefault();
-        //         }
-        //         lastY = y;
-        //         console.log(lastY);
-        //     });
-        // }
-        // stopDrop();
         isTouchDevice();
     </script>
+    
     </form>
 </body>
 
