@@ -23,13 +23,13 @@ namespace AutoServer
         private void Form1_Load(object sender, EventArgs e)
         {
             Timer timer1 = new Timer();
-            timer1.Interval = 1000;
+            timer1.Interval = 600000;
             timer1.Enabled = true;
             timer1.Tick += new EventHandler(timer1EventProcessor);//添加事件
 
 
             Timer timer2 = new Timer();
-            timer2.Interval = 900000;
+            timer2.Interval = 300000;
             timer2.Enabled = true;
             timer2.Tick += new EventHandler(timer2EventProcessor);//添加事件
         }

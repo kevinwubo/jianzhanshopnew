@@ -38,11 +38,11 @@
 <body>
     <header>
         <div class="flex-row college-hd">
-            <div class="back">
+            <div class="back" href="javascript:window.history.back()">
                 返回
             </div>
             <div class="txt px36">名家名堂</div>
-            <div class="menu">
+            <div class="menu" onclick="javascript:moveLeft()">
                 <img src="../static/images/college/menu.png" alt="">
             </div>
         </div>

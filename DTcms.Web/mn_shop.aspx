@@ -163,11 +163,11 @@
     <form id="form1" runat="server">
     <header>
         <div class="flex-row college-hd">
-            <div class="back" href="m_index.html">
-                返回
+            <div class="back" >
+                <a href="m_index.html">返回</a>
             </div>
             <div class="txt px36">建盏商城</div>
-            <div class="menu">
+            <div class="menu" onclick="javascript:moveLeft()">
                 <img src="../static/images/college/menu.png" alt="">
             </div>
         </div>

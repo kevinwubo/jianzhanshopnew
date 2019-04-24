@@ -29,7 +29,8 @@
                 </div>
             </div>
 --%>
-
+<style>
+</style>
               <div id="header1" class="flex-row pad-l-30 pad-r-30 pad-t-30 pad-b-40" style="text-align: center;align-items: center;">
         <div class="flex-col">
         <a href="m_index.html">

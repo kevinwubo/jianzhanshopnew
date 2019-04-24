@@ -40,7 +40,7 @@
                 返回
             </div>
             <div class="txt px36">建盏学院</div>
-            <div class="menu">
+            <div class="menu"  href="javascript:window.history.back()">
                 <img src="../static/images/college/menu.png" alt="">
             </div>
         </div>
