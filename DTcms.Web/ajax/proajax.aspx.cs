@@ -6,6 +6,10 @@ using System.Web.UI.WebControls;
 using System.Data;
 using DTcms.Model;
 using DTcms.Common;
+using System.Net;
+using System.IO;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace DTcms.Web.ajax
 {
@@ -83,6 +87,26 @@ namespace DTcms.Web.ajax
                         sqlTime = " and AddDate between '" + datetime + " 21:31' and '" + datetime + " 01:59'";
                         code = "ESalesQueue";
                     }
+
+                    #region 城市信息优先级最高
+                    ProCityInfo info = getCity(tel);
+                    string city = "";
+                    string province = "";
+                    if (info != null)
+                    {
+                        city = info.city;
+                        province = info.province;
+                        if (info.city.Equals("北京"))
+                        {
+                            code = "BeiJingSalesQueue";
+                        }
+                        else if (info.city.Equals("天津"))
+                        {
+                            code = "TianJinSalesQueue";
+                        }
+                    }
+                    #endregion
+                    
 
                     SMSText = bllCodes.GetModel(" and Code='SmsTemplate'").CodeValues;
                     //当前销售队列
@@ -242,13 +266,12 @@ namespace DTcms.Web.ajax
                         string Name = Request["Name"];//您的称呼
                         string Content = Request["Content"];//留言内容
                         string Tel = Request["Tel"];//手机号码        
-                        string city = Request["City"];
+                        //string city = Request["City"];
                         DataTable dtTel = bll.GetList(" and (telphone='" + Tel + "'  or telphone='" + DESEncrypt.ConvertBy123(Tel) + "')").Tables[0];
                         model.ProductID = ProductID;
                         model.WebChartID = WebChart;
                         model.CustomerName = Name;
-                        model.InquiryContent = Content;
-                        model.City = city;
+                        model.InquiryContent = Content;       
                         model.telphone = Tel;
                         model.CustomerName = Name;
                         model.SourceForm = "PC";
@@ -272,6 +295,8 @@ namespace DTcms.Web.ajax
                             model.status += "特";
                         #endregion
                     }
+                    model.City = city;
+                    model.Provence = province;
                     bll.Add(model);
                     #region 发送短信
                     string SmsMess = string.Format(SMSText, "不详", "不详", "不详", DateTime.Now.ToString());
@@ -357,6 +382,42 @@ namespace DTcms.Web.ajax
                 return dt.Rows[0]["telephone"].ToString();
             }
             return "";
+        }
+
+
+        private ProCityInfo getCity(string telephone)
+        {
+            ProCityInfo info = new ProCityInfo();
+            try
+            {
+                string url = "http://apis.juhe.cn/mobile/get?phone=" + telephone + "&key=f6b3c53f05453d39221ac36b31bf170e";
+                //请求数据
+                HttpWebRequest res = (HttpWebRequest)WebRequest.Create(url);
+                //方法名
+                res.Method = "GET";
+                //获取响应数据
+                HttpWebResponse resp = (HttpWebResponse)res.GetResponse();
+                //读取数据流
+                StreamReader sr = new StreamReader(resp.GetResponseStream(), Encoding.UTF8);
+                //编译成字符串
+                string resphtml = sr.ReadToEnd();
+
+                TelephoneJson result = JsonConvert.DeserializeObject<TelephoneJson>(resphtml);
+                if (result != null)
+                {
+                    result re = result.result;
+                    if (re != null)
+                    {
+                        info.city = !string.IsNullOrEmpty(re.city) ? re.city : "";
+                        info.province = !string.IsNullOrEmpty(re.province) ? re.city : "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                info = null;                
+            }
+            return info;
         }
     }
 }

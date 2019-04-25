@@ -77,6 +77,7 @@
     <Compile Include="shopping_cart.cs" />
     <Compile Include="sms_template.cs" />
     <Compile Include="sys_config.cs" />
+    <Compile Include="TelephoneJson.cs" />
     <Compile Include="template.cs" />
     <Compile Include="url_rewrite.cs" />
     <Compile Include="users.cs" />
