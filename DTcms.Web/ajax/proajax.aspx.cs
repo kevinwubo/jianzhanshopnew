@@ -96,13 +96,9 @@ namespace DTcms.Web.ajax
                     {
                         city = info.city;
                         province = info.province;
-                        if (info.city.Equals("北京"))
+                        if (info.city.Equals("北京") || info.city.Equals("天津"))
                         {
                             code = "BeiJingSalesQueue";
-                        }
-                        else if (info.city.Equals("天津"))
-                        {
-                            code = "TianJinSalesQueue";
                         }
                     }
                     #endregion
@@ -412,10 +408,12 @@ namespace DTcms.Web.ajax
                         info.province = !string.IsNullOrEmpty(re.province) ? re.city : "";
                     }
                 }
+                BLL.Log.WriteTextLog("getCity" + resphtml, DateTime.Now);
             }
             catch (Exception ex)
             {
-                info = null;                
+                info = null;
+                BLL.Log.WriteTextLog("--异常记录getCity" + ex.ToString(), DateTime.Now);
             }
             return info;
         }
