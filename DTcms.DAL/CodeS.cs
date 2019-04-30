@@ -89,6 +89,17 @@ namespace DTcms.DAL
 
 
         /// <summary>
+        /// 获取当前队列最新销售
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetLastSaleNameByCodes(string names)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select top 1 b.real_name from dbo.dt_proInquiry a,dt_manager b where a.OperatorID=b.id  and status='新' and status!='Hand' and b.real_name in("+names+") order by PPId desc ");//" + sqlTime + "
+            return DbHelperSQL.Query(strSql.ToString());
+        }
+
+        /// <summary>
         /// 获取当前销售本月咨询所有量
         /// </summary>
         /// <param name="salesname"></param>

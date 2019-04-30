@@ -83,7 +83,14 @@ namespace DTcms.Web
                             }
                             else
                             {
-                                newsalesname = list[index + 1];
+                                if (index == list.Count)
+                                {
+                                    newsalesname = list[index];
+                                }
+                                else
+                                {
+                                    newsalesname = list[index + 1];
+                                }
                             }
                         }
                         else

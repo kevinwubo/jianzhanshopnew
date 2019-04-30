@@ -107,7 +107,18 @@ namespace DTcms.Web.ajax
                     SMSText = bllCodes.GetModel(" and Code='SmsTemplate'").CodeValues;
                     //当前销售队列
                     string codes = bllCodes.GetModel(" and Code='" + code + "'").CodeValues;
-                    string lastSaleName = bllCodes.GetLastSaleName(sqlTime);// 最近资讯销售姓名
+
+                    string codeNames = "";
+                    if (!string.IsNullOrEmpty(codes))
+                    {
+                        string[] codeList = codes.Split(',');
+                        foreach (string str in codeList)
+                        {
+                            codeNames += "'" + str + "'" + ",";
+                        }
+                    }
+
+                    string lastSaleName = bllCodes.GetLastSaleNameByCodes(codeNames.TrimEnd(','));// 最近资讯销售姓名
                     Model.manager dtSale = new manager(); ;
                     string realnames = "";
                     if (!string.IsNullOrEmpty(codes))
@@ -405,7 +416,7 @@ namespace DTcms.Web.ajax
                     if (re != null)
                     {
                         info.city = !string.IsNullOrEmpty(re.city) ? re.city : "";
-                        info.province = !string.IsNullOrEmpty(re.province) ? re.city : "";
+                        info.province = !string.IsNullOrEmpty(re.province) ? re.province : "";
                     }
                 }
                 BLL.Log.WriteTextLog("getCity" + resphtml, DateTime.Now);

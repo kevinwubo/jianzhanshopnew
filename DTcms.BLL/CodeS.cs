@@ -94,6 +94,21 @@ namespace DTcms.BLL
             return Convert.ToString(dal.GetLastSaleName(sqlTime).Tables[0].Rows[0][0]);
         }
 
+
+                /// <summary>
+        /// 获取当前队列最新销售
+        /// </summary>
+        /// <returns></returns>
+        public string GetLastSaleNameByCodes(string names)
+        {
+            DataTable dt = dal.GetLastSaleNameByCodes(names).Tables[0];
+            if (dt.Rows.Count == 0)
+            {
+                return "";
+            }
+            return Convert.ToString(dal.GetLastSaleNameByCodes(names).Tables[0].Rows[0][0]);
+        }
+
         public int GetInquiryCountBySalesName(string salename)
         {
             return dal.GetInquiryCountBySalesName(salename);
