@@ -271,7 +271,7 @@ namespace DTcms.DAL
         public DataSet GetRealName(string tel)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select b.real_name from  dbo.dt_proInquiry a,dt_manager b where a.OperatorID=b.id and datastatus=0 and a.telphone='" + DESEncrypt.ConvertBy123(tel) + "' ");
+            strSql.Append("select b.real_name from  dbo.dt_proInquiry a,dt_manager b where a.OperatorID=b.id and datastatus=0 and (a.telphone='" + DESEncrypt.ConvertBy123(tel) + "' or a.telphone='" + tel + "' )");
             return DbHelperSQL.Query(strSql.ToString());
         }
 
@@ -374,6 +374,15 @@ namespace DTcms.DAL
             }
             return DbHelperSQL.Query(strSql.ToString());
         }
+
+        public int GetCountByCurrentDay(int operatorID, string starttime, string endtime)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select  PPId from dt_proInquiry where OperatorID=" + operatorID + " and  status='新' and AddDate between '" + starttime + " 00:00:01' and '" + endtime + " 23:59:59'");
+
+            return DbHelperSQL.Query(sb.ToString()).Tables[0].Rows.Count;
+        }
+
 
         /// <summary>
         /// 获取未处理的资讯消息

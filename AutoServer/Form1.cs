@@ -62,7 +62,7 @@ namespace AutoServer
             {
                 this.label2.Text = DateTime.Now.ToString() + "http://116.62.124.214"; 
 
-                if (DateTime.Now.Hour > 7 && DateTime.Now.Hour <= 24)
+                if (DateTime.Now.Hour > 8 && DateTime.Now.Hour <= 22)
                 {
                     System.Diagnostics.Process.Start("explorer.exe", "http://116.62.124.214/auto.aspx");
 

@@ -114,7 +114,23 @@ namespace DTcms.Web.ajax
                         string[] codeList = codes.Split(',');
                         foreach (string str in codeList)
                         {
-                            codeNames += "'" + str + "'" + ",";
+                            DTcms.Model.SalesModel salemodel = bllCodes.GetLastSaleNameBySaleName(str);
+                            if (salemodel != null)
+                            {
+                                if (salemodel.saleCount > salemodel.saleCurrentDayCount || salemodel.saleCurrentDayCount == 0)
+                                {
+                                    codeNames += "'" + str + "'" + ",";
+                                }
+                            }
+                        }
+
+                        //如果销售都分配满了 按照队列去自动分配
+                        if (string.IsNullOrEmpty(codeNames))
+                        {
+                            foreach (string str in codeList)
+                            {
+                                codeNames += "'" + str + "'" + ",";
+                            }
                         }
                     }
 
@@ -124,7 +140,7 @@ namespace DTcms.Web.ajax
                     if (!string.IsNullOrEmpty(codes))
                     {
                         #region 老逻辑
-                        string[] str = codes.Split(',');
+                        string[] str = codeNames.Split(',');
                         List<string> lstSales = new List<string>();
                         string OutSalesCodes = bllCodes.GetList(" and Code in('XiaMenSales','WuYiShanSales')");
                         foreach (string item in str)
@@ -132,16 +148,7 @@ namespace DTcms.Web.ajax
                             //厦门武夷山排除销售
                             if (!OutSalesCodes.Contains(item))
                             {
-                                #region 如果当前销售大于指数量不在分配咨询量
-                                int inquiryCount = bllCodes.GetInquiryCountBySalesName(item);// 当日总数量
                                 manager mr = bllManager.GetModel(item);
-                                int salesCount = 100;
-                                if (mr != null)
-                                {
-                                    salesCount = mr.salesCount;
-                                }
-
-                                #endregion
 
                                 #region 当天在微信队列中的排除销售咨询队列
                                 DateTime dt = DateTime.Now;
@@ -175,7 +182,7 @@ namespace DTcms.Web.ajax
                                 #endregion
                                 if (mr != null)
                                 {
-                                    if (inquiryCount <= salesCount && !WXCode.Equals(mr.telephone))//inquiryCount <= salesCount && 
+                                    if (!WXCode.Equals(mr.telephone))
                                     {
                                         lstSales.Add(item);
                                     }
@@ -213,24 +220,9 @@ namespace DTcms.Web.ajax
                         }
                         #endregion
 
-                        ////厦门武夷山排除销售
-                        //string OutSalesCodes = bllCodes.GetList(" and Code in('XiaMenSales','WuYiShanSales')");
-
-                        //string[] strs = codes.Split(',');//当前时间队列销售
-                        //string newSales = "";
-
-                        //foreach (string str in strs)
-                        //{
-                        //    if (!OutSalesCodes.Contains(str))
-                        //    {
-                        //        newSales += "'" + str + "'" + ",";
-                        //    }
-                        //}
-                        //realnames = bllCodes.GetMinProInquiryBySalesName(newSales.TrimEnd(','));
-
                         if (!string.IsNullOrEmpty(realnames))
                         {
-                            dtSale = bllManager.GetModel(realnames);
+                            dtSale = bllManager.GetModel(realnames.Replace("'", ""));
                         }
                     }
                     #endregion
@@ -332,8 +324,6 @@ namespace DTcms.Web.ajax
                         DTcms.BLL.SMSHelper.SeedSMS(GetManagerTele(), SmsMess);
                         BLL.Log.WriteTextLog("--手机号 BOSS：" + GetManagerTele() + "-询价-短信内容：" + SmsMess, DateTime.Now);
 
-                        //DTcms.BLL.SMSHelper.SeedSMS("15802148204", SmsMess);
-                        //BLL.Log.WriteTextLog("--厦门---手机号 Sales_Manager：17359271665-询价-短信内容：" + SmsMess, DateTime.Now);
                         //发送城市对应的主管销售人员
                         if (dtSale.CityName.Equals("厦门"))
                         {

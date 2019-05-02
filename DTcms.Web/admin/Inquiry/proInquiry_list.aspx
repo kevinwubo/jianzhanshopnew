@@ -77,9 +77,9 @@
     <th align="left">联系方式</th>
     <th align="left">关联销售</th>
     <th align="left">跟踪状态</th>
-    <th align="left">处理状态</th>
-    <th>所属城市</th>
+    <th align="left">处理状态</th>    
     <th align="left">留言时间</th>
+    <th align="left">所属城市</th>
     <th>操作</th>
   </tr>
 </HeaderTemplate>
@@ -94,7 +94,7 @@
     <td <%#Eval("fontColor")%>><%#Eval("TraceState")%></td>
     <td <%#Eval("fontColor")%>><%#Eval("ProcessingStateDesc")%></td>
     <td <%#Eval("fontColor")%>><%#Eval("AddDate")%></td>
-    <td <%#Eval("fontColor")%>><%#Eval("City")%></td>
+        <td <%#Eval("fontColor")%>><%#Eval("Provence")%><%#Eval("City")%></td>
     <td <%#Eval("fontColor")%> align="center"><a href="proInquiry_edit.aspx?action=<%#DTEnums.ActionEnum.Edit %>&channel_id=<%#Eval("PPID")%>&page=<%=page %>&keywords=<%=keywords %>">客户跟踪</a></td>
   </tr>
 </ItemTemplate>

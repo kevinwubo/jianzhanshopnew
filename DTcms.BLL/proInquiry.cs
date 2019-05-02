@@ -176,6 +176,11 @@ namespace DTcms.BLL
             return model;
         }
 
+        public int GetCountByCurrentDay(int operatorID, string starttime, string endtime)
+        {
+            return dal.GetCountByCurrentDay(operatorID, starttime, endtime);
+        }
+
         /// <summary>
         /// 获取未处理的资讯销售
         /// </summary>
@@ -184,6 +189,9 @@ namespace DTcms.BLL
         {
             return dal.GetUnTreatedInquiry();
         }
+
+
+
 
         /// <summary>
         /// 统计数据

@@ -75,25 +75,43 @@ namespace DTcms.Web
                         }
 
                         int index = list.IndexOf(oldsalesname);
-                        if (index > 0)
+                        try
                         {
-                            if (index + 1 > list.Count)
+                            if (index > 0)
                             {
-                                newsalesname = list[0];
-                            }
-                            else
-                            {
-                                if (index == list.Count)
+
+                                int len = index + 1;
+                                if (index == list.Count - 1)
                                 {
-                                    newsalesname = list[index];
+                                    newsalesname = list[0];
                                 }
                                 else
                                 {
-                                    newsalesname = list[index + 1];
+                                    newsalesname = list[len];
                                 }
+
+                                //if (index + 1 > list.Count)
+                                //{
+                                //    newsalesname = list[0];
+                                //}
+                                //else
+                                //{
+                                //    if (index == list.Count)
+                                //    {
+                                //        newsalesname = list[index];
+                                //    }
+                                //    else
+                                //    {
+                                //        newsalesname = list[index + 1];
+                                //    }
+                                //}
+                            }
+                            else
+                            {
+                                newsalesname = list[0];
                             }
                         }
-                        else
+                        catch (Exception ex)
                         {
                             newsalesname = list[0];
                         }
