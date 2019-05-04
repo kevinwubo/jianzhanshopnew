@@ -146,9 +146,9 @@ namespace DTcms.Web.ajax
                         foreach (string item in str)
                         {
                             //厦门武夷山排除销售
-                            if (!OutSalesCodes.Contains(item))
+                            if (!OutSalesCodes.Contains(item.Replace("'", "")))
                             {
-                                manager mr = bllManager.GetModel(item);
+                                manager mr = bllManager.GetModel(item.Replace("'", ""));
 
                                 #region 当天在微信队列中的排除销售咨询队列
                                 DateTime dt = DateTime.Now;
@@ -184,7 +184,7 @@ namespace DTcms.Web.ajax
                                 {
                                     if (!WXCode.Equals(mr.telephone))
                                     {
-                                        lstSales.Add(item);
+                                        lstSales.Add(item.Replace("'", ""));
                                     }
                                 }
                             }
@@ -247,12 +247,14 @@ namespace DTcms.Web.ajax
                             model.telphone = TxtValue;
                         if (dtTel != null && dtTel.Rows.Count > 0)
                         {
+                            model.HistoryOperatorID = Convert.ToString(dtTel.Rows[0]["OperatorID"]);
                             model.OperatorID = Convert.ToString(dtTel.Rows[0]["OperatorID"]);
                             model.SaleTelephone = GetSalestelephone(Convert.ToString(dtTel.Rows[0]["OperatorID"]));
                             smsMess = "老客户咨询！";
                         }
                         else
                         {
+                            model.HistoryOperatorID = dtSale != null ? dtSale.id.ToString() : "0";
                             model.OperatorID = dtSale != null ? dtSale.id.ToString() : "0";
                             model.SaleTelephone = dtSale != null ? dtSale.telephone : "0";
                         }
@@ -277,12 +279,14 @@ namespace DTcms.Web.ajax
                         model.ProcessingState = "0";
                         if (dtTel != null && dtTel.Rows.Count > 0)
                         {
+                            model.HistoryOperatorID = Convert.ToString(dtTel.Rows[0]["OperatorID"]);
                             model.OperatorID = Convert.ToString(dtTel.Rows[0]["OperatorID"]);
                             model.SaleTelephone = GetSalestelephone(Convert.ToString(dtTel.Rows[0]["OperatorID"]));
                             smsMess = "老客户咨询！";
                         }
                         else
                         {
+                            model.HistoryOperatorID = dtSale != null ? dtSale.id.ToString() : "0";
                             model.OperatorID = dtSale != null ? dtSale.id.ToString() : "0";
                             model.SaleTelephone = dtSale != null ? dtSale.telephone : "0";
                         }

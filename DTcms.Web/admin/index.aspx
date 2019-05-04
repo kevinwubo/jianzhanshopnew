@@ -303,7 +303,7 @@
   <div class="header-box">
     <h1 class="logo"></h1>
     <ul id="nav" class="nav"></ul>
-    <span class="icon-4" style="margin-top:-1px;color:Red"><%=tips %></span>
+    <span class="icon-4" style="margin-top:-1px;color:Red"><br /><%=tips %></span>
     <div class="nav-right">
       <div class="icon-info">
         <span>
