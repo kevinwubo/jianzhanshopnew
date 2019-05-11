@@ -394,7 +394,6 @@ namespace DTcms.DAL
             return DbHelperSQL.Query(sb.ToString()).Tables[0].Rows.Count;
         }
 
-
         /// <summary>
         /// 获取未处理的资讯消息
         /// </summary>
@@ -402,7 +401,7 @@ namespace DTcms.DAL
         public DataSet GetUnTreatedInquiry()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("select a.PPId,a.ProductID,b.real_name from dt_proInquiry a,dt_manager b where a.OperatorID=b.id and a.AddDate> CONVERT(varchar(100),  GETDATE(), 23)  and datediff(mi,a.AddDate,GETDATE())>15 and a.status='新'  and a.ProcessingState=0");
+            sb.Append("select a.PPId,a.ProductID,b.real_name,telphone from dt_proInquiry a,dt_manager b where a.OperatorID=b.id and datediff(mi,a.AddDate,GETDATE())>15 and a.status='新'  and a.ProcessingState=0");
             return DbHelperSQL.Query(sb.ToString());
         }
 

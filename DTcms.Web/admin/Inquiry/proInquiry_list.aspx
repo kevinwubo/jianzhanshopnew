@@ -89,7 +89,7 @@
     <td <%#Eval("fontColor")%>><a href="/product_detail.aspx?productid=<%#Eval("ProductID") %>" target="_blank"><%#Eval("ProductID")%></a></td>
     <td <%#Eval("fontColor")%>><%#Eval("ProductName") %></td>
     <td <%#Eval("fontColor")%>><%#Eval("Author") %>  &nbsp;&nbsp;<%#Eval("status")%></td>
-    <td <%#Eval("fontColor")%>>电话：<%#DESEncrypt.ConvertByABC( Eval("telphone").ToString())%>QQ：<%#Eval("WebChartID")%></td>
+    <td <%#Eval("fontColor")%>><%#Eval("telphone")%>  电话：<%#DESEncrypt.ConvertByABC( Eval("telphone").ToString())%>QQ：<%#Eval("WebChartID")%></td>
     <td <%#Eval("fontColor")%>><%#Eval("real_name")%></td>
     <td <%#Eval("fontColor")%>><%#Eval("TraceState")%></td>
     <td <%#Eval("fontColor")%>><%#Eval("ProcessingStateDesc")%></td>
