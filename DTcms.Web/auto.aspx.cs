@@ -115,9 +115,12 @@ namespace DTcms.Web
                         {
                             city = info.city;
                             province = info.province;
-                            if (info.city.Equals("北京") || info.city.Equals("天津"))
+                            if (!string.IsNullOrEmpty(info.city))
                             {
-                                code = "BeiJingSalesQueue";
+                                if (info.city.Equals("北京") || info.city.Equals("天津") || info.city.Equals("廊坊"))
+                                {
+                                    code = "BeiJingSalesQueue";
+                                }
                             }
                         }
                         #endregion
