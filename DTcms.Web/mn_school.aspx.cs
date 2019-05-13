@@ -59,7 +59,7 @@ namespace DTcms.Web
 
                 //绑定页码
                 //txtPageNum.Text = this.PageSize.ToString();
-                string pageUrl = Utils.CombUrlTxt("mn_school.aspx", "?title={0}&page={1}", "", "__id__", title);
+                string pageUrl = Utils.CombUrlTxt("mn_school.aspx", "?title={0}&page={1}", title, "__id__");
                 PageContent.InnerHtml = Utils.OutPageList(this.PageSize, this.pageindex, this.TotalCount, pageUrl, 4);
             }
         }

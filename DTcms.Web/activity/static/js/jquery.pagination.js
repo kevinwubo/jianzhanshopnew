@@ -105,74 +105,74 @@
          * 填充数据
          * @param {int} 页码
          */
-        this.filling = function (index) {
-            var html = '';
-            current = parseInt(index) || parseInt(opts.current); //当前页码
-            var pageCount = this.getPageCount(); //获取的总页数
-            switch (opts.mode) { //配置模式
-                case 'fixed': //固定按钮模式
-                    html += '<a href="javascript:;" class="' + opts.prevCls + '">' + opts.prevContent + '</a>';
-                    if (opts.coping) {
-                        var home = opts.coping && opts.homePage ? opts.homePage : '1';
-                        html += '<a href="javascript:;" data-page="1">' + home + '</a>';
-                    }
-                    var start = current > opts.count - 1 ? current + opts.count - 1 > pageCount ? current - (opts.count - (pageCount - current)) : current - 2 : 1;
-                    var end = current + opts.count - 1 > pageCount ? pageCount : start + opts.count;
-                    for (; start <= end; start++) {
-                        if (start != current) {
-                            html += '<a href="javascript:;" data-page="' + start + '">' + start + '</a>';
-                        } else {
-                            html += '<span class="' + opts.activeCls + '">' + start + '</span>';
-                        }
-                    }
-                    if (opts.coping) {
-                        var _end = opts.coping && opts.endPage ? opts.endPage : pageCount;
-                        html += '<a href="javascript:;" data-page="' + pageCount + '">' + _end + '</a>';
-                    }
-                    html += '<a href="javascript:;" class="' + opts.nextCls + '">' + opts.nextContent + '</a>';
-                    break;
-                case 'unfixed': //不固定按钮模式
-                    if (opts.keepShowPN || current > 1) { //上一页
-                        html += '<a href="javascript:;" class="' + opts.prevCls + '">' + opts.prevContent + '</a>';
-                    } else {
-                        if (opts.keepShowPN == false) {
-                            $obj.find('.' + opts.prevCls) && $obj.find('.' + opts.prevCls).remove();
-                        }
-                    }
-                    if (current >= opts.count + 2 && current != 1 && pageCount != opts.count) {
-                        var home = opts.coping && opts.homePage ? opts.homePage : '1';
-                        html += opts.coping ? '<a href="javascript:;" data-page="1">' + home + '</a><span>...</span>' : '';
-                    }
-                    var start = (current - opts.count) <= 1 ? 1 : (current - opts.count);
-                    var end = (current + opts.count) >= pageCount ? pageCount : (current + opts.count);
-                    for (; start <= end; start++) {
-                        if (start <= pageCount && start >= 1) {
-                            if (start != current) {
-                                html += '<a href="javascript:;" data-page="' + start + '">' + start + '</a>';
-                            } else {
-                                html += '<span class="' + opts.activeCls + '">' + start + '</span>';
-                            }
-                        }
-                    }
-                    if (current + opts.count < pageCount && current >= 1 && pageCount > opts.count) {
-                        var end = opts.coping && opts.endPage ? opts.endPage : pageCount;
-                        html += opts.coping ? '<span>...</span><a href="javascript:;" data-page="' + pageCount + '">' + end + '</a>' : '';
-                    }
-                    if (opts.keepShowPN || current < pageCount) { //下一页
-                        html += '<a href="javascript:;" class="' + opts.nextCls + '">' + opts.nextContent + '</a>';
-                    } else {
-                        if (opts.keepShowPN == false) {
-                            $obj.find('.' + opts.nextCls) && $obj.find('.' + opts.nextCls).remove();
-                        }
-                    }
-                    break;
-                case 'easy': //简单模式
-                    break;
-                default:
-            }
-            html += opts.jump ? '<input type="text" class="' + opts.jumpIptCls + '"><a href="javascript:;" class="' + opts.jumpBtnCls + '">' + opts.jumpBtn + '</a>' : '';
-            $obj.empty().html(html);
-        };
+//        this.filling = function (index) {
+//            var html = '';
+//            current = parseInt(index) || parseInt(opts.current); //当前页码
+//            var pageCount = this.getPageCount(); //获取的总页数
+//            switch (opts.mode) { //配置模式
+//                case 'fixed': //固定按钮模式
+//                    html += '<a href="javascript:;" class="' + opts.prevCls + '">' + opts.prevContent + '</a>';
+//                    if (opts.coping) {
+//                        var home = opts.coping && opts.homePage ? opts.homePage : '1';
+//                        html += '<a href="javascript:;" data-page="1">' + home + '</a>';
+//                    }
+//                    var start = current > opts.count - 1 ? current + opts.count - 1 > pageCount ? current - (opts.count - (pageCount - current)) : current - 2 : 1;
+//                    var end = current + opts.count - 1 > pageCount ? pageCount : start + opts.count;
+//                    for (; start <= end; start++) {
+//                        if (start != current) {
+//                            html += '<a href="javascript:;" data-page="' + start + '">' + start + '</a>';
+//                        } else {
+//                            html += '<span class="' + opts.activeCls + '">' + start + '</span>';
+//                        }
+//                    }
+//                    if (opts.coping) {
+//                        var _end = opts.coping && opts.endPage ? opts.endPage : pageCount;
+//                        html += '<a href="javascript:;" data-page="' + pageCount + '">' + _end + '</a>';
+//                    }
+//                    html += '<a href="javascript:;" class="' + opts.nextCls + '">' + opts.nextContent + '</a>';
+//                    break;
+//                case 'unfixed': //不固定按钮模式
+//                    if (opts.keepShowPN || current > 1) { //上一页
+//                        html += '<a href="javascript:;" class="' + opts.prevCls + '">' + opts.prevContent + '</a>';
+//                    } else {
+//                        if (opts.keepShowPN == false) {
+//                            $obj.find('.' + opts.prevCls) && $obj.find('.' + opts.prevCls).remove();
+//                        }
+//                    }
+//                    if (current >= opts.count + 2 && current != 1 && pageCount != opts.count) {
+//                        var home = opts.coping && opts.homePage ? opts.homePage : '1';
+//                        html += opts.coping ? '<a href="javascript:;" data-page="1">' + home + '</a><span>...</span>' : '';
+//                    }
+//                    var start = (current - opts.count) <= 1 ? 1 : (current - opts.count);
+//                    var end = (current + opts.count) >= pageCount ? pageCount : (current + opts.count);
+//                    for (; start <= end; start++) {
+//                        if (start <= pageCount && start >= 1) {
+//                            if (start != current) {
+//                                html += '<a href="javascript:;" data-page="' + start + '">' + start + '</a>';
+//                            } else {
+//                                html += '<span class="' + opts.activeCls + '">' + start + '</span>';
+//                            }
+//                        }
+//                    }
+//                    if (current + opts.count < pageCount && current >= 1 && pageCount > opts.count) {
+//                        var end = opts.coping && opts.endPage ? opts.endPage : pageCount;
+//                        html += opts.coping ? '<span>...</span><a href="javascript:;" data-page="' + pageCount + '">' + end + '</a>' : '';
+//                    }
+//                    if (opts.keepShowPN || current < pageCount) { //下一页
+//                        html += '<a href="javascript:;" class="' + opts.nextCls + '">' + opts.nextContent + '</a>';
+//                    } else {
+//                        if (opts.keepShowPN == false) {
+//                            $obj.find('.' + opts.nextCls) && $obj.find('.' + opts.nextCls).remove();
+//                        }
+//                    }
+//                    break;
+//                case 'easy': //简单模式
+//                    break;
+//                default:
+//            }
+//            html += opts.jump ? '<input type="text" class="' + opts.jumpIptCls + '"><a href="javascript:;" class="' + opts.jumpBtnCls + '">' + opts.jumpBtn + '</a>' : '';
+//            $obj.empty().html(html);
+//        };
 
         //绑定事件
         this.eventBind = function () {

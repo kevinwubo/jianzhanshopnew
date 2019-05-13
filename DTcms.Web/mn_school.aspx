@@ -44,7 +44,7 @@
         <div class="tab-box">
             <div class="tab-menu" id="div_xxzx">新闻资讯</div>
             <div class="tab-menu" id="div_pmhq">拍卖行情</div>
-            <div class="tab-menu" d="div_jzgy">建盏工艺</div>
+            <div class="tab-menu" id="div_jzgy">建盏工艺</div>
             <div class="tab-menu" id="div_bkzs">百科知识</div>
             <div class="tab-menu" id="div_jzjq">选盏技巧</div>
             <div class="tab-menu" id="div_whls">文化历史</div>
