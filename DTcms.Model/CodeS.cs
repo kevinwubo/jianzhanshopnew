@@ -26,10 +26,21 @@ namespace DTcms.Model
         /// </summary>
         public string CodeValues { get; set; }
 
+        public int SalesCount { get; set; }
 
         /// <summary>
         /// 添加时间
         /// </summary>
         public DateTime Adddate { get; set; }
+    }
+
+
+    public class SalesModel
+    {
+        public string salename { get; set; }
+        //销售后台维护一天总数量
+        public int saleCount { get; set; }
+        //销售当前咨询总量
+        public int saleCurrentDayCount { get; set; }
     }
 }

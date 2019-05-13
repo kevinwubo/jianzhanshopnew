@@ -52,6 +52,17 @@
 	        $(".close").bind("click", function () {
 	            $(".mask").addClass("hide").removeClass("show");
 	        })
+	        // 获取长度为len的随机字符串
+	        function getRandomString(len) {
+	            len = len || 32;
+	            var $chars = 'ABCDEFGHJKMNPQRSTWXYZ'; // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
+	            var maxPos = $chars.length;
+	            var pwd = '';
+	            for (i = 0; i < len; i++) {
+	                pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+	            }
+	            return pwd;
+	        }
 	        // 验证手机号
 	        function isPhoneNo(phone) {
 	            var pattern = /^1[34578]\d{9}$/;
@@ -71,7 +82,7 @@
 	                return false;
 	            }
 	            $.post("ajax/proajax.aspx", { ProductID: productid, Type: type, TxtValue: txtvalue, InquiryType: inquiryType }, function (result) {
-	                tprm = "ProductID=" + productid + "&phone=" + TelJM(txtvalue);
+	                tprm = "ProductID=" + productid + "&phone=" + getRandomString(1) + TelJM(txtvalue) + getRandomString(1);
 	                __ozfac2(tprm, "#inquiryok");
 	                alert(result);
 	                $(".mask").addClass("hide").removeClass("show");

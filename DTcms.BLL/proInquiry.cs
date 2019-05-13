@@ -176,6 +176,11 @@ namespace DTcms.BLL
             return model;
         }
 
+        public int GetCountByCurrentDay(int operatorID, string starttime, string endtime)
+        {
+            return dal.GetCountByCurrentDay(operatorID, starttime, endtime);
+        }
+
         /// <summary>
         /// 获取未处理的资讯销售
         /// </summary>
@@ -184,6 +189,9 @@ namespace DTcms.BLL
         {
             return dal.GetUnTreatedInquiry();
         }
+
+
+
 
         /// <summary>
         /// 统计数据
@@ -225,6 +233,21 @@ namespace DTcms.BLL
                 infoWys.info = message.TrimEnd('，');
                 listInfo.Add(infoWys);
 
+
+                Model.InquiryInfo infoBj = new Model.InquiryInfo();
+                dtInquiry = dal.GetProInquiry(dr["date"].ToString(), "北京").Tables[0];
+                message = "";
+                if (dtInquiry != null && dtInquiry.Rows.Count > 0)
+                {
+                    foreach (DataRow drIn in dtInquiry.Rows)
+                    {
+                        message += "<b>" + drIn["real_name"].ToString() + "：</b><b style='font-size:larger;color:Red'>" + drIn["SystemCount"].ToString() + "</b><b>（" + drIn["HandCount"].ToString() + "）" + "</b>，";
+                    }
+                }
+                infoBj.datetime = "";//dr["date"].ToString();
+                infoBj.cityname = "<b>北京</b>";
+                infoBj.info = message.TrimEnd('，');
+                listInfo.Add(infoBj);
             }
 
             string mess = "";
@@ -259,6 +282,22 @@ namespace DTcms.BLL
             infoTotalWYS.cityname = "<b>武夷山</b>";
             infoTotalWYS.info = mess.TrimEnd('，');
             listInfo.Add(infoTotalWYS);
+
+
+            DataTable dtTotalBJ = dal.GetStatisticsOfMonth(monthstr, "北京").Tables[0];
+            Model.InquiryInfo infoTotalBJ = new Model.InquiryInfo();
+            mess = "";
+            if (dtTotalBJ != null && dtTotalBJ.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dtTotalBJ.Rows)
+                {
+                    mess += "<b>" + dr["real_name"].ToString() + "：</b><b style='font-size:larger;color:Red'>" + dr["SystemCount"].ToString() + "</b><b>（" + dr["HandCount"].ToString() + "）</b>" + "，";
+                }
+            }
+            infoTotalBJ.datetime = "";//monthstr + "汇总";
+            infoTotalBJ.cityname = "<b>北京</b>";
+            infoTotalBJ.info = mess.TrimEnd('，');
+            listInfo.Add(infoTotalBJ);
 
             return listInfo;          
         }

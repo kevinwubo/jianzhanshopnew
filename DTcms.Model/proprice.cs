@@ -92,6 +92,11 @@ namespace DTcms.Model
         public string OperatorID { get; set; }
 
         /// <summary>
+        /// 历史操作员ID
+        /// </summary>
+        public string HistoryOperatorID { get; set; }
+
+        /// <summary>
         /// 销售电话
         /// </summary>
         public string SaleTelephone { get; set; }

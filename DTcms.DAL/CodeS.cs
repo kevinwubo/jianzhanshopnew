@@ -89,6 +89,31 @@ namespace DTcms.DAL
 
 
         /// <summary>
+        /// 获取当前队列最新销售
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetLastSaleNameByCodes(string names)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select top 1 b.real_name,salesCount from dbo.dt_proInquiry a,dt_manager b where a.OperatorID=b.id  and status='新' and status!='Hand' and b.real_name in(" + names + ") order by PPId desc ");//" + sqlTime + "
+            return DbHelperSQL.Query(strSql.ToString());
+        }
+
+                /// <summary>
+        /// 获取当前队列最新销售
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetLastSaleNameBySaleName(string name)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  b.real_name,b.salesCount,COUNT(1) as countCurrentDay from dt_proInquiry a ,dt_manager b where a.OperatorID=b.id and b.real_name='" + name + "'  and   status='新' and AddDate between '" + DateTime.Now.ToShortDateString() + " 00:00:01' and '" + DateTime.Now.ToShortDateString() + " 23:59:59' group by real_name,b.salesCount ");//" + sqlTime + "
+            return DbHelperSQL.Query(strSql.ToString());
+        }
+
+        
+
+
+        /// <summary>
         /// 获取当前销售本月咨询所有量
         /// </summary>
         /// <param name="salesname"></param>
@@ -96,7 +121,7 @@ namespace DTcms.DAL
         public int GetInquiryCountBySalesName(string salesname)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select ppid from dbo.dt_proInquiry a,dt_manager b where a.OperatorID=b.id and b.real_name='" + salesname + "' and isnull(a.status,'')!='Hand' and CONVERT(varchar(100),  a.AddDate, 23)=CONVERT(varchar(100),  GETDATE(), 23)   ");
+            strSql.Append("select ppid from dbo.dt_proInquiry a,dt_manager b where a.OperatorID=b.id and b.real_name='" + salesname + "' and isnull(a.status,'')='新' and CONVERT(varchar(100),  a.AddDate, 23)=CONVERT(varchar(100),  GETDATE(), 23)   ");
             //return DbHelperSQL.ExecuteSql(strSql.ToString());
             return Convert.ToInt32(DbHelperSQL.GetSingle(PagingHelper.CreateCountingSql(strSql.ToString())));
             

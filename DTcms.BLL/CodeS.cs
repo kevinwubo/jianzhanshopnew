@@ -94,6 +94,45 @@ namespace DTcms.BLL
             return Convert.ToString(dal.GetLastSaleName(sqlTime).Tables[0].Rows[0][0]);
         }
 
+
+                /// <summary>
+        /// 获取当前队列最新销售
+        /// </summary>
+        /// <returns></returns>
+        public string GetLastSaleNameByCodes(string names)
+        {
+            DataTable dt = dal.GetLastSaleNameByCodes(names).Tables[0];
+            if (dt.Rows.Count == 0)
+            {
+                return "";
+            }
+            return Convert.ToString(dal.GetLastSaleNameByCodes(names).Tables[0].Rows[0][0]);
+        }
+
+                        /// <summary>
+        /// 获取当前队列最新销售
+        /// </summary>
+        /// <returns></returns>
+        public DTcms.Model.SalesModel GetLastSaleNameBySaleName(string name)
+        {
+            DTcms.Model.SalesModel model = new Model.SalesModel();
+            try
+            {
+                DataTable dt = dal.GetLastSaleNameBySaleName(name).Tables[0];
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    model.salename = dt.Rows[0]["real_name"].ToString();
+                    model.saleCount = int.Parse(dt.Rows[0]["salesCount"].ToString());
+                    model.saleCurrentDayCount = int.Parse(dt.Rows[0]["countCurrentDay"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                model = null;
+            }
+            return model;
+        }
+
         public int GetInquiryCountBySalesName(string salename)
         {
             return dal.GetInquiryCountBySalesName(salename);

@@ -59,6 +59,7 @@
     <div class="rule-single-select"><asp:DropDownList id="ddl_CityName" runat="server" datatype="*" errormsg="请选择城市" sucmsg=" ">
         <asp:ListItem Value="厦门">厦门</asp:ListItem>
         <asp:ListItem Value="武夷山">武夷山</asp:ListItem>
+        <asp:ListItem Value="北京">北京</asp:ListItem>
     </asp:DropDownList></div></dd>
   </dl>
   <dl>

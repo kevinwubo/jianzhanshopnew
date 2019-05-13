@@ -6,6 +6,10 @@ using System.Web.UI.WebControls;
 using System.Data;
 using DTcms.Model;
 using DTcms.Common;
+using System.Net;
+using System.IO;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace DTcms.Web.ajax
 {
@@ -84,33 +88,70 @@ namespace DTcms.Web.ajax
                         code = "ESalesQueue";
                     }
 
+                    #region 城市信息优先级最高
+                    ProCityInfo info = getCity(tel);
+                    string city = "";
+                    string province = "";
+                    if (info != null)
+                    {
+                        city = info.city;
+                        province = info.province;
+                        if (!string.IsNullOrEmpty(info.city))
+                        {
+                            if (info.city.Equals("北京") || info.city.Equals("天津") || info.city.Equals("廊坊"))
+                            {
+                                code = "BeiJingSalesQueue";
+                            }
+                        }
+                    }
+                    #endregion
+                    
+
                     SMSText = bllCodes.GetModel(" and Code='SmsTemplate'").CodeValues;
                     //当前销售队列
                     string codes = bllCodes.GetModel(" and Code='" + code + "'").CodeValues;
-                    string lastSaleName = bllCodes.GetLastSaleName(sqlTime);// 最近资讯销售姓名
+
+                    string codeNames = "";
+                    if (!string.IsNullOrEmpty(codes))
+                    {
+                        string[] codeList = codes.Split(',');
+                        foreach (string str in codeList)
+                        {
+                            DTcms.Model.SalesModel salemodel = bllCodes.GetLastSaleNameBySaleName(str);
+                            if (salemodel != null)
+                            {
+                                if (salemodel.saleCount > salemodel.saleCurrentDayCount || salemodel.saleCurrentDayCount == 0)
+                                {
+                                    codeNames += "'" + str + "'" + ",";
+                                }
+                            }
+                        }
+
+                        //如果销售都分配满了 按照队列去自动分配
+                        if (string.IsNullOrEmpty(codeNames))
+                        {
+                            foreach (string str in codeList)
+                            {
+                                codeNames += "'" + str + "'" + ",";
+                            }
+                        }
+                    }
+
+                    string lastSaleName = bllCodes.GetLastSaleNameByCodes(codeNames.TrimEnd(','));// 最近资讯销售姓名
                     Model.manager dtSale = new manager(); ;
                     string realnames = "";
                     if (!string.IsNullOrEmpty(codes))
                     {
                         #region 老逻辑
-                        string[] str = codes.Split(',');
+                        string[] str = codeNames.Split(',');
                         List<string> lstSales = new List<string>();
                         string OutSalesCodes = bllCodes.GetList(" and Code in('XiaMenSales','WuYiShanSales')");
                         foreach (string item in str)
                         {
                             //厦门武夷山排除销售
-                            if (!OutSalesCodes.Contains(item))
+                            if (!OutSalesCodes.Contains(item.Replace("'", "")))
                             {
-                                #region 如果当前销售大于指数量不在分配咨询量
-                                int inquiryCount = bllCodes.GetInquiryCountBySalesName(item);// 当日总数量
-                                manager mr = bllManager.GetModel(item);
-                                int salesCount = 100;
-                                if (mr != null)
-                                {
-                                    salesCount = mr.salesCount;
-                                }
-
-                                #endregion
+                                manager mr = bllManager.GetModel(item.Replace("'", ""));
 
                                 #region 当天在微信队列中的排除销售咨询队列
                                 DateTime dt = DateTime.Now;
@@ -144,9 +185,9 @@ namespace DTcms.Web.ajax
                                 #endregion
                                 if (mr != null)
                                 {
-                                    if (inquiryCount <= salesCount && !WXCode.Equals(mr.telephone))//inquiryCount <= salesCount && 
+                                    if (!WXCode.Equals(mr.telephone))
                                     {
-                                        lstSales.Add(item);
+                                        lstSales.Add(item.Replace("'", ""));
                                     }
                                 }
                             }
@@ -182,24 +223,9 @@ namespace DTcms.Web.ajax
                         }
                         #endregion
 
-                        ////厦门武夷山排除销售
-                        //string OutSalesCodes = bllCodes.GetList(" and Code in('XiaMenSales','WuYiShanSales')");
-
-                        //string[] strs = codes.Split(',');//当前时间队列销售
-                        //string newSales = "";
-
-                        //foreach (string str in strs)
-                        //{
-                        //    if (!OutSalesCodes.Contains(str))
-                        //    {
-                        //        newSales += "'" + str + "'" + ",";
-                        //    }
-                        //}
-                        //realnames = bllCodes.GetMinProInquiryBySalesName(newSales.TrimEnd(','));
-
                         if (!string.IsNullOrEmpty(realnames))
                         {
-                            dtSale = bllManager.GetModel(realnames);
+                            dtSale = bllManager.GetModel(realnames.Replace("'", ""));
                         }
                     }
                     #endregion
@@ -224,12 +250,14 @@ namespace DTcms.Web.ajax
                             model.telphone = TxtValue;
                         if (dtTel != null && dtTel.Rows.Count > 0)
                         {
+                            model.HistoryOperatorID = Convert.ToString(dtTel.Rows[0]["OperatorID"]);
                             model.OperatorID = Convert.ToString(dtTel.Rows[0]["OperatorID"]);
                             model.SaleTelephone = GetSalestelephone(Convert.ToString(dtTel.Rows[0]["OperatorID"]));
                             smsMess = "老客户咨询！";
                         }
                         else
                         {
+                            model.HistoryOperatorID = dtSale != null ? dtSale.id.ToString() : "0";
                             model.OperatorID = dtSale != null ? dtSale.id.ToString() : "0";
                             model.SaleTelephone = dtSale != null ? dtSale.telephone : "0";
                         }
@@ -242,25 +270,26 @@ namespace DTcms.Web.ajax
                         string Name = Request["Name"];//您的称呼
                         string Content = Request["Content"];//留言内容
                         string Tel = Request["Tel"];//手机号码        
-                        string city = Request["City"];
+                        //string city = Request["City"];
                         DataTable dtTel = bll.GetList(" and (telphone='" + Tel + "'  or telphone='" + DESEncrypt.ConvertBy123(Tel) + "')").Tables[0];
                         model.ProductID = ProductID;
                         model.WebChartID = WebChart;
                         model.CustomerName = Name;
-                        model.InquiryContent = Content;
-                        model.City = city;
+                        model.InquiryContent = Content;       
                         model.telphone = Tel;
                         model.CustomerName = Name;
                         model.SourceForm = "PC";
                         model.ProcessingState = "0";
                         if (dtTel != null && dtTel.Rows.Count > 0)
                         {
+                            model.HistoryOperatorID = Convert.ToString(dtTel.Rows[0]["OperatorID"]);
                             model.OperatorID = Convert.ToString(dtTel.Rows[0]["OperatorID"]);
                             model.SaleTelephone = GetSalestelephone(Convert.ToString(dtTel.Rows[0]["OperatorID"]));
                             smsMess = "老客户咨询！";
                         }
                         else
                         {
+                            model.HistoryOperatorID = dtSale != null ? dtSale.id.ToString() : "0";
                             model.OperatorID = dtSale != null ? dtSale.id.ToString() : "0";
                             model.SaleTelephone = dtSale != null ? dtSale.telephone : "0";
                         }
@@ -272,6 +301,8 @@ namespace DTcms.Web.ajax
                             model.status += "特";
                         #endregion
                     }
+                    model.City = city;
+                    model.Provence = province;
                     bll.Add(model);
                     #region 发送短信
                     string SmsMess = string.Format(SMSText, "不详", "不详", "不详", DateTime.Now.ToString());
@@ -300,8 +331,6 @@ namespace DTcms.Web.ajax
                         DTcms.BLL.SMSHelper.SeedSMS(GetManagerTele(), SmsMess);
                         BLL.Log.WriteTextLog("--手机号 BOSS：" + GetManagerTele() + "-询价-短信内容：" + SmsMess, DateTime.Now);
 
-                        //DTcms.BLL.SMSHelper.SeedSMS("15802148204", SmsMess);
-                        //BLL.Log.WriteTextLog("--厦门---手机号 Sales_Manager：17359271665-询价-短信内容：" + SmsMess, DateTime.Now);
                         //发送城市对应的主管销售人员
                         if (dtSale.CityName.Equals("厦门"))
                         {
@@ -357,6 +386,44 @@ namespace DTcms.Web.ajax
                 return dt.Rows[0]["telephone"].ToString();
             }
             return "";
+        }
+
+
+        private ProCityInfo getCity(string telephone)
+        {
+            ProCityInfo info = new ProCityInfo();
+            try
+            {
+                string url = "http://apis.juhe.cn/mobile/get?phone=" + telephone + "&key=f6b3c53f05453d39221ac36b31bf170e";
+                //请求数据
+                HttpWebRequest res = (HttpWebRequest)WebRequest.Create(url);
+                //方法名
+                res.Method = "GET";
+                //获取响应数据
+                HttpWebResponse resp = (HttpWebResponse)res.GetResponse();
+                //读取数据流
+                StreamReader sr = new StreamReader(resp.GetResponseStream(), Encoding.UTF8);
+                //编译成字符串
+                string resphtml = sr.ReadToEnd();
+
+                TelephoneJson result = JsonConvert.DeserializeObject<TelephoneJson>(resphtml);
+                if (result != null)
+                {
+                    result re = result.result;
+                    if (re != null)
+                    {
+                        info.city = !string.IsNullOrEmpty(re.city) ? re.city : "";
+                        info.province = !string.IsNullOrEmpty(re.province) ? re.province : "";
+                    }
+                }
+                BLL.Log.WriteTextLog("getCity" + resphtml, DateTime.Now);
+            }
+            catch (Exception ex)
+            {
+                info = null;
+                BLL.Log.WriteTextLog("--异常记录getCity" + ex.ToString(), DateTime.Now);
+            }
+            return info;
         }
     }
 }

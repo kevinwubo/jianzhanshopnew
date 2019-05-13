@@ -77,8 +77,9 @@
     <th align="left">联系方式</th>
     <th align="left">关联销售</th>
     <th align="left">跟踪状态</th>
-    <th align="left">处理状态</th>
+    <th align="left">处理状态</th>    
     <th align="left">留言时间</th>
+    <th align="left">所属城市</th>
     <th>操作</th>
   </tr>
 </HeaderTemplate>
@@ -88,11 +89,12 @@
     <td <%#Eval("fontColor")%>><a href="/product_detail.aspx?productid=<%#Eval("ProductID") %>" target="_blank"><%#Eval("ProductID")%></a></td>
     <td <%#Eval("fontColor")%>><%#Eval("ProductName") %></td>
     <td <%#Eval("fontColor")%>><%#Eval("Author") %>  &nbsp;&nbsp;<%#Eval("status")%></td>
-    <td <%#Eval("fontColor")%>>电话：<%#DESEncrypt.ConvertByABC( Eval("telphone").ToString())%>QQ：<%#Eval("WebChartID")%></td>
+    <td <%#Eval("fontColor")%>><%#Eval("telphone")%>  电话：<%#DESEncrypt.ConvertByABC( Eval("telphone").ToString())%>QQ：<%#Eval("WebChartID")%></td>
     <td <%#Eval("fontColor")%>><%#Eval("real_name")%></td>
     <td <%#Eval("fontColor")%>><%#Eval("TraceState")%></td>
     <td <%#Eval("fontColor")%>><%#Eval("ProcessingStateDesc")%></td>
     <td <%#Eval("fontColor")%>><%#Eval("AddDate")%></td>
+        <td <%#Eval("fontColor")%>><%#Eval("Provence")%><%#Eval("City")%></td>
     <td <%#Eval("fontColor")%> align="center"><a href="proInquiry_edit.aspx?action=<%#DTEnums.ActionEnum.Edit %>&channel_id=<%#Eval("PPID")%>&page=<%=page %>&keywords=<%=keywords %>">客户跟踪</a></td>
   </tr>
 </ItemTemplate>

@@ -84,7 +84,7 @@ var _hmt = _hmt || [];
 	                alert('请输入您的手机号码');
 	                return false;
 	            }
-	            if (!isPhoneNo(txtvalue)) {
+	            if (!txtvalue.length == 11) {
 	                alert('请输入正确的手机号码');
 	                return false;
 	            }

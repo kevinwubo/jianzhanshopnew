@@ -60,7 +60,8 @@
             <asp:ListItem  Value="XiaMenSales">厦门销售排出队列</asp:ListItem>
             <asp:ListItem  Value="WuYiShanSales">武夷山销售排出队列</asp:ListItem>
             <asp:ListItem Value="WXChartList">微信号队列</asp:ListItem>
-            <asp:ListItem Value="315XIAOJIANG">小匠专场</asp:ListItem>
+            <asp:ListItem Value="BeiJingSalesQueue">北京天津销售队列</asp:ListItem>
+   <%--         <asp:ListItem Value="315XIAOJIANG">小匠专场</asp:ListItem>
             <asp:ListItem Value="315MINGJIA">名家专场</asp:ListItem>
             <asp:ListItem Value="315DASHI">大师专场</asp:ListItem>
             <asp:ListItem Value="315ZHIZUN">至尊专场</asp:ListItem>
@@ -69,7 +70,7 @@
             <asp:ListItem Value="MJStartTime">名家开始时间</asp:ListItem>
             <asp:ListItem Value="MJEndTime">名家结束时间</asp:ListItem>
             <asp:ListItem Value="DSStartTime">大师开始时间</asp:ListItem>
-            <asp:ListItem Value="DSEndTime">大师结束时间</asp:ListItem>
+            <asp:ListItem Value="DSEndTime">大师结束时间</asp:ListItem>--%>
             
 <%--            <asp:ListItem Value="1111Product">1111档</asp:ListItem>
             <asp:ListItem Value="2222Product">2222档</asp:ListItem>

@@ -31,8 +31,8 @@ namespace DTcms.DAL
 
             StringBuilder strSql = new StringBuilder();
             strSql.Append(" INSERT INTO dt_proInquiry(");
-            strSql.Append(" ProductID,telphone,WebChartID,Provence,City,InquiryContent,CustomerName,OperatorID,status,ProcessingState,SourceForm,TraceState)");
-            strSql.Append(" VALUES(@ProductID,@telphone,@WebChartID,@Provence,@City,@InquiryContent,@CustomerName,@OperatorID,@status,@ProcessingState,@SourceForm,@TraceState)");
+            strSql.Append(" ProductID,telphone,WebChartID,Provence,City,InquiryContent,CustomerName,OperatorID,status,ProcessingState,SourceForm,TraceState,HistoryOperatorID)");
+            strSql.Append(" VALUES(@ProductID,@telphone,@WebChartID,@Provence,@City,@InquiryContent,@CustomerName,@OperatorID,@status,@ProcessingState,@SourceForm,@TraceState,@HistoryOperatorID)");
             strSql.Append(";set @ReturnValue= @@IDENTITY");
             SqlParameter[] parameters = {
 					new SqlParameter("@ProductID", SqlDbType.NVarChar,20),
@@ -47,6 +47,7 @@ namespace DTcms.DAL
                     new SqlParameter("@ProcessingState",SqlDbType.NVarChar,50),
                     new SqlParameter("@SourceForm",SqlDbType.NVarChar,50),
                     new SqlParameter("@TraceState",SqlDbType.NVarChar,50),
+                    new SqlParameter("@HistoryOperatorID",SqlDbType.NVarChar,50),
                     new SqlParameter("@ReturnValue",SqlDbType.Int)};
             parameters[0].Value =model.ProductID!=null? model.ProductID:"未知";
             parameters[1].Value = DESEncrypt.ConvertBy123(model.telphone);
@@ -60,13 +61,14 @@ namespace DTcms.DAL
             parameters[9].Value = model.ProcessingState;
             parameters[10].Value = model.SourceForm;
             parameters[11].Value = model.TraceState;
-            parameters[12].Direction = ParameterDirection.Output;
+            parameters[12].Value = model.HistoryOperatorID;
+            parameters[13].Direction = ParameterDirection.Output;
             List<CommandInfo> sqllist = new List<CommandInfo>();
             CommandInfo cmd = new CommandInfo(strSql.ToString(), parameters);
             sqllist.Add(cmd);
 
             DbHelperSQL.ExecuteSqlTranWithIndentity(sqllist);
-            return (int)parameters[12].Value;
+            return (int)parameters[13].Value;
         }
 
         /// <summary>
@@ -271,7 +273,7 @@ namespace DTcms.DAL
         public DataSet GetRealName(string tel)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select b.real_name from  dbo.dt_proInquiry a,dt_manager b where a.OperatorID=b.id and datastatus=0 and a.telphone='" + DESEncrypt.ConvertBy123(tel) + "' ");
+            strSql.Append("select b.real_name from  dbo.dt_proInquiry a,dt_manager b where a.OperatorID=b.id and datastatus=0 and (a.telphone='" + DESEncrypt.ConvertBy123(tel) + "' or a.telphone='" + tel + "' )");
             return DbHelperSQL.Query(strSql.ToString());
         }
 
@@ -294,11 +296,20 @@ namespace DTcms.DAL
         }
 
 
-        public bool UpdateTraceStateBytelphone(string telphone, string TraceState)
+        public bool UpdateTraceStateBytelphone(string telphone,string wxno, string TraceState)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("update dt_proInquiry  set TraceState='" + TraceState + "' ");
-            strSql.Append(" where (telphone ='" + DESEncrypt.ConvertBy123(telphone) + "' or telphone ='" + telphone + "') ");
+            if (string.IsNullOrEmpty(telphone))
+            {
+                strSql.Append("update dt_proInquiry  set TraceState='" + TraceState + "' ");
+                strSql.Append(" where WebChartID ='" + wxno + "' ");
+            }
+            else
+            {
+                strSql.Append("update dt_proInquiry  set TraceState='" + TraceState + "' ");
+                strSql.Append(" where (telphone ='" + DESEncrypt.ConvertBy123(telphone) + "' or telphone ='" + telphone + "') ");
+
+            }
             int i = DbHelperSQL.ExecuteSql(strSql.ToString());
             if (i > 0)
                 return true;
@@ -375,6 +386,14 @@ namespace DTcms.DAL
             return DbHelperSQL.Query(strSql.ToString());
         }
 
+        public int GetCountByCurrentDay(int operatorID, string starttime, string endtime)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select  PPId from dt_proInquiry where OperatorID=" + operatorID + " and  status='新' and AddDate between '" + starttime + " 00:00:01' and '" + endtime + " 23:59:59'");
+
+            return DbHelperSQL.Query(sb.ToString()).Tables[0].Rows.Count;
+        }
+
         /// <summary>
         /// 获取未处理的资讯消息
         /// </summary>
@@ -382,7 +401,7 @@ namespace DTcms.DAL
         public DataSet GetUnTreatedInquiry()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("select a.PPId,a.ProductID,b.real_name from dt_proInquiry a,dt_manager b where a.OperatorID=b.id and a.AddDate> CONVERT(varchar(100),  GETDATE(), 23)  and datediff(mi,a.AddDate,GETDATE())>15 and a.status='新'  and a.ProcessingState=0");
+            sb.Append("select a.PPId,a.ProductID,b.real_name,telphone from dt_proInquiry a,dt_manager b where a.OperatorID=b.id and datediff(mi,a.AddDate,GETDATE())>15 and a.status='新'  and a.ProcessingState=0");
             return DbHelperSQL.Query(sb.ToString());
         }
 
@@ -441,7 +460,7 @@ namespace DTcms.DAL
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)
             {
-                UpdateTraceStateBytelphone(model.telphone, model.TraceState);
+                UpdateTraceStateBytelphone(model.telphone,model.WebChartID, model.TraceState);
                 return true;
             }
             else
