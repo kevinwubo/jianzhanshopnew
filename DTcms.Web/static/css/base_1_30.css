@@ -1,4 +1,4 @@
-/*重置*/
+﻿/*重置*/
 body, h1, h2, h3, h4, h5, dl, dd, dt, p, ul, li, ol {
     margin: 0;
     padding: 0;
@@ -1053,3 +1053,5 @@ input:-moz-placeholder { /* Firefox 18- */
 #header1{
     border-top: #f6f6f6 solid 1px;
 }
+input{
+    -webkit-appearance: none;border:0px}

@@ -34,6 +34,13 @@
             margin: auto;
             /*-webkit-overflow-scrolling: touch;*/
         }
+        .txt p{
+width:100% !important;
+font-size:.22rem !important;
+line-height:.46rem !important;
+}.txt img{
+width:100% !important;
+}
     </style>
 </head>
 
@@ -52,7 +59,7 @@
     </header>
     <section class="details-wrap">
         <div class="bannner-carousel">
-            <div class="swiper-container-1 swiper-container">
+            <div class="swiper-container-1 swiper-container" style="height:unset">
                 <div class="swiper-wrapper">
                  <% List<string> strLst = productModelList != null && productModelList.Count > 0 ? productModelList[0].lstImages : null;
                          if(strLst!=null)
@@ -99,13 +106,12 @@
                 </div>
             </div>
             <div class="infp-wrap">
-                <div class="info-l" style="width:20%">介绍：</div>
-                <div class="info-r">
+                
+                <div style="width:100%">
                     <div class="txt"> <%=model.summary.Replace("16pt", "20pt").Replace("900","730")%>             
-  
                 </div>
                 </div>
-                </div>
+          
             </div>
         </div>
         <div class="img-show" style="padding:.3rem">

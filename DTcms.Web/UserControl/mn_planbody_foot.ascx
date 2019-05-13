@@ -29,14 +29,14 @@
                 </div>
             </div>
 --%>
-<style>
-</style>
+
               <div id="header1" class="flex-row pad-l-30 pad-r-30 pad-t-30 pad-b-40" style="text-align: center;align-items: center;">
-        <div class="flex-col">
-        <a href="m_index.html">
+        
+        <a  class="flex-col" href="mn_index.html">
             <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_home.png" alt="">
-            <div style="margin-top: .1rem;height: .3rem">首页</div></a>
-        </div>
+            <div style="margin-top: .1rem;height: .3rem">首页</div>
+        </a>
+       
         <div style="width:1px;height: .6rem;background: #f7f7f7"></div>
         <div class="flex-col" onclick="moveLeft()">
             <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_fl.png" alt="" />
@@ -79,36 +79,21 @@
                     <div class="menu-cate-title">名家大师</div>
                     <div class='line'></div>
                     <div class="cate-list">
-                        <div class="item">
-							<div><a href="/mn_shop.aspx?artisanType=业界大师">业界大师</a></div>
-						</div>
-						<div class="item">
-							<div><a href="/mn_shop.aspx?artisanType=老牌传承人">老牌传承人</a></div>
-						</div>
-						<div class="item">
-							<div><a href="/mn_shop.aspx?artisanType=名家工艺师">名家工艺师</a></div>
-						</div>
+                        <div class="item"><a href="/mn_shop.aspx?artisanType=业界大师">业界大师</a></div>
+						<div class="item"><a href="/mn_shop.aspx?artisanType=老牌传承人">老牌传承人</a></div>
+						<div class="item"><a href="/mn_shop.aspx?artisanType=名家工艺师">名家工艺师</a></div>
                     </div>
                 </div>
                 <div class="menu-cate-part">
                     <div class="menu-cate-title">工艺釉色</div>
                     <div class='line'></div>
                     <div class="cate-list">
-                        <div class="item">
-							<div><a href="/mn_shop.aspx?type2=兔毫">兔毫</a></div>
-						</div>
-						<div class="item">
-							<div><a href="/mn_shop.aspx?type2=油滴/鹧鸪斑">油滴/鹧鸪斑</a></div>
-						</div>
-						<div class="item">
-							<div><a href="/mn_shop.aspx?type2=曜变">曜变</a></div>
-						</div>
-						<div class="item">
-							<div><a href="/mn_shop.aspx?type2=乌金釉">乌金釉</a></div>
-						</div>
-						<div class="item">
-							<div><a href="/mn_shop.aspx?type2=杂色釉/异毫">杂色釉/异毫</a></div>
-						</div>
+                        <div class="item"><a href="/mn_shop.aspx?type2=兔毫">兔毫</a></div>
+						<div class="item"><a href="/mn_shop.aspx?type2=油滴/鹧鸪斑">油滴/鹧鸪斑</a></div>
+						<div class="item"><a href="/mn_shop.aspx?type2=曜变">曜变</a></div>
+						<div class="item"><a href="/mn_shop.aspx?type2=乌金釉">乌金釉</a></div>
+						<div class="item"><a href="/mn_shop.aspx?type2=杂色釉/异毫">杂色釉/异毫</a></div>
+					
                     </div>
                 </div>
                 <div class="menu-cate-part">
@@ -116,23 +101,24 @@
                     <div class='line'></div>
                     <div class="cate-list">
                         <div class="item">
-							<div><a href="/mn_shop.aspx?type3=束口盏">束口盏</a></div>
+							<a href="/mn_shop.aspx?type3=束口盏">束口盏</a>
 						</div>
 						<div class="item">
-							<div><a href="/mn_shop.aspx?type3=灯盏">灯盏</a></div>
+							<a href="/mn_shop.aspx?type3=灯盏">灯盏</a>
 						</div>
 						<div class="item">
-							<div><a href="/mn_shop.aspx?type3=敞口盏/斗笠">敞口盏/斗笠</a></div>
+                             <a href="/mn_shop.aspx?type3=敞口盏/斗笠">敞口盏/斗笠</a>
 						</div>
 						<div class="item">
-							<div><a href="/mn_shop.aspx?type3=撇口盏">撇口盏</a></div>
-						</div>
+                            <a href="/mn_shop.aspx?type3=撇口盏">撇口盏</a>
+                        </div>
 						<div class="item">
-							<div><a href="/mn_shop.aspx?type3=敛口盏">敛口盏</a></div>
-						</div>
-                        <div class="item">
-							<div><a href="/mn_shop.aspx?type3=钵型盏">钵型盏</a></div>
-						</div>
+                            <a href="/mn_shop.aspx?type3=敛口盏">敛口盏</a>
+                        </div>
+						<div class="item">
+                            <a href="/mn_shop.aspx?type3=钵型盏">钵型盏</a>
+                        </div>
+
                     </div>
                 </div>
                 <div class="menu-cate-part">
@@ -140,13 +126,13 @@
                     <div class='line'></div>
                     <div class="cate-list">
                         <div class="item">
-							<div><a href="/mn_shop.aspx?type4=小（口径9cm以下）">小（口径9cm以下）</a></div>
-						</div>
+							<a href="/mn_shop.aspx?type4=小（口径9cm以下）">小（口径9cm以下）</a>	
+                            </div>
 						<div class="item">
-							<div><a href="/mn_shop.aspx?type4=中（口径9-12cm）">中（口径9-12cm）</a></div>
-						</div>
+							<a href="/mn_shop.aspx?type4=中（口径9-12cm）">中（口径9-12cm）</a>	
+                            </div>
 						<div class="item">
-							<div><a href="/mn_shop.aspx?type4=大（口径12cm以上）">大（口径12cm以上）</a></div>
+							<a href="/mn_shop.aspx?type4=大（口径12cm以上）">大（口径12cm以上）</a>
 						</div>
                     </div>
                 </div>
@@ -155,23 +141,13 @@
                     <div class='line'></div>
                     <div class="cate-list">
                         <div class="item">
-							<div><a href="/mn_shop.aspx?type7=1000以下">1000以下</a></div>
-						</div>
-						<div class="item">
-							<div><a href="/mn_shop.aspx?type7=1001~3000">1001~3000</a></div>
-						</div>
-						<div class="item">
-							<div><a href="/mn_shop.aspx?type7=3001~5000">3001~5000</a></div>
-						</div>
-						<div class="item">
-							<div><a href="/mn_shop.aspx?type7=5001~10000">5001~10000</a></div>
-						</div>
-						<div class="item">
-							<div><a href="/mn_shop.aspx?type7=10001~50000">10001~50000</a></div>
-						</div>
-                        <div class="item">
-							<div><a href="/mn_shop.aspx?type7=50000以上">50000以上</a></div>
-						</div>
+							<a href="/mn_shop.aspx?type7=1000以下">1000以下</a>
+                            	</div>
+						<div class="item"><a href="/mn_shop.aspx?type7=1001~3000">1001~3000</a>	</div>
+						<div class="item"><a href="/mn_shop.aspx?type7=3001~5000">3001~5000</a>	</div>
+						<div class="item"><a href="/mn_shop.aspx?type7=5001~10000">5001~10000</a></div>
+						<div class="item"><a href="/mn_shop.aspx?type7=10001~50000">10001~50000</a></div>
+                        <div class="item"><a href="/mn_shop.aspx?type7=50000以上">50000以上</a></div>
                     </div>
                 </div>
             </div>

@@ -1141,6 +1141,22 @@ namespace DTcms.DAL
             }
             return Convert.ToInt32(DbHelperSQL.GetSingle(PagingHelper.CreateCountingSql(strSql.ToString())));
         }
+
+        public DataSet GetArticleList(string sqlwhere, int count, int PageCount, string OrderBy = "")
+        {
+            if (string.IsNullOrEmpty(OrderBy))
+            {
+                OrderBy = " a.add_time asc ";
+            }
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("SELECT top " + count + " a.id,a.title as articleTitle,a.Call_Index,a.img_url,zhaiyao,b.title,a.add_time ");
+            strSql.Append("   FROM dt_article  a left join dt_article_category b on a.category_id=b.id where   a.id not in ");
+            strSql.Append(" (select top " + PageCount + " a.id from dt_article a left join dt_article_category b on a.category_id=b.id where  1=1 " + sqlwhere + "  order by " + OrderBy + " ) ");
+            strSql.Append(sqlwhere);
+            strSql.Append(" order by " + OrderBy);
+            return DbHelperSQL.Query(strSql.ToString());
+        }
+
         #endregion
 
     }

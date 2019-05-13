@@ -38,6 +38,17 @@
             line-height: .56rem;
             background: #B32735;
         }
+        .searchinput {   
+            margin: 0px;
+            width: unset;
+            height: unset;
+            line-height: 0.358rem;
+            text-align: left;
+            background: #f7f7f7;
+            border: 0px solid #ebebeb;
+            outline: none;
+            color: #666;
+          }
     </style>
 </head>
 
@@ -46,7 +57,7 @@
     <header>
         <div class="flex-row college-hd">
             <div class="back">
-                <a href="m_index.html">返回</a>
+                <a style="color:#fff" href="m_index.html">返回</a>
             </div>
             <div class="txt px36">名家名堂</div>
             <div class="menu" onclick="javascript:moveLeft()">
@@ -76,7 +87,7 @@
 
                     <img class="mar-l-30 mar-r-16" style="height: .3rem;width: .25rem" src="../static/images/jianzhan/ic_search.png"
                         alt="">
-                    <input style="background: #f7f7f7" class="px24" type="text" placeholder="大师或者编号" />
+                    <input style="background: #f7f7f7" class="px24 searchinput" type="text" placeholder="大师或者编号" />
                 </div>
             </div>
             <div class="ssbtn px24 mar-r-30">搜索</div>

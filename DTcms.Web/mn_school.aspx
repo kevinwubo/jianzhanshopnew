@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../static/css/base_1_30.css" type="text/css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/pagination.css" type="text/css">
+        <script type="text/javascript" src="../static/js/jquery-2.1.4.js"></script>
     <style>
         body {
             background: #fff;
@@ -31,7 +32,7 @@
     <header>
         <div class="flex-row college-hd">
             <div class="back">
-                 <a href="m_index.html">返回</a>
+                 <a style="color:#fff" href="m_index.html">返回</a>
             </div>
             <div class="txt px36">建盏学院</div>
             <div class="menu" onclick="javascript:moveLeft()">
@@ -58,7 +59,7 @@
                     <img src="<%=model.img_url %>" alt="">
                 </div>
                 <div class="con-txt">
-                    <h1><%=model.articleTitle %></h1>
+                    <h1 class="clamp1"><%=model.articleTitle %></h1>
                     <span>【<%=model.AddDate.ToShortDateString() %>】</span>
                     <p><%= model.zhaiyao.Length>40?model.zhaiyao.Substring(0,39):model.zhaiyao %> ......
                         <a href="mn_schooldetail.aspx?articleid=<%=model.id %>">查看更多></a>
@@ -69,9 +70,12 @@
             
         </div>
         <!-- 分页 -->
-        <div class="div-h-3"></div>
-        <div class="flex-row M-box m-style" style="justify-content: center"></div>
-        <div class="div-h-8"></div>
+
+                    <div class="div-h-3"></div>
+            <div class="flex-row M-box m-style" style="justify-content: center">
+                <div id="PageContent" runat="server"></div>
+            </div>
+            <div class="div-h-8"></div>
        
         <div style="background: #f7f7f7;padding: .5rem .6rem">
             <div class="flex-row" style="text-align:center">

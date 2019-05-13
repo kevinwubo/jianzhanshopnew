@@ -117,7 +117,7 @@
             height: 2.5rem;
             /* margin-top: .1rem; */
             width: 100%;
-            background-size: 128% !important;
+            background-size: 100% !important;
             background-position: center !important;
         }
         .swiper_container_suz2 {
@@ -252,6 +252,18 @@
         }
         .cate-list .item div{
             height: 0.6rem;
+            line-height: 0.6rem;
+            text-align: center;
+            font-size: 0.22rem;
+            color: #666;
+            margin: .15rem;
+            background: #f6f6f6;
+            border: 1px solid #e6e6e6;
+        }
+        .cate-list .item a{
+            display: block;
+            height: 0.6rem;
+            overflow:hidden;
             line-height: 0.6rem;
             text-align: center;
             font-size: 0.22rem;
@@ -465,4 +477,5 @@ bottom: .3rem
              $("#txt_keywords").val("");
          });
      });
-                    </script>
+            
+        </script>

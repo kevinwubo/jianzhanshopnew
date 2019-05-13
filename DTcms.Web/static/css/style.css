@@ -1,4 +1,4 @@
-/* 首页 */
+﻿/* 首页 */
 .color_red_c9 {
     color: #c90319;
 }
@@ -362,6 +362,7 @@
     padding: .4rem 0;
 }
 .famous-list .list-con .con-img img{
+    display: block;
     width: 2.22rem;
     height: 2.22rem;
 }
@@ -683,6 +684,7 @@
 .details-wrap .infp-wrap .info-l{
     color: #000000;
     font-size: .26rem;
+    width: 1.1rem;
 }
 .details-wrap .infp-wrap .info-r{
     padding-left: .26rem;
@@ -721,7 +723,7 @@
     font-size: .24rem;
     text-align: center;
     padding: .12rem;
-    margin: .14rem;
+    margin: .06rem;
 }
 .store-wrap .store-tab .tab-item span::after{
     content: '';

@@ -4,13 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DTcms.Common;
 
 namespace DTcms.Web
 {
     public partial class mn_school : System.Web.UI.Page
     {
         private BLL.article bllArt = new BLL.article();
-
+        public int PageSize = 12;//一页显示18条
+        protected int TotalCount;//总数
+        protected int pageindex;//页数
         public List<Model.articleView> ModelArticle = null;//新闻资讯	3条
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,9 +49,18 @@ namespace DTcms.Web
                     title = "新闻资讯";
                 }
 
-                
+                string sqlwhere = " and  b.title='" + title + "' ";
 
-                ModelArticle = bllArt.GetArticleList(" and  b.title='" + title + "' ", 0);
+                //ModelArticle = bllArt.GetArticleList(sqlwhere, 0);
+
+                this.pageindex = DTRequest.GetQueryInt("page", 1);
+                TotalCount = bllArt.GetTotalCount(sqlwhere);
+                ModelArticle = bllArt.GetArticleList(sqlwhere, PageSize, (pageindex - 1) * PageSize, "", (pageindex - 1));
+
+                //绑定页码
+                //txtPageNum.Text = this.PageSize.ToString();
+                string pageUrl = Utils.CombUrlTxt("mn_school.aspx", "?title={0}&page={1}", "", "__id__", title);
+                PageContent.InnerHtml = Utils.OutPageList(this.PageSize, this.pageindex, this.TotalCount, pageUrl, 4);
             }
         }
     }

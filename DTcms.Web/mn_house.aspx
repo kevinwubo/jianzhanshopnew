@@ -138,7 +138,7 @@
             height: 2.5rem;
             /* margin-top: .1rem; */
             width: 100%;
-            background-size: 128% !important;
+            background-size: 100% !important;
             background-position: center !important;
         }
         .swiper_container_suz2 {
@@ -280,6 +280,15 @@
             margin: .15rem;
             background: #f6f6f6;
         }
+        .cate-list .item a{
+            height: 0.6rem;
+            line-height: 0.6rem;
+            text-align: center;
+            font-size: 0.22rem;
+            color: #666;
+            margin: .15rem;
+            background: #f6f6f6;
+        }
         .back-tag {
     border-top: 1px solid #c90319;
     border-left: 1px solid #c90319;
@@ -348,7 +357,7 @@
     <header>
         <div class="flex-row college-hd">
             <div class="back">
-                <a href="m_index.html">返回</a>
+                <a style="color:#fff" href="m_index.html">返回</a>
             </div>
             <div class="txt px36">收藏阁</div>
             <div class="menu" onclick="javascript:moveLeft()">

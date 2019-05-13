@@ -222,23 +222,57 @@ namespace DTcms.BLL
             Random rad = new Random(DateTime.Now.Millisecond);
             foreach (DataRow dr in dt.Rows)
             {
-                Model.articleView model = new Model.articleView();
-                model.articleTitle = Convert.ToString(dr["articleTitle"]);
-                model.id = Convert.ToString(dr["id"]);
-                model.img_url = Convert.ToString(dr["img_url"]);
-                #region 随机图片显示
-                if (string.IsNullOrEmpty(model.img_url))
-                {                    
-                    model.img_url = "images/" + rad.Next(5) + ".jpg";
-                }
-                #endregion
-                model.zhaiyao = Convert.ToString(dr["zhaiyao"]);
-                model.articleType = Convert.ToString(dr["title"]);
-                model.AddDate = Convert.ToDateTime(dr["add_time"]);
-                model.Call_Index = Convert.ToString(dr["Call_Index"]);
-                lstM.Add(model);
+
+                lstM.Add(GetModel(dr));
             }
             return lstM;
+        }
+
+
+        private Model.articleView GetModel(DataRow dr)
+        {
+            Random rad = new Random(DateTime.Now.Millisecond);
+            Model.articleView model = new Model.articleView();
+            model.articleTitle = Convert.ToString(dr["articleTitle"]);
+            model.id = Convert.ToString(dr["id"]);
+            model.img_url = Convert.ToString(dr["img_url"]);
+            #region 随机图片显示
+            if (string.IsNullOrEmpty(model.img_url))
+            {
+                model.img_url = "images/" + rad.Next(5) + ".jpg";
+            }
+            #endregion
+            model.zhaiyao = Convert.ToString(dr["zhaiyao"]);
+            model.articleType = Convert.ToString(dr["title"]);
+            model.AddDate = Convert.ToDateTime(dr["add_time"]);
+            model.Call_Index = Convert.ToString(dr["Call_Index"]);
+            return model;
+        }
+
+        /// <summary>
+        /// 获取产品LIST 根据产品板块
+        /// </summary>
+        /// <param name="PlatePosition"></param>
+        /// <returns></returns>
+        public List<Model.articleView> GetArticleList(string sqlwhere, int count, int indexCount, string OrderBy, int pageindex)
+        {
+            List<Model.articleView> prolist = new List<Model.articleView>();
+            var list = CacheHelper.Get(sqlwhere + count.ToString() + indexCount.ToString() + pageindex.ToString() + OrderBy) as List<Model.articleView>;
+            if (list == null)
+            {
+                DataTable dt = dal.GetArticleList(sqlwhere, count, indexCount, OrderBy).Tables[0];
+                foreach (DataRow dr in dt.Rows)
+                {
+                    prolist.Add(GetModel(dr));
+                }
+                CacheHelper.Insert(sqlwhere + count.ToString() + indexCount.ToString() + pageindex.ToString() + OrderBy, prolist, CacheHelper.Min);
+            }
+            else
+            {
+                prolist = list;
+            }
+
+            return prolist;
         }
 
         public int GetTotalCount(string sqlwhere)

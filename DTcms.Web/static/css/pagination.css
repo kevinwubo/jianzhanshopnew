@@ -25,7 +25,28 @@
     color: #666;
     font-size: .2rem;
 }
-
+.current{
+    float: left;
+    margin: 0 5px !important;
+    width: 0.5rem !important;
+    height: 0.5rem !important;
+    line-height: 0.5rem !important;
+    background: #fff;
+    border: 1px solid #c90319 !important;
+    color: #c90319 !important;
+    font-size: .2rem !important;
+}
+.disabled{
+    float: left;
+    margin: 0 5px !important;
+    width: 0.5rem !important;
+    height: 0.5rem !important;
+    line-height: 0.5rem !important;
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    color: #ddd !important;
+    font-size: .2rem !important;
+}
 .m-style .active {
     float: left;
     margin: 0 5px;
@@ -51,7 +72,7 @@
 }
 
 .m-style a:hover {
-    color: #fff;
+    color: #c90319;
     background: #fff;
     border: 1px solid #c90319;
 }
