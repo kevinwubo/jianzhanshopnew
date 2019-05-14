@@ -156,7 +156,7 @@ namespace DTcms.Web
                             }
                         }
 
-                        string lastSaleName = bllCodes.GetLastSaleNameByCodes(codeNames.TrimEnd(','));// 最近资讯销售姓名
+                        string lastSaleName = bllCodes.GetLastSaleNameByCodes(codeNames.TrimEnd(','), sqlTime);// 最近资讯销售姓名
 
                         string realnames = "";
                         if (!string.IsNullOrEmpty(codes))

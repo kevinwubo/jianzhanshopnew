@@ -99,14 +99,14 @@ namespace DTcms.BLL
         /// 获取当前队列最新销售
         /// </summary>
         /// <returns></returns>
-        public string GetLastSaleNameByCodes(string names)
+        public string GetLastSaleNameByCodes(string names,string datetime)
         {
-            DataTable dt = dal.GetLastSaleNameByCodes(names).Tables[0];
+            DataTable dt = dal.GetLastSaleNameByCodes(names, datetime).Tables[0];
             if (dt.Rows.Count == 0)
             {
                 return "";
             }
-            return Convert.ToString(dal.GetLastSaleNameByCodes(names).Tables[0].Rows[0][0]);
+            return Convert.ToString(dal.GetLastSaleNameByCodes(names, datetime).Tables[0].Rows[0][0]);
         }
 
                         /// <summary>

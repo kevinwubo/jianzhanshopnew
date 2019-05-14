@@ -476,8 +476,8 @@ namespace DTcms.DAL
         public bool UpdateOperatorIDByPPID(int PPId, int OperatorID)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("UPDATE dt_proInquiry ");            
-            strSql.Append(" SET OperatorID=@OperatorID ");
+            strSql.Append("UPDATE dt_proInquiry ");
+            strSql.Append(" SET OperatorID=@OperatorID,AddDate=getdate() ");
             strSql.Append(" WHERE PPId=@PPId");
             SqlParameter[] parameters = {
 					            new SqlParameter("@OperatorID", SqlDbType.NVarChar,20),

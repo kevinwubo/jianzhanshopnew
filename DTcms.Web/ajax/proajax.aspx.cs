@@ -137,7 +137,7 @@ namespace DTcms.Web.ajax
                         }
                     }
 
-                    string lastSaleName = bllCodes.GetLastSaleNameByCodes(codeNames.TrimEnd(','));// 最近资讯销售姓名
+                    string lastSaleName = bllCodes.GetLastSaleNameByCodes(codeNames.TrimEnd(','), sqlTime);// 最近资讯销售姓名
                     Model.manager dtSale = new manager(); ;
                     string realnames = "";
                     if (!string.IsNullOrEmpty(codes))
