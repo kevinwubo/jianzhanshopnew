@@ -104,10 +104,10 @@
     <%} %>
     <footer style="border-top: 2px solid #F0F0F0;">
         <div class="flex-row pad-l-30 pad-r-30 pad-t-20 pad-b-40" style="text-align: center;align-items: center;">
-            <div class="flex-col">
+            <a  class="flex-col" href="m_index.html">
                 <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_home.png" alt="">
                 <div style="margin-top: .1rem;">首页</div>
-            </div>
+            </a>
             <div class="flex-col">
                 <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_fl.png" alt="" />
                 <div style="margin-top: .1rem;">分类</div>

@@ -32,7 +32,7 @@
 
               <div id="header1" class="flex-row pad-l-30 pad-r-30 pad-t-30 pad-b-40" style="text-align: center;align-items: center;">
         
-        <a  class="flex-col" href="mn_index.html">
+        <a  class="flex-col" href="m_index.html">
             <img style="height: .5rem;width:.5rem" src="../static/images/jianzhan/ic_home.png" alt="">
             <div style="margin-top: .1rem;height: .3rem">首页</div>
         </a>

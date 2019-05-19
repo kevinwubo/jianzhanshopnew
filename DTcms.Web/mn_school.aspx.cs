@@ -20,6 +20,7 @@ namespace DTcms.Web
             //if (!IsPostBack)
             {
                 string title = Request["title"] != null ? Request["title"] : "xwzx";
+                string orititle = Request["title"] != null ? Request["title"] : "xwzx";
                 if (title.Equals("xwzx"))
                 {
                     title = "新闻资讯";
@@ -59,7 +60,7 @@ namespace DTcms.Web
 
                 //绑定页码
                 //txtPageNum.Text = this.PageSize.ToString();
-                string pageUrl = Utils.CombUrlTxt("mn_school.aspx", "?title={0}&page={1}", title, "__id__");
+                string pageUrl = Utils.CombUrlTxt("mn_school.aspx", "title={0}&page={1}", orititle, "__id__");
                 PageContent.InnerHtml = Utils.OutPageList(this.PageSize, this.pageindex, this.TotalCount, pageUrl, 4);
             }
         }

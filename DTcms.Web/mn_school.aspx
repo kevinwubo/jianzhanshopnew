@@ -144,7 +144,7 @@
         }
         backButton.on('click', backToTop);
         backToHome.on('click', function () {
-            location.href = '/mn_index.html'
+            location.href = '/m_index.html'
         })
 
         $(window).on('scroll', function () {/*当滚动条的垂直位置大于浏览器所能看到的页面的那部分的高度时，回到顶部按钮就显示 */
