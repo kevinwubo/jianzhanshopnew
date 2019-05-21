@@ -624,6 +624,8 @@
     <Content Include="mn_famousdetail.aspx" />
     <Content Include="mn_house.aspx" />
     <Content Include="mn_index.aspx" />
+    <Content Include="mn_jddetail.aspx" />
+    <Content Include="mn_jdlist.aspx" />
     <Content Include="mn_productdetail.aspx" />
     <Content Include="mn_school.aspx" />
     <Content Include="mn_schooldetail.aspx" />
@@ -2033,6 +2035,20 @@
     </Compile>
     <Compile Include="mn_index.aspx.designer.cs">
       <DependentUpon>mn_index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mn_jddetail.aspx.cs">
+      <DependentUpon>mn_jddetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mn_jddetail.aspx.designer.cs">
+      <DependentUpon>mn_jddetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mn_jdlist.aspx.cs">
+      <DependentUpon>mn_jdlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mn_jdlist.aspx.designer.cs">
+      <DependentUpon>mn_jdlist.aspx</DependentUpon>
     </Compile>
     <Compile Include="mn_productdetail.aspx.cs">
       <DependentUpon>mn_productdetail.aspx</DependentUpon>

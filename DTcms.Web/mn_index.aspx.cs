@@ -19,6 +19,9 @@ namespace DTcms.Web
         public BLL.Product bll = new BLL.Product();
         private BLL.CodeS bllCodes = new BLL.CodeS();
         public BLL.Artisan bllArtisan = new BLL.Artisan();
+
+        public List<Model.Artisan> listArtisanQXYS = null;//器型 釉色       
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -36,6 +39,9 @@ namespace DTcms.Web
                 string sqlwhere = " and Author in(" + sb.ToString().TrimEnd(',') + ")";
                 ModelListMJZP = bll.GetProductList(sqlwhere, 9, " InquiryCount desc,Adddate desc");
 
+
+                listArtisanQXYS = bllArtisan.GetArtisanList(" and artisanType in('器型','釉色') and IsCooperation=1 ", 10);
+                //listArtisanYS = bllArtisan.GetArtisanList(" and artisanType='釉色' and IsCooperation=1 ");
 
                 //List<Model.Artisan> lstArtM = bllArtisan.GetArtisanList(" and artisanType='业界大师' and IsCooperation=1 ");
                 //StringBuilder sb1 = new StringBuilder();

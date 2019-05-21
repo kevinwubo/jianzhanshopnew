@@ -87,6 +87,8 @@ namespace DTcms.Model
         /// 是否推荐到商城
         /// </summary>
         public string IsPushMall { get; set; }
+
+        public DateTime Adddate { get; set; }
         
     }
 }

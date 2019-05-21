@@ -78,6 +78,7 @@ namespace DTcms.BLL
             model.IsCooperation = Convert.ToString(dr["IsCooperation"]);
             model.IsRecommend = Convert.ToString(dr["IsRecommend"]);
             model.IsPushMall = Convert.ToString(dr["IsPushMall"]);
+            model.Adddate = Convert.ToDateTime(dr["Adddate"]);
             #region 随机图片显示
             if (string.IsNullOrEmpty(model.VideoUrl))
             {

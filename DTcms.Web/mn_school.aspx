@@ -1,8 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="m_school.html.cs" Inherits="DTcms.Web.mn_school" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="mn_school.aspx.cs" Inherits="DTcms.Web.mn_school" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ Import Namespace="System.Data" %> 
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="DTcms.Model" %> 
+<%@ Register src="UserControl/mn_footer_new.ascx" tagname="mn_footer_new" tagprefix="uc2" %>
 <%@ Register src="UserControl/mn_planbody_foot.ascx" tagname="mn_planbody_foot" tagprefix="uc1" %>
 <html>
 
@@ -15,8 +16,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
     <link rel="stylesheet" href="../static/css/base_1_30.css" type="text/css">
     <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/pagination.css" type="text/css">
-        <script type="text/javascript" src="../static/js/jquery-2.1.4.js"></script>
+    <link rel="stylesheet" href="../static/css/pagination.css" type="text/css"><script type="text/javascript" src="../static/js/jquery-2.1.4.js"></script>
     <style>
         body {
             background: #fff;
@@ -104,11 +104,12 @@
             <div class="color_3 px16 clamp1 mar-t-16" style="text-align:center"> 福建省盏天下电子商务有限公司</div>
         </div>
     </section>
+    <uc2:mn_footer_new ID="mn_footer_new1" runat="server" />
 <uc1:mn_planbody_foot ID="mn_planbody_foot1" runat="server" />
 
  <!-- 立即质询 -->
  <!-- 立即质询 -->
- <div id="guanzhuweixin-s" class="flex-row " style="position: fixed;bottom: 0;height: 1.62rem;background: white;text-align: center;align-items: center;border-top: 1px solid #f6f6f6;width: 100%;z-index: 99;">
+<%-- <div id="guanzhuweixin-s" class="flex-row " style="position: fixed;bottom: 0;height: 1.62rem;background: white;text-align: center;align-items: center;border-top: 1px solid #f6f6f6;width: 100%;z-index: 99;">
      <div class="flex-col searchzx mar-l-30">
 
          <div class="flex-row" style="align-items: center;height: .7rem">
@@ -119,7 +120,7 @@
          </div>
      </div>
      <div class="ssbtnzx px24 mar-r-30">立即咨询</div>
- </div>
+ </div>--%>
     
  <div class="totop" style="display: block;">
     <img style="height:.8rem;width:.8rem" src="../static/images/jianzhan/to_top.png">

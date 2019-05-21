@@ -238,7 +238,7 @@ namespace DTcms.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT top " + count + " artisanID,IsPushMall,artisanName,artisanName2,sex,IDNumber,birthday,workPlace,reviewDate,artisanType,IsRecommend ");
-            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation FROM dt_Artisan ");
+            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation,Adddate FROM dt_Artisan ");
             if (!string.IsNullOrEmpty(sqlwhere))
             {
                 strSql.Append(" where 1=1 " + sqlwhere);
@@ -256,7 +256,7 @@ namespace DTcms.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT  artisanID,IsPushMall,artisanName,artisanName2,sex,IDNumber,birthday,workPlace,reviewDate,artisanType,IsRecommend ");
-            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation FROM dt_Artisan ");
+            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation,Adddate FROM dt_Artisan ");
             if (!string.IsNullOrEmpty(sqlwhere))
             {
                 strSql.Append(" where 1=1 " + sqlwhere);
@@ -278,7 +278,7 @@ namespace DTcms.DAL
             }
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT  artisanID,IsPushMall,artisanName,artisanName2,sex,IDNumber,birthday,workPlace,reviewDate,artisanType,IsRecommend ");
-            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation FROM dt_Artisan ");
+            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation,Adddate FROM dt_Artisan ");
             if (!string.IsNullOrEmpty(sqlwhere))
             {
                 strSql.Append(" where 1=1 " + sqlwhere);
@@ -301,7 +301,7 @@ namespace DTcms.DAL
             }
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT top " + count + " artisanID,IsPushMall,artisanName,artisanName2,sex,IDNumber,birthday,workPlace,reviewDate,artisanType,IsRecommend ");
-            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation FROM dt_Artisan ");
+            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation,adddate FROM dt_Artisan ");
             if (!string.IsNullOrEmpty(sqlwhere))
             {
                 strSql.Append(" where 1=1 " + sqlwhere);
@@ -320,7 +320,7 @@ namespace DTcms.DAL
             string orderBy="Sort ";
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT top " + count + " artisanID,IsPushMall,artisanName,artisanName2,sex,IDNumber,birthday,workPlace,reviewDate,artisanType,IsRecommend ");
-            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation FROM dt_Artisan ");
+            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation,Adddate FROM dt_Artisan ");
             strSql.Append(" where artisanID not in (select top " + indexCount + " artisanID from dt_Artisan where 1=1 " + sqlwhere + " order By " + orderBy + " )");
             strSql.Append(sqlwhere + " order By " + orderBy);
             return DbHelperSQL.Query(strSql.ToString());
@@ -335,7 +335,7 @@ namespace DTcms.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT  artisanID,artisanName,IsPushMall,artisanName2,sex,IDNumber,birthday,workPlace,reviewDate,artisanType,IsRecommend ");
-            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation FROM dt_Artisan ");
+            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation,Adddate FROM dt_Artisan ");
             if (!string.IsNullOrEmpty(sqlwhere))
             {
                 strSql.Append(" where 1=1 " + sqlwhere);
@@ -353,7 +353,7 @@ namespace DTcms.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT  artisanID,artisanName,IsPushMall,artisanName2,sex,IDNumber,birthday,workPlace,reviewDate,artisanType,IsRecommend ");
-            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation FROM dt_Artisan ");
+            strSql.Append(",artisanTitle,masterWorker,artisanSpecial,introduction,IDHead,DetailedIntroduction,VideoUrl,IsCooperation,Adddate FROM dt_Artisan ");
             if (!string.IsNullOrEmpty(strWhere))
             {
                 strSql.Append(" where 1=1 " + strWhere);
