@@ -44,9 +44,16 @@ namespace DTcms.Web.ajax
                 {
                     Response.Write("成功！您的询价对我们很重要，建盏顾问将很快回复！");
                 }
+                else if (tel.Length != 11)
+                {
+                    Response.Write("成功！您的询价对我们很重要，建盏顾问将很快回复！");
+                }
                 else
                 {
                 #endregion
+
+                    
+
                     string InquiryType = Request["InquiryType"];
                     string SourceForm = Request["SourceForm"];
                     string smsMess = "新客户咨询！";
