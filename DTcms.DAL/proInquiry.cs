@@ -179,7 +179,7 @@ namespace DTcms.DAL
             strSql.Append("select CONVERT(varchar(100),  a.AddDate, 23) as date,b.real_name ,b.CityName");
             strSql.Append("    ,SUM(case when status='Hand' then 1 else 0 end) as HandCount ");
             strSql.Append(", SUM(case when isnull(status,1)!='Hand' then 1 else 0 end) as  SystemCount from dbo.dt_proInquiry a, dt_manager b  ");
-            strSql.Append("where  convert(nvarchar(7) ,a.AddDate,23)= convert(nvarchar(7) ,getdate(),23)and a.OperatorID=b.id ");
+            strSql.Append("where  convert(nvarchar(7) ,a.AddDate,23)= convert(nvarchar(7) ,getdate(),23)and a.OperatorID=b.id  and datastatus=0");
             strSql.Append("group by CONVERT(varchar(100),  a.AddDate, 23),real_name,b.CityName  order by date desc");
             return DbHelperSQL.Query(strSql.ToString());
         }
@@ -194,7 +194,7 @@ namespace DTcms.DAL
             strSql.Append("select CONVERT(varchar(100),  a.AddDate, 23) as date,b.real_name ,b.CityName");
             strSql.Append("    ,SUM(case when status='Hand' then 1 else 0 end) as HandCount ");
             strSql.Append(", SUM(case when status like '%新%' then 1 else 0 end) as  SystemCount from dbo.dt_proInquiry a, dt_manager b  ");
-            strSql.Append("where  CONVERT(varchar(100),  a.AddDate, 23)='" + datetime + "'  and a.OperatorID=b.id and b.CityName='" + cityname + "'  ");//and  a.status like '%新%'
+            strSql.Append("where  CONVERT(varchar(100),  a.AddDate, 23)='" + datetime + "'  and a.OperatorID=b.id and b.CityName='" + cityname + "' and datastatus=0 ");//and  a.status like '%新%'
             strSql.Append("group by CONVERT(varchar(100),  a.AddDate, 23),real_name,b.CityName  order by SystemCount asc");
             return DbHelperSQL.Query(strSql.ToString());
         }
@@ -211,7 +211,7 @@ namespace DTcms.DAL
                 strSql.Append("select CONVERT(varchar(100),  a.AddDate, 23) as date");
                 strSql.Append(",SUM(case when SourceForm='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as MobileCount ");
                 strSql.Append(" , SUM(case when SourceForm!='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as  PCCount  from dbo.dt_proInquiry a, dt_manager b  ");
-                strSql.Append(" where  convert(nvarchar(7) ,a.AddDate,23)= convert(nvarchar(7) ,getdate(),23)and a.OperatorID=b.id ");
+                strSql.Append(" where  convert(nvarchar(7) ,a.AddDate,23)= convert(nvarchar(7) ,getdate(),23)and a.OperatorID=b.id  and datastatus=0");
                 strSql.Append("group by CONVERT(varchar(100),  a.AddDate, 23)  order by date desc");
             }
             else
@@ -219,7 +219,7 @@ namespace DTcms.DAL
                 strSql.Append("select CONVERT(varchar(100),  a.AddDate, 23) as date");
                 strSql.Append(",SUM(case when SourceForm='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as MobileCount ");
                 strSql.Append(" , SUM(case when SourceForm!='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as  PCCount  from dbo.dt_proInquiry a, dt_manager b  ");
-                strSql.Append(" where  convert(nvarchar(7) ,a.AddDate,23)='" + datetime + "'  and a.OperatorID=b.id ");
+                strSql.Append(" where  convert(nvarchar(7) ,a.AddDate,23)='" + datetime + "'  and a.OperatorID=b.id  and datastatus=0");
                 strSql.Append("group by CONVERT(varchar(100),  a.AddDate, 23)  order by date desc");
             }
             return DbHelperSQL.Query(strSql.ToString());
@@ -237,7 +237,7 @@ namespace DTcms.DAL
                 strSql.Append("select convert(nvarchar(7) ,a.AddDate,23) as date");
                 strSql.Append(",SUM(case when SourceForm='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as MobileCount ");
                 strSql.Append(", SUM(case when SourceForm!='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as  PCCount from dbo.dt_proInquiry a, dt_manager b  ");
-                strSql.Append("where convert(nvarchar(7) ,a.AddDate,23)= convert(nvarchar(7) ,getdate(),23) and a.OperatorID=b.id ");
+                strSql.Append("where convert(nvarchar(7) ,a.AddDate,23)= convert(nvarchar(7) ,getdate(),23) and a.OperatorID=b.id  and datastatus=0");
                 strSql.Append("group by convert(nvarchar(7) ,a.AddDate,23)");
             }
             else
@@ -245,7 +245,7 @@ namespace DTcms.DAL
                 strSql.Append("select convert(nvarchar(7) ,a.AddDate,23) as date");
                 strSql.Append(",SUM(case when SourceForm='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as MobileCount ");
                 strSql.Append(", SUM(case when SourceForm!='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as  PCCount from dbo.dt_proInquiry a, dt_manager b  ");
-                strSql.Append("where convert(nvarchar(7) ,a.AddDate,23)= '" + datetime + "' and a.OperatorID=b.id ");
+                strSql.Append("where convert(nvarchar(7) ,a.AddDate,23)= '" + datetime + "' and a.OperatorID=b.id  and datastatus=0");
                 strSql.Append("group by convert(nvarchar(7) ,a.AddDate,23)");
             }
             return DbHelperSQL.Query(strSql.ToString());

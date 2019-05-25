@@ -34,19 +34,19 @@ namespace DTcms.Web.ajax
 
                 if (BlackMobile.Contains(tel))
                 {
-                    Response.Write("成功！您的询价对我们很重要，建盏顾问将很快回复！");
+                    Response.Write("成功！建盏天下顾问即将联系您，为您提供建盏报价！");
                 }
                 else if (proCount > 2)//当天同手机号同产品编号只能资讯2次
                 {
-                    Response.Write("成功！您的询价对我们很重要，建盏顾问将很快回复！");
+                    Response.Write("成功！建盏天下顾问即将联系您，为您提供建盏报价！");
                 }
                 else if (proTelCount > 5)//手机号大于5次 同一天
                 {
-                    Response.Write("成功！您的询价对我们很重要，建盏顾问将很快回复！");
+                    Response.Write("成功！建盏天下顾问即将联系您，为您提供建盏报价！");
                 }
                 else if (tel.Length != 11)
                 {
-                    Response.Write("成功！您的询价对我们很重要，建盏顾问将很快回复！");
+                    Response.Write("成功！建盏天下顾问即将联系您，为您提供建盏报价！");
                 }
                 else
                 {
@@ -357,7 +357,7 @@ namespace DTcms.Web.ajax
                     }
                     else
                     {
-                        Response.Write("成功！您的询价对我们很重要，建盏顾问将很快回复！");
+                        Response.Write("成功！建盏天下顾问即将联系您，为您提供建盏报价！");
                     }
 
                     #endregion
