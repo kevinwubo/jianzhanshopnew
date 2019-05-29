@@ -145,13 +145,6 @@
     <Content Include="activity\ChuJia_List.ascx" />
     <Content Include="activity\zhizuntulu.aspx" />
     <Content Include="activity\zhizunzhuanchang.aspx" />
-    <Content Include="activity_bak\dashitulu.aspx" />
-    <Content Include="activity_bak\dashizhuanchang.aspx" />
-    <Content Include="activity_bak\index.aspx" />
-    <Content Include="activity_bak\mingjiatulu.aspx" />
-    <Content Include="activity_bak\mingjiazhuanchang.aspx" />
-    <Content Include="activity_bak\xiaojiangtulu.aspx" />
-    <Content Include="activity_bak\xiaojiangzhuanchang.aspx" />
     <Content Include="admin\advert\advert_edit.aspx" />
     <Content Include="admin\advert\advert_list.aspx" />
     <Content Include="admin\Ajax\Ajax.aspx" />
@@ -634,8 +627,6 @@
     <Content Include="mn_productdetail.aspx" />
     <Content Include="mn_school.aspx" />
     <Content Include="mn_schooldetail.aspx" />
-    <Content Include="oldpage\m_artisan_list.aspx" />
-    <Content Include="oldpage\m_collection.aspx" />
     <Content Include="m_images\01.jpg" />
     <Content Include="m_images\banner.jpg" />
     <Content Include="m_images\icon1.png" />
@@ -679,14 +670,6 @@
     <Content Include="m_images\soso.png" />
     <Content Include="m_images\title_bg.jpg" />
     <Content Include="m_images\title_bg2.jpg" />
-    <Content Include="oldpage\m_index.aspx" />
-    <Content Include="oldpage\m_index.html" />
-    <Content Include="oldpage\m_indexn.aspx" />
-    <Content Include="oldpage\m_product_detail.aspx" />
-    <Content Include="oldpage\m_product_list.aspx" />
-    <Content Include="oldpage\m_school.aspx" />
-    <Content Include="oldpage\m_school_detail.aspx" />
-    <Content Include="pages\sendSMS258.aspx" />
     <Content Include="project\Public\base\css\bass.css" />
     <Content Include="project\Public\base\css\reset.css" />
     <Content Include="project\Public\base\css\swiper-4.3.3.min.css" />
@@ -863,78 +846,6 @@
     <Content Include="scripts\swfupload\swfupload.handlers.js" />
     <Content Include="scripts\swfupload\swfupload.js" />
     <Content Include="scripts\swfupload\swfupload.swf" />
-    <Content Include="templates\green\about.png" />
-    <Content Include="templates\green\about.xml" />
-    <Content Include="templates\green\content.html" />
-    <Content Include="templates\green\css\base.css" />
-    <Content Include="templates\green\css\layout.css" />
-    <Content Include="templates\green\css\style.css" />
-    <Content Include="templates\green\down.html" />
-    <Content Include="templates\green\down_list.html" />
-    <Content Include="templates\green\down_show.html" />
-    <Content Include="templates\green\error.html" />
-    <Content Include="templates\green\goods.html" />
-    <Content Include="templates\green\goods_list.html" />
-    <Content Include="templates\green\goods_show.html" />
-    <Content Include="templates\green\images\big_next.png" />
-    <Content Include="templates\green\images\big_prev.png" />
-    <Content Include="templates\green\images\body_bg.gif" />
-    <Content Include="templates\green\images\cart_arrow.gif" />
-    <Content Include="templates\green\images\cart_icon.gif" />
-    <Content Include="templates\green\images\car_btn_buy.png" />
-    <Content Include="templates\green\images\gotop.gif" />
-    <Content Include="templates\green\images\icon_arrow_blue.gif" />
-    <Content Include="templates\green\images\icon_down.gif" />
-    <Content Include="templates\green\images\icon_tips.png" />
-    <Content Include="templates\green\images\icon_upbtn_bg.png" />
-    <Content Include="templates\green\images\loading.gif" />
-    <Content Include="templates\green\images\login_line.gif" />
-    <Content Include="templates\green\images\logo.png" />
-    <Content Include="templates\green\images\pic_bg.png" />
-    <Content Include="templates\green\images\pm_0.gif" />
-    <Content Include="templates\green\images\pm_1.gif" />
-    <Content Include="templates\green\images\slide_bg.gif" />
-    <Content Include="templates\green\images\small_next.png" />
-    <Content Include="templates\green\images\small_prev.png" />
-    <Content Include="templates\green\images\spacing.gif" />
-    <Content Include="templates\green\images\sprite.gif" />
-    <Content Include="templates\green\images\sprite.png" />
-    <Content Include="templates\green\images\sprites_orderdetails.gif" />
-    <Content Include="templates\green\images\user_avatar.png" />
-    <Content Include="templates\green\index.html" />
-    <Content Include="templates\green\js\avatar.js" />
-    <Content Include="templates\green\js\base.js" />
-    <Content Include="templates\green\js\cart.js" />
-    <Content Include="templates\green\js\login_validate.js" />
-    <Content Include="templates\green\js\picture.js" />
-    <Content Include="templates\green\js\register_validate.js" />
-    <Content Include="templates\green\js\slide.js" />
-    <Content Include="templates\green\login.html" />
-    <Content Include="templates\green\news.html" />
-    <Content Include="templates\green\news_list.html" />
-    <Content Include="templates\green\news_show.html" />
-    <Content Include="templates\green\oauth_login.html" />
-    <Content Include="templates\green\payment.html" />
-    <Content Include="templates\green\photo.html" />
-    <Content Include="templates\green\photo_list.html" />
-    <Content Include="templates\green\photo_show.html" />
-    <Content Include="templates\green\register.html" />
-    <Content Include="templates\green\repassword.html" />
-    <Content Include="templates\green\search.html" />
-    <Content Include="templates\green\shopping.html" />
-    <Content Include="templates\green\useramount.html" />
-    <Content Include="templates\green\usercenter.html" />
-    <Content Include="templates\green\usermessage.html" />
-    <Content Include="templates\green\usermessage_show.html" />
-    <Content Include="templates\green\userorder.html" />
-    <Content Include="templates\green\userorder_show.html" />
-    <Content Include="templates\green\userpoint.html" />
-    <Content Include="templates\green\_comment_box.html" />
-    <Content Include="templates\green\_footer.html" />
-    <Content Include="templates\green\_header.html" />
-    <Content Include="templates\green\_share2_js.html" />
-    <Content Include="templates\green\_share_js.html" />
-    <Content Include="templates\green\_ucenter_nav.html" />
     <Content Include="tools\download.ashx" />
     <Content Include="tools\submit_ajax.ashx" />
     <Content Include="UpFile\Ad\Ad_B_1.jpg" />
@@ -1000,8 +911,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="oldpage\m_artisan_detail.aspx" />
-    <Content Include="oldpage\m_school_list.aspx" />
     <Content Include="urljzz.aspx" />
     <Content Include="mn_shop.aspx" />
     <Content Include="mn_fwbz.html" />
@@ -1971,70 +1880,7 @@
     <Compile Include="mn_schooldetail.aspx.designer.cs">
       <DependentUpon>mn_schooldetail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="oldpage\m_artisan_list.aspx.cs">
-      <DependentUpon>m_artisan_list.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpage\m_artisan_list.aspx.designer.cs">
-      <DependentUpon>m_artisan_list.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="oldpage\m_collection.aspx.cs">
-      <DependentUpon>m_collection.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpage\m_collection.aspx.designer.cs">
-      <DependentUpon>m_collection.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="oldpage\m_index.aspx.cs">
-      <DependentUpon>m_index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpage\m_index.aspx.designer.cs">
-      <DependentUpon>m_index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="oldpage\m_indexn.aspx.cs">
-      <DependentUpon>m_indexn.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpage\m_indexn.aspx.designer.cs">
-      <DependentUpon>m_indexn.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="oldpage\m_product_detail.aspx.cs">
-      <DependentUpon>m_product_detail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpage\m_product_detail.aspx.designer.cs">
-      <DependentUpon>m_product_detail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="oldpage\m_product_list.aspx.cs">
-      <DependentUpon>m_product_list.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpage\m_product_list.aspx.designer.cs">
-      <DependentUpon>m_product_list.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="oldpage\m_school.aspx.cs">
-      <DependentUpon>m_school.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpage\m_school.aspx.designer.cs">
-      <DependentUpon>m_school.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\sendSMS258.aspx.cs">
-      <DependentUpon>sendSMS258.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\sendSMS258.aspx.designer.cs">
-      <DependentUpon>sendSMS258.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="oldpage\m_school_detail.aspx.cs">
-      <DependentUpon>m_school_detail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpage\m_school_detail.aspx.designer.cs">
-      <DependentUpon>m_school_detail.aspx</DependentUpon>
-    </Compile>
     <Compile Include="tools\admin_ajax.ashx.cs">
       <DependentUpon>admin_ajax.ashx</DependentUpon>
     </Compile>
@@ -2220,13 +2066,6 @@
     <Compile Include="UserControl\HeaderSY.ascx.designer.cs">
       <DependentUpon>HeaderSY.ascx</DependentUpon>
     </Compile>
-    <Compile Include="oldpage\m_artisan_detail.aspx.cs">
-      <DependentUpon>m_artisan_detail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpage\m_artisan_detail.aspx.designer.cs">
-      <DependentUpon>m_artisan_detail.aspx</DependentUpon>
-    </Compile>
     <Compile Include="UserControl\M_Mask.ascx.cs">
       <DependentUpon>M_Mask.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2240,13 +2079,6 @@
     </Compile>
     <Compile Include="auto.aspx.designer.cs">
       <DependentUpon>auto.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="oldpage\m_school_list.aspx.cs">
-      <DependentUpon>m_school_list.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpage\m_school_list.aspx.designer.cs">
-      <DependentUpon>m_school_list.aspx</DependentUpon>
     </Compile>
     <Compile Include="urljzz.aspx.cs">
       <DependentUpon>urljzz.aspx</DependentUpon>
@@ -2300,13 +2132,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="aspx\mobile\" />
-    <Folder Include="aspx\plugin\" />
-    <Folder Include="backuphtml\" />
     <Folder Include="html\" />
     <Folder Include="images\images\" />
-    <Folder Include="plugins\" />
-    <Folder Include="upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tools\admin_ajax.ashx" />
