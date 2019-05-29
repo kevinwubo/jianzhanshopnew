@@ -25,6 +25,17 @@
 <base target="_blank" />
 <script type="text/javascript">
 
+// JavaScript Document
+function urlredirect() {
+    var sUserAgent = navigator.userAgent.toLowerCase(); 
+    if ((sUserAgent.match(/(ipod|iphone os|midp|ucweb|android|windows ce|windows mobile)/i))) {
+        // PC跳转移动端
+        var thisUrl = window.location.href;
+        window.location.href = "/m_product_list.html";; //跳转为网址后面加mobile的路径
+    }
+}
+urlredirect();
+
 </script>
 				
 <style type="text/css">
