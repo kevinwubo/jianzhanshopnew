@@ -1,13 +1,18 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="mn_index.aspx.cs" Inherits="DTcms.Web.mpage.mn_index" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
+<%@ Import Namespace="System.Data" %> 
+<%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="DTcms.Model" %> 
+<%--<%@ Register src="UserControl/mn_footer_new.ascx" tagname="mn_footer_new" tagprefix="uc1" %>--%>
+<%@ Register src="~/UserControl/mn_planbody_foot.ascx" tagname="mn_planbody_foot" tagprefix="uc2" %>
 <head>
+
+    <title>建盏天下网(JianZhanShop.com) - 建窑建盏首席品牌商城</title>
+    <meta name="keywords" content="建盏,建窑,天目盏,兔毫盏,油滴盏" />
+    <meta name="description" content="建盏天下(JianZhanShop.com)是国内首家专注于建窑建盏的专业门户，提供产地艺人直供的精品兔毫盏、油滴盏、曜变盏、鹧鸪斑、金油滴、敛口盏、束口盏。建盏天下传播千年的建盏文化和历史，大师名家，老盏等权威信息，提供建盏品鉴、收藏和定制服务。" />
     <meta charset="utf-8">
-    <meta content="小匠专场拍卖" http-equiv="keywords">
-    <meta name="description" content="小匠专场拍卖">
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
-    <title>首页</title>
     <link rel="stylesheet" href="../static/css/1905_jquery-weui.css" type="text/css">
     <link rel="stylesheet" href="../static/css/1905_base_1_30.css" type="text/css">
 
@@ -514,10 +519,10 @@
 
                 <img class="mar-l-30 mar-r-16" style="height: .3rem;width: .25rem" src="../static/images/jianzhan/ic_search.png"
                     alt="">
-                <input style="background: #f7f7f7" class="px24" type="text" placeholder="大师或者编号" />
+                <input style="background: #f7f7f7" class="px24" type="text" id="keyword" type="text" placeholder="大师或者编号"/>
             </div>
         </div>
-        <div class="ssbtn px24 mar-r-30">搜索</div>
+        <div class="ssbtn px24 mar-r-30" id="btnSearch">搜索</div>
     </div>
     <!-- <div style="height:1rem"></div> -->
     <div class="banner">
@@ -563,79 +568,24 @@
             <div class="flex-col"></div>
         </div>
         <div class="list">
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/201.png)"></div>
+        <% 
+            List<ProductListView> listDS = ModelListDSZP;
+            if (listDS != null && listDS.Count > 0)
+            {
+                foreach (ProductListView model in listDS)
+                {
+             %>
+                <div class="item">
+                    <div style="margin: 0 .1rem">
+                        <div class="t1 color_red_c9">ID:<%=model.ProductID%></div>
+                        <a href="m_<%=model.ProductID %>.html">
+                        <div class="pimg" style="background:url(<%=model.Images %>)"></div></a>
+                        <div class="t1 clamp1">【<%=model.Author%>】<%=model.ProductName%></div>
+                        <img class="bt-zx" onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')" src="/static/images/jianzhan/btn_ljzx_y.png" />
+                    </div>
                 </div>
-                <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx.png" />
-            </div>
-
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/202.png)"></div>
-                </div>
-                <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx.png" />
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/203.png)"></div>
-                </div>
-                <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx.png" />
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/204.png)"></div>
-                </div>
-                <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx.png" />
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/205.png)"></div>
-                </div>
-                <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx.png" />
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/206.png)"></div>
-                </div>
-                <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx.png" />
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/207.png)"></div>
-                </div>
-                <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx.png" />
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/208.png)"></div>
-                </div>
-                <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx.png" />
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/209.png)"></div>
-                </div>
-                <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx.png" />
-            </div>
+            <%}
+            } %>
         </div>
     </div>
     <div style="text-align: center; padding: .4rem" class="showmore">
@@ -650,80 +600,24 @@
             <img style="height: 0.17rem;width: .17rem" src="../static/images/jianzhan/ic_next.png" alt="" />
             <div class="flex-col"></div>
         </div>
-        <div class="list">
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/201.png)"></div>
-                    <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                    <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx_y.png" />
+        <div class="list">  
+   <% 
+            List<Product> listNew = ModelListNEW;
+            if (listNew != null && listNew.Count > 0)
+            {
+                foreach (Product model in listNew)
+                {
+             %>
+                <div class="item">
+                    <div style="margin: 0 .1rem">
+                        <div class="t1 color_red_c9">ID:<%=model.ProductID%></div>
+                        <a href="m_<%=model.ProductID %>.html"><div class="pimg" style="background:url(<%=model.Images %>)"></div></a>
+                        <div class="t1 clamp1">【<%=model.Author%>】<%=model.ProductName%></div>
+                        <img class="bt-zx" onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')" src="/static/images/jianzhan/btn_ljzx_y.png" />
+                    </div>
                 </div>
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/202.png)"></div>
-
-                    <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                    <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx_y.png" />
-                </div>
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/203.png)"></div>
-                    <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                    <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx_y.png" />
-                </div>
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/204.png)"></div>
-                    <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                    <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx_y.png" />
-                </div>
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/205.png)"></div>
-                    <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                    <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx_y.png" />
-                </div>
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/206.png)"></div>
-                    <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                    <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx_y.png" />
-                </div>
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/207.png)"></div>
-                    <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                    <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx_y.png" />
-                </div>
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/208.png)"></div>
-                    <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                    <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx_y.png" />
-                </div>
-            </div>
-            <div class="item">
-                <div style="margin: 0 .1rem">
-                    <div class="t1 color_red_c9">ID:10161</div>
-                    <div class="pimg" style="background:url(../static/images/jianzhan_0509/209.png)"></div>
-                    <div class="t1 clamp1">【吴继旺】柴烧鹧鸪</div>
-                    <img class="bt-zx" src="../static/images/jianzhan/btn_ljzx_y.png" />
-                </div>
-            </div>
+            <%}
+            } %>
         </div>
         <div style="text-align: center; padding: .4rem" class="showmore">
             <div class="color_red_c9 px28">展示更多</div>
@@ -783,76 +677,24 @@
                     <div class="t3">详情</div>
                 </div>
             </a>
-            <a href="#" class="qxys-item flex-row">
-                <img src="../static/images/jianzhan_0509/a.png" alt="">
+           <% List<Artisan> listqxys = listArtisanQXYS;
+           if (listqxys != null && listqxys.Count > 0)
+           {
+               foreach (Artisan item in listqxys)
+               { %>
+
+               <a href="mn_jddetail.aspx?artisanid=<%=item.artisanID %>" class="qxys-item flex-row">
+                <img src="<%=item.IDHead %>" alt="">
                 <div class="flex-col">
-                    <div class="t1 clamp1">【敛口盏】</div>
+                    <div class="t1 clamp1">【<%=item.artisanName %>】</div>
                     <div class="t2 clamp2">
-                        简介：在黑色釉中透露出均...
+                        <%=item.introduction %>
                     </div>
                     <div class="t3">详情</div>
                 </div>
-            </a>
-            <a href="#" class="qxys-item flex-row">
-                <img src="../static/images/jianzhan_0509/ys2.png" alt="">
-                <div class="flex-col">
-                    <div class="t1 clamp1">【曜变】</div>
-                    <div class="t2 clamp2">
-                        简介：在黑色釉中透露出均...
-                    </div>
-                    <div class="t3">详情</div>
-                </div>
-            </a>
-            <a href="#" class="qxys-item flex-row">
-                <img src="../static/images/jianzhan_0509/b.png" alt="">
-                <div class="flex-col">
-                    <div class="t1 clamp1">【敞口盏】</div>
-                    <div class="t2 clamp2">
-                        简介：在黑色釉中透露出均...
-                    </div>
-                    <div class="t3">详情</div>
-                </div>
-            </a>
-            <a href="#" class="qxys-item flex-row">
-                <img src="../static/images/jianzhan_0509/ys3.png" alt="">
-                <div class="flex-col">
-                    <div class="t1 clamp1">【油滴/鹧鸪斑】</div>
-                    <div class="t2 clamp2">
-                        简介：在黑色釉中透露出均...
-                    </div>
-                    <div class="t3">详情</div>
-                </div>
-            </a>
-            <a href="#" class="qxys-item flex-row">
-                <img src="../static/images/jianzhan_0509/c.png" alt="">
-                <div class="flex-col">
-                    <div class="t1 clamp1">【束口盏】</div>
-                    <div class="t2 clamp2">
-                        简介：在黑色釉中透露出均...
-                    </div>
-                    <div class="t3">详情</div>
-                </div>
-            </a>
-            <a href="#" class="qxys-item flex-row">
-                <img src="../static/images/jianzhan_0509/ys4.png" alt="">
-                <div class="flex-col">
-                    <div class="t1 clamp1">【金乌釉】</div>
-                    <div class="t2 clamp2">
-                        简介：在黑色釉中透露出均...
-                    </div>
-                    <div class="t3">详情</div>
-                </div>
-            </a>
-            <a href="#" class="qxys-item flex-row">
-                <img src="../static/images/jianzhan_0509/d.png" alt="">
-                <div class="flex-col">
-                    <div class="t1 clamp1">【撇口盏】</div>
-                    <div class="t2 clamp2">
-                        简介：在黑色釉中透露出均...
-                    </div>
-                    <div class="t3">详情</div>
-                </div>
-            </a>
+            </a>            
+           <%}
+           } %>
         </div>
         <a href="#" style=" text-align:center; padding: .4rem;display: block;">
             <div class="color_red_c9 px28">展示更多</div>
@@ -867,82 +709,36 @@
             <div class="flex-col"></div>
         </div>
         <div class="ds-list">
+            
+
+            <% List<ProductListView> listDszp = ModelListDSZP;
+               if (listDszp != null && listDszp.Count > 0)
+               {
+                   foreach (ProductListView model in listDszp)
+                   {%>
+
             <div class="ds-item">
-                <div class="pimg" style="background:url(../static/images/jianzhan_0509/ds1.png)"></div>
+                <div class="pimg" style="background:url(<%=model.Images %>)"></div>
                 <div class="flex-row" style="flex-direction: column">
                     <div class="flex-row mar-t-20" style="align-items: center;padding: 0 .13rem">
-                        <div class="flex-col t1 clamp1">【小撇口金油滴】</div>
-                        <img class="bt-zx" src="../static/images/jianzhan_0509/ds_zx.png" />
+                        <div class="flex-col t1 clamp1">【<%=model.ProductName%>】</div>
+                        <img class="bt-zx" onclick="xunjia('<%=model.ProductName %>','<%=model.ProductID %>')"  src="../static/images/jianzhan_0509/ds_zx.png" />
                     </div>
 
                     <div class="flex-row pad-t-16" style="padding: 0 .13rem">
-                        <div class="t2 clamp1 flex-col">编号：67047</div>
-                        <div class="t2 clamp1 flex-col">作者：黄美金</div>
+                        <div class="t2 clamp1 flex-col">编号：<%=model.ProductID %></div>
+                        <div class="t2 clamp1 flex-col">作者：<%=model.Author %></div>
                     </div>
 
                     <div class="flex-row pad-t-16" style="padding: 0 .13rem">
-                        <div class="t2 clamp1 flex-col">器形：束口盏</div>
-                        <div class="t2 clamp1 flex-col">釉色：油滴/鹧鸪斑</div>
+                        <div class="t2 clamp1 flex-col">器形：<%=model.Type3 %></div>
+                        <div class="t2 clamp1 flex-col">釉色：<%=model.Type2 %></div>
                     </div>
                 </div>
             </div>
-            <div class="ds-item">
-                <div class="pimg" style="background:url(../static/images/jianzhan_0509/ds1.png)"></div>
-                <div class="flex-row" style="flex-direction: column">
-                    <div class="flex-row mar-t-20" style="align-items: center;padding: 0 .13rem">
-                        <div class="flex-col t1 clamp1">【小撇口金油滴】</div>
-                        <img class="bt-zx" src="../static/images/jianzhan_0509/ds_zx.png" />
-                    </div>
+            <%}
+               } %>
 
-                    <div class="flex-row pad-t-16" style="padding: 0 .13rem">
-                        <div class="t2 clamp1 flex-col">编号：67047</div>
-                        <div class="t2 clamp1 flex-col">作者：黄美金</div>
-                    </div>
-
-                    <div class="flex-row pad-t-16" style="padding: 0 .13rem">
-                        <div class="t2 clamp1 flex-col">器形：束口盏</div>
-                        <div class="t2 clamp1 flex-col">釉色：油滴/鹧鸪斑</div>
-                    </div>
-                </div>
-            </div>
-            <div class="ds-item">
-                <div class="pimg" style="background:url(../static/images/jianzhan_0509/ds1.png)"></div>
-                <div class="flex-row" style="flex-direction: column">
-                    <div class="flex-row mar-t-20" style="align-items: center;padding: 0 .13rem">
-                        <div class="flex-col t1 clamp1">【小撇口金油滴】</div>
-                        <img class="bt-zx" src="../static/images/jianzhan_0509/ds_zx.png" />
-                    </div>
-
-                    <div class="flex-row pad-t-16" style="padding: 0 .13rem">
-                        <div class="t2 clamp1 flex-col">编号：67047</div>
-                        <div class="t2 clamp1 flex-col">作者：黄美金</div>
-                    </div>
-
-                    <div class="flex-row pad-t-16" style="padding: 0 .13rem">
-                        <div class="t2 clamp1 flex-col">器形：束口盏</div>
-                        <div class="t2 clamp1 flex-col">釉色：油滴/鹧鸪斑</div>
-                    </div>
-                </div>
-            </div>
-            <div class="ds-item">
-                <div class="pimg" style="background:url(../static/images/jianzhan_0509/ds1.png)"></div>
-                <div class="flex-row" style="flex-direction: column">
-                    <div class="flex-row mar-t-20" style="align-items: center;padding: 0 .13rem">
-                        <div class="flex-col t1 clamp1">【小撇口金油滴】</div>
-                        <img class="bt-zx" src="../static/images/jianzhan_0509/ds_zx.png" />
-                    </div>
-
-                    <div class="flex-row pad-t-16" style="padding: 0 .13rem">
-                        <div class="t2 clamp1 flex-col">编号：67047</div>
-                        <div class="t2 clamp1 flex-col">作者：黄美金</div>
-                    </div>
-
-                    <div class="flex-row pad-t-16" style="padding: 0 .13rem">
-                        <div class="t2 clamp1 flex-col">器形：束口盏</div>
-                        <div class="t2 clamp1 flex-col">釉色：油滴/鹧鸪斑</div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div style="text-align: center; padding: .4rem" class="showmore">
             <div class="color_red_c9 px28">展示更多</div>
@@ -993,7 +789,7 @@
         </div>
         <div class="lsmd-bg">
             <div style="height:auto;padding: .4rem 1rem 0.15rem">
-                <div class="px24 color_57">客服：13888888888（xx）</div>
+                <div class="px24 color_57">客服：4008-276-376</div>
                 <div class="px24 color_57 mar-t-20" id="address" style="line-height:.4rem">地址：厦门市思明区台东路66号宝业营运中心705室
                 </div>
                 <div class="px24 color_57 mar-t-20">时间：周一至周日（9.30-18.30) </div>
@@ -1342,6 +1138,11 @@
     <script src="../static/js/showdiv.js"></script>
     <script src="../static/js/swiper.js"></script>
     <script>
+       $("#btnSearch").bind("click", function (e) {
+            var keyword = $("#keyword").val();
+            window.location.href = "mn_shop.aspx?keyword=" + keyword;
+        });
+
         $('.M-box').pagination({
             mode: 'fixed'
         });

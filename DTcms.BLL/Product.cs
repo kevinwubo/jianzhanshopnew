@@ -97,6 +97,8 @@ namespace DTcms.BLL
                 model.Author = Convert.ToString(dr["Author"]);//产品作者
                 model.ShowTitle = Convert.ToString(dr["ShowTitle"]);
                 model.Type3 = Convert.ToString(dr["Type3"]);
+                model.Type4 = Convert.ToString(dr["Type4"]);
+                model.Type2 = Convert.ToString(dr["Type2"]);
             }
             return model;
         }

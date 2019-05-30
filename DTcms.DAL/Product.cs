@@ -495,13 +495,13 @@ namespace DTcms.DAL
             {
                 strSql.Append(" SELECT top "+count+" ProductID,ProductName,Images,Author,case InventoryCount when 0 then '已结缘' else Author end as ShowTitle,InventoryCount, ");
                 strSql.Append(" (select sort from dt_Artisan  where artisanName=dt_Product.Author) as ArtisanSort ,");
-                strSql.Append(" (select COUNT(1) from dt_proInquiry where ProductID=dt_Product.ProductID) as InquiryCount,Type3,(select CountAll from dt_VisitCount where OID=dt_Product.ProductID) as CountAll FROM dt_Product");
+                strSql.Append(" (select COUNT(1) from dt_proInquiry where ProductID=dt_Product.ProductID) as InquiryCount,Type3,Type2,Type4,(select CountAll from dt_VisitCount where OID=dt_Product.ProductID) as CountAll FROM dt_Product");
             }
             else
             {
                 strSql.Append(" SELECT  ProductID,ProductName,Images,Author,case InventoryCount when 0 then '已结缘' else Author end as ShowTitle,InventoryCount, ");
                 strSql.Append(" (select sort from dt_Artisan  where artisanName=dt_Product.Author) as ArtisanSort ,");
-                strSql.Append(" (select COUNT(1) from dt_proInquiry where ProductID=dt_Product.ProductID) as InquiryCount,Type3,(select CountAll from dt_VisitCount where OID=dt_Product.ProductID) as CountAll FROM dt_Product");
+                strSql.Append(" (select COUNT(1) from dt_proInquiry where ProductID=dt_Product.ProductID) as InquiryCount,Type3,Type2,Type4,(select CountAll from dt_VisitCount where OID=dt_Product.ProductID) as CountAll FROM dt_Product");
             }
             if (sqlwhere != "")
             {

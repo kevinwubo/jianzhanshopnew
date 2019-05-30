@@ -162,6 +162,18 @@ namespace DTcms.Model
 
         public string Author { get; set; }
 
+        /// <summary>
+        /// 器型
+        /// </summary>
         public string Type3 { get; set; }
+        /// <summary>
+        /// 尺寸
+        /// </summary>
+        public string Type4 { get; set; }
+        /// <summary>
+        /// 工艺釉色
+        /// </summary>
+        public string Type2 { get; set; }
+
     }
 }
