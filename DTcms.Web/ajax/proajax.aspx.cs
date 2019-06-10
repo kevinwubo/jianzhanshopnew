@@ -331,24 +331,27 @@ namespace DTcms.Web.ajax
                         }
                         SmsMess = SmsMess.Replace("-", "-" + saleName);//+ "[盏天下]" 
 
-                        DTcms.BLL.SMSHelper.SeedSMS(model.SaleTelephone, SmsMess);
-                        BLL.Log.WriteTextLog("--手机号 销售：" + model.SaleTelephone + "-询价-短信内容：" + SmsMess, DateTime.Now);
-
-                        //发送给老板
-                        DTcms.BLL.SMSHelper.SeedSMS(GetManagerTele(), SmsMess);
-                        BLL.Log.WriteTextLog("--手机号 BOSS：" + GetManagerTele() + "-询价-短信内容：" + SmsMess, DateTime.Now);
-
-                        //发送城市对应的主管销售人员
-                        if (dtSale.CityName.Equals("厦门"))
+                        if (!string.IsNullOrEmpty(saleName))
                         {
-                            DTcms.BLL.SMSHelper.SeedSMS("17359271665", SmsMess);
-                            BLL.Log.WriteTextLog("--厦门---手机号 Sales_Manager：17359271665-询价-短信内容：" + SmsMess, DateTime.Now);
+                            DTcms.BLL.SMSHelper.SeedSMS(model.SaleTelephone, SmsMess);
+                            BLL.Log.WriteTextLog("--手机号 销售：" + model.SaleTelephone + "-询价-短信内容：" + SmsMess, DateTime.Now);
+
+                            //发送给老板
+                            DTcms.BLL.SMSHelper.SeedSMS(GetManagerTele(), SmsMess);
+                            BLL.Log.WriteTextLog("--手机号 BOSS：" + GetManagerTele() + "-询价-短信内容：" + SmsMess, DateTime.Now);
+
+                            //发送城市对应的主管销售人员
+                            if (dtSale.CityName.Equals("厦门"))
+                            {
+                                DTcms.BLL.SMSHelper.SeedSMS("17359271665", SmsMess);
+                                BLL.Log.WriteTextLog("--厦门---手机号 Sales_Manager：17359271665-询价-短信内容：" + SmsMess, DateTime.Now);
+                            }
+                            else if (dtSale.CityName.Equals("武夷山"))
+                            {
+                                DTcms.BLL.SMSHelper.SeedSMS("13163806316", SmsMess);
+                                BLL.Log.WriteTextLog("---武夷山---手机号 Sales_Manager：13163806316-询价-短信内容：" + SmsMess, DateTime.Now);
+                            }
                         }
-                        else if (dtSale.CityName.Equals("武夷山"))
-                        {
-                            DTcms.BLL.SMSHelper.SeedSMS("13163806316", SmsMess);
-                            BLL.Log.WriteTextLog("---武夷山---手机号 Sales_Manager：13163806316-询价-短信内容：" + SmsMess, DateTime.Now);
-                        }                        
                     }
 
                     if (InquiryType.Equals("头条询价"))

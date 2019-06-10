@@ -72,6 +72,7 @@ namespace DTcms.Web
                         DTcms.Model.manager dtSale = new DTcms.Model.manager(); ;
                         string oldsalesname = dr["real_name"].ToString();
 
+                        BLL.Log.WriteTextFPLog("重新分配PPID" + dr["PPId"].ToString(), DateTime.Now);
                         DateTime dtNow = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
 
                         //ASalesQueue 凌晨2点到12点分分配队列
@@ -180,7 +181,7 @@ namespace DTcms.Web
                                     string WXCode = "";
                                     try
                                     {
-                                        //BLL.Log.WriteTextLog("--WXCode" + wxCodes, DateTime.Now);
+                                        //BLL.Log.WriteTextFPLog("--WXCode" + wxCodes, DateTime.Now);
                                         if (!string.IsNullOrEmpty(wxCodes))
                                         {
                                             week = week == 0 ? 7 : week;
@@ -198,7 +199,7 @@ namespace DTcms.Web
                                     }
                                     catch (Exception ex)
                                     {
-                                        BLL.Log.WriteTextLog("--异常记录WXCode" + ex.ToString(), DateTime.Now);
+                                        BLL.Log.WriteTextFPLog("--异常记录WXCode" + ex.ToString(), DateTime.Now);
                                         WXCode = wxCodes.Split(',')[0];
                                     }
                                     #endregion
@@ -264,11 +265,15 @@ namespace DTcms.Web
                             }
                             SmsMess += "跟踪销售：" + newsalesname;
                         }
-                        Log.WriteTextLog("咨询量转移后销售姓名：" + newsalesname + "==销售电话：" + dtSale.telephone, DateTime.Now);
-                        DTcms.BLL.SMSHelper.SeedSMS(dtSale.telephone, SmsMess);
-                        DTcms.BLL.Log.WriteTextLog("--手机号 销售：" + dtSale.telephone + "-询价-短信内容：" + SmsMess, DateTime.Now);
 
-                        bll.UpdateOperatorIDByPPID(Convert.ToInt32(dr["ppid"]), dtSale.id);
+                        if (!string.IsNullOrEmpty(newsalesname))
+                        {
+                            Log.WriteTextFPLog("咨询量转移后销售姓名：" + newsalesname + "==销售电话：" + dtSale.telephone, DateTime.Now);
+                            DTcms.BLL.SMSHelper.SeedSMS(dtSale.telephone, SmsMess);
+                            DTcms.BLL.Log.WriteTextFPLog("--手机号 销售：" + dtSale.telephone + "-询价-短信内容：" + SmsMess, DateTime.Now);
+
+                            bll.UpdateOperatorIDByPPID(Convert.ToInt32(dr["ppid"]), dtSale.id);
+                        }
                     }
                 }
             }
@@ -306,12 +311,12 @@ namespace DTcms.Web
                         info.province = !string.IsNullOrEmpty(re.province) ? re.province : "";
                     }
                 }
-                BLL.Log.WriteTextLog("getCity" + resphtml, DateTime.Now);
+                BLL.Log.WriteTextFPLog("getCity" + resphtml, DateTime.Now);
             }
             catch (Exception ex)
             {
                 info = null;
-                BLL.Log.WriteTextLog("--异常记录getCity" + ex.ToString(), DateTime.Now);
+                BLL.Log.WriteTextFPLog("--异常记录getCity" + ex.ToString(), DateTime.Now);
             }
             return info;
         }
