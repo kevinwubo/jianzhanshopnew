@@ -121,6 +121,15 @@ namespace DTcms.Web.admin.product {
         protected global::System.Web.UI.WebControls.TextBox txt_Images;
         
         /// <summary>
+        /// txt_introduction 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_introduction;
+        
+        /// <summary>
         /// txt_summary 控件。
         /// </summary>
         /// <remarks>

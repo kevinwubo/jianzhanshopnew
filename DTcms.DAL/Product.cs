@@ -22,9 +22,9 @@ namespace DTcms.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("INSERT INTO dt_Product(");
-            strSql.Append("ProductName,SubTitle,Type2,Type3,Type4,Type5,Type6,Type7,Images,summary,ProductDetail,CostPrice,MarketPrice,LowPrice,VideoUrl,VideoDetail,ProductID,PlatePosition,Author,ProImageDetail,Volume,IsPushMall,InventoryCount)");
+            strSql.Append("ProductName,SubTitle,Type2,Type3,Type4,Type5,Type6,Type7,Images,summary,ProductDetail,CostPrice,MarketPrice,LowPrice,VideoUrl,VideoDetail,ProductID,PlatePosition,Author,ProImageDetail,Volume,IsPushMall,InventoryCount,Introduction)");
             strSql.Append(" values (");
-            strSql.Append("@ProductName,@SubTitle, @Type2,@Type3,@Type4,@Type5, @Type6,@Type7,@Images, @summary,@ProductDetail,@CostPrice,@MarketPrice,@LowPrice,@VideoUrl,@VideoDetail,@ProductID,@PlatePosition,@Author,@ProImageDetail,@Volume,@IsPushMall,@InventoryCount)");
+            strSql.Append("@ProductName,@SubTitle, @Type2,@Type3,@Type4,@Type5, @Type6,@Type7,@Images, @summary,@ProductDetail,@CostPrice,@MarketPrice,@LowPrice,@VideoUrl,@VideoDetail,@ProductID,@PlatePosition,@Author,@ProImageDetail,@Volume,@IsPushMall,@InventoryCount,@Introduction)");
             strSql.Append(";set @ReturnValue= @@IDENTITY");
             SqlParameter[] parameters = {
 					new SqlParameter("@ProductName", SqlDbType.NVarChar,100),
@@ -50,6 +50,7 @@ namespace DTcms.DAL
                     new SqlParameter("@Volume", SqlDbType.NVarChar,100),
                     new SqlParameter("@IsPushMall", SqlDbType.NVarChar,10),
                     new SqlParameter("@InventoryCount", SqlDbType.Int,4),
+                    new SqlParameter("@Introduction", SqlDbType.NVarChar,250),
                     new SqlParameter("@ReturnValue",SqlDbType.Int)};
             parameters[0].Value = model.ProductName;
             parameters[1].Value = model.SubTitle;
@@ -75,14 +76,15 @@ namespace DTcms.DAL
             parameters[20].Value = model.Volume;
             parameters[21].Value = model.IsPushMall;
             parameters[22].Value = string.IsNullOrEmpty(model.InventoryCount) ? 0 : Convert.ToInt32(model.InventoryCount);
-            parameters[23].Direction = ParameterDirection.Output;
+            parameters[23].Value = model.Introduction;
+            parameters[24].Direction = ParameterDirection.Output;
 
             List<CommandInfo> sqllist = new List<CommandInfo>();
             CommandInfo cmd = new CommandInfo(strSql.ToString(), parameters);
             sqllist.Add(cmd);
 
             DbHelperSQL.ExecuteSqlTranWithIndentity(sqllist);
-            return (int)parameters[23].Value;
+            return (int)parameters[24].Value;
         }
 
         /// <summary>
@@ -150,7 +152,7 @@ namespace DTcms.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT ProductID,ProductName,IsPushMall,SubTitle,ProImageDetail,Type1,Type2,Type3,Type4,Type5,Type6,Type7,Images,summary,ProductDetail,Material ");
-            strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount  FROM dt_Product ");
+            strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount,Introduction  FROM dt_Product ");
             strSql.Append(" where ID=" + ID);
             if (strWhere.Trim() != "")
             {
@@ -203,7 +205,8 @@ namespace DTcms.DAL
             strSql.Append("Author=@Author,");
             strSql.Append("ProImageDetail=@ProImageDetail,");
             strSql.Append("ProductID=@ProductID,");
-            strSql.Append("IsPushMall=@IsPushMall");
+            strSql.Append("IsPushMall=@IsPushMall,");
+            strSql.Append("Introduction=@Introduction");
             strSql.Append(" where ID=@ID");
             SqlParameter[] parameters = {
 					            new SqlParameter("@ProductName", SqlDbType.NVarChar,50),
@@ -232,6 +235,7 @@ namespace DTcms.DAL
                                         new SqlParameter("@ProductID", SqlDbType.NVarChar,100),
                                         new SqlParameter("@ProImageDetail", SqlDbType.NVarChar,100),
                                         new SqlParameter("@IsPushMall", SqlDbType.NVarChar,10),
+                                        new SqlParameter("@Introduction", SqlDbType.NVarChar,254),
                                         new SqlParameter("@ID", SqlDbType.Int)};
             parameters[0].Value = model.ProductName;
             parameters[1].Value = model.SubTitle;
@@ -261,7 +265,8 @@ namespace DTcms.DAL
             parameters[17].Value = model.ProductID;
             parameters[18].Value = model.ProImageDetail;
             parameters[19].Value = model.IsPushMall;
-            parameters[20].Value = model.ID;
+            parameters[20].Value = model.Introduction;
+            parameters[21].Value = model.ID;
 
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)
@@ -307,7 +312,8 @@ namespace DTcms.DAL
             strSql.Append("Author=@Author,");
             strSql.Append("ProImageDetail=@ProImageDetail,");
             strSql.Append("ProductID=@ProductID,");
-            strSql.Append("IsPushMall=@IsPushMall");
+            strSql.Append("IsPushMall=@IsPushMall,");
+            strSql.Append("Introduction=@Introduction");
             strSql.Append(" where ID=@ID");
             SqlParameter[] parameters = {
 					            new SqlParameter("@ProductName", SqlDbType.NVarChar,50),
@@ -336,6 +342,7 @@ namespace DTcms.DAL
                                         new SqlParameter("@ProductID", SqlDbType.NVarChar,100),
                                         new SqlParameter("@ProImageDetail", SqlDbType.NVarChar,100),
                                         new SqlParameter("@IsPushMall", SqlDbType.NVarChar,10),
+                                        new SqlParameter("@Introduction", SqlDbType.NVarChar,254),
                                         new SqlParameter("@ID", SqlDbType.Int)};
             parameters[0].Value = model.ProductName;
             parameters[1].Value = model.SubTitle;
@@ -365,7 +372,8 @@ namespace DTcms.DAL
             parameters[20].Value = model.ProductID;
             parameters[21].Value = model.ProImageDetail;
             parameters[22].Value = model.IsPushMall;
-            parameters[23].Value = model.ID;
+            parameters[23].Value = model.Introduction;
+            parameters[24].Value = model.ID;
             
             int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
             if (rows > 0)

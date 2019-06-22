@@ -42,7 +42,7 @@ namespace DTcms.Web.admin.Inquiry
             _keywords = _keywords.Replace("'", "");
             if (!string.IsNullOrEmpty(_keywords))
             {
-                strTemp.Append(" and (telphone like '%" + keywords + "%' or telphone like '" + DESEncrypt.ConvertBy123(keywords) + "' or c.real_name='" + keywords + "')");
+                strTemp.Append(" and (telphone like '%" + keywords.Trim() + "%' or telphone like '%" + DESEncrypt.ConvertBy123(keywords.Trim()) + "%' or telphone='" + DESEncrypt.ConvertBy123(keywords.Trim()) + "' or c.real_name='" + keywords.Trim() + "')");
             }
             if (!string.IsNullOrEmpty(TraceState))
             {

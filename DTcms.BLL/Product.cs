@@ -172,6 +172,7 @@ namespace DTcms.BLL
                 model.InventoryCount = Convert.ToString(dr["InventoryCount"]);//库存数量     
                 model.ProImageDetail = Convert.ToString(dr["ProImageDetail"]);// 产品图片详细    
                 model.IsPushMall = Convert.ToString(dr["IsPushMall"]);// 是否推荐到商城  0 否 1 是
+                model.Introduction = Convert.ToString(dr["Introduction"]);
                 Regex r = new Regex(@"<img[\s\S]*?>", RegexOptions.IgnoreCase);
 
                 // 定义正则表达式用来匹配 img 标签            

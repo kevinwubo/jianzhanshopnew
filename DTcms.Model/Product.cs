@@ -49,6 +49,11 @@ namespace DTcms.Model
         /// </summary>
         public string Type7 { get; set; }
         /// <summary>
+        /// 简介
+        /// </summary>
+        public string Introduction { get; set; }
+
+        /// <summary>
         /// 产品图片
         /// </summary>
         public string Images { get; set; }

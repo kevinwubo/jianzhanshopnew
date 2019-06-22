@@ -219,6 +219,14 @@
       <div class="upload-box upload-img"></div>
     </dd>
   </dl>
+    <dl>
+    <dt>摘要</dt>
+    <dd>
+      <asp:TextBox ID="txt_introduction" runat="server" CssClass="input small" 
+            sucmsg=" " Height="124px" TextMode="MultiLine"  MaxLength="200"
+            Width="489px"></asp:TextBox>
+    </dd>
+  </dl>
   <dl>
     <dt>产品描述</dt>
     <dd>    

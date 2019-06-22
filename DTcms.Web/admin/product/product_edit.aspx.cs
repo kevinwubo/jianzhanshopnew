@@ -90,6 +90,7 @@ namespace DTcms.Web.admin.product
             ddl_Type5.SelectedValue = model.Type5;//用途功能
             ddl_Type6.SelectedValue = model.Type6;//传世老盏
             ddl_Type7.SelectedValue = model.Type7;//价格区间
+            txt_introduction.Text = model.Introduction;//摘要
             txt_Images.Text = model.Images.Replace("http://116.62.124.214/", ""); //产品展示图片
             txt_summary.Value = model.summary;//摘要
             txt_ProductDetail.Value = model.ProductDetail;//产品内容明细
@@ -212,6 +213,7 @@ namespace DTcms.Web.admin.product
             //model.Material = txt_Material.Text;//材料
             model.Volume = txt_Volume.Text;//口径尺寸
             //1/2/3  超级管理组/系统管理组/管理组
+            model.Introduction = txt_introduction.Text;
             if (Manager_Model.role_id == 1 || Manager_Model.role_id == 2 || Manager_Model.role_id == 3)
             {
                 model.CostPrice =txt_CostPrice.Text;//成本价
@@ -263,6 +265,7 @@ namespace DTcms.Web.admin.product
             model.ProductID = Convert.ToString(lbl_ProductNO.Text);
             //model.IsPushMall = rad_IsPushMall.SelectedValue;//是否推荐到商城  0 否 1 是
             model.ID = _id;
+            model.Introduction = txt_introduction.Text;
             //1/2/3  超级管理组/系统管理组/管理组
             if (Manager_Model.role_id == 1 || Manager_Model.role_id == 2 || Manager_Model.role_id == 3)
             {
