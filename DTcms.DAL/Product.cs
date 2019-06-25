@@ -432,7 +432,7 @@ namespace DTcms.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT  ProductID,ProductName,IsPushMall,ProImageDetail,SubTitle,Type1,Type2,Type3,Type4,Type5,Type6,Type7,Images,summary,ProductDetail,Material ");
-            strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount  FROM dt_Product ");
+            strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount,Introduction  FROM dt_Product ");
             if (sqlwhere != "")
             {
                 strSql.Append(" where 1=1 " + sqlwhere);
@@ -452,12 +452,12 @@ namespace DTcms.DAL
             if (count > 0)
             {
                 strSql.Append("SELECT top " + count + " ProductID,IsPushMall,ProImageDetail,ProductName,SubTitle,Type1,Type2,Type3,Type4,Type5,Type6,Type7,Images,summary,ProductDetail,Material ");
-                strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount  FROM dt_Product ");
+                strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount,Introduction  FROM dt_Product ");
             }
             else
             {
                 strSql.Append("SELECT ProductID,IsPushMall,ProImageDetail,ProductName,SubTitle,Type1,Type2,Type3,Type4,Type5,Type6,Type7,Images,summary,ProductDetail,Material ");
-                strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount  FROM dt_Product ");
+                strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount,Introduction  FROM dt_Product ");
             }
             if (sqlwhere != "")
             {
@@ -471,7 +471,7 @@ namespace DTcms.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT DISTINCT top " + count + " b.* FROM dt_Product AS a ");
-            strSql.Append(" CROSS APPLY(   SELECT TOP(" + RCount + ") ProductID,IsPushMall,'' as summary ,'' as ProImageDetail,'' as ProductDetail,ProductName,SubTitle,Type1,Type2,Type3,Type4,Type5,Type6,Type7,Images,Material ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount FROM dt_Product WHERE a.Author=Author " + sqlwhere + " ORDER BY AddDate DESC ) AS b order by AddDate desc ");
+            strSql.Append(" CROSS APPLY(   SELECT TOP(" + RCount + ") ProductID,IsPushMall,'' as summary ,'' as ProImageDetail,'' as ProductDetail,ProductName,SubTitle,Type1,Type2,Type3,Type4,Type5,Type6,Type7,Images,Material ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount,Introduction FROM dt_Product WHERE a.Author=Author " + sqlwhere + " ORDER BY AddDate DESC ) AS b order by AddDate desc ");
             return DbHelperSQL.Query(strSql.ToString());
         }
 
@@ -480,7 +480,7 @@ namespace DTcms.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT DISTINCT top " + count + " b.* FROM dt_Product AS a ");
-            strSql.Append(" CROSS APPLY(   SELECT TOP(2) ProductID,IsPushMall,'' as summary ,'' as ProImageDetail,'' as ProductDetail,ProductName,SubTitle,Type1,Type2,Type3,Type4,Type5,Type6,Type7,Images,Material ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount FROM dt_Product WHERE a.Author=Author ORDER BY AddDate DESC ) AS b order by AddDate desc ");
+            strSql.Append(" CROSS APPLY(   SELECT TOP(2) ProductID,IsPushMall,'' as summary ,'' as ProImageDetail,'' as ProductDetail,ProductName,SubTitle,Type1,Type2,Type3,Type4,Type5,Type6,Type7,Images,Material ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount,Introduction FROM dt_Product WHERE a.Author=Author ORDER BY AddDate DESC ) AS b order by AddDate desc ");
             return DbHelperSQL.Query(strSql.ToString());
         }
 
@@ -553,7 +553,7 @@ namespace DTcms.DAL
             string    OrderBy = " AddDate asc ";
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT top " + count + " ProductID,IsPushMall,ProImageDetail,ProductName,SubTitle,Type1,Type2,Type3,Type4,Type5,Type6,Type7,Images,summary,ProductDetail,Material ");
-            strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount  FROM dt_Product ");
+            strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,ArtisanID,VideoUrl,VideoDetail,AddDate,UpdateDate,PlatePosition,Author,InventoryCount,Introduction  FROM dt_Product ");
             strSql.Append(" where ProductID not in ");
             strSql.Append(" (select top " + PageCount + " ProductID from dt_Product where 1=1 " + sqlwhere + " order by " + OrderBy + ") ");
             strSql.Append(sqlwhere);
@@ -588,7 +588,7 @@ namespace DTcms.DAL
             }
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT top " + count + " ProductID,a.IsPushMall,ProImageDetail,ProductName,SubTitle,Type1,Type2,Type3,Type4,Type5,Type6,Type7,Images,summary,ProductDetail,Material ");
-            strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,a.ArtisanID,a.VideoUrl,VideoDetail,a.AddDate,UpdateDate,PlatePosition,Author,InventoryCount");
+            strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,a.ArtisanID,a.VideoUrl,VideoDetail,a.AddDate,UpdateDate,PlatePosition,Author,InventoryCount,Introduction ");
             //strSql.Append(" ,(select sort from dt_Artisan  where artisanName=a.Author and IsCooperation=1) as ArtisanSort ");
             strSql.Append("   FROM dt_Product  a left join dt_Artisan b on a.Author=b.artisanName where  b.IsCooperation=1  and  InventoryCount>=0 and ProductID not in ");
             strSql.Append(" (select top " + PageCount + " ProductID from dt_Product a left join dt_Artisan b on a.Author=b.artisanName where  b.IsCooperation=1 and InventoryCount>=0 " + sqlwhere + "  order by " + OrderBy + " ) ");
