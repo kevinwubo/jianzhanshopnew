@@ -112,7 +112,12 @@ namespace DTcms.Web.ajax
                         }
                     }
                     #endregion
-                    
+
+                    //广告页面过来单独使用一个队列
+                    if (!string.IsNullOrEmpty(SourceForm) && "AD".Equals(SourceForm))
+                    {
+                        code = "ADSalesQueue";
+                    }
 
                     SMSText = bllCodes.GetModel(" and Code='SmsTemplate'").CodeValues;
                     //当前销售队列
@@ -242,10 +247,12 @@ namespace DTcms.Web.ajax
                         #region 增加询价数据
                         string TxtValue = Request["TxtValue"];
                         string Type = Request["Type"];
+                        string Name = Request["Name"];//您的称呼
                         DataTable dtTel = bll.GetList(" and (telphone='" + TxtValue + "' or telphone='" + DESEncrypt.ConvertBy123(TxtValue) + "')").Tables[0];
                         model.ProductID = ProductID;
                         model.SourceForm = SourceForm == "MB" ? "MB" : "PC";
                         model.ProcessingState = "0";
+                        model.CustomerName = Name;
                         if (bll.GetCount(TxtValue) == 0)
                             model.status = "新";
                         if (Type.Equals("特"))

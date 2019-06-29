@@ -345,5 +345,10 @@ namespace DTcms.Web
             MakePage(Url + "/M0/Tt01/01A1.aspx", "M0/Tt01/01A1.html");
             MakePage(Url + "/M0/Tt01/02A1.aspx", "M0/Tt01/02A1.html");
         }
+
+        protected void btn_Ad_Click(object sender, EventArgs e)
+        {
+            MakePage(Url + "/Bd01/B1_index.aspx", "/Bd01/B1_index.html");
+        }
     }
 }

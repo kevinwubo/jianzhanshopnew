@@ -9,7 +9,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+    <asp:Button ID="btn_Ad" runat="server" Text="广告页面" onclick="btn_Ad_Click"/><a href="default.aspx" target="_blank">广告页面</a>
+        <br />
+        <br />
         <asp:Button ID="btn_Default" runat="server" Text="首页静态页面" 
             onclick="btn_Default_Click" /><a href="default.aspx" target="_blank">首页</a>
         <br />
