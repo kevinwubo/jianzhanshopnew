@@ -56,6 +56,7 @@ namespace DTcms.Web.ajax
 
                     string InquiryType = Request["InquiryType"];
                     string SourceForm = Request["SourceForm"];
+                    string Content = Request["Content"];//留言内容
                     string smsMess = "新客户咨询！";
                     #region 获取发送短信手机号码
                     string code = "DSalesQueue";
@@ -96,7 +97,7 @@ namespace DTcms.Web.ajax
                     }
 
                     #region 城市信息优先级最高
-                    ProCityInfo info = getCity(tel);
+                    ProCityInfo info = getProCityInfo();
                     string city = "";
                     string province = "";
                     if (info != null)
@@ -111,6 +112,15 @@ namespace DTcms.Web.ajax
                             }
                         }
                     }
+                    
+                    //string provinceInfo = getProvinceCityInfo();
+                    //if (!string.IsNullOrEmpty(provinceInfo))
+                    //{
+                    //    if (provinceInfo.Contains("北京") || provinceInfo.Contains("天津") || provinceInfo.Contains("廊坊"))
+                    //    {
+                    //        code = "BeiJingSalesQueue";
+                    //    }
+                    //}
                     #endregion
 
                     //广告页面过来单独使用一个队列
@@ -253,6 +263,7 @@ namespace DTcms.Web.ajax
                         model.SourceForm = SourceForm == "MB" ? "MB" : "PC";
                         model.ProcessingState = "0";
                         model.CustomerName = Name;
+                        model.InquiryContent = Content;
                         if (bll.GetCount(TxtValue) == 0)
                             model.status = "新";
                         if (Type.Equals("特"))
@@ -282,7 +293,6 @@ namespace DTcms.Web.ajax
                         #region 增加咨询量
                         string WebChart = Request["WebChart"];//微信/QQ
                         string Name = Request["Name"];//您的称呼
-                        string Content = Request["Content"];//留言内容
                         string Tel = Request["Tel"];//手机号码        
                         //string city = Request["City"];
                         DataTable dtTel = bll.GetList(" and (telphone='" + Tel + "'  or telphone='" + DESEncrypt.ConvertBy123(Tel) + "')").Tables[0];
@@ -405,6 +415,44 @@ namespace DTcms.Web.ajax
             return "";
         }
 
+        
+        private ProCityInfo getProCityInfo()
+        {
+            ProCityInfo info = new ProCityInfo();
+            try
+            {
+                string ip = HttpContext.Current.Request.UserHostAddress;
+                string url = "http://apis.juhe.cn/ip/ipNew?ip=" + ip + "&key=f6b3c53f05453d39221ac36b31bf170e";
+                //请求数据
+                HttpWebRequest res = (HttpWebRequest)WebRequest.Create(url);
+                //方法名
+                res.Method = "GET";
+                //获取响应数据
+                HttpWebResponse resp = (HttpWebResponse)res.GetResponse();
+                //读取数据流
+                StreamReader sr = new StreamReader(resp.GetResponseStream(), Encoding.UTF8);
+                //编译成字符串
+                string resphtml = sr.ReadToEnd();
+
+                TelephoneJsonInfo result = JsonConvert.DeserializeObject<TelephoneJsonInfo>(resphtml);
+                if (result != null)
+                {
+                    resultinfo re = result.result;
+                    if (re != null)
+                    {
+                        info.city = !string.IsNullOrEmpty(re.City) ? re.City : "";
+                        info.province = !string.IsNullOrEmpty(re.Province) ? re.Province : "";
+                    }
+                }
+                BLL.Log.WriteTextLog("getProCityInfo" + resphtml, DateTime.Now);
+            }
+            catch (Exception ex)
+            {
+                info = null;
+                BLL.Log.WriteTextLog("--异常记录getProCityInfo" + ex.ToString(), DateTime.Now);
+            }
+            return info;
+        }
 
         private ProCityInfo getCity(string telephone)
         {

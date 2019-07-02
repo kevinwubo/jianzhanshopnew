@@ -588,7 +588,7 @@ namespace DTcms.DAL
             }
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT top " + count + " ProductID,a.IsPushMall,ProImageDetail,ProductName,SubTitle,Type1,Type2,Type3,Type4,Type5,Type6,Type7,Images,summary,ProductDetail,Material ");
-            strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,a.ArtisanID,a.VideoUrl,VideoDetail,a.AddDate,UpdateDate,PlatePosition,Author,InventoryCount,Introduction ");
+            strSql.Append(" ,Volume,CostPrice,MarketPrice,LowPrice,a.ArtisanID,a.VideoUrl,VideoDetail,a.AddDate,UpdateDate,PlatePosition,Author,InventoryCount,a.Introduction ");
             //strSql.Append(" ,(select sort from dt_Artisan  where artisanName=a.Author and IsCooperation=1) as ArtisanSort ");
             strSql.Append("   FROM dt_Product  a left join dt_Artisan b on a.Author=b.artisanName where  b.IsCooperation=1  and  InventoryCount>=0 and ProductID not in ");
             strSql.Append(" (select top " + PageCount + " ProductID from dt_Product a left join dt_Artisan b on a.Author=b.artisanName where  b.IsCooperation=1 and InventoryCount>=0 " + sqlwhere + "  order by " + OrderBy + " ) ");

@@ -4,6 +4,29 @@ using System.Text;
 
 namespace DTcms.Model
 {
+    public class TelephoneJsonInfo
+    {
+        public string resultcode { get; set; }
+
+        public string reason { get; set; }
+
+        public resultinfo result { get; set; }
+
+        public int error_code { get; set; }
+    }
+
+    public class resultinfo
+    {
+        public string Province { get; set; }
+
+        public string City { get; set; }
+
+        public string Country { get; set; }
+
+        public string Isp { get; set; }
+
+    }
+
     public class TelephoneJson
     {
         public string resultcode { get; set; }

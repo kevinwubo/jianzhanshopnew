@@ -13,7 +13,7 @@
         <br />
         <br />
         <asp:Button ID="btn_Default" runat="server" Text="首页静态页面" 
-            onclick="btn_Default_Click" /><a href="default.aspx" target="_blank">首页</a>
+            onclick="btn_Default_Click" /><a href="/Bd01/B1_index.aspx" target="_blank">首页</a>
         <br />
         <br />
         <asp:Button ID="btn_product_list" runat="server" Text="商城静态页面" 

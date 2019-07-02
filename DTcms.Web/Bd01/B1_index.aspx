@@ -167,16 +167,16 @@ display: none
         <div class="flex-col">
             <div class="textline flex-row" style="align-items: center;justify-content: center;padding-left:0">
                 <div class="flex-col" style="font-size:.3rem;text-align: center;">
-                    <input class="pradio" type="radio" name="level" value="1" />入门
+                    <input class="pradio" type="radio" name="level" value="入门" />入门
                 </div>
                 <div class="flex-col" style="font-size:.3rem;text-align: center;">
-                    <input class="pradio" type="radio" name="level" value="2" />初级
+                    <input class="pradio" type="radio" name="level" value="初级" />初级
                 </div>
                 <div class="flex-col" style="font-size:.3rem;text-align: center;">
-                    <input class="pradio" type="radio" name="level" value="3" />中级
+                    <input class="pradio" type="radio" name="level" value="中级" />中级
                 </div>
                 <div class="flex-col" style="font-size:.3rem;text-align: center;">
-                    <input class="pradio" type="radio" name="level" value="4" />高级
+                    <input class="pradio" type="radio" name="level" value="高级" />高级
                 </div>
             </div>
         </div>
@@ -188,24 +188,24 @@ display: none
         <div class="flex-col">
             <div class="textline flex-row" style="align-items: center;justify-content: center;padding-left:0">
                 <div class="flex-col" style="font-size:.3rem;text-align: center;">
-                    <input class="pradio" type="radio" name="ys" value="1" />200-500
+                    <input class="pradio" type="radio" name="radioys" value="200-500" />200-500
                 </div>
                 <div class="flex-col" style="font-size:.3rem;text-align: center;">
-                    <input class="pradio" type="radio" name="ys" value="2" />500-1000
+                    <input class="pradio" type="radio" name="radioys" value="500-1000" />500-1000
                 </div>
                 <div class="flex-col" style="font-size:.3rem;text-align: center;">
-                    <input class="pradio" type="radio" name="ys" value="3" />1千-3千
+                    <input class="pradio" type="radio" name="radioys" value="1千-3千" />1千-3千
                 </div>
             </div>
             <div class="textline flex-row" style="align-items: center;justify-content: center;padding-left:0">
                 <div class="flex-col" style="font-size:.3rem;text-align: center;">
-                    <input class="pradio" type="radio" name="ys" value="1" />3千-1万
+                    <input class="pradio" type="radio" name="radioys" value="3千-1万" />3千-1万
                 </div>
                 <div class="flex-col" style="font-size:.3rem;text-align: center;">
-                    <input class="pradio" type="radio" name="ys" value="2" />1万-3万
+                    <input class="pradio" type="radio" name="radioys" value="1万-3万" />1万-3万
                 </div>
                 <div class="flex-col" style="font-size:.3rem;text-align: center;">
-                    <input class="pradio" type="radio" name="ys" value="3" />3万+
+                    <input class="pradio" type="radio" name="radioys" value="3万+" />3万+
                 </div>
             </div>
         </div>
@@ -344,6 +344,7 @@ display: none
                 var txtvalue = $("#txt_keywords").val();
                 var name=$("#txt_name").val();
                 var inquiryType = "询价";
+                var content=$("input[name='level']:checked").val()+$("input[name='radioys']:checked").val();;
                 if (txtvalue == "") {
                     alert('请输入您的手机号码');
                     return false;
@@ -353,7 +354,7 @@ display: none
                     return false;
                 }
 
-                $.post("/ajax/proajax.aspx", { ProductID: productid, Type: type, TxtValue: txtvalue, InquiryType: inquiryType,SourceForm:"AD",Name:name }, function (result) {
+                $.post("/ajax/proajax.aspx", { ProductID: productid, Type: type, TxtValue: txtvalue, InquiryType: inquiryType,SourceForm:"AD",Name:name,Content:content }, function (result) {
                     //tprm = "ProductID=" + productid + "&phone=" + getRandomString(1) + TelJM(txtvalue) + getRandomString(1);
                    // __ozfac2(tprm, "#inquiryok");
                     alert(result);                    
