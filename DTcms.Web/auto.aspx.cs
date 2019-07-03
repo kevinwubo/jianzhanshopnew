@@ -82,34 +82,44 @@ namespace DTcms.Web
                         //ESalesQueue 21点30分~凌晨2点分配队列
                         string datetime = DateTime.Now.AddDays(-1).ToShortDateString();
                         string sqlTime = "";
-                        if (dtNow.CompareTo(Convert.ToDateTime("02:00")) > 0 && dtNow.CompareTo(Convert.ToDateTime("12:00")) < 0)
+                        if (dtNow.CompareTo(Convert.ToDateTime("01:16")) > 0 && dtNow.CompareTo(Convert.ToDateTime("05:30")) < 0)
                         {
-                            sqlTime = " and AddDate between '" + datetime + " 02:00' and '" + datetime + " 12:00'";
+                            sqlTime = " and AddDate between '" + datetime + " 01:16' and '" + datetime + " 05:30'";
                             code = "ASalesQueue";
+                        }
+                        else if (dtNow.CompareTo(Convert.ToDateTime("05:31")) > 0 && dtNow.CompareTo(Convert.ToDateTime("09:30")) < 0)
+                        {
+                            sqlTime = " and AddDate between '" + datetime + " 05:31' and '" + datetime + " 09:30'";
+                            code = "BSalesQueue";
+                        }
+                        else if (dtNow.CompareTo(Convert.ToDateTime("09:31")) > 0 && dtNow.CompareTo(Convert.ToDateTime("12:00")) < 0)
+                        {
+                            sqlTime = " and AddDate between '" + datetime + " 09:31' and '" + datetime + " 12:00'";
+                            code = "CSalesQueue";
                         }
                         else if (dtNow.CompareTo(Convert.ToDateTime("12:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("14:00")) < 0)
                         {
-                            sqlTime = " and AddDate between '" + datetime + " 12:01' and '" + datetime + " 14:01'";
-                            code = "BSalesQueue";
-                        }
-                        else if (dtNow.CompareTo(Convert.ToDateTime("14:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("18:30")) < 0)
-                        {
-                            sqlTime = " and AddDate between '" + datetime + " 14:01' and '" + datetime + " 18:30'";
-                            code = "CSalesQueue";
-                        }
-                        else if (dtNow.CompareTo(Convert.ToDateTime("18:31")) > 0 && dtNow.CompareTo(Convert.ToDateTime("21:30")) < 0)
-                        {
-                            sqlTime = " and AddDate between '" + datetime + " 18:31' and '" + datetime + " 21:30'";
+                            sqlTime = " and AddDate between '" + datetime + " 12:01' and '" + datetime + " 14:00'";
                             code = "DSalesQueue";
                         }
-                        else if (dtNow.CompareTo(Convert.ToDateTime("21:31")) > 0 && dtNow.CompareTo(Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString() + " 01:59")) < 0)
+                        else if (dtNow.CompareTo(Convert.ToDateTime("14:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("18:00")) < 0)
                         {
-                            sqlTime = " and AddDate between '" + datetime + " 21:31' and '" + datetime + " 01:59'";
+                            sqlTime = " and AddDate between '" + datetime + " 14:01' and '" + datetime + " 18:00'";
                             code = "ESalesQueue";
+                        }
+                        else if (dtNow.CompareTo(Convert.ToDateTime("18:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("21:45")) < 0)
+                        {
+                            sqlTime = " and AddDate between '" + datetime + " 18:01' and '" + datetime + " 21:45'";
+                            code = "FSalesQueue";
+                        }
+                        else if (dtNow.CompareTo(Convert.ToDateTime("21:46")) > 0 && dtNow.CompareTo(Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString() + " 01:15")) < 0)
+                        {
+                            sqlTime = " and AddDate between '" + datetime + " 21:46' and '" + datetime + " 01:15'";
+                            code = "GSalesQueue";
                         }
 
                         #region 城市信息优先级最高
-                        ProCityInfo info = getCity(dr["telphone"].ToString());
+                        ProCityInfo info = getProCityInfo();
                         string city = "";
                         string province = "";
                         if (info != null)
@@ -283,7 +293,43 @@ namespace DTcms.Web
         {
 
         }
+        private ProCityInfo getProCityInfo()
+        {
+            ProCityInfo info = new ProCityInfo();
+            try
+            {
+                string ip = HttpContext.Current.Request.UserHostAddress;
+                string url = "http://apis.juhe.cn/ip/ipNew?ip=" + ip + "&key=5cbe82bf7bc6e5623d9424a440dc52f3";
+                //请求数据
+                HttpWebRequest res = (HttpWebRequest)WebRequest.Create(url);
+                //方法名
+                res.Method = "GET";
+                //获取响应数据
+                HttpWebResponse resp = (HttpWebResponse)res.GetResponse();
+                //读取数据流
+                StreamReader sr = new StreamReader(resp.GetResponseStream(), Encoding.UTF8);
+                //编译成字符串
+                string resphtml = sr.ReadToEnd();
 
+                TelephoneJsonInfo result = JsonConvert.DeserializeObject<TelephoneJsonInfo>(resphtml);
+                if (result != null)
+                {
+                    resultinfo re = result.result;
+                    if (re != null)
+                    {
+                        info.city = !string.IsNullOrEmpty(re.City) ? re.City : "";
+                        info.province = !string.IsNullOrEmpty(re.Province) ? re.Province : "";
+                    }
+                }
+                BLL.Log.WriteTextLog("getProCityInfo" + resphtml, DateTime.Now);
+            }
+            catch (Exception ex)
+            {
+                info = null;
+                BLL.Log.WriteTextLog("--异常记录getProCityInfo" + ex.ToString(), DateTime.Now);
+            }
+            return info;
+        }
         private ProCityInfo getCity(string telephone)
         {
             ProCityInfo info = new ProCityInfo();

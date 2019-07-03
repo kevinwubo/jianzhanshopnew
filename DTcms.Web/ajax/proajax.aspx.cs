@@ -93,12 +93,12 @@ namespace DTcms.Web.ajax
                         sqlTime = " and AddDate between '" + datetime + " 12:01' and '" + datetime + " 14:00'";
                         code = "DSalesQueue";
                     }
-                    else if (dtNow.CompareTo(Convert.ToDateTime("14:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString() + " 18:00")) < 0)
+                    else if (dtNow.CompareTo(Convert.ToDateTime("14:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("18:00")) < 0)
                     {
                         sqlTime = " and AddDate between '" + datetime + " 14:01' and '" + datetime + " 18:00'";
                         code = "ESalesQueue";
                     }
-                    else if (dtNow.CompareTo(Convert.ToDateTime("18:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString() + " 21:45")) < 0)
+                    else if (dtNow.CompareTo(Convert.ToDateTime("18:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("21:45")) < 0)
                     {
                         sqlTime = " and AddDate between '" + datetime + " 18:01' and '" + datetime + " 21:45'";
                         code = "FSalesQueue";
