@@ -265,7 +265,7 @@ namespace DTcms.Web
                             }
                             SmsMess += "跟踪销售：" + newsalesname;
                         }
-
+                        Log.WriteTextFPLog("SmsMess：" + SmsMess, DateTime.Now);
                         if (!string.IsNullOrEmpty(newsalesname))
                         {
                             Log.WriteTextFPLog("咨询量转移后销售姓名：" + newsalesname + "==销售电话：" + dtSale.telephone, DateTime.Now);

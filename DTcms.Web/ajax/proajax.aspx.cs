@@ -63,37 +63,50 @@ namespace DTcms.Web.ajax
 
                     DateTime dtNow = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
 
-                    //ASalesQueue 凌晨2点到12点分分配队列
-                    //BSalesQueue 12点~13点30分分配队列
-                    //CSalesQueue 13点30分~18点30分分配队列
-                    //DSalesQueue 18点30分~21点30分分配队列
-                    //ESalesQueue 21点30分~凌晨2点分配队列
+                    //班次分配
+                    //ASalesQueue 1）凌晨班：凌晨1点016到早上5点30
+                    //BSalesQueue 2）早班：5点31~9点30，这
+                    //CSalesQueue 3）上午班：9点31~12点
+                    //DSalesQueue 4）午睡班：12点01~14点
+                    //ESalesQueue 5）下午班：14点01~18点
+                    //FSalesQueue 6）晚班：18:01到21点45
+                    //GSalesQueue 7）夜班：21点46到凌晨1点
                     string datetime = DateTime.Now.AddDays(-1).ToShortDateString();
                     string sqlTime = "";
-                    if (dtNow.CompareTo(Convert.ToDateTime("02:00")) > 0 && dtNow.CompareTo(Convert.ToDateTime("12:00")) < 0)
+                    if (dtNow.CompareTo(Convert.ToDateTime("01:16")) > 0 && dtNow.CompareTo(Convert.ToDateTime("05:30")) < 0)
                     {
-                        sqlTime = " and AddDate between '" + datetime + " 02:00' and '" + datetime + " 12:00'";
+                        sqlTime = " and AddDate between '" + datetime + " 01:16' and '" + datetime + " 05:30'";
                         code = "ASalesQueue";
+                    }
+                    else if (dtNow.CompareTo(Convert.ToDateTime("05:31")) > 0 && dtNow.CompareTo(Convert.ToDateTime("09:30")) < 0)
+                    {
+                        sqlTime = " and AddDate between '" + datetime + " 05:31' and '" + datetime + " 09:30'";
+                        code = "BSalesQueue";
+                    }
+                    else if (dtNow.CompareTo(Convert.ToDateTime("09:31")) > 0 && dtNow.CompareTo(Convert.ToDateTime("12:00")) < 0)
+                    {
+                        sqlTime = " and AddDate between '" + datetime + " 09:31' and '" + datetime + " 12:00'";
+                        code = "CSalesQueue";
                     }
                     else if (dtNow.CompareTo(Convert.ToDateTime("12:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("14:00")) < 0)
                     {
-                        sqlTime = " and AddDate between '" + datetime + " 12:01' and '" + datetime + " 14:01'";
-                        code = "BSalesQueue";
-                    }
-                    else if (dtNow.CompareTo(Convert.ToDateTime("14:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("18:30")) < 0)
-                    {
-                        sqlTime = " and AddDate between '" + datetime + " 14:01' and '" + datetime + " 18:30'";
-                        code = "CSalesQueue";
-                    }
-                    else if (dtNow.CompareTo(Convert.ToDateTime("18:31")) > 0 && dtNow.CompareTo(Convert.ToDateTime("21:30")) < 0)
-                    {
-                        sqlTime = " and AddDate between '" + datetime + " 18:31' and '" + datetime + " 21:30'";
+                        sqlTime = " and AddDate between '" + datetime + " 12:01' and '" + datetime + " 14:00'";
                         code = "DSalesQueue";
                     }
-                    else if (dtNow.CompareTo(Convert.ToDateTime("21:31")) > 0 && dtNow.CompareTo(Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString() + " 01:59")) < 0)
+                    else if (dtNow.CompareTo(Convert.ToDateTime("14:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString() + " 18:00")) < 0)
                     {
-                        sqlTime = " and AddDate between '" + datetime + " 21:31' and '" + datetime + " 01:59'";
+                        sqlTime = " and AddDate between '" + datetime + " 14:01' and '" + datetime + " 18:00'";
                         code = "ESalesQueue";
+                    }
+                    else if (dtNow.CompareTo(Convert.ToDateTime("18:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString() + " 21:45")) < 0)
+                    {
+                        sqlTime = " and AddDate between '" + datetime + " 18:01' and '" + datetime + " 21:45'";
+                        code = "FSalesQueue";
+                    }
+                    else if (dtNow.CompareTo(Convert.ToDateTime("21:46")) > 0 && dtNow.CompareTo(Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString() + " 01:15")) < 0)
+                    {
+                        sqlTime = " and AddDate between '" + datetime + " 21:46' and '" + datetime + " 01:15'";
+                        code = "GSalesQueue";
                     }
 
                     #region 城市信息优先级最高
@@ -106,7 +119,7 @@ namespace DTcms.Web.ajax
                         province = info.province;
                         if (!string.IsNullOrEmpty(info.city))
                         {
-                            if (info.city.Equals("北京") || info.city.Equals("天津") || info.city.Equals("廊坊"))
+                            if (info.city.Contains("北京") || info.city.Contains("天津") || info.city.Contains("廊坊"))
                             {
                                 code = "BeiJingSalesQueue";
                             }
@@ -260,7 +273,7 @@ namespace DTcms.Web.ajax
                         string Name = Request["Name"];//您的称呼
                         DataTable dtTel = bll.GetList(" and (telphone='" + TxtValue + "' or telphone='" + DESEncrypt.ConvertBy123(TxtValue) + "')").Tables[0];
                         model.ProductID = ProductID;
-                        model.SourceForm = SourceForm == "MB" ? "MB" : "PC";
+                        model.SourceForm = string.IsNullOrEmpty(SourceForm) ? "MB" : SourceForm;
                         model.ProcessingState = "0";
                         model.CustomerName = Name;
                         model.InquiryContent = Content;
@@ -422,7 +435,7 @@ namespace DTcms.Web.ajax
             try
             {
                 string ip = HttpContext.Current.Request.UserHostAddress;
-                string url = "http://apis.juhe.cn/ip/ipNew?ip=" + ip + "&key=f6b3c53f05453d39221ac36b31bf170e";
+                string url = "http://apis.juhe.cn/ip/ipNew?ip=" + ip + "&key=5cbe82bf7bc6e5623d9424a440dc52f3";
                 //请求数据
                 HttpWebRequest res = (HttpWebRequest)WebRequest.Create(url);
                 //方法名

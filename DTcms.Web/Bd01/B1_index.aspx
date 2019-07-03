@@ -215,16 +215,6 @@ display: none
         <input type="text" placeholder="请输入您到称呼" />
     </div> -->
     <div class="flex-row" style="align-items: center;margin: 0 0 0 5%;">
-        <div style="width: 1.6rem;font-size: .25rem">如何称呼</div>
-        <div class="forminput flex-row" style="align-items: center;">
-            <input type="text" id="txt_name" placeholder="请输入您的称呼" />
-        </div>
-    </div>
-    <div class="div-h-2"></div>
-    <!-- <div class="forminput">
-        <input type="number" placeholder="请输入手机号码_申请结果将发送到手机上" />
-    </div> -->
-    <div class="flex-row" style="align-items: center;margin: 0 0 0 5%;">
         <div style="width: 1.6rem;font-size: .25rem">手机号码</div>
         <div class="forminput flex-row" style="align-items: center;">
             <input type="text" id="txt_keywords" placeholder="请输入手机号码_申请结果将发送到手机上" />
@@ -232,6 +222,16 @@ display: none
         </div>
     </div>
     <div class="div-h-3"></div>
+    <!-- <div class="forminput">
+        <input type="number" placeholder="请输入手机号码_申请结果将发送到手机上" />
+    </div> -->
+    <div class="flex-row" style="align-items: center;margin: 0 0 0 5%;">
+        <div style="width: 1.6rem;font-size: .25rem">如何称呼</div>
+        <div class="forminput flex-row" style="align-items: center;">
+            <input type="text" id="txt_name" placeholder="请输入您的称呼" />
+        </div>
+    </div>
+    <div class="div-h-2"></div>
     <!-- <div class="flex-row textline">
         <label style="font-size:.24rem"><input class="phone_agreement_checker svelte-1mz3y46" type="checkbox" style="display: none;">
             <div class="icon svelte-1mz3y46"></div> 自动输入历史手机号
@@ -298,7 +298,8 @@ display: none
     <script src="/js/utils.js"></script>
     <script src="/js/swiper.min.js"></script>
     <script src="/js/showdiv.js"></script>
-    <script src="/js/code.js"></script>
+    <script src="/js/public.js"></script>
+    <script src="/js/code.js"></script>
     <script>
         var _hmt = _hmt || [];
         (function () {
@@ -337,6 +338,17 @@ display: none
             $('#tixing').show()
         })
 
+          // 获取长度为len的随机字符串
+            function getRandomString(len) {
+                len = len || 32;
+                var $chars = 'ABCDEFGHJKMNPQRSTWXYZ'; // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
+                var maxPos = $chars.length;
+                var pwd = '';
+                for (i = 0; i < len; i++) {
+                    pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+                }
+                return pwd;
+            }
         
     $("#div_submit").bind("click", function (e) {
                 var productid = "Mobile";
@@ -355,10 +367,11 @@ display: none
                 }
 
                 $.post("/ajax/proajax.aspx", { ProductID: productid, Type: type, TxtValue: txtvalue, InquiryType: inquiryType,SourceForm:"AD",Name:name,Content:content }, function (result) {
-                    //tprm = "ProductID=" + productid + "&phone=" + getRandomString(1) + TelJM(txtvalue) + getRandomString(1);
-                   // __ozfac2(tprm, "#inquiryok");
+                    tprm = "ProductID=" + productid + "&phone=" + getRandomString(1) + TelJM(txtvalue) + getRandomString(1);
+                    __ozfac2(tprm, "#inquiryok");
                     alert(result);                    
                     $("#txt_keywords").val("");
+                    window._agl && window._agl.push(['track', ['success', {t: 3}]])
                 });
             });
     </script>

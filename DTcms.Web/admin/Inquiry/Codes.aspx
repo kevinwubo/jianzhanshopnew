@@ -49,11 +49,20 @@
             <asp:ListItem Value="SY_PK">首页器型-撇口</asp:ListItem>       
             <asp:ListItem Value="SY_QPZQ">首页老盏-整器</asp:ListItem>
             <asp:ListItem Value="SY_CQXC">首页老盏-瑕疵 </asp:ListItem>
-            <asp:ListItem  Value="ASalesQueue">凌晨2点到12点分分配队列</asp:ListItem>
+<%--            <asp:ListItem  Value="ASalesQueue">凌晨2点到12点分分配队列</asp:ListItem>
             <asp:ListItem  Value="BSalesQueue">12点~14点00分分配队列</asp:ListItem>
             <asp:ListItem  Value="CSalesQueue">14点01分~18点30分分配队列</asp:ListItem>
             <asp:ListItem  Value="DSalesQueue">18点30分~21点30分分配队列</asp:ListItem>
-            <asp:ListItem  Value="ESalesQueue">21点30分~凌晨2点分配队列</asp:ListItem>
+            <asp:ListItem  Value="ESalesQueue">21点30分~凌晨2点分配队列</asp:ListItem>--%>
+
+            <asp:ListItem  Value="ASalesQueue">凌晨班：凌晨1点16到早上5点30</asp:ListItem>
+            <asp:ListItem  Value="BSalesQueue">早班：5点31~9点30</asp:ListItem>
+            <asp:ListItem  Value="CSalesQueue">上午班：9点31~12点</asp:ListItem>
+            <asp:ListItem  Value="DSalesQueue">午睡班：12点01~14点</asp:ListItem>
+            <asp:ListItem  Value="ESalesQueue">下午班：14点01~18点</asp:ListItem>
+            <asp:ListItem  Value="FSalesQueue">晚班：18:01到21点45</asp:ListItem>
+            <asp:ListItem  Value="GSalesQueue">夜班：21点46到凌晨1点</asp:ListItem>
+
             <asp:ListItem  Value="SmsTemplate">短信模版</asp:ListItem>
             <asp:ListItem  Value="BlackMobile">资讯黑名单</asp:ListItem>
             <asp:ListItem  Value="WXChartID">微信号</asp:ListItem>
