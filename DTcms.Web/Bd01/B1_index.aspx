@@ -3,10 +3,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta content="建盏学院" http-equiv="keywords">
-    <meta name="description" content="建盏学院">
+    <meta content="正宗建盏报价" http-equiv="keywords">
+    <meta name="description" content="正宗建盏报价">
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
-    <title>建盏学院</title>
+    <title>正宗建盏报价</title>
     <link rel="stylesheet" href="/css/1905_swiper.min.css">
     <link rel="stylesheet" href="/css/1905_base_1_30.css" type="text/css">
     <link rel="stylesheet" href="/css/1905_style.css">
@@ -147,7 +147,7 @@ display: none
 <body>
 
     <img class="w100" src="/images/01.jpg" alt="">
-    <img class="w100" src="https://p1-tt.byteimg.com/img/ad-tetris-site/file/1557801168277/d2cfbf42aec5bb09315be29ce8e20252~noop.webp"" alt="">
+    <span id="top" name="top"><img class="w100" src="/images/noop.jpg" alt=""></span>
     
     <form class="
         clue-form svelte-7b7rbn" novalidate="" style="color: rgb(128, 128, 128);">
@@ -221,7 +221,7 @@ display: none
 
         </div>
     </div>
-    <div class="div-h-3"></div>
+    <div class="div-h-2"></div>
     <!-- <div class="forminput">
         <input type="number" placeholder="请输入手机号码_申请结果将发送到手机上" />
     </div> -->
@@ -231,7 +231,7 @@ display: none
             <input type="text" id="txt_name" placeholder="请输入您的称呼" />
         </div>
     </div>
-    <div class="div-h-2"></div>
+    <div class="div-h-3"></div>
     <!-- <div class="flex-row textline">
         <label style="font-size:.24rem"><input class="phone_agreement_checker svelte-1mz3y46" type="checkbox" style="display: none;">
             <div class="icon svelte-1mz3y46"></div> 自动输入历史手机号
@@ -240,7 +240,7 @@ display: none
     </div> -->
 
     <div class="textline" style="height:1rem">
-        <button class="submitbtn svelte-a6af2v" type="button" id="div_submit" style="border-radius: 0.186667rem; background-color: rgb(203, 20, 20); color: rgb(255, 255, 255);">
+        <button class="submitbtn svelte-a6af2v" type="button" id="div_submit" style="border-radius: 0.186667rem; background-color: rgb(178, 34, 34); color: rgb(255, 255, 255);">
             <span style="font-size:.4rem">申请咨询报价</span>
         </button>
     </div>
@@ -273,11 +273,11 @@ display: none
                 <div style="margin-top: .1rem;height: .3rem">咨询热线</div>
             </div> -->
 
-            <div class="flex-col" style="height: 1rem;background: rgb(203, 20, 20);
+            <div class="flex-col" style="height: 1rem;background: rgb(210, 180, 140);
                 color: rgb(255, 255, 255);">
                 <div class="flex-row" style="align-items: center;justify-content: center;height: 1rem">
                     <img style="height: .4rem;" src="/images/ic_wx.png" alt="" />
-                    <div style="margin-left:.2rem;height: .39rem;font-size: .39rem">申请·建盏鉴别+获取报价</div>
+                    <div><a href="#top" style="margin-left:.2rem;height: .39rem;font-size: .39rem">申请·建盏鉴别+获取报价</a></div>
                 </div>
             </div>
         </div>
@@ -369,9 +369,9 @@ display: none
                 $.post("/ajax/proajax.aspx", { ProductID: productid, Type: type, TxtValue: txtvalue, InquiryType: inquiryType,SourceForm:"AD",Name:name,Content:content }, function (result) {
                     tprm = "ProductID=" + productid + "&phone=" + getRandomString(1) + TelJM(txtvalue) + getRandomString(1);
                     __ozfac2(tprm, "#inquiryok");
-                    alert(result);                    
-                    $("#txt_keywords").val("");
+                    alert(result);                   
                     window._agl && window._agl.push(['track', ['success', {t: 3}]])
+                    $("#txt_keywords").val("");
                 });
             });
     </script>

@@ -315,7 +315,7 @@ namespace DTcms.BLL
                 {
                     Model.InquiryAdver info = new Model.InquiryAdver();
                     info.datetime = dr["date"].ToString();
-                    info.info = "<b>PC新：</b><b  style='font-size:larger;color:Red'>（" + dr["PCCount"].ToString() + "）</b><b>手机新(" + dr["MobileCount"].ToString() + ")</b>";
+                    info.info = "<b>PC新：</b><b  style='font-size:larger;color:Red'>（" + dr["PCCount"].ToString() + "）</b><b>手机新(" + dr["MobileCount"].ToString() + ")</b><b>广告新(" + dr["ADCount"].ToString() + ")</b>";
                     listInquiry.Add(info);
                 }
             }
@@ -329,7 +329,7 @@ namespace DTcms.BLL
                 {
                     Model.InquiryAdver info = new Model.InquiryAdver();
                     info.datetime = dr["date"].ToString() + "汇总";
-                    info.info = "<b>PC新：</b><b  style='font-size:larger;color:Red'>（" + dr["PCCount"].ToString() + "）</b><b>手机新(" + dr["MobileCount"].ToString() + ")</b>";
+                    info.info = "<b>PC新：</b><b  style='font-size:larger;color:Red'>（" + dr["PCCount"].ToString() + "）</b><b>手机新(" + dr["MobileCount"].ToString() + ")</b><b>广告新(" + dr["ADCount"].ToString() + ")</b>";
                     listInquiry.Add(info);
                 }
             }

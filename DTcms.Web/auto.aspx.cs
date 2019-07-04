@@ -61,176 +61,189 @@ namespace DTcms.Web
             SMSText = bllCodes.GetModel(" and Code='SmsTemplate'").CodeValues;
             //string codes = bllCodes.GetModel(" and Code in('" + code + "')").CodeValues;
             DataSet ds = bll.GetUnTreatedInquiry();
-            string newsalesname = "";
-            if (ds != null && ds.Tables != null && ds.Tables.Count > 0)
+            try
             {
-                DataTable dt = ds.Tables[0];
-                if (dt != null && dt.Rows.Count > 0)
+                if (ds != null && ds.Tables != null && ds.Tables.Count > 0)
                 {
-                    foreach (DataRow dr in dt.Rows)
+                    DataTable dt = ds.Tables[0];
+                    if (dt != null && dt.Rows.Count > 0)
                     {
-                        DTcms.Model.manager dtSale = new DTcms.Model.manager(); ;
-                        string oldsalesname = dr["real_name"].ToString();
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            DTcms.Model.manager dtSale = new DTcms.Model.manager(); ;
+                            string oldsalesname = dr["real_name"].ToString();
 
-                        BLL.Log.WriteTextFPLog("重新分配PPID" + dr["PPId"].ToString(), DateTime.Now);
-                        DateTime dtNow = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
+                            BLL.Log.WriteTextFPLog("重新分配PPID" + dr["PPId"].ToString(), DateTime.Now);
+                            DateTime dtNow = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
 
-                        //ASalesQueue 凌晨2点到12点分分配队列
-                        //BSalesQueue 12点~13点30分分配队列
-                        //CSalesQueue 13点30分~18点30分分配队列
-                        //DSalesQueue 18点30分~21点30分分配队列
-                        //ESalesQueue 21点30分~凌晨2点分配队列
-                        string datetime = DateTime.Now.AddDays(-1).ToShortDateString();
-                        string sqlTime = "";
-                        if (dtNow.CompareTo(Convert.ToDateTime("01:16")) > 0 && dtNow.CompareTo(Convert.ToDateTime("05:30")) < 0)
-                        {
-                            sqlTime = " and AddDate between '" + datetime + " 01:16' and '" + datetime + " 05:30'";
-                            code = "ASalesQueue";
-                        }
-                        else if (dtNow.CompareTo(Convert.ToDateTime("05:31")) > 0 && dtNow.CompareTo(Convert.ToDateTime("09:30")) < 0)
-                        {
-                            sqlTime = " and AddDate between '" + datetime + " 05:31' and '" + datetime + " 09:30'";
-                            code = "BSalesQueue";
-                        }
-                        else if (dtNow.CompareTo(Convert.ToDateTime("09:31")) > 0 && dtNow.CompareTo(Convert.ToDateTime("12:00")) < 0)
-                        {
-                            sqlTime = " and AddDate between '" + datetime + " 09:31' and '" + datetime + " 12:00'";
-                            code = "CSalesQueue";
-                        }
-                        else if (dtNow.CompareTo(Convert.ToDateTime("12:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("14:00")) < 0)
-                        {
-                            sqlTime = " and AddDate between '" + datetime + " 12:01' and '" + datetime + " 14:00'";
-                            code = "DSalesQueue";
-                        }
-                        else if (dtNow.CompareTo(Convert.ToDateTime("14:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("18:00")) < 0)
-                        {
-                            sqlTime = " and AddDate between '" + datetime + " 14:01' and '" + datetime + " 18:00'";
-                            code = "ESalesQueue";
-                        }
-                        else if (dtNow.CompareTo(Convert.ToDateTime("18:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("21:45")) < 0)
-                        {
-                            sqlTime = " and AddDate between '" + datetime + " 18:01' and '" + datetime + " 21:45'";
-                            code = "FSalesQueue";
-                        }
-                        else if (dtNow.CompareTo(Convert.ToDateTime("21:46")) > 0 && dtNow.CompareTo(Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString() + " 01:15")) < 0)
-                        {
-                            sqlTime = " and AddDate between '" + datetime + " 21:46' and '" + datetime + " 01:15'";
-                            code = "GSalesQueue";
-                        }
-
-                        #region 城市信息优先级最高
-                        ProCityInfo info = getProCityInfo();
-                        string city = "";
-                        string province = "";
-                        if (info != null)
-                        {
-                            city = info.city;
-                            province = info.province;
-                            if (!string.IsNullOrEmpty(info.city))
+                            //ASalesQueue 凌晨2点到12点分分配队列
+                            //BSalesQueue 12点~13点30分分配队列
+                            //CSalesQueue 13点30分~18点30分分配队列
+                            //DSalesQueue 18点30分~21点30分分配队列
+                            //ESalesQueue 21点30分~凌晨2点分配队列
+                            string datetime = DateTime.Now.AddDays(-1).ToShortDateString();
+                            string sqlTime = "";
+                            if (dtNow.CompareTo(Convert.ToDateTime("01:16")) > 0 && dtNow.CompareTo(Convert.ToDateTime("05:30")) < 0)
                             {
-                                if (info.city.Equals("北京") || info.city.Equals("天津") || info.city.Equals("廊坊"))
+                                sqlTime = " and AddDate between '" + datetime + " 01:16' and '" + datetime + " 05:30'";
+                                code = "ASalesQueue";
+                            }
+                            else if (dtNow.CompareTo(Convert.ToDateTime("05:31")) > 0 && dtNow.CompareTo(Convert.ToDateTime("09:30")) < 0)
+                            {
+                                sqlTime = " and AddDate between '" + datetime + " 05:31' and '" + datetime + " 09:30'";
+                                code = "BSalesQueue";
+                            }
+                            else if (dtNow.CompareTo(Convert.ToDateTime("09:31")) > 0 && dtNow.CompareTo(Convert.ToDateTime("12:00")) < 0)
+                            {
+                                sqlTime = " and AddDate between '" + datetime + " 09:31' and '" + datetime + " 12:00'";
+                                code = "CSalesQueue";
+                            }
+                            else if (dtNow.CompareTo(Convert.ToDateTime("12:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("14:00")) < 0)
+                            {
+                                sqlTime = " and AddDate between '" + datetime + " 12:01' and '" + datetime + " 14:00'";
+                                code = "DSalesQueue";
+                            }
+                            else if (dtNow.CompareTo(Convert.ToDateTime("14:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("18:00")) < 0)
+                            {
+                                sqlTime = " and AddDate between '" + datetime + " 14:01' and '" + datetime + " 18:00'";
+                                code = "ESalesQueue";
+                            }
+                            else if (dtNow.CompareTo(Convert.ToDateTime("18:01")) > 0 && dtNow.CompareTo(Convert.ToDateTime("21:45")) < 0)
+                            {
+                                sqlTime = " and AddDate between '" + datetime + " 18:01' and '" + datetime + " 21:45'";
+                                code = "FSalesQueue";
+                            }
+                            else if (dtNow.CompareTo(Convert.ToDateTime("21:46")) > 0 && dtNow.CompareTo(Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString() + " 01:15")) < 0)
+                            {
+                                sqlTime = " and AddDate between '" + datetime + " 21:46' and '" + datetime + " 01:15'";
+                                code = "GSalesQueue";
+                            }
+
+                            #region 城市信息优先级最高
+                            ProCityInfo info = getProCityInfo();
+                            string city = dr["City"] != null ? dr["City"].ToString() : "";
+                            string province = "";
+                            if (info != null)
+                            {
+                                city = info.city;
+                                province = info.province;
+                                if (!string.IsNullOrEmpty(info.city))
                                 {
-                                    code = "BeiJingSalesQueue";
+                                    if (info.city.Contains("北京") || info.city.Contains("天津") || info.city.Contains("廊坊"))
+                                    {
+                                        code = "BeiJingSalesQueue";
+                                    }
                                 }
                             }
-                        }
-                        #endregion
+                            #endregion
+                            string SourceForm = dr["SourceForm"] != null ? dr["SourceForm"].ToString() : "";
 
-
-                        SMSText = bllCodes.GetModel(" and Code='SmsTemplate'").CodeValues;
-                        //当前销售队列
-                        string codes = bllCodes.GetModel(" and Code='" + code + "'").CodeValues;
-
-                        string codeNames = "";
-                        if (!string.IsNullOrEmpty(codes))
-                        {
-                            string[] codeList = codes.Split(',');
-                            foreach (string str in codeList)
+                            //广告页面过来单独使用一个队列
+                            if (!string.IsNullOrEmpty(SourceForm) && "AD".Equals(SourceForm))
                             {
-                                DTcms.Model.SalesModel salemodel = bllCodes.GetLastSaleNameBySaleName(str);
-                                if (salemodel != null)
+                                code = "ADSalesQueue";
+                            }
+
+
+                            SMSText = bllCodes.GetModel(" and Code='SmsTemplate'").CodeValues;
+                            //当前销售队列
+                            string codes = bllCodes.GetModel(" and Code='" + code + "'").CodeValues;
+
+                            string codeNames = "";
+                            if (!string.IsNullOrEmpty(codes))
+                            {
+                                string[] codeList = codes.Split(',');
+                                foreach (string str in codeList)
                                 {
-                                    if (salemodel.saleCount > salemodel.saleCurrentDayCount || salemodel.saleCurrentDayCount == 0)
+                                    DTcms.Model.SalesModel salemodel = bllCodes.GetLastSaleNameBySaleName(str);
+                                    if (salemodel != null)
+                                    {
+                                        if (salemodel.saleCount > salemodel.saleCurrentDayCount || salemodel.saleCurrentDayCount == 0)
+                                        {
+                                            codeNames += "'" + str + "'" + ",";
+                                        }
+                                    }
+                                }
+
+                                //如果销售都分配满了 按照队列去自动分配
+                                if (string.IsNullOrEmpty(codeNames))
+                                {
+                                    foreach (string str in codeList)
                                     {
                                         codeNames += "'" + str + "'" + ",";
                                     }
                                 }
                             }
 
-                            //如果销售都分配满了 按照队列去自动分配
-                            if (string.IsNullOrEmpty(codeNames))
+                            string lastSaleName = bllCodes.GetLastSaleNameByCodes(codeNames.TrimEnd(','), sqlTime);// 最近资讯销售姓名
+
+                            string realnames = "";
+                            if (!string.IsNullOrEmpty(codes))
                             {
-                                foreach (string str in codeList)
+                                #region 老逻辑
+                                string[] str = codeNames.Split(',');
+                                List<string> lstSales = new List<string>();
+                                string OutSalesCodes = bllCodes.GetList(" and Code in('XiaMenSales','WuYiShanSales')");
+                                foreach (string item in str)
                                 {
-                                    codeNames += "'" + str + "'" + ",";
-                                }
-                            }
-                        }
-
-                        string lastSaleName = bllCodes.GetLastSaleNameByCodes(codeNames.TrimEnd(','), sqlTime);// 最近资讯销售姓名
-
-                        string realnames = "";
-                        if (!string.IsNullOrEmpty(codes))
-                        {
-                            #region 老逻辑
-                            string[] str = codeNames.Split(',');
-                            List<string> lstSales = new List<string>();
-                            string OutSalesCodes = bllCodes.GetList(" and Code in('XiaMenSales','WuYiShanSales')");
-                            foreach (string item in str)
-                            {
-                                //厦门武夷山排除销售
-                                if (!OutSalesCodes.Contains(item.Replace("'", "")))
-                                {
-                                    DTcms.Model.manager mr = bllManager.GetModel(item.Replace("'", ""));
-
-                                    #region 当天在微信队列中的排除销售咨询队列
-                                    DateTime dta = DateTime.Now;
-                                    int week = Convert.ToInt32(dta.DayOfWeek);
-
-                                    string wxCodes = bllCodes.GetModel("and Code='WXChartList' ").CodeValues;
-                                    string WXCode = "";
-                                    try
+                                    //厦门武夷山排除销售
+                                    if (!OutSalesCodes.Contains(item.Replace("'", "")))
                                     {
-                                        //BLL.Log.WriteTextFPLog("--WXCode" + wxCodes, DateTime.Now);
-                                        if (!string.IsNullOrEmpty(wxCodes))
+                                        DTcms.Model.manager mr = bllManager.GetModel(item.Replace("'", ""));
+
+                                        #region 当天在微信队列中的排除销售咨询队列
+                                        DateTime dta = DateTime.Now;
+                                        int week = Convert.ToInt32(dta.DayOfWeek);
+
+                                        string wxCodes = bllCodes.GetModel("and Code='WXChartList' ").CodeValues;
+                                        string WXCode = "";
+                                        try
                                         {
-                                            week = week == 0 ? 7 : week;
-                                            string[] codeStr = wxCodes.Split(',');
-                                            if (codeStr.Length < week)
+                                            //BLL.Log.WriteTextFPLog("--WXCode" + wxCodes, DateTime.Now);
+                                            if (!string.IsNullOrEmpty(wxCodes))
                                             {
-                                                WXCode = codeStr[0];
+                                                week = week == 0 ? 7 : week;
+                                                string[] codeStr = wxCodes.Split(',');
+                                                if (codeStr.Length < week)
+                                                {
+                                                    WXCode = codeStr[0];
+                                                }
+                                                else
+                                                {
+                                                    int cou = week - 1;
+                                                    WXCode = codeStr[cou];
+                                                }
+                                            }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            BLL.Log.WriteTextFPLog("--异常记录WXCode" + ex.ToString(), DateTime.Now);
+                                            WXCode = wxCodes.Split(',')[0];
+                                        }
+                                        #endregion
+                                        if (mr != null)
+                                        {
+                                            if (!WXCode.Equals(mr.telephone))
+                                            {
+                                                lstSales.Add(item.Replace("'", ""));
+                                            }
+                                        }
+                                    }
+                                }
+                                try
+                                {
+                                    if (lstSales != null && lstSales.Count > 0)
+                                    {
+                                        if (lstSales.Contains(lastSaleName))
+                                        {
+                                            if (lstSales.IndexOf(lastSaleName) + 1 < lstSales.Count)
+                                            {
+                                                realnames = lstSales[lstSales.IndexOf(lastSaleName) + 1];
                                             }
                                             else
                                             {
-                                                int cou = week - 1;
-                                                WXCode = codeStr[cou];
+                                                realnames = lstSales[0];
                                             }
-                                        }
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        BLL.Log.WriteTextFPLog("--异常记录WXCode" + ex.ToString(), DateTime.Now);
-                                        WXCode = wxCodes.Split(',')[0];
-                                    }
-                                    #endregion
-                                    if (mr != null)
-                                    {
-                                        if (!WXCode.Equals(mr.telephone))
-                                        {
-                                            lstSales.Add(item.Replace("'", ""));
-                                        }
-                                    }
-                                }
-                            }
-                            try
-                            {
-                                if (lstSales != null && lstSales.Count > 0)
-                                {
-                                    if (lstSales.Contains(lastSaleName))
-                                    {
-                                        if (lstSales.IndexOf(lastSaleName) + 1 < lstSales.Count)
-                                        {
-                                            realnames = lstSales[lstSales.IndexOf(lastSaleName) + 1];
                                         }
                                         else
                                         {
@@ -239,53 +252,48 @@ namespace DTcms.Web
                                     }
                                     else
                                     {
-                                        realnames = lstSales[0];
+                                        realnames = str[0];
                                     }
                                 }
-                                else
+                                catch (Exception ex)
                                 {
                                     realnames = str[0];
                                 }
-                            }
-                            catch (Exception ex)
-                            {
-                                realnames = str[0];
-                            }
-                            #endregion
+                                #endregion
 
+                                if (!string.IsNullOrEmpty(realnames))
+                                {
+                                    dtSale = bllManager.GetModel(realnames.Replace("'", ""));
+                                }
+                            }
+
+                            string SmsMess = string.Format(SMSText, "不详", "不详", "不详", DateTime.Now.ToString());
+                            if (!string.IsNullOrEmpty(dtSale.telephone))
+                            {
+                                List<DTcms.Model.Product> lstPro = bllPro.GetProductList(" and ProductID='" + dr["ProductID"] + "'", 1);
+                                if (lstPro != null && lstPro.Count > 0)
+                                {
+                                    DTcms.Model.Product modelPro = lstPro[0];
+                                    SmsMess = string.Format(SMSText, modelPro.Author, modelPro.ProductName, modelPro.ProductID, DateTime.Now.ToString()) + "咨询量转移";
+                                }
+                                SmsMess += "跟踪销售：" + realnames;
+                            }
+                            Log.WriteTextFPLog("SmsMess：" + SmsMess, DateTime.Now);
                             if (!string.IsNullOrEmpty(realnames))
                             {
-                                dtSale = bllManager.GetModel(realnames.Replace("'", ""));
+                                Log.WriteTextFPLog("咨询量转移后销售姓名：" + realnames + "==销售电话：" + dtSale.telephone, DateTime.Now);
+                                DTcms.BLL.SMSHelper.SeedSMS(dtSale.telephone, SmsMess);
+                                DTcms.BLL.Log.WriteTextFPLog("--手机号 销售：" + dtSale.telephone + "-询价-短信内容：" + SmsMess, DateTime.Now);
+
+                                bll.UpdateOperatorIDByPPID(Convert.ToInt32(dr["ppid"]), dtSale.id);
                             }
-                        }
-
-                        if (!string.IsNullOrEmpty(newsalesname))
-                        {
-                            dtSale = bllManager.GetModel(newsalesname);
-                        }
-
-                        string SmsMess = string.Format(SMSText, "不详", "不详", "不详", DateTime.Now.ToString());
-                        if (!string.IsNullOrEmpty(dtSale.telephone))
-                        {
-                            List<DTcms.Model.Product> lstPro = bllPro.GetProductList(" and ProductID='" + dr["ProductID"] + "'", 1);
-                            if (lstPro != null && lstPro.Count > 0)
-                            {
-                                DTcms.Model.Product modelPro = lstPro[0];
-                                SmsMess = string.Format(SMSText, modelPro.Author, modelPro.ProductName, modelPro.ProductID, DateTime.Now.ToString()) + "咨询量转移";
-                            }
-                            SmsMess += "跟踪销售：" + newsalesname;
-                        }
-                        Log.WriteTextFPLog("SmsMess：" + SmsMess, DateTime.Now);
-                        if (!string.IsNullOrEmpty(newsalesname))
-                        {
-                            Log.WriteTextFPLog("咨询量转移后销售姓名：" + newsalesname + "==销售电话：" + dtSale.telephone, DateTime.Now);
-                            DTcms.BLL.SMSHelper.SeedSMS(dtSale.telephone, SmsMess);
-                            DTcms.BLL.Log.WriteTextFPLog("--手机号 销售：" + dtSale.telephone + "-询价-短信内容：" + SmsMess, DateTime.Now);
-
-                            bll.UpdateOperatorIDByPPID(Convert.ToInt32(dr["ppid"]), dtSale.id);
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteErrorLog("咨询量转移异常" + ex, DateTime.Now);
             }
         }
 

@@ -210,7 +210,8 @@ namespace DTcms.DAL
             {
                 strSql.Append("select CONVERT(varchar(100),  a.AddDate, 23) as date");
                 strSql.Append(",SUM(case when SourceForm='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as MobileCount ");
-                strSql.Append(" , SUM(case when SourceForm!='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as  PCCount  from dbo.dt_proInquiry a, dt_manager b  ");
+                strSql.Append(",SUM(case when SourceForm='AD' and ISNULL(a.status,'')='新' then 1 else 0 end) as ADCount ");
+                strSql.Append(" , SUM(case when SourceForm='PC' and ISNULL(a.status,'')='新' then 1 else 0 end) as  PCCount  from dbo.dt_proInquiry a, dt_manager b  ");
                 strSql.Append(" where  convert(nvarchar(7) ,a.AddDate,23)= convert(nvarchar(7) ,getdate(),23)and a.OperatorID=b.id  and datastatus=0");
                 strSql.Append("group by CONVERT(varchar(100),  a.AddDate, 23)  order by date desc");
             }
@@ -218,7 +219,8 @@ namespace DTcms.DAL
             {
                 strSql.Append("select CONVERT(varchar(100),  a.AddDate, 23) as date");
                 strSql.Append(",SUM(case when SourceForm='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as MobileCount ");
-                strSql.Append(" , SUM(case when SourceForm!='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as  PCCount  from dbo.dt_proInquiry a, dt_manager b  ");
+                strSql.Append(",SUM(case when SourceForm='AD' and ISNULL(a.status,'')='新' then 1 else 0 end) as ADCount ");
+                strSql.Append(" , SUM(case when SourceForm='PC' and ISNULL(a.status,'')='新' then 1 else 0 end) as  PCCount  from dbo.dt_proInquiry a, dt_manager b  ");
                 strSql.Append(" where  convert(nvarchar(7) ,a.AddDate,23)='" + datetime + "'  and a.OperatorID=b.id  and datastatus=0");
                 strSql.Append("group by CONVERT(varchar(100),  a.AddDate, 23)  order by date desc");
             }
@@ -236,7 +238,8 @@ namespace DTcms.DAL
             {
                 strSql.Append("select convert(nvarchar(7) ,a.AddDate,23) as date");
                 strSql.Append(",SUM(case when SourceForm='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as MobileCount ");
-                strSql.Append(", SUM(case when SourceForm!='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as  PCCount from dbo.dt_proInquiry a, dt_manager b  ");
+                strSql.Append(",SUM(case when SourceForm='AD' and ISNULL(a.status,'')='新' then 1 else 0 end) as ADCount ");
+                strSql.Append(", SUM(case when SourceForm='PC' and ISNULL(a.status,'')='新' then 1 else 0 end) as  PCCount from dbo.dt_proInquiry a, dt_manager b  ");
                 strSql.Append("where convert(nvarchar(7) ,a.AddDate,23)= convert(nvarchar(7) ,getdate(),23) and a.OperatorID=b.id  and datastatus=0");
                 strSql.Append("group by convert(nvarchar(7) ,a.AddDate,23)");
             }
@@ -244,7 +247,8 @@ namespace DTcms.DAL
             {
                 strSql.Append("select convert(nvarchar(7) ,a.AddDate,23) as date");
                 strSql.Append(",SUM(case when SourceForm='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as MobileCount ");
-                strSql.Append(", SUM(case when SourceForm!='MB' and ISNULL(a.status,'')='新' then 1 else 0 end) as  PCCount from dbo.dt_proInquiry a, dt_manager b  ");
+                strSql.Append(",SUM(case when SourceForm='AD' and ISNULL(a.status,'')='新' then 1 else 0 end) as ADCount ");
+                strSql.Append(", SUM(case when SourceForm='PC' and ISNULL(a.status,'')='新' then 1 else 0 end) as  PCCount from dbo.dt_proInquiry a, dt_manager b  ");
                 strSql.Append("where convert(nvarchar(7) ,a.AddDate,23)= '" + datetime + "' and a.OperatorID=b.id  and datastatus=0");
                 strSql.Append("group by convert(nvarchar(7) ,a.AddDate,23)");
             }
@@ -401,7 +405,7 @@ namespace DTcms.DAL
         public DataSet GetUnTreatedInquiry()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("select a.PPId,a.ProductID,b.real_name,telphone from dt_proInquiry a,dt_manager b where a.OperatorID=b.id and datediff(mi,a.AddDate,GETDATE())>15 and a.status='新'  and a.ProcessingState=0");
+            sb.Append("select a.PPId,a.ProductID,b.real_name,telphone,sourceForm,City from dt_proInquiry a,dt_manager b where a.OperatorID=b.id and datediff(mi,a.AddDate,GETDATE())>15 and a.status='新'  and a.ProcessingState=0");
             return DbHelperSQL.Query(sb.ToString());
         }
 
