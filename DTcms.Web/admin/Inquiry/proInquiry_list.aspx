@@ -84,7 +84,7 @@
   </tr>
 </HeaderTemplate>
 <ItemTemplate>
-  <tr style='<%#Eval("ProcessingState").ToString()=="0"? "background-color:#ff5a00":"background-color:write" %>'>
+  <tr style='<%#(Eval("ProcessingState").ToString()=="0" || string.IsNullOrEmpty(Eval("TraceState").ToString())) ? "background-color:#ff5a00":"background-color:write" %>'>
     <td align="center"><asp:CheckBox ID="chkId" CssClass="checkall" runat="server" style="vertical-align:middle;" /><asp:HiddenField ID="hidId" Value='<%#Eval("PPID")%>' runat="server" /></td>
     <td <%#Eval("fontColor")%>><a href="/product_detail.aspx?productid=<%#Eval("ProductID") %>" target="_blank"><%#Eval("ProductID")%></a></td>
     <td <%#Eval("fontColor")%>><%#Eval("ProductName") %></td>
