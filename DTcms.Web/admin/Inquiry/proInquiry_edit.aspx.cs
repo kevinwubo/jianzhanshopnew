@@ -11,6 +11,7 @@ namespace DTcms.Web.admin.Inquiry
 {
     public partial class proInquiry_edit : System.Web.UI.Page
     {
+        public Model.manager Manager_Model = null;
         private string action = DTEnums.ActionEnum.Add.ToString(); //操作类型
         protected string channel_name = string.Empty; //频道名称
         protected int channel_id;
@@ -29,6 +30,7 @@ namespace DTcms.Web.admin.Inquiry
             }
             if (!Page.IsPostBack)
             {
+                Manager_Model = Session[DTKeys.SESSION_ADMIN_INFO] as Model.manager;
                 if (!string.IsNullOrEmpty(_action) && _action == DTEnums.ActionEnum.Edit.ToString())
                 {                    
                     this.channel_id = DTRequest.GetQueryInt("channel_id");
@@ -92,6 +94,13 @@ namespace DTcms.Web.admin.Inquiry
             model.OperatorID = ddl_SaleUsers.SelectedValue;
             model.PPId = _id;
             BLL.proInquiry bll = new BLL.proInquiry();
+            Manager_Model = Session[DTKeys.SESSION_ADMIN_INFO] as Model.manager;
+            int OID = 111;
+            if (Manager_Model != null)
+            {
+                OID = Manager_Model.id;
+            }
+            BLL.Log.WriteTextLog("销售跟踪记录==资讯手机号" + model.telphone + "==操作人" + OID + "修改后OperatroID" + model.OperatorID, DateTime.Now);
             return bll.Update(model);
         }
         #endregion
