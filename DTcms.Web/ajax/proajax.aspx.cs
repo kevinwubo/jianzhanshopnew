@@ -119,21 +119,13 @@ namespace DTcms.Web.ajax
                         province = info.province;
                         if (!string.IsNullOrEmpty(info.city))
                         {
-                            if (info.city.Contains("北京") || info.city.Contains("天津") || info.city.Contains("廊坊"))
+                            if (info.city.Contains("北京") || info.city.Contains("廊坊"))
                             {
                                 code = "BeiJingSalesQueue";
                             }
                         }
                     }
-                    
-                    //string provinceInfo = getProvinceCityInfo();
-                    //if (!string.IsNullOrEmpty(provinceInfo))
-                    //{
-                    //    if (provinceInfo.Contains("北京") || provinceInfo.Contains("天津") || provinceInfo.Contains("廊坊"))
-                    //    {
-                    //        code = "BeiJingSalesQueue";
-                    //    }
-                    //}
+                   
                     #endregion
 
                     //广告页面过来单独使用一个队列
@@ -145,7 +137,7 @@ namespace DTcms.Web.ajax
                     SMSText = bllCodes.GetModel(" and Code='SmsTemplate'").CodeValues;
                     //当前销售队列
                     string codes = bllCodes.GetModel(" and Code='" + code + "'").CodeValues;
-
+                    BLL.Log.WriteTextLog("当前销售队列：" + codes , DateTime.Now);
                     string codeNames = "";
                     if (!string.IsNullOrEmpty(codes))
                     {
@@ -171,7 +163,7 @@ namespace DTcms.Web.ajax
                             }
                         }
                     }
-
+                    BLL.Log.WriteTextLog("最近资讯销售姓名：" + codeNames, DateTime.Now);
                     string lastSaleName = bllCodes.GetLastSaleNameByCodes(codeNames.TrimEnd(','), sqlTime);// 最近资讯销售姓名
                     Model.manager dtSale = new manager(); ;
                     string realnames = "";

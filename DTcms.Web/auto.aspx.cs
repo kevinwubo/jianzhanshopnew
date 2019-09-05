@@ -129,7 +129,7 @@ namespace DTcms.Web
                                 province = info.province;
                                 if (!string.IsNullOrEmpty(info.city))
                                 {
-                                    if (info.city.Contains("北京") || info.city.Contains("天津") || info.city.Contains("廊坊"))
+                                    if (info.city.Contains("北京")  || info.city.Contains("廊坊"))
                                     {
                                         code = "BeiJingSalesQueue";
                                     }
